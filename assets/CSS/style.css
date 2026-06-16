@@ -1,9 +1,30 @@
+/*Bodu*/
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
 
 
 /*-----header/footer-----*/
 
 header, footer{
-    background-color: rgb(221, 223, 223);
+background-image: url(../Images/twitter_header.jpg);
+height: 300px;
+width: 100%;
+background-position: center;
+/*background-size: contain 100%;*/
+background-repeat: no-repeat;
+color: white;
+}
+
+
+/*support header */
+
+.support{
+    text-align: right;
+    
+
 }
 
 /*Barre de recherche */
@@ -22,6 +43,11 @@ header, footer{
     display: flex;
     justify-content: center; 
     text-align: center;
+}
+
+.article{
+    border-radius: 5px;
+    margin: 10px;
 }
 
 .flex-container-2{
