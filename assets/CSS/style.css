@@ -1,7 +1,7 @@
-/*Bodu*/
+/*Body*/
 
 body{
-    font-family: 'Times New Roman', Times, serif;
+font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -44,6 +44,10 @@ margin: 50px;
 
 
 /*Carousel*/
+
+.carousel-inner{
+    height: 500px;
+}
 
 
 /*Notre selection du moment*/ 
