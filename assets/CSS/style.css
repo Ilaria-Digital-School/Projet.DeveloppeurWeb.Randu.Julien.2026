@@ -46,7 +46,7 @@ margin: 50px;
 /*Carousel*/
 
 
-/*Nos offres*/ 
+/*Notre selection du moment*/ 
 
 .flex-container-1{
     display: flex;
@@ -59,7 +59,11 @@ border-radius:10px;
 margin: 10px;
 background-color: grey;
 width: 400px;
-height: 350px;
+height: 400px;
+}
+
+span{
+    color: orange;
 }
 
 /*Les meilleurs hôtels*/
