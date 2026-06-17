@@ -10,7 +10,7 @@ font-family: 'Times New Roman', Times, serif;
 
 header, footer{
 background-image: url(../Images/twitter_header.jpg);
-height: 300px;
+height: 400px;
 width: 100%;
 background-position: center;
 /*background-size: contain 100%;*/
@@ -46,7 +46,7 @@ margin: 50px;
 /*Carousel*/
 
 .carousel-inner{
-    height: 500px;
+    height: 100%;
 }
 
 
@@ -114,4 +114,12 @@ margin: 10px;
 background-color: grey;
 width: 400px;
 height: 350px;
+}
+
+.support-1{
+    text-align: center;
+}
+
+.support-1 a{
+    color: gold;
 }
