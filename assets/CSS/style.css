@@ -19,11 +19,20 @@ color: white;
 }
 
 
+
+
 /*support header */
 
 .support{
-    text-align: right;
-    
+text-align: right;
+color: rgb(204, 135, 6);   
+margin: 50px;
+}
+
+/*support-footer*/
+
+.support-footer{
+    text-align: center;
 
 }
 
@@ -37,7 +46,7 @@ color: white;
 /*Carousel*/
 
 
-/*Nos Hôtels*/ 
+/*Nos offres*/ 
 
 .flex-container-1{
     display: flex;
@@ -52,6 +61,8 @@ background-color: grey;
 width: 400px;
 height: 350px;
 }
+
+/*Les meilleurs hôtels*/
 
 .flex-container-2{
     display: flex;
@@ -68,8 +79,14 @@ height: 350px;
     justify-content: center;
     text-align: center;
 }
+.article-2{
+border-radius:10px;
+margin: 10px;
+background-color: grey;
+width: 400px;
+height: 350px;
 
-/*Les Meilleurs Hôtels*/
+}
 
 h3{
     text-align: center;
