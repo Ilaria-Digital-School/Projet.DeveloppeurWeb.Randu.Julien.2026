@@ -22,6 +22,7 @@ border: solid 5px gold;
 footer{
     background-color: black;
     color: gold;
+    border: solid 5px gold;
 }
 
 
@@ -161,3 +162,46 @@ button:focus {
     background-color: green;
     color: white; 
 }*/
+
+
+/*Page A Propos de nous*/
+
+.about{
+    color: gold;
+    background-color: black;
+    width: 900px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: solid 5px gold;
+    text-align: center;
+    padding: 10px;
+}
+
+.about-2{
+    color: gold;
+    background-color: black;
+    width: 900px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: solid 5px gold;
+    text-align: center;
+}
+
+h2{
+    color: gold;
+    border: solid 5px gold;
+    text-align: center;
+}
+
+/*Maps*/
+
+.maps{
+border-radius: 5px;
+border: solid 5 px gold;
+margin: 0 auto;
+align-items: center;
+display: flex;
+justify-content: center;
+background-color: black;  
+}
+
