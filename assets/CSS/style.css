@@ -2,22 +2,27 @@
 
 body{
 font-family: 'Times New Roman', Times, serif;
+background-color: black;
 }
 
 
 
 /*-----header/footer-----*/
 
-header, footer{
+header{
 background-image: url(../Images/twitter_header.jpg);
-height: 400px;
+height: 500px;
 width: 100%;
 background-position: center;
-/*background-size: contain 100%;*/
+background-size: cover;
 background-repeat: no-repeat;
-color: white;
+border: solid 5px gold;
 }
 
+footer{
+    background-color: black;
+    color: gold;
+}
 
 
 
@@ -25,14 +30,14 @@ color: white;
 
 .support{
 text-align: right;
-color: rgb(204, 135, 6);   
+color: gold;  
 margin: 50px;
 }
 
 /*support-footer*/
 
 .support-footer{
-    text-align: center;
+    text-align: right;
 
 }
 
@@ -52,6 +57,7 @@ margin: 50px;
 
 /*Notre selection du moment*/ 
 
+
 .flex-container-1{
     display: flex;
     justify-content: center; 
@@ -61,9 +67,11 @@ margin: 50px;
 .article{
 border-radius:10px;
 margin: 10px;
-background-color: grey;
+background-color: black;
 width: 400px;
-height: 400px;
+height: 450px;
+border: solid 5px gold;
+color: gold;
 }
 
 span{
@@ -77,6 +85,18 @@ span{
     justify-content: center;
     text-align: center;
 }
+
+.article-2{
+border-radius:10px;
+margin: 10px;
+width: 450px;
+height: 450px;
+border: solid 5px gold;
+color: gold;
+background-color: black;
+}
+
+
 .flex-container-3{
     display: flex;
     justify-content: center;
@@ -87,17 +107,13 @@ span{
     justify-content: center;
     text-align: center;
 }
-.article-2{
-border-radius:10px;
-margin: 10px;
-background-color: grey;
-width: 400px;
-height: 350px;
-}
 
-h3{
+
+h1{
     text-align: center;
-    border: solid 2px;
+    border: solid 5px gold;
+    color: gold;
+
 }
 
 /*Pourquoi nous choisir*/
@@ -111,9 +127,15 @@ h3{
 .article-3{
 border-radius:10px;
 margin: 10px;
-background-color: grey;
-width: 400px;
+width: 450px;
 height: 350px;
+border: solid 5px gold;
+color: gold;
+background-color: black;
+}
+
+.article-3 h3{
+    text-decoration: underline;
 }
 
 .support-1{
@@ -123,3 +145,19 @@ height: 350px;
 .support-1 a{
     color: gold;
 }
+
+/*Boutton
+
+button:hover {
+    background-color: beige;
+    color: black;
+}
+
+button:active {
+    border: 2px solid red
+}
+
+button:focus {
+    background-color: green;
+    color: white; 
+}*/
