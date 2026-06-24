@@ -60,109 +60,150 @@
             </nav>
         </div>
     </section>
-
-    <section>
+<main>
+    <section class="color-text">
 
         <h1>Formulaire d'inscription</h1>
-        <main>
-            <!--Formulaire de contact-->
+
+        <!--Formulaire de contact-->
+        <div>
+            <section>
+
+                <form>
+
+                    <p>Pour toutes demandes de renseignements ou une demande d'estimation, merci de remplir le
+                        formulaire
+                        ci-dessous
+                    </p>
+
+                    <fieldset class="inscription-fieldset">
+                        <legend>Informations Personnelles</legend>
+                        <br><label for="Nom">Nom</label>
+                        <input type="text" id="nom" placeholder="Nom" required><br>
+
+                        <br><label for="Prenom">Prenom</label>
+                        <input type="text" id="Prénom" placeholder="Prénom" required> <br>
+
+                        <br><label for="Numéro-de-téléphone">Numéro de telephone</label>
+                        <input type="text" id="numéro-de-telephone" placeholder="numéro de téléphone" required> <br>
+
+                        <br><label for="email">email</label>
+                        <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
+
+                        <br><label for="mdp"> Mot de Passe:</label>
+                        <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
+
+                        <br><label for="mdp">Confirmer votre Mot de Passe:</label>
+                        <input type="password" id="mdp" placeholder="Confirmer Mot de Passe" required>
+                    </fieldset>
+
+                </form>
+
+            </section>
+
+        </div>
+
+
+        <fieldset class="inscription-fieldset">
+            <legend>Informations Complémentaires</legend>
+
+            <!--Radio-->
             <div>
-                <section>
 
-                    <form>
+                <br><label> Genre:</label>
+                <input type="radio" id="femme" name="genre" value="femme">
+                <label for="femme"> Femme </label>
 
-                        <p>Pour toutes demandes de renseignements ou une demande d'estimation, merci de remplir le
-                            formulaire
-                            ci-dessous
-                        </p>
-
-                        <fieldset class="inscription-fieldset">
-                            <legend>Informations Personnelles</legend>
-                            <br><label for="Nom">Nom</label>
-                            <input type="text" id="nom" placeholder="Nom" required><br>
-
-                            <br><label for="Prenom">Prenom</label>
-                            <input type="text" id="Prénom" placeholder="Prénom" required> <br>
-
-                            <br><label for="Numéro-de-téléphone">Numéro de telephone</label>
-                            <input type="text" id="numéro-de-telephone" placeholder="numéro de téléphone" required> <br>
-
-                            <br><label for="email">email</label>
-                            <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
-
-                            <br><label for="mdp"> Mot de Passe:</label>
-                            <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
-
-                            <br><label for="mdp">Confirmer votre Mot de Passe:</label>
-                            <input type="password" id="mdp" placeholder="Confirmer votre Mot de Passe" required>
-                        </fieldset>
-
-                    </form>
-
-                </section>
+                <input type="radio" id="homme" name="genre" value="homme">
+                <label for="homme"> Homme</label>
 
             </div>
 
+            <!--Checkbox-->
+            <div>
 
-            <fieldset class="inscription-fieldset">
-                <legend>Informations Complémentaires</legend>
+                <br><label>Sujet :</label>
+                <input type="checkbox" name="Sujet" id="jeux" value="jeux">
+                <label for="jeux">jeux</label>
 
-                <!--Radio-->
-                <div>
+                <input type="checkbox" name="Sujet" id="console" value="console">
+                <label for="console">console</label>
 
-                    <br><label> Genre:</label>
-                    <input type="radio" id="femme" name="genre" value="femme">
-                    <label for="femme"> Femme </label>
+                <input type="checkbox" name="Sujet" id="Manette" value="Manette">
+                <label for="Manette">Manette</label>
 
-                    <input type="radio" id="homme" name="genre" value="homme">
-                    <label for="homme"> Homme</label>
+                <input type="checkbox" name="Sujet" id="alimentation" value="alimentation">
+                <label for="Alimentation">Alimentation</label>
 
-                </div>
+            </div>
 
-                <!--Checkbox-->
-                <div>
+            <!--Pays-->
 
-                    <br><label>Sujet :</label>
-                    <input type="checkbox" name="Sujet" id="jeux" value="jeux">
-                    <label for="jeux">jeux</label>
+            <br><label for="pays">Pays</label>
+            <select name="pays" id="pays">
+                <option value="France">France</option>
+                <option value="Portugais">Portugais</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Autre">Autre</option>
+            </select>
+        </fieldset>
 
-                    <input type="checkbox" name="Sujet" id="console" value="console">
-                    <label for="console">console</label>
+        <br><label for="msg">Message</label>
+        <textarea id="msg" placeholder="Votre Message" required></textarea>
 
-                    <input type="checkbox" name="Sujet" id="Manette" value="Manette">
-                    <label for="Manette">Manette</label>
+        <br><br><button type="submit"> Envoyer </button>
 
-                    <input type="checkbox" name="Sujet" id="alimentation" value="alimentation">
-                    <label for="Alimentation">Alimentation</label>
-
-                </div>
-
-                <!--Pays-->
-
-                <br><label for="pays">Pays</label>
-                <select name="pays" id="pays">
-                    <option value="France">France</option>
-                    <option value="Portugais">Portugais</option>
-                    <option value="Anglais">Anglais</option>
-                    <option value="Autre">Autre</option>
-                </select>
-            </fieldset>
-
-            <br><label for="msg">Message</label>
-            <textarea id="msg" placeholder="Votre Message" required></textarea>
-
-            <br><br><button type="submit"> Envoyer </button>
-
-            <a href="connexion.html">Connexion</a>
+        <a href="votre-compte.html">Vous connecter</a>
 
 
-            <label>
-                <form action=""></form>
-            </label>
+        <label>
+            <form action=""></form>
+        </label>
 
-            </form>
+        </form>
     </section>
-    </main>
+</main>
+
+       <!--Barre de navigation footer-->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="../reserver-votre-voyage/index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/a-propos.html">A Propos de Nous</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/a-propos.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/nos-hôtels.html">Nos Hôtels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/votre-compte.html">Votre Compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/formulaire-dinscription.html">Formulaire
+                                d'inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/votre-panier.html">Votre Panier</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    
+    </footer>
 
 </body>
 
