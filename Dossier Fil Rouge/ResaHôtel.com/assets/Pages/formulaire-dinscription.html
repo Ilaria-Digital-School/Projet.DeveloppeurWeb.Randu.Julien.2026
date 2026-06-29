@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--lien CSS-->
+
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <!--Lien Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <title>Formulaire d'inscription</title>
+</head>
+
+<body>
+
+    <header></header>
+
+      <section>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"
+                                    href="../Pages/index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assets/Pages/a-propos.html">A Propos de Nous</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="assets/Pages/contact.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assets/Pages/nos-hôtels.html">Nos Hôtels</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assets/Pages/votre-compte.html">Votre Compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assets/Pages/formulaire-dinscription.html">Formulaire
+                                    d'inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assets/Pages/votre-panier.html">Votre Panier</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+<main>
+    <section class="color-text">
+
+        <h1>Formulaire d'inscription</h1>
+
+        <!--Formulaire de contact-->
+        <div>
+            <section>
+
+                <form>
+
+                    <p>Pour toutes demandes de renseignements ou une demande d'estimation, merci de remplir le
+                        formulaire
+                        ci-dessous
+                    </p>
+
+                    <fieldset class="inscription-fieldset">
+                        <legend>Informations Personnelles</legend>
+                        <br><label for="Nom">Nom</label>
+                        <input type="text" id="nom" placeholder="Nom" required><br>
+
+                        <br><label for="Prenom">Prenom</label>
+                        <input type="text" id="Prénom" placeholder="Prénom" required> <br>
+
+                        <br><label for="Numéro-de-téléphone">Numéro de telephone</label>
+                        <input type="text" id="numéro-de-telephone" placeholder="numéro de téléphone" required> <br>
+
+                        <br><label for="email">email</label>
+                        <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
+
+                        <br><label for="mdp"> Mot de Passe:</label>
+                        <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
+
+                        <br><label for="mdp">Confirmer votre Mot de Passe:</label>
+                        <input type="password" id="mdp" placeholder="Confirmer Mot de Passe" required>
+                    </fieldset>
+
+                </form>
+
+            </section>
+
+        </div>
+
+
+        <fieldset class="inscription-fieldset">
+            <legend>Informations Complémentaires</legend>
+
+            <!--Radio-->
+            <div>
+
+                <br><label> Genre:</label>
+                <input type="radio" id="femme" name="genre" value="femme">
+                <label for="femme"> Femme </label>
+
+                <input type="radio" id="homme" name="genre" value="homme">
+                <label for="homme"> Homme</label>
+
+            </div>
+
+            <!--Checkbox-->
+            <div>
+
+                <br><label>Sujet :</label>
+                <input type="checkbox" name="Sujet" id="jeux" value="jeux">
+                <label for="jeux">jeux</label>
+
+                <input type="checkbox" name="Sujet" id="console" value="console">
+                <label for="console">console</label>
+
+                <input type="checkbox" name="Sujet" id="Manette" value="Manette">
+                <label for="Manette">Manette</label>
+
+                <input type="checkbox" name="Sujet" id="alimentation" value="alimentation">
+                <label for="Alimentation">Alimentation</label>
+
+            </div>
+
+            <!--Pays-->
+
+            <br><label for="pays">Pays</label>
+            <select name="pays" id="pays">
+                <option value="France">France</option>
+                <option value="Portugais">Portugais</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Autre">Autre</option>
+            </select>
+        </fieldset>
+
+        <br><label for="msg">Message</label>
+        <textarea id="msg" placeholder="Votre Message" required></textarea>
+
+        <br><br><button type="submit"> Envoyer </button>
+
+        <a href="votre-compte.html">Vous connecter</a>
+
+
+        <label>
+            <form action=""></form>
+        </label>
+
+        </form>
+    </section>
+</main>
+
+       <!--Barre de navigation footer-->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="../reserver-votre-voyage/index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/a-propos.html">A Propos de Nous</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/a-propos.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/nos-hôtels.html">Nos Hôtels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/votre-compte.html">Votre Compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/formulaire-dinscription.html">Formulaire
+                                d'inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assets/Pages/votre-panier.html">Votre Panier</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    
+    </footer>
+
+</body>
+
+<!--Lien JavaScript-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+</html>

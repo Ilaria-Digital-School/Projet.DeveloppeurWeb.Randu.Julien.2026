@@ -1,0 +1,255 @@
+/*Body*/
+
+body{
+font-family: 'Times New Roman', Times, serif;
+background-color: black;
+}
+
+
+
+
+/*-----header/footer-----*/
+
+header{
+background-image: url(../Images/twitter_header.jpg);
+height: 500px;
+width: 100%;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+border: solid 5px gold;
+}
+
+footer{
+    background-color: black;
+    color: gold;
+    border: solid 5px gold;
+}
+
+
+
+/*support header */
+
+.support{
+text-align: right;
+color: gold;  
+margin: 50px;
+}
+
+/*support-footer*/
+
+.support-footer{
+    text-align: right;
+
+}
+
+/*Barre de recherche */
+
+
+/*Barre de Navigation*/
+
+
+
+
+
+/*Carousel*/
+
+.carousel-inner{
+    height: 100%;
+}
+
+
+/*Notre selection du moment*/ 
+
+
+.flex-container-1{
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+}
+
+.article{
+border-radius:10px;
+margin: 10px;
+background-color: black;
+width: 400px;
+height: 450px;
+border: solid 5px gold;
+color: gold;
+}
+
+span{
+    color: orange;
+}
+
+/*Les meilleurs hôtels*/
+
+.flex-container-2{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.article-2{
+border-radius:10px;
+margin: 10px;
+width: 450px;
+height: 450px;
+border: solid 5px gold;
+color: gold;
+background-color: black;
+}
+
+
+.flex-container-3{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.flex-container-4{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+h1{
+    text-align: center;
+    border: solid 5px gold;
+    color: gold;
+
+}
+
+/*Pourquoi nous choisir*/
+
+.flex-container-5{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.article-3{
+border-radius:10px;
+margin: 10px;
+width: 450px;
+height: 350px;
+border: solid 5px gold;
+color: gold;
+background-color: black;
+}
+
+.article-3 h3{
+    text-decoration: underline;
+}
+
+.support-1{
+    text-align: center;
+}
+
+.support-1 a{
+    color: gold;
+}
+
+/*Boutton
+
+button:hover {
+    background-color: beige;
+    color: black;
+}
+
+button:active {
+    border: 2px solid red
+}
+
+button:focus {
+    background-color: green;
+    color: white; 
+}*/
+
+
+/*Page A Propos de nous*/
+
+.about{
+    color: gold;
+    background-color: black;
+    width: 900px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: solid 5px gold;
+    text-align: center;
+    padding: 10px;
+}
+
+.about-2{
+    color: gold;
+    background-color: black;
+    width: 900px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: solid 5px gold;
+    text-align: center;
+}
+
+h2{
+    color: gold;
+    border: solid 5px gold;
+    text-align: center;
+}
+
+/*Maps*/
+
+.maps{
+border-radius: 5px;
+border: solid 5 px gold;
+margin: 0 auto;
+align-items: center;
+display: flex;
+justify-content: center;
+background-color: black;  
+}
+
+/*Page Formulaire d'inscription*/
+
+/* formulaire*/
+
+.color-text{
+    color: gold;
+}
+
+.formulaire {
+    padding: 20px;
+    max-width: 500px;
+    margin: 20px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: 3px solid gold;
+}
+
+.inscription-fieldset {
+    margin-bottom: 20px;
+    border: 3px solid gold;
+    padding: 15px 50px;
+    border-radius: 5px;
+    color: gold;
+    background-color: black;
+}
+
+label{
+    text-decoration: underline;
+}
+
+
+legend {
+    font-weight: 900;
+    padding: 5px;
+}
+
+input [type="text"],
+input [type="email"],
+input [type="Password"],
+textarea,
+select {
+
+    width: 100%;
+    padding: 10px;
+}
