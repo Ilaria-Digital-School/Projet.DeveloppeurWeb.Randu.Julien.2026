@@ -169,25 +169,20 @@ button:focus {
 
 /*Page A Propos de nous*/
 
-.about{
-    color: gold;
-    background-color: black;
-    width: 900px;
-    margin: 0 auto;
-    border-radius: 5px;
-    border: solid 5px gold;
+.flex-container-1{
+    display: flex;
+    justify-content: center; 
     text-align: center;
-    padding: 10px;
 }
 
-.about-2{
-    color: gold;
-    background-color: black;
-    width: 900px;
-    margin: 0 auto;
-    border-radius: 5px;
-    border: solid 5px gold;
-    text-align: center;
+.a-propos{
+border-radius:10px;
+margin: 10px;
+background-color: black;
+width: 600px;
+height: 300px;
+border: solid 5px gold;
+color: gold;
 }
 
 h2{
