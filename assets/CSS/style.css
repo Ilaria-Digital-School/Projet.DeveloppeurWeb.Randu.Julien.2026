@@ -12,19 +12,22 @@ background-color: white;
 
 header{
 /*background-image: url(../Images/twitter_header.jpg);*/
-background-color: #7a7a7a;
-height: 100px;
+background-color: cornflowerblue;
+height: 150px;
 width: 100%;
-background-position: center;
-background-size: cover;
-background-repeat: no-repeat;
-border: solid 5px gold;
+border: solid 2px black;
+}
+
+h1{
+    padding: 25px;
+    margin: 25px;
+
 }
 
 footer{
-    background-color: #7a7a7a;
+    background-color: cornflowerblue;
     color: black;
-    border: solid 5px gold;
+    border: solid 2px black;
 }
 
 
@@ -32,9 +35,9 @@ footer{
 /*support header */
 
 .support{
-text-align: right;
+text-align: end;
 color: black;  
-margin: 50px;
+margin: 10px;
 }
 
 /*support-footer*/
@@ -72,10 +75,10 @@ margin: 50px;
 .article{
 border-radius:10px;
 margin: 10px;
-background-color: #7a7a7a;
+background-color: cornflowerblue;
 width: 400px;
 height: 450px;
-border: solid 5px gold;
+border: solid 2px black;
 color: black;
 }
 
@@ -96,9 +99,9 @@ border-radius:10px;
 margin: 10px;
 width: 450px;
 height: 450px;
-border: solid 5px gold;
+border: solid 2px black;
 color: black;
-background-color: #7a7a7a;
+background-color: cornflowerblue;
 }
 
 
@@ -114,9 +117,9 @@ background-color: #7a7a7a;
 }
 
 
-h1{
+h2{
     text-align: center;
-    border: solid 5px gold;
+    border: solid 2px black;
     color: black;
 
 }
@@ -134,9 +137,9 @@ border-radius:10px;
 margin: 10px;
 width: 450px;
 height: 350px;
-border: solid 5px gold;
+border: solid 2px black;
 color: black;
-background-color: #7a7a7a;
+background-color: cornflowerblue;
 }
 
 .article-3 h3{
@@ -179,16 +182,16 @@ button:focus {
 .a-propos{
 border-radius:10px;
 margin: 10px;
-background-color: #7a7a7a;
+background-color:  cornflowerblue;
 width: 600px;
 height: 300px;
-border: solid 5px gold;
+border: solid 2px black;
 color: black;
 }
 
 h2{
     color: black;
-    border: solid 5px gold;
+    border: solid 2px black;
     text-align: center;
 }
 
@@ -196,12 +199,12 @@ h2{
 
 .maps{
 border-radius: 5px;
-border: solid 5 px gold;
+border: solid 2px black;
 margin: 0 auto;
 align-items: center;
 display: flex;
 justify-content: center;
-background-color: #7a7a7a;  
+background-color: cornflowerblue;  
 }
 
 /*Page Formulaire d'inscription*/
@@ -212,22 +215,14 @@ background-color: #7a7a7a;
     color: black;
 }
 
-.formulaire {
-    padding: 20px;
-    max-width: 500px;
-    margin: 20px;
-    background-color: antiquewhite;
-    border-radius: 10px;
-    border: 3px solid gold;
-}
 
 .inscription-fieldset {
     margin-bottom: 20px;
-    border: 3px solid gold;
+    border: 2spx solid black;
     padding: 15px 50px;
     border-radius: 5px;
     color: black;
-    background-color: #7a7a7a;
+    background-color: cornflowerblue;
 }
 
 label{
@@ -252,4 +247,44 @@ select {
 
 #access{
     text-decoration: underline;
+}
+
+/*Contact*/
+
+.formulaire {
+    
+    padding: 20px;
+    max-width: auto;
+    margin: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    
+}
+
+main {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+   
+}
+
+#main-contact{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+
+}
+
+
+/*Votre compte */
+
+.connexion{
+
+    margin-bottom: 20px;
+    border: 2spx solid black;
+    padding: 15px 50px;
+    border-radius: 5px;
+    color: black;
+    background-color: cornflowerblue;
 }

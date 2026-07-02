@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +17,18 @@
     <title>Contact</title>
 
 </head>
+
 <body>
 
-    <header></header>
+    <header>
+        <h1>ResaHôtel.com</h1>
+    </header>
 
-     <section>
+    <section>
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-    
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -33,7 +37,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="a-propos.html">A Propos de Nous</a>
                             </li>
-    
+
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
                             <li class="nav-item">
@@ -60,9 +64,46 @@
         </div>
     </section>
 
+    <main>
+        <form class="formulaire">
+            <h2>Contactez-Nous</h2>
+
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" placeholder="Votre nom" required> <br>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" placeholder="exemple@gmail.com" required> <br>
+
+            <label for="msg">Message :</label>
+            <textarea rows="2" id="msg" placeholder="Votre message" required></textarea> <br>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </main>
+
+
 
     <footer>
 
+        <div class="support-footer">
+
+            <div>
+                <h3>Suivez-nous</h3>
+                <!--logo awesome + lien en face-->
+            </div>
+
+            <div>
+                <h4>s'inscire a notre Newsletters</h4>
+                <br><label for="email">email</label>
+                <input type="text" id="email" placeholder="exemple@gmail.com" required><button type="submit"> s'inscires
+                </button><br>
+            </div>
+        </div>
+
+
+        <!--Copyright a ajouté -->
+
     </footer>
 </body>
+
 </html>
