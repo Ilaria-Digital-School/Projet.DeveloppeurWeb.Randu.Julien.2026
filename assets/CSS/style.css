@@ -18,7 +18,7 @@ width: 100%;
 border: solid 2px black;
 }
 
-h1{
+#h1{
     padding: 25px;
     margin: 25px;
 
@@ -28,6 +28,12 @@ footer{
     background-color: cornflowerblue;
     color: black;
     border: solid 2px black;
+}
+
+/*suivre-nous*/
+.suivre-nous{
+    color: black;
+    text-align: center;
 }
 
 
@@ -124,6 +130,11 @@ h2{
 
 }
 
+h3{
+    text-align: center;
+    text-decoration: underline;
+}
+
 /*Pourquoi nous choisir*/
 
 .flex-container-5{
@@ -218,11 +229,24 @@ background-color: cornflowerblue;
 
 .inscription-fieldset {
     margin-bottom: 20px;
-    border: 2spx solid black;
+    border: 2px solid black;
     padding: 15px 50px;
     border-radius: 5px;
     color: black;
     background-color: cornflowerblue;
+    width: 700px;
+}
+
+.connexion-2{
+
+    margin-bottom: 20px;
+    border: 2px solid black;
+    padding: 15px 50px;
+    border-radius: 5px;
+    color: black;
+    background-color: cornflowerblue;
+    
+    
 }
 
 label{
@@ -256,7 +280,7 @@ select {
     padding: 20px;
     max-width: auto;
     margin: 20px;
-    background-color: white;
+    background-color: rgb(124, 124, 124);
     border-radius: 10px;
     border: 2px solid black;
     
@@ -282,9 +306,10 @@ main {
 .connexion{
 
     margin-bottom: 20px;
-    border: 2spx solid black;
+    border: 2px solid black;
     padding: 15px 50px;
     border-radius: 5px;
     color: black;
     background-color: cornflowerblue;
+    
 }

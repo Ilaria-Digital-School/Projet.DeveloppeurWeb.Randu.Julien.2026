@@ -17,7 +17,20 @@
 
 <body>
 
-    <header></header>
+      <header>
+    
+        <!--Titre Principal-->
+    
+        <h1>ResaHotel.com</h1>
+    
+        <!--Positionnement à droite support n° de tel + 24/7 sur la meme ligne)-->
+        <div class="support">
+            <p>Support disponible: <i class="fa-solid fa-calendar"></i> :24/7 </p>
+            <p><i class="fa-solid fa-phone"></i> :01 50 50 50 50</p>
+        </div>
+        <!--Menu de navigation-->
+    
+    </header>
 
     <section>
         <div>
@@ -60,101 +73,98 @@
     </section>
 
 <main>
-    <section class="color-text">
 
-        <h1>Formulaire d'inscription</h1>
 
-        <!--Formulaire de contact-->
+
+ <!--Formulaire de contact-->
+    <section>
         <div>
-            <section>
-
-                <form>
-
-                    <p>Pour toute création de compte, merci de remplir les informations ci-dessous :
-                    </p>
-
-                    <fieldset class="inscription-fieldset">
-                        <legend>Informations Personnelles</legend>
-                        <br><label for="Nom">Nom</label>
-                        <input type="text" id="nom" placeholder="Nom" required><br>
+            <form>
+    
+                <fieldset class="inscription-fieldset">
+                    <h2>Formulaire d'inscription</h2>
+                    <p>Pour toute création de compte, merci de remplir les informations ci-dessous :</p>
                     
-                        <br><label for="Prenom">Prenom</label>
-                        <input type="text" id="Prénom" placeholder="Prénom" required> <br>
-                    
-                        <br><label for="Numéro-de-téléphone">Numéro de telephone</label>
-                        <input type="text" id="numéro-de-telephone" placeholder="numéro de téléphone" required> <br>
-                    
-                        <br><label for="email">email</label>
-                        <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
-                    
-                        <br><label for="mdp"> Mot de Passe:</label>
-                        <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
-                    
-                        <br><label for="mdp">Confirmer votre Mot de Passe:</label>
-                        <input type="password" id="mdp" placeholder="Confirmer Mot de Passe" required><br>
-                    
-                    </fieldset>
+                    <legend>Informations Personnelles</legend>
 
-                   
-                </form>
-
-            </section>
-
+                    <br><label for="Nom">Nom</label>
+                    <input type="text" id="nom" placeholder="Nom" required><br>
+                
+                    <br><label for="Prenom">Prenom</label>
+                    <input type="text" id="Prénom" placeholder="Prénom" required> <br>
+                
+                    <br><label for="Numéro-de-téléphone">Numéro de telephone</label>
+                    <input type="text" id="numéro-de-telephone" placeholder="numéro de téléphone" required> <br>
+                
+                    <br><label for="email">email</label>
+                    <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
+                
+                    <br><label for="mdp"> Mot de Passe:</label>
+                    <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
+                
+                    <br><label for="mdp">Confirmer votre Mot de Passe:</label>
+                    <input type="password" id="mdp" placeholder="Confirmer Mot de Passe" required><br>
+                
+                </fieldset>
+            </form>
+    
         </div>
-
-        <form>
-        
-        
-            <fieldset class="inscription-fieldset">
-                <legend>Informations Complémentaires</legend>
-            
-                <!--Radio-->
-                <div>
-            
-                    <br><label> Genre:</label>
-                    <input type="radio" id="femme" name="genre" value="femme">
-                    <label for="femme"> Femme </label>
-            
-                    <input type="radio" id="homme" name="genre" value="homme">
-                    <label for="homme"> Homme</label>
-            
-                </div>
-            
-                <!--Checkbox-->
-                <div>
-            
-                    <br><label>Intérets :</label>
-                    <input type="checkbox" name="Sujet" id="hôtel-5*" value="Hôtels 5*">
-                    <label for="hôtels-5*">Hôtels 5*</label>
-            
-                    <input type="checkbox" name="Sujet" id="hôtel-4*" value="Hôtel 4*">
-                    <label for="hôtels-4*">Hôtels 4*</label>
-            
-                    <input type="checkbox" name="Sujet" id="spa" value="spa">
-                    <label for="spa">Spa</label>
-                </div>
-            
-                <!--Pays-->
-            
-                <br><label for="pays">Pays</label>
-                <select name="pays" id="pays">
-                    <option value="France">France</option>
-                    <option value="Portugais">Portugais</option>
-                    <option value="Anglais">Anglais</option>
-                    <option value="Autre">Autre</option>
-                </select>
-            
-                <br><label for="msg">Message</label>
-                <textarea id="msg" placeholder="Votre Message" required></textarea>
-            
-                <button type="submit">Envoyer</button><br>
-                <br><p id="access">Ou Accedez a votre compte</p>
-                <a href="votre-compte.html">Se connecter</a>
-            
-            </fieldset>
-        
-        
-        </form>
+        <div>
+    
+            <div>
+                <form>
+                    <fieldset class="inscription-fieldset">
+                        <legend>Informations Complémentaires</legend>
+    
+    
+                        <!--Radio-->
+                        <div>
+    
+                            <br><label> Genre:</label>
+                            <input type="radio" id="femme" name="genre" value="femme">
+                            <label for="femme"> Femme </label>
+    
+                            <input type="radio" id="homme" name="genre" value="homme">
+                            <label for="homme"> Homme</label>
+    
+                        </div>
+    
+                        <!--Checkbox-->
+                        <div>
+    
+                            <br><label>Intérets :</label>
+                            <input type="checkbox" name="Sujet" id="hôtel-5*" value="Hôtels 5*">
+                            <label for="hôtels-5*">Hôtels 5*</label>
+    
+                            <input type="checkbox" name="Sujet" id="hôtel-4*" value="Hôtel 4*">
+                            <label for="hôtels-4*">Hôtels 4*</label>
+    
+                            <input type="checkbox" name="Sujet" id="spa" value="spa">
+                            <label for="spa">Spa</label>
+                        </div>
+    
+                        <!--Pays-->
+    
+                        <br><label for="pays">Pays</label>
+                        <select name="pays" id="pays">
+                            <option value="France">France</option>
+                            <option value="Portugais">Portugais</option>
+                            <option value="Anglais">Anglais</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+    
+                        <br><label for="msg">Message</label>
+                        <textarea id="msg" placeholder="Votre Message" required></textarea>
+    
+                        <button type="submit">Envoyer</button><br>
+                        <br>
+                        <p id="access">Ou Accedez a votre compte</p>
+                        <a href="votre-compte.html">Se connecter</a>
+    
+                    </fieldset>
+    
+                </form>
+            </div>
     </section>
 
 </main>
@@ -162,14 +172,18 @@
     <footer>
     
     
+        <h3>Suivez-nous</h3>
+    
+        <div class="suivez-nous">
+            <a href="https://fr.linkedin.com/"><i class="fa-brands fa-square-linkedin"></i>Suivez-nous sur Linkedin</a><br>
+            <a href="mailto:ResaHôtel@gmail.com"><i class="fa-solid fa-at"></i>ResaHôtel@gmail.com</a><br>
+            <a href="tel:0150505050"><i class="fa-solid fa-phone"></i>01.50.50.50.50
+            </a><br>
+            <a href="download">Mention Legale</a><br>
+        </div>
     
     
         <div class="support-footer">
-    
-            <div>
-                <h3>Suivez-nous</h3>
-                <!--logo awesome + lien en face-->
-            </div>
     
             <div>
                 <h4>s'inscire a notre Newsletters</h4>
@@ -180,7 +194,7 @@
         </div>
     
     
-        <!--Copyright a ajouté -->
+        
     
     
     
