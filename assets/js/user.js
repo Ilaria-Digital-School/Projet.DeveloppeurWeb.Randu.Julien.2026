@@ -33,8 +33,10 @@ function ajouterAdmin() {
 function sInscrire() {
     const inscriptionForm = document.getElementById("inscription-form");
     if (!inscriptionForm) return;
+    console.log(inscriptionForm);
+    
 
-    inscriptionForm.addEventListener("submit", function(event){;
+    inscriptionForm.addEventListener("submit", function(event){
         event.preventDefault();
       
 
@@ -43,11 +45,19 @@ function sInscrire() {
         let tel = document.getElementById("tel").value;
         let email = document.getElementById("email").value;
         let mdp = document.getElementById("mdp").value;
+        let confirmMdp = document.getElementById("confirmMdp").value;
 
-        let genre = document.querySelector('input[name=genre]:checked').value;
+        //vérification mot de passe
+
+        if (mdp !== confirmMdp){
+            alert("Les Mots de passe ne correspondent pas !");
+            return;
+        }
+
+        let genre = document.querySelector('input[name="genre"]:checked').value;
 
         let interets = [];
-        let interetsChecked = document.querySelectorAll('input[name=interets]:checked');
+        let interetsChecked = document.querySelectorAll('input[name="interets"]:checked');
 
         //utilisation de la boucle pour la recuperation des elements de type interets, afin de faire une selection multiple
 
@@ -58,7 +68,7 @@ function sInscrire() {
 
         let pays = document.getElementById("pays").value;
         //client = role
-        let utilisateur = new Utilisateur(nom, email, mdp, genre, interets, pays, "client"); 
+        let utilisateur = new Utilisateur(nom, prenom, tel, email, mdp, genre, interets, pays, "client"); 
         
 
         const utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
@@ -101,5 +111,7 @@ function seConnecter() {
 }
 
 seConnecter();
-sInscrire();
+document.addEventListener("DOMContentLoaded", () => {
+    sInscrire();
+});
 ajouterAdmin();

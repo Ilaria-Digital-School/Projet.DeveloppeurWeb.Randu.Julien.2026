@@ -78,93 +78,90 @@
 
  <!--Formulaire de contact-->
     <section>
-        <div>
-            <form id="inscription-form">
     
-                <fieldset class="inscription-fieldset">
-                    <h2>Formulaire d'inscription</h2>
-                    <p>Pour toute création de compte, merci de remplir les informations ci-dessous :</p>
+        <form id="inscription-form">
+    
+            <fieldset class="inscription-fieldset">
+                <h2>Formulaire d'inscription</h2>
+                <p>Pour toute création de compte, merci de remplir les informations ci-dessous :</p>
+    
+                <legend>Informations Personnelles</legend>
+    
+                <br><label for="nom">Nom</label>
+                <input type="text" id="nom" placeholder="Nom" required><br>
+    
+                <br><label for="prenom">Prenom</label>
+                <input type="text" id="prenom" placeholder="Prénom" required> <br>
+    
+                <br><label for="tel">Numéro de telephone</label>
+                <input type="text" id="tel" placeholder="numéro de téléphone" required> <br>
+    
+                <br><label for="email">email</label>
+                <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
+    
+                <br><label for="mdp"> Mot de Passe:</label>
+                <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
+    
+                <br><label for="confirmMdp">Confirmer votre Mot de Passe:</label>
+                <input type="password" id="confirmMdp" placeholder="Confirmer Mot de Passe" required><br>
+    
+            </fieldset>
+    
+            <fieldset class="inscription-fieldset">
+                <legend>Informations Complémentaires</legend>
+    
+    
+                <!--Radio-->
+                <div>
+    
+                    <br><label> Genre:</label>
+                    <input type="radio" id="femme" name="genre" value="femme">
+                    <label for="femme"> Femme </label>
+    
+                    <input type="radio" id="homme" name="genre" value="homme">
+                    <label for="homme"> Homme</label>
+    
+                </div>
+    
+                <!--Checkbox-->
+                <div>
+    
+                    <br><label>Intérets :</label>
+                    <input type="checkbox" name="interets" id="hôtel-5*" value="Hôtels 5*">
+                    <label for="hôtels-5*">Hôtels 5*</label>
+    
+                    <input type="checkbox" name="interets" id="hôtel-4*" value="Hôtel 4*">
+                    <label for="hôtels-4*">Hôtels 4*</label>
+    
+                    <input type="checkbox" name="interets" id="spa" value="spa">
+                    <label for="spa">Spa</label>
+                </div>
+    
+                <!--Pays-->
 
-                    <legend>Informations Personnelles</legend>
+                <div>
+                    <label for="pays">Pays</label>
+                    <select name="pays" id="pays">
+                        <option value="France">France</option>
+                        <option value="Portugais">Portugais</option>
+                        <option value="Anglais">Anglais</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
 
-                    <br><label for="Nom">Nom</label>
-                    <input type="text" id="nom" placeholder="Nom" required><br>
-                
-                    <br><label for="Prenom">Prenom</label>
-                    <input type="text" id="Prénom" placeholder="Prénom" required> <br>
-                
-                    <br><label for="Numéro-de-téléphone">Numéro de telephone</label>
-                    <input type="text" id="numéro-de-telephone" placeholder="numéro de téléphone" required> <br>
-                
-                    <br><label for="email">email</label>
-                    <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
-                
-                    <br><label for="mdp"> Mot de Passe:</label>
-                    <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
-                
-                    <br><label for="mdp">Confirmer votre Mot de Passe:</label>
-                    <input type="password" id="mdp" placeholder="Confirmer Mot de Passe" required><br>
-                
-                </fieldset>
-            </form>
+                <div>
+                    <label for="msg">Message</label>
+                    <textarea id="msg" placeholder="Votre Message" required></textarea>
+                </div>
+
+                <button type="submit">Envoyer</button><br>
+                <br>
+                <p id="access">Ou Accedez a votre compte</p>
+                <a href="votre-compte.html">Se connecter</a>
     
-        </div>
-        <div>
+            </fieldset>
     
-            <div>
-                <form>
-                    <fieldset class="inscription-fieldset">
-                        <legend>Informations Complémentaires</legend>
-    
-    
-                        <!--Radio-->
-                        <div>
-    
-                            <br><label> Genre:</label>
-                            <input type="radio" id="femme" name="genre" value="femme">
-                            <label for="femme"> Femme </label>
-    
-                            <input type="radio" id="homme" name="genre" value="homme">
-                            <label for="homme"> Homme</label>
-    
-                        </div>
-    
-                        <!--Checkbox-->
-                        <div>
-    
-                            <br><label>Intérets :</label>
-                            <input type="checkbox" name="Sujet" id="hôtel-5*" value="Hôtels 5*">
-                            <label for="hôtels-5*">Hôtels 5*</label>
-    
-                            <input type="checkbox" name="Sujet" id="hôtel-4*" value="Hôtel 4*">
-                            <label for="hôtels-4*">Hôtels 4*</label>
-    
-                            <input type="checkbox" name="Sujet" id="spa" value="spa">
-                            <label for="spa">Spa</label>
-                        </div>
-    
-                        <!--Pays-->
-    
-                        <br><label for="pays">Pays</label>
-                        <select name="pays" id="pays">
-                            <option value="France">France</option>
-                            <option value="Portugais">Portugais</option>
-                            <option value="Anglais">Anglais</option>
-                            <option value="Autre">Autre</option>
-                        </select>
-    
-                        <br><label for="msg">Message</label>
-                        <textarea id="msg" placeholder="Votre Message" required></textarea>
-    
-                        <button type="submit">Envoyer</button><br>
-                        <br>
-                        <p id="access">Ou Accedez a votre compte</p>
-                        <a href="votre-compte.html">Se connecter</a>
-    
-                    </fieldset>
-    
-                </form>
-            </div>
+        </form>
     </section>
 
 </main>
