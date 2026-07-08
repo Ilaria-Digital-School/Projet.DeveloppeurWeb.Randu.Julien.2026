@@ -23,64 +23,102 @@
 </head>
 
 <body>
-    <header>
+
+    <header class="header">
+
+    <!-- Logo -->
+
+    <div class="logo">
+        <img src="assets/Images/logo.png" alt="ResaHôtel.com">
+    </div>
+
+    <!-- Support -->
+
+    <div class="support">
     
-        <!--Titre Principal-->
+        <div class="phone">
+            <i class="fa-solid fa-phone"></i>
+        </div>
     
+        <div class="support-text">
+            <small>24/7 Support disponible</small>
+            <strong>+1 800 559 6580</strong>
+        </div>
+    
+    </div>
+
+    <!-- Boutons -->
+    <div class="menu">
+
+        <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+
+        <a href="#" class="langue">
+            ENGLISH (US)
+        </a>
+
+        <a href="#" class="devise">
+            $ US DOLLAR
+        </a>
+
+    </div>
+
+</header>
+
+    <!--Titre Principal-->
+    <!--<header>
         <h1 id="h1">ResaHotel.com</h1>
-    
-        <!--Positionnement à droite support n° de tel + 24/7 sur la meme ligne)-->
-        <div class="support">
+         <!--Positionnement à droite support n° de tel + 24/7 sur la meme ligne)-->
+        <!--<div class="support">
             <p>Support disponible: <i class="fa-solid fa-calendar"></i> :24/7 </p>
             <p><i class="fa-solid fa-phone"></i> :01 50 50 50 50</p>
         </div>
-        <!--Menu de navigation-->
-    
-    </header>
+        Menu de navigation
 
-<section>
-    <div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="../ResaHôtel.com/index.html">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages/a-propos.html">A Propos de Nous</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages/contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages/nos-hôtels.html">Nos Hôtels</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages/votre-compte.html">Votre Compte</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages/formulaire-dinscription.html">Formulaire
-                                d'inscription</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Pages/votre-panier.html">Votre Panier</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </div>
-</section>
+    </header>-->
 
     <section>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"
+                                    href="../ResaHôtel.com/index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Pages/a-propos.html">A Propos de Nous</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="Pages/contact.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Pages/nos-hôtels.html">Nos Hôtels</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Pages/votre-compte.html">Votre Compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Pages/formulaire-dinscription.html">Formulaire
+                                    d'inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Pages/votre-panier.html">Votre Panier</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    
+    <section class="carousel">
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -112,37 +150,125 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-        <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
+    
         <!--Ajout zone de recherche sur Carousel-->
-
+    
+        <div class="recherche-carou">
+    
+            <!-- Votre Choix -->
+            <div class="bloc">
+    
+                <h3><span>01</span> Votre Choix</h3>
+    
+                <div class="radio-grid">
+    
+                    <label>
+                        <input type="radio" name="type">Hôtel 5*
+                    </label>
+    
+                    <label>
+                        <input type="radio" name="type">Hôtel 4*
+                    </label>
+    
+                    <label>
+                        <input type="radio" name="type">Palace
+                    </label>
+    
+                    <label>
+                        <input type="radio" name="type">Spa
+                    </label>
+                </div>
+            </div>
+    
+            <!-- ou -->
+            <div class="bloc">
+    
+                <h3><span>02</span> Ou ?</h3>
+                <input class="destination" type="text" placeholder="Arrondissement de votre choix">
+    
+            </div>
+    
+               <!-- Quand -->
+            <div class="bloc">
+    
+                <h3><span>03</span> Quand ?</h3>
+    
+                <div class="dates">
+    
+                    <div class="calendar">
+                        <label>Date de Départ</label>
+                        <input type="date">
+                        <i class="fa-regular fa-calendar"></i>
+    
+                    </div>
+    
+                    <div class="calendar">
+                        <label>Date de Retour</label>
+                        <input type="date">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <!-- Pour qui ?  -->
+            <div class="bloc">
+    
+                <h3><span>04</span> Composition </h3>
+    
+                <div class="qui">
+    
+                    <div>
+                        <label>Chambre</label>
+                        <input type="number" value="1" min="1">
+                    </div>
+    
+                    <div>
+                        <label>Adulte</label>
+                        <input type="number" value="2" min="1">
+                    </div>
+    
+                    <div>
+                        <label>Enfant</label>
+                        <input type="number" value="0" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="btn-container">
+    
+            <button>
+                Rechercher
+            </button>
+        </div><br>
+    
     </section>
 
     <section>
-        <h2>Notre selection du moment</h2>
+        <h2 class="h2">Notre selection du moment</h2>
         <div class="flex-container-1">
             <article class="article">
                 <h5><Strong>Villa Modigliani 4*</Strong></h5>
                 <img src="assets/Images/Nos-Offres-du-moment/villa-modigliani.jpeg" alt="villa-modigliani">
-                <p>un hôtel 3 étoiles situé dans le quartier animé de Montparnasse. Apprécié pour son atmosphère paisible, son
-                    jardin intérieur et son emplacement central, il offre un cadre confortable et convivial, idéal pour découvrir
+                <p>un hôtel 3 étoiles situé dans le quartier animé de Montparnasse. Apprécié pour son atmosphère
+                    paisible, son
+                    jardin intérieur et son emplacement central, il offre un cadre confortable et convivial, idéal pour
+                    découvrir
                     Paris dans un environnement calme et authentique.</p>
                 <a class="btn btn-primary"
                     href="https://www.villa-modigliani.fr/fr?gad_source=1&gad_campaignid=629464048&gclid=Cj0KCQjwi8nRBhDhARIsAHZf_paWyBY1b20pqqi-r1X53rjl4IkVz-0G8Ic1q2Cm5UUg_jRzolh7nesaAj-sEALw_wcB"
                     role="button">Decouvrir</a>
             </article>
-            
+
             <article class="article">
                 <h5><strong>Le Collectionneur 5*</strong></h5>
                 <img src="assets/Images/Nos-Offres-du-moment/le-collectionneur.jpeg" alt="le-collectionneur">
-                <p>hôtel 5 étoiles situé près du parc Monceau et des Champs-Élysées. Inspiré du style Art déco, il se distingue par
-                    son architecture élégante, ses espaces prestigieux et ses prestations haut de gamme, offrant une expérience
+                <p>hôtel 5 étoiles situé près du parc Monceau et des Champs-Élysées. Inspiré du style Art déco, il se
+                    distingue par
+                    son architecture élégante, ses espaces prestigieux et ses prestations haut de gamme, offrant une
+                    expérience
                     luxueuse au cœur de la capitale parisienne.</p>
                 <a class="btn btn-primary"
                     href="https://www.hotelducollectionneur.com/?gad_source=1&gad_campaignid=15318110381&gbraid=0AAAAAoPAZQYJouq_SBHZyO6a_NzIYAoe_&gclid=Cj0KCQjwi8nRBhDhARIsAHZf_pYqMvyJTb54h2uGgFMZje8s_3GyvdUWZv9K3iUD7MWYDpZSnvS7lJ8aAk0UEALw_wcB"
@@ -151,9 +277,12 @@
 
             <article class="article">
                 <h5><strong>Hyatt Regency Paris Etoile 4*</strong></h5>
-                <img src="assets/Images/Nos-Offres-du-moment/hyatt-regency-paris-etoile.jpeg" alt="le-mandarin-oriental-lutetia">
-                <p>Un hôtel 4 étoiles emblématique situé près de la Porte Maillot. Reconnaissable à sa tour moderne, il offre
-                    des vues panoramiques exceptionnelles sur Paris, des chambres contemporaines et des services adaptés aux
+                <img src="assets/Images/Nos-Offres-du-moment/hyatt-regency-paris-etoile.jpeg"
+                    alt="le-mandarin-oriental-lutetia">
+                <p>Un hôtel 4 étoiles emblématique situé près de la Porte Maillot. Reconnaissable à sa tour moderne, il
+                    offre
+                    des vues panoramiques exceptionnelles sur Paris, des chambres contemporaines et des services adaptés
+                    aux
                     voyageurs d’affaires comme de loisirs.</p>
                 <a class="btn btn-primary" href="https://www.mandarinoriental.com/fr/paris/lutetia/offers"
                     role="button">Decouvrir</a>
@@ -163,8 +292,10 @@
                 <h5><strong>Hôtels des Grands Voyageurs 4*</strong></h5>
                 <img src="assets/Images/Nos-Offres-du-moment/hôtel-des-grands-voyageurs.jpeg"
                     alt="hôtel-des-grands-voyageurs">
-                <p>un hôtel haut de gamme situé dans le quartier de Saint-Germain-des-Prés. Inspiré par l’esprit du voyage et l’élégance
-                    des années 1930, il séduit par son design raffiné, son ambiance chaleureuse et son confort moderne, offrant une
+                <p>un hôtel haut de gamme situé dans le quartier de Saint-Germain-des-Prés. Inspiré par l’esprit du
+                    voyage et l’élégance
+                    des années 1930, il séduit par son design raffiné, son ambiance chaleureuse et son confort moderne,
+                    offrant une
                     expérience authentique et sophistiquée au cœur de Paris.
                 </p>
                 <a class="btn btn-primary" href="https://www.hoteldesgrandsvoyageurs.com/fr/a-propos"
@@ -176,41 +307,49 @@
     </section>
 
     <section>
-        <h2>Les Meilleurs Hôtels pour vous</h2> <!--meme confirguration qu'au dessus-->
+        <h2 class="h2">Les Meilleurs Hôtels pour vous</h2> <!--meme confirguration qu'au dessus-->
 
         <div>
 
             <div class="flex-container-1">
-            
+
                 <article class="article-2">
                     <h5><strong>Intercontinental Paris Le Grand 5*</strong></h5>
                     <img src="assets/Images/intercontinental-paris-le-grand.jpeg" alt="intercontinental-paris-le-grand">
-                    <p>Un hôtel de luxe emblématique situé près de l’Opéra Garnier. Réputé pour son architecture haussmannienne, son
-                        élégance historique et ses services haut de gamme, il offre une expérience raffinée au cœur de Paris, mêlant
+                    <p>Un hôtel de luxe emblématique situé près de l’Opéra Garnier. Réputé pour son architecture
+                        haussmannienne, son
+                        élégance historique et ses services haut de gamme, il offre une expérience raffinée au cœur de
+                        Paris, mêlant
                         prestige, confort et art de vivre à la française.</p>
                     <a class="btn btn-primary"
                         href="https://www.ihg.com/intercontinental/hotels/gb/en/paris/parhb/hoteldetail?cm_mmc=GoogleMaps-_-IC-_-FR-_-PARHB"
                         role="button">Decouvrir</a>
                 </article>
-            
+
                 <article class="article-2">
                     <h5><strong>Hyatt Paris Madeleine 5*</strong></h5>
                     <img src="assets/Images/hyatt-paris-madeleine.jpeg" alt="hyatt-paris-madeleine">
-                    <p>Le Hyatt Paris Madeleine est un hôtel 5 étoiles élégant situé dans le 8ᵉ arrondissement de Paris, à proximité
-                        des Champs-Élysées et de la Madeleine. Il se distingue par son atmosphère intimiste, son design raffiné et
-                        ses prestations haut de gamme, offrant un cadre luxueux et confortable au cœur de la capitale.</p>
+                    <p>Le Hyatt Paris Madeleine est un hôtel 5 étoiles élégant situé dans le 8ᵉ arrondissement de Paris,
+                        à proximité
+                        des Champs-Élysées et de la Madeleine. Il se distingue par son atmosphère intimiste, son design
+                        raffiné et
+                        ses prestations haut de gamme, offrant un cadre luxueux et confortable au cœur de la capitale.
+                    </p>
                     <a class="btn btn-primary"
                         href="https://www.hyatt.com/hyatt-hotels/en-US/madel-hyatt-paris-madeleine?src=corp_lclb_google_seo_madel&utm_source=google&utm_medium=organic&utm_campaign=lmr"
                         role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
-            
+
                 <article class="article-2">
                     <h5><strong>Pullman Paris Tour Eiffel 4*</strong></h5>
                     <img src="assets/Images/pullman-paris-tour-eiffel.jpeg" alt="pullman-paris-tour-eiffel">
-                    <p>Le Pullman Paris Tour Eiffel est un hôtel contemporain 4 étoiles situé au pied de la Tour Eiffel. Apprécié
-                        pour son emplacement exceptionnel, ses chambres modernes et ses vues panoramiques sur le monument, il offre
-                        un cadre confortable et dynamique, idéal pour les séjours touristiques et professionnels à Paris.</p>
+                    <p>Le Pullman Paris Tour Eiffel est un hôtel contemporain 4 étoiles situé au pied de la Tour Eiffel.
+                        Apprécié
+                        pour son emplacement exceptionnel, ses chambres modernes et ses vues panoramiques sur le
+                        monument, il offre
+                        un cadre confortable et dynamique, idéal pour les séjours touristiques et professionnels à
+                        Paris.</p>
                     <a class="btn btn-primary"
                         href="https://all.accor.com/hotel/7229/index.fr.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
                         role="button">Decouvrir</a>
@@ -223,60 +362,69 @@
                 <article class="article-2">
                     <h5>Novotel Paris les Halles 4*</h5>
                     <img src="assets/Images/novotel-paris-les-halles.jpeg" alt="novotel-paris-les-halles">
-                    <p>Un hôtel 4 étoiles situé au cœur de Paris, à proximité du quartier des Halles et du Louvre. Moderne et convivial,
-                        il offre des chambres confortables, des espaces adaptés aux séjours professionnels et touristiques, ainsi qu’un
+                    <p>Un hôtel 4 étoiles situé au cœur de Paris, à proximité du quartier des Halles et du Louvre.
+                        Moderne et convivial,
+                        il offre des chambres confortables, des espaces adaptés aux séjours professionnels et
+                        touristiques, ainsi qu’un
                         emplacement idéal pour découvrir les principaux sites de la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://all.accor.com/hotel/0785/index.fr.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
                         role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
-                
+
                 <article class="article-2">
                     <h5>Le Paris Marriott Rive Gauche Hôtel & Conference 4*</h5>
                     <img src="assets/Images/marriott-paris-rive-gauche.jpeg" alt="marriott-paris-rive-gauche">
-                    <p>Un hôtel 4 étoiles situé sur la rive gauche de Paris, près de Montparnasse. Réputé pour ses vastes espaces de
-                        conférence, son confort moderne et son accessibilité, il constitue un choix privilégié pour les voyageurs
+                    <p>Un hôtel 4 étoiles situé sur la rive gauche de Paris, près de Montparnasse. Réputé pour ses
+                        vastes espaces de
+                        conférence, son confort moderne et son accessibilité, il constitue un choix privilégié pour les
+                        voyageurs
                         d’affaires et les visiteurs souhaitant découvrir la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://www.marriott.com/en-us/hotels/parst-paris-marriott-rive-gauche-hotel-and-conference-center/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
                         role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
-                
+
                 <article class="article-2">
                     <h5>Sofitel Le Scribe Paris Opéra 5*</h5>
                     <img src="assets/Images/le-scribe.jpeg" alt="le-scribe">
-                    <p>Un hôtel 5 étoiles situé à deux pas de l’Opéra Garnier. Alliant élégance haussmannienne et confort contemporain,
-                        il offre une atmosphère raffinée, des prestations haut de gamme et une expérience parisienne prestigieuse au
+                    <p>Un hôtel 5 étoiles situé à deux pas de l’Opéra Garnier. Alliant élégance haussmannienne et
+                        confort contemporain,
+                        il offre une atmosphère raffinée, des prestations haut de gamme et une expérience parisienne
+                        prestigieuse au
                         cœur du quartier de l’Opéra.</p>
                     <a class="btn btn-primary"
                         href="https://sofitel.accor.com/fr/hotels/0663.html?merchantid=seo-maps-FR-0663&sourceid=aw-cen&utm_source=google+Maps&utm_medium=seo+maps&utm_campaign=seo+maps&utm_term=Sofitel-Launch"
                         role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
-                </div>
-                
-                <div class="flex-container-3">
-                
-                    <article class="article-2">
-                        <h5>Le Meridien Paris 4* </h5>
-                        <img src="assets/Images/le-meridien.jpeg" alt="">
-                        <p>Un hôtel 4 étoiles situé dans le 17ᵉ arrondissement de Paris, près de la Porte Maillot. Moderne et
-                            fonctionnel, il est particulièrement apprécié pour ses grandes capacités d’accueil, son ambiance
-                            contemporaine et sa proximité avec le Palais des Congrès, en faisant un lieu adapté aux séjours
-                            professionnels et aux événements.</p>
-                        <a class="btn btn-primary"
-                            href="https://www.marriott.com/en-us/hotels/parmd-le-meridien-paris-arc-de-triomphe/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
-                            role="button">Decouvrir</a>
-                        <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
-                    </article>
+            </div>
+
+            <div class="flex-container-3">
+
+                <article class="article-2">
+                    <h5>Le Meridien Paris 4* </h5>
+                    <img src="assets/Images/le-meridien.jpeg" alt="">
+                    <p>Un hôtel 4 étoiles situé dans le 17ᵉ arrondissement de Paris, près de la Porte Maillot. Moderne
+                        et
+                        fonctionnel, il est particulièrement apprécié pour ses grandes capacités d’accueil, son ambiance
+                        contemporaine et sa proximité avec le Palais des Congrès, en faisant un lieu adapté aux séjours
+                        professionnels et aux événements.</p>
+                    <a class="btn btn-primary"
+                        href="https://www.marriott.com/en-us/hotels/parmd-le-meridien-paris-arc-de-triomphe/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
+                        role="button">Decouvrir</a>
+                    <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
+                </article>
 
                 <article class="article-2">
                     <h5>Le Renaissance Paris Nobel Tour Eiffel 5*</h5>
                     <img src="assets/Images/paris-nobel.jpeg" alt="paris-nobel">
-                    <p>Un hôtel 5 étoiles situé dans le 16ᵉ arrondissement de Paris, à proximité du Trocadéro. Installé dans un ancien
-                        hôtel particulier entouré d’un jardin, il combine charme historique et design contemporain, offrant un cadre
+                    <p>Un hôtel 5 étoiles situé dans le 16ᵉ arrondissement de Paris, à proximité du Trocadéro. Installé
+                        dans un ancien
+                        hôtel particulier entouré d’un jardin, il combine charme historique et design contemporain,
+                        offrant un cadre
                         élégant et paisible au cœur de la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://www.marriott.com/en-us/hotels/parsp-renaissance-paris-nobel-tour-eiffel-hotel/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
@@ -287,8 +435,10 @@
                 <article class="article-2">
                     <h5>Le Crowne Plaza Paris République 4*</h5>
                     <img src="assets/Images/crowne-plaza.jpeg" alt="">
-                    <p>Un hôtel 4 étoiles situé sur la place de la République, au cœur de Paris. Installé dans un bâtiment historique,
-                        il propose des chambres modernes et confortables, ainsi qu’un accès facile aux principaux quartiers touristiques
+                    <p>Un hôtel 4 étoiles situé sur la place de la République, au cœur de Paris. Installé dans un
+                        bâtiment historique,
+                        il propose des chambres modernes et confortables, ainsi qu’un accès facile aux principaux
+                        quartiers touristiques
                         et d’affaires de la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://www.ihg.com/crowneplaza/hotels/gb/en/paris/pardl/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-FR-_-PARDL"
@@ -302,8 +452,10 @@
                 <article class="article-2">
                     <h5>Drawing House 4*</h5>
                     <img src="assets/Images/drawing-house.jpeg" alt="drawing-house">
-                    <p>Un hôtel 4 étoiles situé dans le quartier de Montparnasse. Moderne et créatif, il se distingue par son concept
-                        artistique autour du dessin, ses espaces design et son ambiance contemporaine, offrant une expérience originale
+                    <p>Un hôtel 4 étoiles situé dans le quartier de Montparnasse. Moderne et créatif, il se distingue
+                        par son concept
+                        artistique autour du dessin, ses espaces design et son ambiance contemporaine, offrant une
+                        expérience originale
                         et confortable au cœur de Paris.</p>
                     <a class="btn btn-primary" href="https://www.drawinghouse.com/" role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
@@ -312,8 +464,10 @@
                 <article class="article-2">
                     <h5>Les Jardins du Marais 4*</h5>
                     <img src="assets/Images/les-jardins-du-marais.jpeg" alt="les-jardins-du-marais">
-                    <p>Un hôtel 4 étoiles situé dans le quartier du Marais à Paris. Organisé autour d’un vaste patio-jardin, il propose
-                        des suites et chambres élégantes dans un cadre calme et raffiné, tout en restant au cœur d’un des quartiers les
+                    <p>Un hôtel 4 étoiles situé dans le quartier du Marais à Paris. Organisé autour d’un vaste
+                        patio-jardin, il propose
+                        des suites et chambres élégantes dans un cadre calme et raffiné, tout en restant au cœur d’un
+                        des quartiers les
                         plus animés et historiques de la capitale.</p>
                     <a class="btn btn-primary" href="https://www.lesjardinsdumarais.com/" role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
@@ -322,8 +476,10 @@
                 <article class="article-2">
                     <h5>Four Seasons Hôtel George V *Palace</h5>
                     <img src="assets/Images/four-seasons.jpeg" alt="">
-                    <p>Un palace 5 étoiles situé à deux pas des Champs-Élysées. Célèbre pour son luxe exceptionnel, son service
-                        irréprochable et ses restaurants étoilés, il incarne l’excellence de l’hôtellerie parisienne dans un cadre
+                    <p>Un palace 5 étoiles situé à deux pas des Champs-Élysées. Célèbre pour son luxe exceptionnel, son
+                        service
+                        irréprochable et ses restaurants étoilés, il incarne l’excellence de l’hôtellerie parisienne
+                        dans un cadre
                         somptueux et raffiné.</p>
                     <a class="btn btn-primary" href="https://www.fourseasons.com/fr/paris/" role="button">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
@@ -337,7 +493,7 @@
     <!--bloc de texte-->
 
     <section>
-        <h2>Pourquoi nous choisir ?</h2>
+        <h2 class="h2">Pourquoi nous choisir ?</h2>
         <div class="flex-container-5">
             <article class="article-3">
                 <h3>Meilleur prix garantis</h3>
@@ -489,12 +645,13 @@
 
     <footer>
 
-       
+
         <div>
             <h3>Suivez-nous</h3>
 
             <div class="suivez-nous">
-                <a href="https://fr.linkedin.com/"><i class="fa-brands fa-square-linkedin"></i>Suivez-nous sur Linkedin</a><br>
+                <a href="https://fr.linkedin.com/"><i class="fa-brands fa-square-linkedin"></i>Suivez-nous sur
+                    Linkedin</a><br>
                 <a href="mailto:ResaHôtel@gmail.com"><i class="fa-solid fa-at"></i>ResaHôtel@gmail.com</a><br>
                 <a href="tel:0150505050"><i class="fa-solid fa-phone"></i>01.50.50.50.50
                 </a><br>
@@ -502,14 +659,14 @@
             </div>
 
             <div class="support-footer">
-            
+
                 <h4>s'inscire a notre Newsletters</h4>
                 <br><label for="email">email</label>
                 <input type="text" id="email" placeholder="exemple@gmail.com" required><button type="submit"> s'inscires
                 </button><br>
-            
+
             </div>
-        
+
         </div>
     </footer>
 

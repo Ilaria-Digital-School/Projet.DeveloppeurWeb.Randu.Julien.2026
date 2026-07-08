@@ -10,13 +10,90 @@ background-color: white;
 
 /*-----header/footer-----*/
 
-header{
+.header{
+
+    width:100%;
+    margin:30px auto;
+    background: cornflowerblue;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px;
+}
+
+.logo img{
+    height:200px;
+}
+
+/* SUPPORT */
+
+.support{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.phone{
+
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:grey;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.support-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.support-text small{
+    color:black;
+    font-size:20px;
+}
+
+.support-text strong{
+    color:black;
+    font-size:15px;
+}
+
+/* MENU DROIT */
+
+.menu{
+    width:120px;
+    
+}
+
+.menu a{
+    display:block;
+    text-decoration-line: underline;
+    color:white;
+    padding:10px;
+    font-size:10px;
+}
+
+.monCompte{
+    background:#6b6b6b;
+}
+
+.langue{
+    background:#8bd4d7;
+}
+
+.devise{
+    background:#5ec5ca;
+}
+
+/*header{
 /*background-image: url(../Images/twitter_header.jpg);*/
-background-color: cornflowerblue;
+/*background-color: cornflowerblue;
 height: 150px;
 width: 100%;
 border: solid 2px black;
-}
+}*/
 
 #h1{
     padding: 25px;
@@ -68,9 +145,151 @@ margin: 10px;
     height: 100%;
 }
 
+/*.recherche-carou {
+    width: 80%;
+    height: 150spx;
+    background-color: rgb(163, 162, 162);
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+}*/
+ 
+.carousel {
+    position: relative; /*Référence pour notre recherche*/
+}
 
+.recherche-carou{
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    gap:25px;
+    padding:25px;
+    border-radius:4px solid black;
+
+}
+
+.bloc{
+    flex:1;
+}
+
+.bloc h3{
+    font-size:20px;
+    color:black;
+    margin-bottom:18px;
+}
+
+.bloc span{
+    color: cornflowerblue;
+    font-weight:bold;
+}
+
+/*Votre Choix */
+
+.radio-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    font-size:13px;
+    color: black;
+
+}
+
+/*Ou*/
+
+.destination{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid black;
+    border-radius:25px;
+
+}
+
+/*Quand + Calendar*/
+
+.dates{
+    display:flex;
+    gap:10px;
+}
+
+.calendar{
+    position:relative;
+    flex:1;
+}
+
+.calendar label{
+    display:block;
+    font-size:11px;
+    color:black;
+    margin-bottom:5px;
+}
+
+.calendar input{
+    width:100%;
+    padding:10px 35px 10px 12px;
+    border-radius:25px;
+    border:1px solid black;
+}
+
+.calendar i{
+    position:absolute;
+    right:12px;
+    top:37px;
+    color:black;
+}
+
+/* Composition de la Chambre*/
+
+.qui{
+    display:flex;
+    gap:10px;
+}
+
+.qui{
+    flex:1;
+}
+
+.qui label{
+
+    display:block;
+    font-size:11px;
+    color:black;
+    margin-bottom:5px;
+
+}
+
+.qui input{
+    width:100%;
+    text-align:center;
+    padding:10px;
+    border-radius:20px;
+    border:1px solid black;
+}
+
+.btn-container{
+    text-align:center;
+    margin-top:20px;
+}
+
+button{
+    background:cornflowerblue;
+    color:black;
+    border-radius: 3px solid black;
+    padding:15px 35px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+    letter-spacing:1px;
+    transition:.3s;
+
+}
+
+button:hover{
+    background: cornflowerblue;
+}
+ 
 /*Notre selection du moment*/ 
-
 
 .flex-container-1{
     display: flex;
@@ -123,7 +342,7 @@ background-color: cornflowerblue;
 }
 
 
-h2{
+.h2{
     text-align: center;
     border: solid 2px black;
     color: black;
@@ -200,11 +419,7 @@ border: solid 2px black;
 color: black;
 }
 
-h2{
-    color: black;
-    border: solid 2px black;
-    text-align: center;
-}
+
 
 /*Maps*/
 
@@ -280,7 +495,7 @@ select {
     padding: 20px;
     max-width: auto;
     margin: 20px;
-    background-color: rgb(124, 124, 124);
+    background-color: cornflowerblue;
     border-radius: 10px;
     border: 2px solid black;
     
