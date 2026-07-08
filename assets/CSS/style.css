@@ -23,6 +23,7 @@ background-color: white;
 
 .logo img{
     height:200px;
+    border-radius: 5px;
 }
 
 /* SUPPORT */
@@ -52,7 +53,7 @@ background-color: white;
 
 .support-text small{
     color:black;
-    font-size:20px;
+    font-size:15px;
 }
 
 .support-text strong{
@@ -70,9 +71,18 @@ background-color: white;
 .menu a{
     display:block;
     text-decoration-line: underline;
-    color:white;
+    color:black;
     padding:10px;
-    font-size:10px;
+    font-size:15px;
+}
+
+
+.menu select{
+    display:block;
+    text-decoration-line: underline;
+    color:black;
+    padding:10px;
+    font-size:15px;
 }
 
 .monCompte{
@@ -87,13 +97,7 @@ background-color: white;
     background:#5ec5ca;
 }
 
-/*header{
-/*background-image: url(../Images/twitter_header.jpg);*/
-/*background-color: cornflowerblue;
-height: 150px;
-width: 100%;
-border: solid 2px black;
-}*/
+
 
 #h1{
     padding: 25px;
@@ -101,32 +105,172 @@ border: solid 2px black;
 
 }
 
+
+/*Footer*/
+
 footer{
-    background-color: cornflowerblue;
-    color: black;
-    border: solid 2px black;
-}
 
-/*suivre-nous*/
-.suivre-nous{
-    color: black;
-    text-align: center;
+    width:100%;
+    background:cornflowerblue;
+    margin-top:50px;
+    border-top:3px solid black
 }
 
 
 
-/*support header */
+.footer-cadre{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    padding:40px 20px;
 
-.support{
-text-align: end;
-color: black;  
-margin: 10px;
 }
 
-/*support-footer*/
+.footer-onglet{
+    flex:1;
+}
 
-.support-footer{
-    text-align: right;
+.footer-onglet h4{
+    color:black;
+    font-size:15px;
+    margin-bottom:20px;
+    text-decoration: underline;
+
+}
+
+.footer-onglet p{
+
+    color:black;
+    font-size:15px;
+    line-height:24px;
+
+}
+
+.footer-onglet ul{
+    list-style:none;
+}
+
+.footer-onglet li{
+    margin-bottom:10px;
+}
+
+.footer-onglet a{
+    text-decoration:none;
+    color:black;
+}
+
+.footer-onglet a:hover{
+    color: green;
+}
+
+/* RESEAUX SOCIAUX */
+
+.social{
+
+    display:flex;
+    gap:10px;
+
+}
+
+.social a{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:grey;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.social a:hover{
+
+    background:#57c5c8;
+
+}
+
+
+/*Newsletters*/
+
+.newsletter{
+    display:flex;
+}
+
+.newsletter input{
+    flex:1;
+    padding:10px;
+    border:1px solid black;
+    border-radius:20px 0 0 20px;
+
+}
+
+.newsletter button{
+    border:1px solid black;
+    background:grey;
+    color:white;
+    padding:0 20px;
+    border-radius:0 20px 20px 0;
+    cursor:pointer;
+
+}
+
+.newsletter button:hover{
+    background-color: green;
+}
+
+
+
+/* BAS DU FOOTER */
+
+.footer-bottom{
+
+    border-top:1px solid #e5e5e5;
+
+    background:#f6f6f6;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.footer-bottom p{
+
+    color:#888;
+
+    margin-bottom:10px;
+
+    font-size:13px;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.footer-links a{
+
+    color:#777;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+}
+
+.footer-links a:hover{
+
+    color:#57c5c8;
 
 }
 
@@ -161,7 +305,7 @@ margin: 10px;
 }
 
 .recherche-carou{
-    background:white;
+    background:cornflowerblue;
     display:flex;
     justify-content:space-between;
     gap:25px;
@@ -270,6 +414,7 @@ margin: 10px;
 .btn-container{
     text-align:center;
     margin-top:20px;
+
 }
 
 button{
@@ -281,7 +426,6 @@ button{
     cursor:pointer;
     font-weight:bold;
     letter-spacing:1px;
-    transition:.3s;
 
 }
 
