@@ -13,6 +13,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+         <!--lien vers Font AWESOM-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+
 
     <title>Contact</title>
 
@@ -20,9 +24,48 @@
 
 <body>
 
-    <header>
-        <h1>ResaHôtel.com</h1>
+   <header class="header">
+
+      <!-- Support -->
+    
+        <div class="support">
+    
+            <div class="phone">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+    
+            <div class="support-text">
+                <small>24/7 Support disponible</small>
+                <strong>01.50.50.50.50</strong>
+            </div>
+    
+        </div>
+        <!-- Logo -->
+    
+        <div class="logo">
+            <img src="../assets/Images/logo-bis.png" alt="ResaHôtel.com">
+        </div>
+    
+        <!-- Boutons -->
+        <div class="menu">
+    
+            <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+    
+    
+            <select name="pays" id="pays" class="langue">
+                <option value="France">France</option>
+                <option value="Anglais">Anglais</option>
+            </select>
+    
+            <select name="devise" id="devise" class="devise">
+                <option value="euro">Euro €</option>
+                <option value="dollard">Dollar $</option>
+            </select>
+    
+        </div>
+      
     </header>
+
 
     <section>
         <div>
@@ -52,6 +95,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                            </li>
+                               <li class="nav-item">
+                                <a class="nav-link" href="conditions.html">conditions</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -83,32 +129,81 @@
 
 
 
-    <footer>
-    
-        <h3>Suivez-nous</h3>
-    
-        <div class="suivez-nous">
-            <a href="https://fr.linkedin.com/"><i class="fa-brands fa-square-linkedin"></i>Suivez-nous sur Linkedin</a><br>
-            <a href="mailto:ResaHôtel@gmail.com"><i class="fa-solid fa-at"></i>ResaHôtel@gmail.com</a><br>
-            <a href="tel:0150505050"><i class="fa-solid fa-phone"></i>01.50.50.50.50
-            </a><br>
-            <a href="download">Mention Legale</a><br>
+   <footer>
+
+    <!--Footer-->
+    <div class="footer-cadre">
+
+        <div class="footer-onglet">
+
+            <h4>ResaHôtel.com</h4>
+
+            <p>35 rue de Tatatouine <br>
+                60150 Ribecourt-Dreslincourt<br>
+                <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
+            </p>
+
+            <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+
         </div>
-    
-        <div class="support-footer">
-    
-            <div>
-                <h4>s'inscire a notre Newsletters</h4>
-                <br><label for="email">email</label>
-                <input type="text" id="email" placeholder="exemple@gmail.com" required><button type="submit"> s'inscires
-                </button><br>
+
+
+        <div class="footer-onglet">
+
+            <h4>Suivez-nous</h4>
+
+            <div class="social">
+
+                <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+
+                <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
+
+                <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
+
             </div>
+
         </div>
-    
-    
-        
-    
-    </footer>
+
+        <div class="footer-onglet">
+
+            <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
+
+            <div class="newsletter">
+                <input type="email" placeholder="@email">
+                <button>S'inscrire</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Zone Coyright-->
+
+    <div class="footer-bottom">
+
+        <p>
+            Copyright © 2026 ResaHôtel.com.
+            Tous droits réservés.
+        </p>
+
+        <div class="footer-liens">
+
+            <a href="../Pages/a-propos.html">A Propos de Nous</a>
+
+            <a href="../Pages/contact.html">Contact</a>
+
+            <a href="#">Carriere</a>
+
+            <a href="../Pages/conditions.html">Conditions Generales CGU</a>
+
+        </div>
+
+    </div>
+
+</footer>
 </body>
 
 </html>

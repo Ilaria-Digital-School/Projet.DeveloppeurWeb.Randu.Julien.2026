@@ -5,9 +5,6 @@ font-family: 'Times New Roman', Times, serif;
 background-color: white;
 }
 
-
-
-
 /*-----header/footer-----*/
 
 .header{
@@ -19,11 +16,13 @@ background-color: white;
     align-items:center;
     justify-content:space-between;
     padding:20px;
+    border: 2px solid black;
 }
 
 .logo img{
     height:200px;
     border-radius: 5px;
+    border: solid white;
 }
 
 /* SUPPORT */
@@ -165,7 +164,7 @@ footer{
     color: green;
 }
 
-/* RESEAUX SOCIAUX */
+/*Réseaux Sociaux*/
 
 .social{
 
@@ -222,66 +221,37 @@ footer{
 
 
 
-/* BAS DU FOOTER */
+/*Zonz Copyright*/
 
 .footer-bottom{
-
-    border-top:1px solid #e5e5e5;
-
-    background:#f6f6f6;
-
+    border-top:2px solid black;
+    background:white;
     padding:20px;
-
     text-align:center;
-
 }
 
 .footer-bottom p{
-
-    color:#888;
-
+    color: grey;
     margin-bottom:10px;
-
-    font-size:13px;
-
+    font-size:15px;
 }
 
-.footer-links{
-
+.footer-liens{
     display:flex;
-
     justify-content:center;
-
     flex-wrap:wrap;
-
     gap:20px;
-
 }
 
-.footer-links a{
-
-    color:#777;
-
+.footer-liens a{
+    color:grey;
     text-decoration:none;
-
-    font-size:13px;
-
+    font-size:15px;
 }
 
-.footer-links a:hover{
-
-    color:#57c5c8;
-
+.footer-liens a:hover{
+    color:green;
 }
-
-/*Barre de recherche */
-
-
-/*Barre de Navigation*/
-
-
-
-
 
 /*Carousel*/
 
@@ -683,4 +653,27 @@ main {
     color: black;
     background-color: cornflowerblue;
     
+}
+
+/*Page CGU*/
+
+.flex-container-7{
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+}
+
+.info{
+border-radius:10px;
+margin: 10px;
+background-color: cornflowerblue;
+width: 400px;
+height: 500px;
+border: solid 2px black;
+color: black;
+}
+
+#h1-cgu{
+    text-align: center;
+    text-decoration: underline;
 }
