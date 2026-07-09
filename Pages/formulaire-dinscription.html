@@ -112,7 +112,7 @@
 
 
  <!--Formulaire de contact-->
-    <section>
+    <section class="container-formulaire">
     
         <form id="inscription-form">
     
@@ -120,40 +120,40 @@
                 <h2 class="h2">Formulaire d'inscription</h2>
                 <p>Pour toute création de compte, merci de remplir les informations ci-dessous :</p>
     
-                <legend>Informations Personnelles</legend>
+                <legend id="type">Informations Personnelles</legend>
 
                 <div>
-                    <label for="nom">Nom</label>
+                    <label id="type" for="nom">Nom</label>
                     <input type="text" id="nom" placeholder="Nom" required>
                 </div><br>
 
                 <div>
-                    <label for="prenom">Prenom</label>
+                    <label id="type" for="prenom">Prenom</label>
                     <input type="text" id="prenom" placeholder="Prénom" required>
                 </div>
 
-                <br><label for="tel">Numéro de telephone</label>
+                <br><label id="type" for="tel">Numéro de telephone</label>
                 <input type="text" id="tel" placeholder="numéro de téléphone" required> <br>
     
-                <br><label for="email">email</label>
+                <br><label id="type" for="email">email</label>
                 <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
     
-                <br><label for="mdp"> Mot de Passe:</label>
+                <br><label id="type" for="mdp"> Mot de Passe:</label>
                 <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
     
-                <br><label for="confirmMdp">Confirmer votre Mot de Passe:</label>
+                <br><label id="type" for="confirmMdp">Confirmer votre Mot de Passe:</label>
                 <input type="password" id="confirmMdp" placeholder="Confirmer Mot de Passe" required><br>
     
             </fieldset>
     
             <fieldset class="inscription-fieldset">
-                <legend>Informations Complémentaires</legend>
+                <legend id="type">Informations Complémentaires</legend>
     
     
                 <!--Radio-->
                 <div>
     
-                    <br><label> Genre:</label>
+                    <br><label id="type"> Genre:</label>
                     <input type="radio" id="femme" name="genre" value="femme">
                     <label for="femme"> Femme </label>
     
@@ -165,7 +165,7 @@
                 <!--Checkbox-->
                 <div>
     
-                    <br><label>Intérets :</label>
+                    <br><label id="type">Intérets :</label>
                     <input type="checkbox" name="interets" id="hôtel-5*" value="Hôtels 5*">
                     <label for="hôtels-5*">Hôtels 5*</label>
     
@@ -179,7 +179,7 @@
                 <!--Pays-->
 
                 <div>
-                    <label for="pays">Pays</label>
+                    <br><label id="type" for="pays">Pays</label>
                     <select name="pays" id="pays">
                         <option value="France">France</option>
                         <option value="Portugais">Portugais</option>
@@ -189,7 +189,7 @@
                 </div>
 
                 <div>
-                    <label for="msg">Message</label>
+                    <br><label id="type" for="msg">Message</label>
                     <textarea id="msg" placeholder="Votre Message" required></textarea>
                 </div>
 
