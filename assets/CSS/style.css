@@ -582,10 +582,13 @@ justify-content: center;
     text-align: center;
 }
     
-#type{
-    text-decoration: underline;
+label{
+
+text-decoration: underline;
     color:black;
 }
+    
+
 
 
 legend {

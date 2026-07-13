@@ -21,49 +21,51 @@
 
 </head>
 
-<header class="header">
 
-    <!-- Support -->
-
-    <div class="support">
-
-        <div class="phone">
-            <i class="fa-solid fa-phone"></i>
-        </div>
-
-        <div class="support-text">
-            <small>24/7 Support disponible</small>
-            <strong>01.50.50.50.50</strong>
-        </div>
-
-    </div>
-    <!-- Logo -->
-
-    <div class="logo">
-        <img src="../assets/Images/logo-bis.png" alt="ResaHôtel.com">
-    </div>
-
-    <!-- Boutons -->
-    <div class="menu">
-
-        <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
-
-
-        <select name="pays" id="pays" class="langue">
-            <option value="France">France</option>
-            <option value="Anglais">Anglais</option>
-        </select>
-
-        <select name="devise" id="devise" class="devise">
-            <option value="euro">Euro €</option>
-            <option value="dollard">Dollar $</option>
-        </select>
-
-    </div>
-
-</header>
 
 <body>
+
+    <header class="header">
+
+        <!-- Support -->
+
+        <div class="support">
+
+            <div class="phone">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+
+            <div class="support-text">
+                <small>24/7 Support disponible</small>
+                <strong>01.50.50.50.50</strong>
+            </div>
+
+        </div>
+        <!-- Logo -->
+
+        <div class="logo">
+            <img src="../assets/Images/logo-bis.png" alt="ResaHôtel.com">
+        </div>
+
+        <!-- Boutons -->
+        <div class="menu">
+
+            <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+
+
+            <select name="pays" id="pays" class="langue">
+                <option value="France">France</option>
+                <option value="Anglais">Anglais</option>
+            </select>
+
+            <select name="devise" id="devise" class="devise">
+                <option value="euro">Euro €</option>
+                <option value="dollard">Dollar $</option>
+            </select>
+
+        </div>
+
+    </header>
 
     <section>
         <div>
@@ -99,7 +101,7 @@
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
@@ -115,18 +117,19 @@
                 <h2 class="h2">Connexion</h2>
                 <p>Pour vous connecter veuillez saisir votre identifiant</p>
 
-                <br><label id="type" for="email">Email</label>
+                <br><label for="email">Email</label>
                 <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
 
-                <br><label id="type" for="mdp"> Mot de Passe:</label>
+                <br><label for="mdp"> Mot de Passe:</label>
                 <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
 
-                <br><label id="type" for="confirmMdp">Confirmer votre Mot de Passe:</label>
+                <br><label for="confirmMdp">Confirmer votre Mot de Passe:</label>
                 <input type="password" id="confirmMdp" placeholder="Confirmer votre Mot de Passe" required><br>
 
                 <div class="btn-container">
                     <button class="btn-envoyer" type="submit">Valider</button><br>
-                    <p>ou<a id="access" href="formulaire-dinscription.html"> <strong>Inscrivez-vous</strong></p></a>
+                    <br>
+                    <p>ou</p><a id="access" href="formulaire-dinscription.html"> <strong>Inscrivez-vous</strong></a>
                 </div>
 
             </section>
@@ -212,11 +215,13 @@
     </footer>
     <script src="../assets/js/user.js"></script>
 
+    <!--Lien JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+
+
 </body>
 
-<!--Lien JavaScript-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
 
 </html>
