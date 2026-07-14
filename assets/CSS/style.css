@@ -86,6 +86,7 @@ background-color: white;
 
 .monCompte{
     background:#6b6b6b;
+    color: white;
 }
 
 .langue{
@@ -258,17 +259,6 @@ footer{
 .carousel-inner{
     height: 100%;
 }
-
-/*.recherche-carou {
-    width: 80%;
-    height: 150spx;
-    background-color: rgb(163, 162, 162);
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 2px solid black;
-}*/
  
 .carousel {
     position: relative; /*Référence pour notre recherche*/
@@ -305,7 +295,7 @@ footer{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:10px;
-    font-size:13px;
+    font-size:15px;
     color: black;
 
 }
@@ -349,7 +339,7 @@ footer{
 .calendar i{
     position:absolute;
     right:12px;
-    top:37px;
+    top:35px;
     color:black;
 }
 
@@ -367,7 +357,7 @@ footer{
 .qui label{
 
     display:block;
-    font-size:11px;
+    font-size:12px;
     color:black;
     margin-bottom:5px;
 
@@ -441,11 +431,6 @@ span{
 
 /*Les meilleurs hôtels*/
 
-.flex-container-2{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
 
 .article-2{
 border-radius:10px;
@@ -455,18 +440,6 @@ height: 450px;
 border: solid 2px black;
 color: black;
 background-color: cornflowerblue;
-}
-
-
-.flex-container-3{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-.flex-container-4{
-    display: flex;
-    justify-content: center;
-    text-align: center;
 }
 
 
@@ -484,11 +457,6 @@ h3{
 
 /*Pourquoi nous choisir*/
 
-.flex-container-5{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
 
 .article-3{
 border-radius:10px;
@@ -515,11 +483,6 @@ background-color: cornflowerblue;
 
 /*Page A Propos de nous*/
 
-.flex-container-1{
-    display: flex;
-    justify-content: center; 
-    text-align: center;
-}
 
 
 .a-propos{
@@ -565,16 +528,6 @@ justify-content: center;
     width: 700px;
 }
 
-.connexion-2{
-
-    margin-bottom: 20px;
-    border: 2px solid black;
-    padding: 15px 50px;
-    border-radius: 5px;
-    color: black;
-    background-color: cornflowerblue;
-}
-
 .container-formulaire {
 
     display: flex;
@@ -584,7 +537,7 @@ justify-content: center;
     
 label{
 
-text-decoration: underline;
+  text-decoration: underline;
     color:black;
 }
     
@@ -629,7 +582,7 @@ select {
     background-color: cornflowerblue;
     border-radius: 10px;
     border: 2px solid black;
-    
+
 }
 
 main {
@@ -662,11 +615,6 @@ main {
 
 /*Page CGU*/
 
-.flex-container-7{
-    display: flex;
-    justify-content: center; 
-    text-align: center;
-}
 
 .info{
 border-radius:10px;
@@ -682,3 +630,5 @@ color: black;
     text-align: center;
     text-decoration: underline;
 }
+
+/*Pages Nos Hôtels*/

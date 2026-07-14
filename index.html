@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- SEO -->
+     <meta name="description" content="ResaHôtel.com est une application de reservation d'hôtel court ou long séjour. Découvrez les offres, nos hôtels partenaires et des lieux emblematique de la région parisienne.">
+     <meta name="keywords" content="séjour, reservation, hôtel, région parisienne, partenaires, offres, lieux emblématiques">
+
     <!--lien CSS-->
 
     <link rel="stylesheet" href="assets/CSS/style.css">
@@ -51,27 +55,28 @@
 
         <!-- Boutons -->
         <div class="menu">
-
+        
             <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
-
-
+        
             <select name="pays" id="pays" class="langue">
                 <option value="France">France</option>
+                <option value="Portugais">Portugais</option>
                 <option value="Anglais">Anglais</option>
+                <option value="Autre">Autre</option>
             </select>
-
+        
             <select name="devise" id="devise" class="devise">
                 <option value="euro">Euro €</option>
                 <option value="dollard">Dollar $</option>
             </select>
-
+        
         </div>
 
     </header>
 
     <section>
         <div>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
                 <div class="container-fluid">
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -223,7 +228,7 @@
 
                     <div>
                         <label>Adulte</label>
-                        <input type="number" value="2" min="1">
+                        <input type="number" value="1" min="1">
                     </div>
 
                     <div>
@@ -244,7 +249,7 @@
     </section>
 
     <section>
-        <h2 class="h2">Notre selection du moment</h2>
+        <h2 aria-label="Notre selection du moment" class="h2">Notre selection du moment</h2>
         <div class="flex-container-1">
             <article class="article">
                 <h5><Strong>Villa Modigliani 4*</Strong></h5>
@@ -256,7 +261,7 @@
                     Paris dans un environnement calme et authentique.</p>
                 <a class="btn btn-primary"
                     href="https://www.villa-modigliani.fr/fr?gad_source=1&gad_campaignid=629464048&gclid=Cj0KCQjwi8nRBhDhARIsAHZf_paWyBY1b20pqqi-r1X53rjl4IkVz-0G8Ic1q2Cm5UUg_jRzolh7nesaAj-sEALw_wcB"
-                    role="button">Decouvrir</a>
+                    role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
             </article>
 
             <article class="article">
@@ -269,7 +274,7 @@
                     luxueuse au cœur de la capitale parisienne.</p>
                 <a class="btn btn-primary"
                     href="https://www.hotelducollectionneur.com/?gad_source=1&gad_campaignid=15318110381&gbraid=0AAAAAoPAZQYJouq_SBHZyO6a_NzIYAoe_&gclid=Cj0KCQjwi8nRBhDhARIsAHZf_pYqMvyJTb54h2uGgFMZje8s_3GyvdUWZv9K3iUD7MWYDpZSnvS7lJ8aAk0UEALw_wcB"
-                    role="button">Decouvrir</a>
+                    role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
             </article>
 
             <article class="article">
@@ -282,7 +287,7 @@
                     aux
                     voyageurs d’affaires comme de loisirs.</p>
                 <a class="btn btn-primary" href="https://www.mandarinoriental.com/fr/paris/lutetia/offers"
-                    role="button">Decouvrir</a>
+                    role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
             </article>
 
             <article class="article">
@@ -296,7 +301,7 @@
                     expérience authentique et sophistiquée au cœur de Paris.
                 </p>
                 <a class="btn btn-primary" href="https://www.hoteldesgrandsvoyageurs.com/fr/a-propos"
-                    role="button">Decouvrir</a>
+                    role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
             </article>
 
         </div>
@@ -320,7 +325,7 @@
                         prestige, confort et art de vivre à la française.</p>
                     <a class="btn btn-primary"
                         href="https://www.ihg.com/intercontinental/hotels/gb/en/paris/parhb/hoteldetail?cm_mmc=GoogleMaps-_-IC-_-FR-_-PARHB"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                 </article>
 
                 <article class="article-2">
@@ -334,7 +339,7 @@
                     </p>
                     <a class="btn btn-primary"
                         href="https://www.hyatt.com/hyatt-hotels/en-US/madel-hyatt-paris-madeleine?src=corp_lclb_google_seo_madel&utm_source=google&utm_medium=organic&utm_campaign=lmr"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -349,12 +354,12 @@
                         Paris.</p>
                     <a class="btn btn-primary"
                         href="https://all.accor.com/hotel/7229/index.fr.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
             </div>
 
-            <div class="flex-container-2">
+            <div class="flex-container-1">
 
                 <article class="article-2">
                     <h5>Novotel Paris les Halles 4*</h5>
@@ -366,7 +371,7 @@
                         emplacement idéal pour découvrir les principaux sites de la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://all.accor.com/hotel/0785/index.fr.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -380,7 +385,7 @@
                         d’affaires et les visiteurs souhaitant découvrir la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://www.marriott.com/en-us/hotels/parst-paris-marriott-rive-gauche-hotel-and-conference-center/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -394,12 +399,12 @@
                         cœur du quartier de l’Opéra.</p>
                     <a class="btn btn-primary"
                         href="https://sofitel.accor.com/fr/hotels/0663.html?merchantid=seo-maps-FR-0663&sourceid=aw-cen&utm_source=google+Maps&utm_medium=seo+maps&utm_campaign=seo+maps&utm_term=Sofitel-Launch"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
             </div>
 
-            <div class="flex-container-3">
+            <div class="flex-container-1">
 
                 <article class="article-2">
                     <h5>Le Meridien Paris 4* </h5>
@@ -411,7 +416,7 @@
                         professionnels et aux événements.</p>
                     <a class="btn btn-primary"
                         href="https://www.marriott.com/en-us/hotels/parmd-le-meridien-paris-arc-de-triomphe/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -425,7 +430,7 @@
                         élégant et paisible au cœur de la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://www.marriott.com/en-us/hotels/parsp-renaissance-paris-nobel-tour-eiffel-hotel/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -439,13 +444,13 @@
                         et d’affaires de la capitale.</p>
                     <a class="btn btn-primary"
                         href="https://www.ihg.com/crowneplaza/hotels/gb/en/paris/pardl/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-FR-_-PARDL"
-                        role="button">Decouvrir</a>
+                        role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
             </div>
 
-            <div class="flex-container-4">
+            <div class="flex-container-1">
                 <article class="article-2">
                     <h5>Drawing House 4*</h5>
                     <img src="assets/Images/drawing-house.jpeg" alt="drawing-house">
@@ -454,7 +459,7 @@
                         artistique autour du dessin, ses espaces design et son ambiance contemporaine, offrant une
                         expérience originale
                         et confortable au cœur de Paris.</p>
-                    <a class="btn btn-primary" href="https://www.drawinghouse.com/" role="button">Decouvrir</a>
+                    <a class="btn btn-primary" href="https://www.drawinghouse.com/" role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -466,7 +471,7 @@
                         des suites et chambres élégantes dans un cadre calme et raffiné, tout en restant au cœur d’un
                         des quartiers les
                         plus animés et historiques de la capitale.</p>
-                    <a class="btn btn-primary" href="https://www.lesjardinsdumarais.com/" role="button">Decouvrir</a>
+                    <a class="btn btn-primary" href="https://www.lesjardinsdumarais.com/" role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
 
@@ -478,12 +483,10 @@
                         irréprochable et ses restaurants étoilés, il incarne l’excellence de l’hôtellerie parisienne
                         dans un cadre
                         somptueux et raffiné.</p>
-                    <a class="btn btn-primary" href="https://www.fourseasons.com/fr/paris/" role="button">Decouvrir</a>
+                    <a class="btn btn-primary" href="https://www.fourseasons.com/fr/paris/" role="button" aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
                     <!--texte + image + bouton explorez notre offre+ région + tarif a partir de-->
                 </article>
             </div>
-
-
         </div>
     </section>
 
@@ -491,7 +494,7 @@
 
     <section>
         <h2 class="h2">Pourquoi nous choisir ?</h2>
-        <div class="flex-container-5">
+        <div class="flex-container-1">
             <article class="article-3">
                 <h3>Meilleur prix garantis</h3>
                 <p>Chez ResaHotel.com, nous nous engageons à vous proposer des tarifs compétitifs sur une large
@@ -538,7 +541,7 @@
 
         </div>
 
-        <div class="flex-container-5">
+        <div class="flex-container-1">
 
             <article class="article-3">
                 <h3>La meilleure selection d'hôtels garantie</h3>
@@ -589,7 +592,7 @@
             </article>
         </div>
 
-        <div class="flex-container-5">
+        <div class="flex-container-1">
             <article class="article-3">
                 <h3>Programme de Fidélité et Rewards</h3>
                 <p>Avec le programme de fidélité ResaHotel Rewards, chaque réservation vous permet de cumuler des points
@@ -654,7 +657,7 @@
                     <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
                 </p>
 
-                <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+                <p><i class="fa-solid fa-at" aria-label="lien vers adresse mail de ResaHôtel.com"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
 
             </div>
 
@@ -664,16 +667,17 @@
                 <h4>Suivez-nous</h4>
 
                 <div class="social">
-
+                
+                
                     <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-
-                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-
-                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
-
-                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
-
+                            class="fa-brands fa-facebook-f" aria-label="line vers page Facebook"></i></a>
+                
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram" aria-label="Lien vers page Instagram"></i></a>
+                
+                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in" aria-label="lien vers page Linkedin"></i></a>
+                
+                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter" aria-label="lien vers page Twitter"></i></a>
+                
                 </div>
 
             </div>
