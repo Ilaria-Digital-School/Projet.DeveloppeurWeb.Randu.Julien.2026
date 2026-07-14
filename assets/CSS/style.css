@@ -450,7 +450,7 @@ background-color: cornflowerblue;
 
 }
 
-h3{
+.h3{
     text-align: center;
     text-decoration: underline;
 }
@@ -540,9 +540,6 @@ label{
   text-decoration: underline;
     color:black;
 }
-    
-
-
 
 legend {
     font-weight: 900;
@@ -632,3 +629,83 @@ color: black;
 }
 
 /*Pages Nos Hôtels*/
+
+/*Pages Carriere*/
+
+.article-4{
+border-radius:10px;
+margin: 10px;
+width: 350px;
+height: 150px;
+border: solid 2px black;
+color: black;
+background-color: cornflowerblue;
+}
+
+#carriere{
+    text-decoration: underline;
+}
+
+
+/*Tablette A confirmer
+
+/*@media (max-width:992px){
+
+.header{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.search-box{
+    flex-wrap:wrap;
+}
+
+.footer-top{
+    flex-wrap:wrap;
+}
+
+.footer-column{
+    width:45%;
+}
+
+}
+
+/*Portable A confirmer
+
+/*@media (max-width:768px){
+
+.header{
+    flex-direction:column;
+    text-align:center;
+}
+
+.search{
+    width:100%;
+}
+
+.search input{
+    width:100%;
+}
+
+.search-box{
+    flex-direction:column;
+}
+
+.dates{
+    flex-direction:column;
+}
+
+.who{
+    flex-direction:column;
+}
+
+.footer-top{
+    flex-direction:column;
+}
+
+.footer-links{
+    flex-direction:column;
+    gap:10px;
+}
+
+}
