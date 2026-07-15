@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--lien CSS-->
+
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+
+    <!--Lien Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!--lien vers Font AWESOM-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+
+    <title>Paiement</title>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <!-- Support -->
+
+        <div class="support">
+
+            <div class="phone">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+
+            <div class="support-text">
+                <small>24/7 Support disponible</small>
+                <strong>01.50.50.50.50</strong>
+            </div>
+
+        </div>
+        <!-- Logo -->
+
+        <div class="logo">
+            <img src="../assets/Images/logo-bis.png" alt="ResaHôtel.com">
+        </div>
+
+        <!-- Boutons -->
+        <div class="menu">
+
+            <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+
+
+            <select name="pays" id="pays" class="langue">
+                <option value="France">France</option>
+                <option value="Anglais">Anglais</option>
+            </select>
+
+            <select name="devise" id="devise" class="devise">
+                <option value="euro">Euro €</option>
+                <option value="dollard">Dollar $</option>
+            </select>
+
+        </div>
+
+    </header>
+
+
+    <section>
+
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
+                <div class="container-fluid">
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="a-propos.html">A Propos de Nous</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="nos-hôtels.html">Nos Hôtels</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="votre-compte.html">Votre Compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="formulaire-dinscription.html">Formulaire
+                                    d'inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="conditions.html">conditions</a>
+                            </li>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="carriere.html">Carriere</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="paiement.html">Paiement</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </section>
+
+
+    <div class="page-4">
+        <main class="content-3">
+
+            <section class="paiement-carte">
+
+                <h2>Paiement</h2>
+
+                <form class="paiement-form">
+
+                    <div class="form-group">
+                        <label>Carte de Crédit</label>
+
+                        <select>
+                            <option>Selectionnez votre carte</option>
+                            <option>Visa</option>
+                            <option>MasterCard</option>
+                            <option>American Express</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Numéro de carte</label>
+                        <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date d'Expiration</label>
+                        <input type="month">
+                    </div>
+
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="password" maxlength="3" placeholder="123">
+                    </div>
+
+                    <div class="checkbox">
+
+                        <input type="checkbox" id="conditions">
+
+                        <label for="conditions">
+                            Oui, j'ai lu et j'accepte les conditions générales de vente
+                            <a href="conditions.html">Conditions de reservation (CGU)</a>.
+                        </label>
+
+                    </div>
+
+                    <button type="submit" class="btn-paiement">
+                        confirmer votre reservation
+                    </button>
+
+                </form>
+
+            </section>
+
+
+
+        </main>
+
+        <aside class="sidebar-3">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2 id="">Pourquoi nous choisir</h2>
+            <p>Chez ResaHotel.com, nous nous engageons à vous proposer des tarifs compétitifs sur une large
+                sélection d'hôtels,
+                resorts et établissements de prestige. Grâce à nos partenariats privilégiés et à une veille
+                constante des offres
+                disponibles, nous vous permettons de réserver en toute confiance au meilleur rapport qualité-prix.
+
+                Profitez d'offres exclusives, de promotions avantageuses et de tarifs soigneusement sélectionnés
+                pour faire de
+                chaque séjour une expérience exceptionnelle, sans compromis sur votre budget. ✨💎🏨.</p>
+
+            <p>Chez ResaHotel.com, nous sélectionnons avec soin les plus beaux hôtels, resorts et établissements de
+                prestige à
+                travers la Capitale afin de vous garantir une expérience exceptionnelle.
+
+                Que vous recherchiez un séjour romantique, une escapade bien-être ou des vacances de luxe, notre
+                mission est simple
+                : vous offrir des expériences uniques dans les plus belles destinations, en toute confiance et au
+                meilleur prix.
+
+                ResaHotel.com, l'excellence au service de vos voyages. ✨</p>
+
+        </aside>
+    </div>
+
+    <div class="page-5">
+
+
+        <aside class="sidebar-1">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2>Besoin d'aide pour reserver</h2>
+            <p>
+                Vous avez besoin d'aide pour reservez, n'hesitez pas a contacter <strong>notre support disponible 24/7
+                    au 01.50.50.50.50</strong>
+            </p>
+
+        </aside>
+    </div>
+
+    <footer>
+
+        <!--Footer-->
+        <div class="footer-cadre">
+
+            <div class="footer-onglet">
+
+                <h4>ResaHôtel.com</h4>
+
+                <p>35 rue de Tatatouine <br>
+                    60150 Ribecourt-Dreslincourt<br>
+                    <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
+                </p>
+
+                <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+
+            </div>
+
+
+            <div class="footer-onglet">
+
+                <h4>Suivez-nous</h4>
+
+                <div class="social">
+
+                    <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+
+                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
+
+                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-onglet">
+
+                <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
+
+                <div class="newsletter">
+                    <input type="email" placeholder="@email">
+                    <button>S'inscrire</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--Zone Coyright-->
+
+        <div class="footer-bottom">
+
+            <p>
+                Copyright © 2026 ResaHôtel.com.
+                Tous droits réservés.
+            </p>
+
+            <div class="footer-liens">
+
+                <a href="../Pages/a-propos.html">A Propos de Nous</a>
+
+                <a href="../Pages/contact.html">Contact</a>
+
+                <a href="../Pages/carriere.html">Carriere</a>
+
+                <a href="../Pages/conditions.html">Conditions Generales CGU</a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!--Lien JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+
+</body>
+
+</html>
