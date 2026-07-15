@@ -417,9 +417,26 @@ border: solid 2px black;
 color: black;
 }
 
-span{
-    color: orange;
+.Badge-nouveau{
+
+    background-color: yellow;
+    top: 10px;
+    right: 10px;
+    color: black;
+    padding: 5px;
+    text-decoration: underline;
+    font-weight: bold;
+
 }
+
+.badge-coeur{
+    color: rgb(155, 3, 3);
+    top: 10px;
+    text-decoration: underline;
+    font-weight: bold;
+
+}
+
 
 .article a:hover{
     background-color: green;
@@ -647,65 +664,138 @@ background-color: cornflowerblue;
 }
 
 
-/*Tablette A confirmer
-
-/*@media (max-width:992px){
-
-.header{
-    flex-wrap:wrap;
-    justify-content:center;
+/*Page Nos Hôtels*/
+.page{
+    display:flex;
+    background-color: white;
+    min-height:50vh;
 }
 
-.search-box{
-    flex-wrap:wrap;
+.content{
+    width:50%;
+    border: 1px solid black;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+.sidebar{
+    width:20%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
 }
 
-.footer-top{
-    flex-wrap:wrap;
+.sidebar h2{
+    padding: 10px;
+    margin: 10px;
+    font-size: 25px;
+    text-decoration: underline;
 }
 
-.footer-column{
-    width:45%;
+.sidebar i{
+    font-size: 15px;
 }
 
+
+#choix-room{
+    text-align: center;
 }
 
-/*Portable A confirmer
-
-/*@media (max-width:768px){
-
-.header{
-    flex-direction:column;
-    text-align:center;
+.content-1{
+    width:30%;
+    border: 1px solid black;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+.sidebar-1{
+    width:30%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+.sidebar-1 h2{
+    text-decoration: underline;
+}
+.content-2{
+    width:30%;
+    border: 1px solid black;
+    text-align: center;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+.sidebar-2{
+    width:30%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+.sidebar-2 h2{
+    text-decoration: underline;
 }
 
-.search{
-    width:100%;
+.page-2{
+    display:flex;
+    background-color: white;
+    min-height:70vh;
 }
 
-.search input{
-    width:100%;
+#titre-chambre{
+    text-align: center;
+    text-decoration: underline;
+}
+#text-chambre{
+    text-align: center;
+}
+.content-2 a:hover{
+    background-color: green;
 }
 
-.search-box{
-    flex-direction:column;
+.page-3{
+    display:flex;
+    background-color: white;
+    height: 30vh;
 }
 
-.dates{
-    flex-direction:column;
+#chambre{
+    font-size: 15px;
+}
+.content-2 img{
+    border-radius: 5px;
 }
 
-.who{
-    flex-direction:column;
+/*Les Avis*/
+
+.avis {
+    background:white;
+    border-radius: 10px;
+    border: solid black;
+    padding: 20px;
+    margin: 10px;
 }
 
-.footer-top{
-    flex-direction:column;
+.etoile i{
+    color: gold;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-.footer-links{
-    flex-direction:column;
-    gap:10px;
+.page-4{
+    display:flex;
+    background-color: white;
+    height: 70vh;
+    justify-content: end;
+    
 }
+
+#new:hover{
+    background-color: green;
 
 }

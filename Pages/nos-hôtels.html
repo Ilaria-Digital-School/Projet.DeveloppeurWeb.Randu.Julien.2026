@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <!--lien CSS-->
+    <!--lien CSS-->
 
     <link rel="stylesheet" href="../assets/CSS/style.css">
 
@@ -12,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-         <!--lien vers Font AWESOM-->
+    <!--lien vers Font AWESOM-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 
@@ -21,55 +22,55 @@
 
 <body>
 
-<header class="header">
+    <header class="header">
 
-      <!-- Support -->
-    
+        <!-- Support -->
+
         <div class="support">
-    
+
             <div class="phone">
                 <i class="fa-solid fa-phone"></i>
             </div>
-    
+
             <div class="support-text">
                 <small>24/7 Support disponible</small>
                 <strong>01.50.50.50.50</strong>
             </div>
-    
+
         </div>
         <!-- Logo -->
-    
+
         <div class="logo">
             <img src="../assets/Images/logo-bis.png" alt="ResaHôtel.com">
         </div>
-    
+
         <!-- Boutons -->
         <div class="menu">
-    
+
             <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
-    
-    
+
+
             <select name="pays" id="pays" class="langue">
                 <option value="France">France</option>
                 <option value="Anglais">Anglais</option>
             </select>
-    
+
             <select name="devise" id="devise" class="devise">
                 <option value="euro">Euro €</option>
                 <option value="dollard">Dollar $</option>
             </select>
-    
+
         </div>
-      
+
     </header>
 
 
-     <section>
+    <section>
 
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
                 <div class="container-fluid">
-    
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -78,7 +79,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="a-propos.html">A Propos de Nous</a>
                             </li>
-    
+
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
                             <li class="nav-item">
@@ -94,11 +95,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="votre-panier.html">Votre Panier</a>
                             </li>
-                               <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="conditions.html">conditions</a>
                             </li>
-                              </li>
-                                <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="carriere.html">Carriere</a>
                             </li>
                         </ul>
@@ -110,88 +111,447 @@
                 </div>
             </nav>
         </div>
+
     </section>
 
+    <div class="page">
+        <!-- contenu principal : hôtels, paiement... -->
+        <main class="content">
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/Images/Carrousel nos hotels/img1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/Images/Carrousel nos hotels/img2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/Images/Carrousel nos hotels/img3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/Images/Carrousel nos hotels/img4.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/Images/Carrousel nos hotels/img5.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
 
+        </main>
 
+        <aside class="sidebar">
 
-    
- <footer>
-
-    <!--Footer-->
-    <div class="footer-cadre">
-
-        <div class="footer-onglet">
-
-            <h4>ResaHôtel.com</h4>
-
-            <p>35 rue de Tatatouine <br>
-                60150 Ribecourt-Dreslincourt<br>
-                <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2>Villa Modigliani Paris 14e <i class="fa-solid fa-thumbs-up">8/10</i></h2>
+            <p>Un hôtel 4 étoiles situé dans le quartier animé de Montparnasse. Apprécié pour son atmosphère
+                paisible, son
+                jardin intérieur et son emplacement central, il offre un cadre confortable et convivial, idéal pour
+                découvrir
+                Paris dans un environnement calme et authentique.
             </p>
 
-            <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+        </aside>
+    </div>
 
-        </div>
+    <div class="page-3">
+        <main class="content-1">
+
+            <h3 id="choix-room">choisissez votre chambre parmis notre selection : </h3>
+            <li id="chambre">Chambre Individuelle</li>
+            <li id="chambre">Chambre Double</li>
+            <li id="chambre">Chambre Triple</li>
+            <li id="chambre">Chambre Quadruple</li>
+
+        </main>
+
+        <aside class="sidebar-1">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2>Besoin d'aide pour reserver</h2>
+            <p>
+                Vous avez besoin d'aide pour reservez, n'hesitez pas a contacter <strong>notre support disponible 24/7
+                    au 01.50.50.50.50</strong>
+            </p>
+
+        </aside>
+    </div>
+
+    <div class="page-2">
+
+        <main class="content-2">
+
+            <h5 id="titre-chambre"><Strong>Chambre Individuelle 1 Personne</Strong></h5>
+            <img src="../assets/Images/chambres/chambres-individuelle-1pax.avif" alt="">
+            <p id="text-chambre">Offrez-vous un séjour paisible dans la chambre individuelle de la Villa Modigliani, un
+                véritable havre de confort au cœur de Paris. Pensée pour les voyageurs en solo, cette chambre allie
+                élégance,
+                fonctionnalité et atmosphère chaleureuse. Vous y trouverez un lit confortable, une salle de bains
+                privative, une
+                connexion Wi-Fi gratuite, une télévision à écran plat, un espace de travail ainsi que tout le nécessaire
+                pour un
+                séjour agréable. Après une journée de découverte ou de rendez-vous professionnels, profitez d'un
+                environnement
+                calme et accueillant, à quelques pas des principaux sites culturels, restaurants et transports en commun
+                de la
+                capitale. La Villa Modigliani est le choix idéal pour un séjour alliant sérénité, confort et situation
+                privilégiée.
+            </p>
+            <a class="btn btn-primary"
+                href="https://www.villa-modigliani.fr/fr/nos-chambres/chambre-privilege-individuelle" role="button"
+                aria-label="Boutton decrouvrir la chambre">Decouvrir
+            </a>
+
+        </main>
+
+        <aside class="sidebar-2">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2 id="">Pourquoi nous choisir</h2>
+            <p>Chez ResaHotel.com, nous nous engageons à vous proposer des tarifs compétitifs sur une large
+                sélection d'hôtels,
+                resorts et établissements de prestige. Grâce à nos partenariats privilégiés et à une veille
+                constante des offres
+                disponibles, nous vous permettons de réserver en toute confiance au meilleur rapport qualité-prix.
+
+                Profitez d'offres exclusives, de promotions avantageuses et de tarifs soigneusement sélectionnés
+                pour faire de
+                chaque séjour une expérience exceptionnelle, sans compromis sur votre budget. ✨💎🏨.</p>
+
+            <p>Chez ResaHotel.com, nous sélectionnons avec soin les plus beaux hôtels, resorts et établissements de
+                prestige à
+                travers la Capitale afin de vous garantir une expérience exceptionnelle.
+
+                Que vous recherchiez un séjour romantique, une escapade bien-être ou des vacances de luxe, notre
+                mission est simple
+                : vous offrir des expériences uniques dans les plus belles destinations, en toute confiance et au
+                meilleur prix.
+
+                ResaHotel.com, l'excellence au service de vos voyages. ✨</p>
+
+        </aside>
+    </div>
+    <div class="page">
+        <main class="content-2">
+
+            <h5 id="titre-chambre"><Strong>Chambre Double</Strong></h5>
+            <img src="../assets/Images/chambres/chambre-privilege-2pax.avif" alt="">
+            <p id="text-chambre">Profitez d'un séjour placé sous le signe du confort et de la convivialité dans la
+                chambre
+                double de la Villa Modigliani. Spacieuse et élégamment décorée, elle est idéale pour un voyage en
+                couple, entre
+                amis ou pour un déplacement professionnel à deux. Elle dispose d'un lit double confortable ou de deux
+                lits
+                simples selon vos préférences, d'une salle de bains privative, d'une connexion Wi-Fi gratuite, d'une
+                télévision
+                à écran plat, d'un espace de travail et de nombreux équipements pensés pour votre bien-être. Grâce à son
+                ambiance paisible et à son emplacement privilégié au cœur de Paris, vous pourrez découvrir facilement
+                les plus
+                beaux quartiers de la capitale tout en profitant d'un cadre reposant. La Villa Modigliani vous garantit
+                un
+                séjour alliant charme, confort et qualité de service.
+
+            </p>
+            <a class="btn btn-primary"
+                href="https://www.villa-modigliani.fr/fr/nos-chambres/chambre-privilege-2-personnes" role="button"
+                aria-label="Boutton decrouvrir la chambre">Decouvrir
+            </a>
 
 
-        <div class="footer-onglet">
+        </main>
 
-            <h4>Suivez-nous</h4>
+        <aside class="sidebar-2">
 
-            <div class="social">
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2>Reservez avec Nous</h2>
+            <p>
+                Chez ResaHotel.com, nous nous engageons à vous offrir une expérience de réservation fiable,
+                transparente et de
+                haute qualité. Chaque établissement référencé est sélectionné selon des critères rigoureux de
+                confort, de
+                service et de satisfaction client afin de répondre aux attentes les plus exigeantes.
 
-                <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
-                        class="fa-brands fa-facebook-f"></i></a>
+                Notre priorité est de vous garantir un séjour à la hauteur de vos attentes, avec un accompagnement
+                personnalisé
+                et une assistance disponible à chaque étape de votre voyage. Parce que votre satisfaction est
+                essentielle, nous
+                mettons tout en œuvre pour vous offrir le meilleur de l'hôtellerie, en toute confiance. ✨🏨⭐
+            </p>
+            <p>Avec le programme de fidélité ResaHotel Rewards, chaque réservation vous permet de cumuler des points
+                que vous
+                pourrez ensuite convertir en avantages exclusifs. Plus vous voyagez, plus vous êtes récompensé :
+                réductions sur
+                vos prochains séjours, surclassements de chambre, services premium et offres réservées à nos
+                membres.
 
-                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                Profitez d'une expérience encore plus avantageuse à chaque réservation et transformez chacun de vos
+                voyages en
+                nouvelles opportunités de récompenses. Voyagez, cumulez des points et profitez de privilèges
+                exclusifs avec
+                ResaHotel Rewards. ✨🏨🎁</p>
 
-                <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
+        </aside>
+    </div>
+    <div class="page">
+        <main class="content-2">
 
-                <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
+            <h5 id="titre-chambre"><Strong>Chambre Double Deluxe</Strong></h5>
+            <img src="../assets/Images/chambres/chambre-privilege-3pax.avif" alt="">
+            <p id="text-chambre">Offrez-vous une expérience encore plus raffinée avec la Chambre Double Deluxe de la
+                Villa
+                Modigliani. Plus spacieuse et élégamment aménagée, elle est idéale pour les voyageurs en quête de
+                confort, de
+                sérénité et de prestations de qualité. Dotée d'un grand lit double confortable, d'une salle de bains
+                privative
+                moderne, d'une connexion Wi-Fi gratuite, d'une télévision à écran plat, d'un espace de travail et
+                d'équipements
+                soigneusement sélectionnés, elle vous garantit un séjour des plus agréables. Son atmosphère chaleureuse
+                et son
+                décor soigné créent un véritable cocon de détente après une journée passée à découvrir les trésors de
+                Paris ou à
+                honorer vos rendez-vous professionnels. Située dans un quartier calme et proche des principaux sites
+                touristiques ainsi que des transports en commun, la Villa Modigliani vous invite à profiter d'un séjour
+                alliant
+                élégance, confort et qualité de service.
+            </p>
+            <a class="btn btn-primary" href="https://www.villa-modigliani.fr/fr/nos-chambres/chambre-deluxe-2-personnes"
+                role="button" aria-label="Boutton decrouvrir la chambre">Decouvrir
+            </a>
+        </main>
+
+        <aside class="sidebar-2">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+            <h2>Ils nous ont fait confiance </h2>
+            <div class="avis">
+                <div class="etoile">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+                <h4>Excellent séjour !</h4>
+                <p>Chambre très propre, literie confortable et personnel accueillant. Je recommande.</p>
+            </div>
+
+            <div class="avis">
+                <div class="etoile">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+
+                </div>
+                <h4>Escapade Romantique</h4>
+                <p>« Une très belle découverte ! Chambre élégante, excellente literie et ambiance chaleureuse. Le jardin
+                    intérieur
+                    est un véritable plus pour se détendre après une journée de visite. »</p>
+            </div>
+
+            <div class="avis">
+                <div class="etoile">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+                <h4>Week-en en Famille</h4>
+                <p>« Nous avons passé un agréable séjour. La chambre était conforme aux photos et le petit-déjeuner
+                    était varié.
+                    L'emplacement est parfait pour visiter Paris à pied ou en métro. »</p>
+            </div>
+
+        </aside>
+    </div>
+
+    <div class="page">
+        <main class="content-2">
+
+            <h5 id="titre-chambre"><Strong>Chambre Quadruple</Strong></h5>
+            <img src="../assets/Images/chambres/chambre-privilege-4pax.avif" alt="">
+            <p id="text-chambre">Idéale pour les familles ou les groupes d'amis, la chambre quadruple de la Villa
+                Modigliani
+                offre un espace spacieux et confortable pour partager un agréable séjour au cœur de Paris. Élégamment
+                décorée et
+                parfaitement équipée, elle dispose de quatre couchages confortables, d'une salle de bains privative,
+                d'une
+                connexion Wi-Fi gratuite, d'une télévision à écran plat, d'un espace de travail ainsi que de nombreux
+                équipements pensés pour votre bien-être. Son ambiance chaleureuse et son cadre calme vous permettront de
+                vous
+                détendre pleinement après une journée de découvertes dans la capitale. Grâce à son emplacement
+                privilégié, à
+                proximité des transports en commun, des restaurants et des principaux sites touristiques, la Villa
+                Modigliani
+                constitue un excellent choix pour profiter de Paris en toute sérénité, tout en bénéficiant d'un confort
+                optimal
+                et d'un service de qualité.
+            </p>
+            <a class="btn btn-primary"
+                href="https://www.villa-modigliani.fr/fr/nos-chambres/chambre-privilege-4-personnes" role="button"
+                aria-label="Boutton decrouvrir la chambre">Decouvrir
+            </a>
+        </main>
+
+        <aside class="sidebar-2">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+
+            <div class="avis">
+                <div class="etoile">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+
+                </div>
+                <h4>Séjour en Couple !</h4>
+                <p>
+                    « Très bel hôtel, idéalement situé dans un quartier calme de Paris. La chambre était propre,
+                    confortable et
+                    parfaitement équipée. Le personnel s'est montré très accueillant. Nous reviendrons avec plaisir. »
+                </p>
+            </div>
+            <div class="avis">
+                <div class="etoile">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+                <h4>Voyage en Solo !</h4>
+                <p>
+                    « Chambre confortable, propre et bien insonorisée. Les transports en commun sont facilement
+                    accessibles. Une adresse que je recommande pour découvrir la capitale. »
+                </p>
+            </div>
+
+        </aside>
+    </div>
+
+    <div class="page-4">
+
+        <aside class="sidebar-2">
+
+            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+
+            <span class="Badge-nouveau">Ouverture Récente</span>
+            <h5><strong>Hôtels des Grands Voyageurs 4*</strong></h5>
+            <img src="../assets/Images/Nos-Offres-du-moment/hôtel-des-grands-voyageurs.jpeg"
+                alt="hôtel-des-grands-voyageurs">
+            <p>un hôtel haut de gamme situé dans le quartier de Saint-Germain-des-Prés. Inspiré par l’esprit du
+                voyage et l’élégance
+                des années 1930, il séduit par son design raffiné, son ambiance chaleureuse et son confort moderne,
+                offrant une
+                expérience authentique et sophistiquée au cœur de Paris.
+            </p>
+            <a id="new" class="btn btn-primary" href="https://www.hoteldesgrandsvoyageurs.com/fr/a-propos" role="button"
+                aria-label="Boutton decrouvrir l'hôtel">Decouvrir</a>
+
+
+
+        </aside>
+    </div>
+
+
+    <footer>
+
+        <!--Footer-->
+        <div class="footer-cadre">
+
+            <div class="footer-onglet">
+
+                <h4>ResaHôtel.com</h4>
+
+                <p>35 rue de Tatatouine <br>
+                    60150 Ribecourt-Dreslincourt<br>
+                    <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
+                </p>
+
+                <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+
+            </div>
+
+
+            <div class="footer-onglet">
+
+                <h4>Suivez-nous</h4>
+
+                <div class="social">
+
+                    <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+
+                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
+
+                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-onglet">
+
+                <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
+
+                <div class="newsletter">
+                    <input type="email" placeholder="@email">
+                    <button>S'inscrire</button>
+                </div>
 
             </div>
 
         </div>
 
-        <div class="footer-onglet">
+        <!--Zone Coyright-->
 
-            <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
+        <div class="footer-bottom">
 
-            <div class="newsletter">
-                <input type="email" placeholder="@email">
-                <button>S'inscrire</button>
+            <p>
+                Copyright © 2026 ResaHôtel.com.
+                Tous droits réservés.
+            </p>
+
+            <div class="footer-liens">
+
+                <a href="../Pages/a-propos.html">A Propos de Nous</a>
+
+                <a href="../Pages/contact.html">Contact</a>
+
+                <a href="../Pages/carriere.html">Carriere</a>
+
+                <a href="../Pages/conditions.html">Conditions Generales CGU</a>
+
             </div>
 
         </div>
 
-    </div>
+    </footer>
 
-    <!--Zone Coyright-->
+    <!--Lien JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
 
-    <div class="footer-bottom">
-
-        <p>
-            Copyright © 2026 ResaHôtel.com.
-            Tous droits réservés.
-        </p>
-
-        <div class="footer-liens">
-
-            <a href="../Pages/a-propos.html">A Propos de Nous</a>
-
-            <a href="../Pages/contact.html">Contact</a>
-
-            <a href="../Pages/carriere.html">Carriere</a>
-
-            <a href="../Pages/conditions.html">Conditions Generales CGU</a>
-
-        </div>
-
-    </div>
-
-</footer>
-    
 </body>
+
 </html>
