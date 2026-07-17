@@ -13,10 +13,16 @@ background-color: white;
     margin:30px auto;
     background: cornflowerblue;
     display:flex;
-    align-items:center;
+   align-items: center;
     justify-content:space-between;
     padding:20px;
     border: 2px solid black;
+    flex-wrap: wrap;
+}
+
+#titre-principal{
+    text-align: start;
+    text-decoration: underline;
 }
 
 .logo img{
@@ -31,6 +37,7 @@ background-color: white;
     display:flex;
     align-items: center;
     gap:10px;
+    flex-wrap: wrap;
 }
 
 .phone{
@@ -43,11 +50,13 @@ background-color: white;
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-wrap: wrap;
 }
 
 .support-text{
     display:flex;
     flex-direction:column;
+    flex-wrap: wrap;
 }
 
 .support-text small{
@@ -85,7 +94,7 @@ background-color: white;
 }
 
 .monCompte{
-    background:#6b6b6b;
+    background:#8bd4d7;
     color: white;
 }
 
@@ -94,7 +103,7 @@ background-color: white;
 }
 
 .devise{
-    background:#5ec5ca;
+    background:#8bd4d7;
 }
 
 
@@ -125,6 +134,7 @@ footer{
     justify-content:space-between;
     gap:40px;
     padding:40px 20px;
+    flex-wrap: wrap;
 
 }
 
@@ -171,6 +181,7 @@ footer{
 
     display:flex;
     gap:10px;
+    flex-wrap: wrap;
 
 }
 
@@ -181,6 +192,7 @@ footer{
     background:grey;
     color:white;
     display:flex;
+    flex-wrap: wrap;
     justify-content:center;
     align-items:center;
 
@@ -196,6 +208,7 @@ footer{
 
 .newsletter{
     display:flex;
+    flex-wrap: wrap;
 }
 
 .newsletter input{
@@ -208,7 +221,7 @@ footer{
 
 .newsletter button{
     border:1px solid black;
-    background:grey;
+    background:rgb(77, 76, 76);
     color:white;
     padding:0 20px;
     border-radius:0 20px 20px 0;
@@ -222,7 +235,7 @@ footer{
 
 
 
-/*Zonz Copyright*/
+/*Zone Copyright*/
 
 .footer-bottom{
     border-top:2px solid black;
@@ -232,9 +245,10 @@ footer{
 }
 
 .footer-bottom p{
-    color: grey;
+    color: black;
     margin-bottom:10px;
     font-size:15px;
+    font-weight: bold;
 }
 
 .footer-liens{
@@ -245,9 +259,10 @@ footer{
 }
 
 .footer-liens a{
-    color:grey;
+    color:black;
     text-decoration:none;
     font-size:15px;
+    font-weight: bold;
 }
 
 .footer-liens a:hover{
@@ -267,6 +282,7 @@ footer{
 .recherche-carou{
     background:cornflowerblue;
     display:flex;
+    flex-wrap: wrap;
     justify-content:space-between;
     gap:25px;
     padding:25px;
@@ -281,7 +297,9 @@ footer{
 .bloc h3{
     font-size:20px;
     color:black;
+    text-decoration: underline;
     margin-bottom:18px;
+    font-weight: 500;
 }
 
 .bloc span{
@@ -314,6 +332,7 @@ footer{
 
 .dates{
     display:flex;
+    flex-wrap: wrap;
     gap:10px;
 }
 
@@ -347,6 +366,7 @@ footer{
 
 .qui{
     display:flex;
+    flex-wrap: wrap;
     gap:10px;
 }
 
@@ -403,6 +423,7 @@ button:hover{
 
 .flex-container-1{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center; 
     text-align: center;
 }
@@ -411,8 +432,8 @@ button:hover{
 border-radius:10px;
 margin: 10px;
 background-color: cornflowerblue;
-width: 400px;
-height: 450px;
+width: 350px;
+height: 480px;
 border: solid 2px black;
 color: black;
 }
@@ -430,7 +451,7 @@ color: black;
 }
 
 .badge-coeur{
-    color: rgb(155, 3, 3);
+    color: rgb(180, 14, 41);
     top: 10px;
     text-decoration: underline;
     font-weight: bold;
@@ -522,6 +543,7 @@ border: solid 2px black;
 margin: 0 auto;
 align-items: center;
 display: flex;
+flex-wrap: wrap;
 justify-content: center;
   
 }
@@ -548,6 +570,7 @@ justify-content: center;
 .container-formulaire {
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center;
 }
@@ -611,6 +634,7 @@ main {
     display: flex;
     flex-direction: row;
     align-content: center;
+    flex-wrap: wrap;
 
 }
 
@@ -668,6 +692,7 @@ background-color: cornflowerblue;
 /*Page Nos Hôtels*/
 .page{
     display:flex;
+    flex-wrap: wrap;
     background-color: white;
     min-height:50vh;
 }
@@ -744,6 +769,7 @@ background-color: cornflowerblue;
 
 .page-2{
     display:flex;
+    flex-wrap: wrap;
     background-color: white;
     min-height:70vh;
 }
@@ -761,6 +787,7 @@ background-color: cornflowerblue;
 
 .page-3{
     display:flex;
+    flex-wrap: wrap;
     background-color: white;
     height: 30vh;
 }
@@ -790,6 +817,7 @@ background-color: cornflowerblue;
 
 .page-4{
     display:flex;
+    flex-wrap: wrap;
     background-color: white;
     height: 70vh;
     justify-content: end;
@@ -805,6 +833,7 @@ background-color: cornflowerblue;
 
 .page-5{
     display:flex;
+    flex-wrap: wrap;
     height: 30vh;
     justify-content: end;
     margin: 20px;
@@ -858,6 +887,7 @@ background-color: cornflowerblue;
 
 .form-group{
     display:flex;
+    flex-wrap: wrap;
     flex-direction:column;
 
 }
@@ -883,6 +913,7 @@ background-color: cornflowerblue;
 .checkbox{
     grid-column:1 / 3;
     display:flex;
+    flex-wrap: wrap;
     align-items:center;
     gap:10px;
     margin-top:10px;
@@ -900,6 +931,7 @@ background-color: cornflowerblue;
 .btn-paiement{
     
     display: flex;
+    flex-wrap: wrap;
     align-content: center;
     margin-top:10px;
     background:grey;
