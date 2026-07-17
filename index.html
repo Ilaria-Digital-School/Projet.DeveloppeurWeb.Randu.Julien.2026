@@ -169,22 +169,22 @@
                 <h3><span>01</span> Votre Choix</h3>
 
                 <div class="radio-grid">
+                
+                
+                    <input type="radio" name="type">
+                    <label>Hôtel 5*</label>
+                
+                
+                    <input type="radio" name="type">
+                    </label>Hôtel 4*<label>
+                
+                    <input type="radio" name="type">
+                    <label>Palace</label>
+                
+                
+                    <input type="radio" name="type">
+                    <label>Spa</label>
 
-                    <label>
-                        <input type="radio" name="type">Hôtel 5*
-                    </label>
-
-                    <label>
-                        <input type="radio" name="type">Hôtel 4*
-                    </label>
-
-                    <label>
-                        <input type="radio" name="type">Palace
-                    </label>
-
-                    <label>
-                        <input type="radio" name="type">Spa
-                    </label>
                 </div>
             </div>
 
@@ -192,7 +192,7 @@
             <div class="bloc">
 
                 <h3><span>02</span> Ou ?</h3>
-                <input class="destination" type="text" placeholder="Arrondissement de votre choix">
+                <input class="destination" type="text" placeholder="Arrondissement de votre choix" aria-label="choix de l'arrondissement">
 
             </div>
 
@@ -204,15 +204,15 @@
                 <div class="dates">
 
                     <div class="calendar">
-                        <label>Date de Départ</label>
-                        <input type="date">
+                        <label for="date">Date de Départ</label>
+                        <input type="date" id="date">
                         <i class="fa-regular fa-calendar"></i>
 
                     </div>
 
                     <div class="calendar">
-                        <label>Date de Retour</label>
-                        <input type="date">
+                        <label for="date">Date de Retour</label>
+                        <input type="date" id="date">
                         <i class="fa-regular fa-calendar"></i>
                     </div>
 
