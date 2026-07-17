@@ -54,7 +54,10 @@
         <!-- Boutons -->
         <div class="menu">
     
-            <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+             <select name="menu" id="menu">
+                <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+                <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+            </select>
     
             <select name="pays" id="pays" class="langue">
                 <option value="France">France</option>
@@ -76,7 +79,12 @@
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
                 <div class="container-fluid">
-
+                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                        </button>
+                    
+    
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -86,7 +94,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Pages/a-propos.html">A Propos de Nous</a>
                             </li>
-
+    
                             <li class="nav-item">
                                 <a class="nav-link" href="Pages/contact.html">Contact</a>
                             </li>
@@ -106,16 +114,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Pages/conditions.html">Conditions CGU</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="Pages/carriere.html">Carriere</a>
                             </li>
-                              <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="Pages/paiement.html">Paiement</a>
                             </li>
                         </ul>
+                        
                         <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Recherche"
-                                aria-label="Recherche" />
+                            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Recherche"/>
                             <button class="btn btn-outline-success" type="submit">Recherche</button>
                         </form>
                     </div>
