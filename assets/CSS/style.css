@@ -95,15 +95,22 @@ background-color: white;
 
 .monCompte{
     background:#8bd4d7;
-    color: white;
+    border: 1px solid black;
+}
+
+.votrePanier{
+    background:#8bd4d7;
+    border: 1px solid black;
 }
 
 .langue{
     background:#8bd4d7;
+    border: 1px solid black;
 }
 
 .devise{
     background:#8bd4d7;
+    border: 1px solid black;
 }
 
 
