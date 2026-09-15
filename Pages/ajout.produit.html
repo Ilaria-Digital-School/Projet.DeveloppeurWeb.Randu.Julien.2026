@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- SEO -->
-     <meta name="description" content="ResaHôtel.com est une application de reservation d'hôtel court ou long séjour. Découvrez les offres, nos hôtels partenaires et des lieux emblematique de la région parisienne.">
-     <meta name="keywords" content="séjour, reservation, hôtel, région parisienne, partenaires, offres, lieux emblématiques">
-    <title>Carriere</title>
+    <!-- SEO -->
+    <meta name="description"
+        content="ResaHôtel.com est une application de reservation d'hôtel court ou long séjour. Découvrez les offres, nos hôtels partenaires et des lieux emblematique de la région parisienne.">
+    <meta name="keywords"
+        content="séjour, reservation, hôtel, région parisienne, partenaires, offres, lieux emblématiques">
 
     <!--lien CSS-->
 
@@ -20,62 +21,66 @@
     <!--lien vers Font AWESOM-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
+
+    <title>Votre Panier</title>
+
 </head>
 
 <body>
     <header class="header">
-    
+
         <!-- Support -->
         <h1 id="titre-principal">ResaHôtel.com</h1>
         <div class="logo">
             <img src="../assets/Images/logo-bis-wep.webp" alt="logo du site ResaHôtel.com">
         </div>
         <div class="support">
-    
+
             <div class="phone">
                 <i class="fa-solid fa-phone"></i>
             </div>
-    
+
             <div class="support-text">
                 <small>24/7 Support disponible</small>
                 <strong>01.50.50.50.50</strong>
             </div>
-    
+
         </div>
         <!-- Logo -->
-    
-    
-    
+
+
+
         <!-- Boutons -->
         <div class="menu">
-    
-            <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+
+            <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
             <a href="Pages/votre-panier.html" class="votrePanier">Votre Panier</a>
-    
+
             <select name="pays" id="pays" class="langue">
                 <option value="France">France</option>
                 <option value="Portugais">Portugais</option>
                 <option value="Anglais">Anglais</option>
                 <option value="Autre">Autre</option>
             </select>
-    
+
             <select name="devise" id="devise" class="devise">
                 <option value="euro">Euro €</option>
                 <option value="dollard">Dollar $</option>
             </select>
-    
+
         </div>
-    
+
     </header>
+
 
     <section>
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
                 <div class="container-fluid">
-                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-                        </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                    </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -98,15 +103,12 @@
                                 <a class="nav-link" href="formulaire-dinscription.html">Formulaire
                                     d'inscription</a>
                             </li>
-                          
+
                             <li class="nav-item">
                                 <a class="nav-link" href="conditions.html">conditions</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="carriere.html">Carriere</a>
-                            </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="ajout.produit.html">Ajout Produit</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -119,22 +121,39 @@
         </div>
     </section>
 
-    <h1 class="h2">Rejoignez-nous</h1>
-    
-    <section class="flex-container-1">
-    
-        <strong>
-            <p id="carriere">Vous souhaitez rejoindre l'aventure ResaHôtel.com, n'hesitez pas a déposez votre CV. On se fera
-                un plaisir de
-                vous recontactez </p>
-        </strong>
+    <main>
+        <section >
+            <form class="inscription-form" id="productForm">
+                <h2 class="h2">Ajouter un Produit</h2>
 
-    </section>
+                <div>
+                    <label for="productName">Nom du produit : </label>
+                    <input type="text" name="productName" id="productName" placeholder="Le nom de votre produit" required>
+                </div><br>
 
-    <section class="flex-container-1">
-        <div class="article-4" id="drop-zone">Glissez votre CV sous format PDF</div>
-    </section>
+                <div>
+                    <label for="productPrice">Prix : </label>
+                    <input type="number" name="productPrice" id="productPrice" placeholder="Le prix de votre produit" required>
+                </div><br>
 
+                <div>
+                    <label for="description" class="form-label">Description :</label>
+                    <textarea id="description" name="description" placeholder="Votre description" required></textarea>
+                </div><br>
+
+                <div>
+                    <label for="img">Image URL : </label>
+                    <input type="text" name="img" id="img" placeholder="image URL" required>
+                </div>
+
+                <div class="btn-container">
+                    <button class="btn-envoyer" type="submit">Ajouter</button>
+                </div>
+
+                
+            </form>
+        </section>
+    </main>
     <footer>
 
         <!--Footer-->
@@ -149,8 +168,7 @@
                     <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
                 </p>
 
-                <p><i class="fa-solid fa-at" aria-label="lien vers adresse mail de ResaHôtel.com"></i> <a
-                        href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+                <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
 
             </div>
 
@@ -161,18 +179,14 @@
 
                 <div class="social">
 
-
                     <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
-                            class="fa-brands fa-facebook-f" aria-label="line vers page Facebook"></i></a>
+                            class="fa-brands fa-facebook-f"></i></a>
 
-                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"
-                            aria-label="Lien vers page Instagram"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
 
-                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"
-                            aria-label="lien vers page Linkedin"></i></a>
+                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
 
-                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"
-                            aria-label="lien vers page Twitter"></i></a>
+                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
 
                 </div>
 
@@ -202,22 +216,19 @@
 
             <div class="footer-liens">
 
-                <a href="Pages/a-propos.html">A Propos de Nous</a>
+                <a href="../Pages/a-propos.html">A Propos de Nous</a>
 
-                <a href="Pages/contact.html">Contact</a>
+                <a href="../Pages/contact.html">Contact</a>
 
                 <a href="../Pages/carriere.html">Carriere</a>
 
-                <a href="Pages/conditions.html">Conditions Generales CGU</a>
+                <a href="../Pages/conditions.html">Conditions Generales CGU</a>
 
             </div>
 
         </div>
 
     </footer>
-
-    <script src="../assets/js/carriere.js"></script>
-    <script src="../assets/js/user.js"></script>
 
 </body>
 
