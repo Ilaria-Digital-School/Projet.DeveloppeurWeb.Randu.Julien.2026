@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 
-    <title>Votre Panier</title>
+    <title>Ajout-Produit</title>
 
 </head>
 
@@ -110,8 +110,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="carriere.html">Carriere</a>
                             </li>
-                              <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="reservation.html">Reservation</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -125,20 +128,32 @@
     </section>
 
     <main>
-        <section class="connexion" >
+        <section class="connexion">
             <form class="inscription-form" id="productForm">
-                <h2 class="h2">Ajouter un Produit</h2>
+                <h2 class="h2">Ajouter un Hôtel</h2>
 
                 <div>
-                    <label for="productName">Nom du produit : </label>
-                    <input type="text" name="productName" id="productName" placeholder="Le nom de votre produit" required>
+                    <label for="productName">Nom de l'Hotel : </label>
+                    <input type="text" name="productName" id="productName" placeholder="Le nom de votre Hôtel" required>
+                </div><br>
+                <div>
+                    <label for="adresse">Adresse : </label>
+                    <input type="texte" name="adresse" id="adresse" placeholder="Adresse Complète" required>
+                </div><br>
+                <div>
+                    <label for="etoile">Nombre d'étoiles <i class="fa-solid fa-star"></i>: </label>
+                    <input type="number" name="etoile" id="etoile" placeholder="Nombre d'étoiles" required>
+                </div><br>
+                <div>
+                    <label for="type">Type de Chambre : </label>
+                    <input type="text" name="type" id="type" placeholder="type de chambre" required>
                 </div><br>
 
                 <div>
                     <label for="productPrice">Prix : </label>
-                    <input type="number" name="productPrice" id="productPrice" placeholder="Le prix de votre produit" required>
+                    <input type="number" name="productPrice" id="productPrice" placeholder="Chambre a partir de..€"
+                        required>
                 </div><br>
-
                 <div>
                     <label for="description" class="form-label">Description :</label>
                     <textarea id="description" name="description" placeholder="Votre description" required></textarea>
@@ -153,7 +168,7 @@
                     <button class="btn-envoyer" type="submit">Ajouter</button>
                 </div>
 
-                
+
             </form>
         </section>
     </main>
@@ -199,10 +214,14 @@
 
                 <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
 
-                <div class="newsletter">
-                    <input type="email" placeholder="@email">
-                    <button>S'inscrire</button>
-                </div>
+                <form id="inscription-news">
+                    <div class="newsletter">
+                        <input type="email" placeholder="Votre Email @" id="email-news" required>
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </form>
+                <p id="message-news"></p>
+
 
             </div>
 
@@ -234,6 +253,7 @@
     </footer>
     <script src="../assets/js/product.js"></script>
     <script src="../assets/js/user.js"></script>
+    <script src="../assets/js/newsletter.js"></script>
 
 </body>
 

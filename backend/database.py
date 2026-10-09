@@ -14,3 +14,8 @@ def get_connection():
         database=os.getenv("DB_NAME"),
         use_pure=True
     )
+    
+if __name__=="__main__":
+    connexion = get_connection()
+    print("Connexion à MySQL réussie !")
+    connexion.close()    

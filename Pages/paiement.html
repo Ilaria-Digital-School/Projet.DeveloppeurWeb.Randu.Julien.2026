@@ -91,7 +91,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="contact.html">Contact</a> 
                             <li class="nav-item">
                                 <a class="nav-link" href="nos-hôtels.html">Nos Hôtels</a>
                             </li>
@@ -118,6 +118,9 @@
                             </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="reservation.html">Reservation</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -280,10 +283,14 @@
 
                 <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
 
-                <div class="newsletter">
-                    <input type="email" placeholder="@email">
-                    <button>S'inscrire</button>
-                </div>
+                <form id="inscription-news">
+                    <div class="newsletter">
+                        <input type="email" placeholder="Votre Email @" id="email-news" required>
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </form>
+                <p id="message-news"></p>
+
 
             </div>
 
@@ -318,6 +325,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
         </script>
+        <script src="../assets/js/newsletter.js"></script>
 
 </body>
 

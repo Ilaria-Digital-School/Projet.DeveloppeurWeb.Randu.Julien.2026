@@ -4,6 +4,10 @@ from database import get_connection
 
 
 class ResaHotelServer(BaseHTTPRequestHandler):
+    
+    #Bloc Hôtel
+    # voir s'il faut faire la copie du bloc entier pour chambre, reservation, utilisateurs etc...
+    #ajouter les fonction GET/POST/PUT/DELETE pour faire les test via Postman
 
     def do_GET(self):
 
@@ -13,7 +17,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             self.end_headers()
 
             self.wfile.write(
-                b'{"message": "Bienvenue sur l API ResaHotel"}'
+                b'{"message": "Bienvenue sur ResaHotel.com"}'
             )
             
         elif self.path == "/hotels":

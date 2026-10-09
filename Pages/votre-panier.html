@@ -111,6 +111,9 @@
                              <li class="nav-item">
                                 <a class="nav-link" href="ajout.produit.html">Ajout Produit</a>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="reservation.html">Reservation</a>
+                            </li>
                         </ul>
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -162,14 +165,18 @@
 
         <div class="footer-onglet">
 
-            <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
+                <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
 
-            <div class="newsletter">
-                <input type="email" placeholder="@email">
-                <button>S'inscrire</button>
+                <form id="inscription-news">
+                    <div class="newsletter">
+                        <input type="email" placeholder="Votre Email @" id="email-news" required>
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </form>
+                <p id="message-news"></p>
+
+
             </div>
-
-        </div>
 
     </div>
 
@@ -197,6 +204,7 @@
     </div>
 
 </footer>
+<script src="../assets/js/newsletter.js"></script>
     
 </body>
 </html>

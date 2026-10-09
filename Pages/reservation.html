@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO -->
+     <meta name="description" content="ResaHôtel.com est une application de reservation d'hôtel court ou long séjour. Découvrez les offres, nos hôtels partenaires et des lieux emblematique de la région parisienne.">
+     <meta name="keywords" content="séjour, reservation, hôtel, région parisienne, partenaires, offres, lieux emblématiques">
+
+    <!--lien CSS-->
+
+    <link rel="stylesheet" href="../assets/CSS/style.css">
+
+    <!--Lien Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!--lien vers Font AWESOM-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+
+    <title>Reservation</title>
+</head>
+
+<body>
+
+       <header class="header">
+    
+        <!-- Support -->
+        <h1 id="titre-principal">ResaHôtel.com</h1>
+        <div class="logo">
+            <img src="../assets/Images/logo-bis-wep.webp" alt="logo du site ResaHôtel.com">
+        </div>
+        <div class="support">
+    
+            <div class="phone">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+    
+            <div class="support-text">
+                <small>24/7 Support disponible</small>
+                <strong>01.50.50.50.50</strong>
+            </div>
+    
+        </div>
+        <!-- Logo -->
+    
+    
+    
+        <!-- Boutons -->
+        <div class="menu">
+    
+            <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
+            <a href="Pages/votre-panier.html" class="votrePanier">Votre Panier</a>
+    
+            <select name="pays" id="pays" class="langue">
+                <option value="France">France</option>
+                <option value="Portugais">Portugais</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Autre">Autre</option>
+            </select>
+    
+            <select name="devise" id="devise" class="devise">
+                <option value="euro">Euro €</option>
+                <option value="dollard">Dollar $</option>
+            </select>
+    
+        </div>
+    
+    </header>
+
+
+    <section>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
+                <div class="container-fluid">
+                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                        </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="a-propos.html">A Propos de Nous</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="nos-hôtels.html">Nos Hôtels</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="votre-compte.html">Votre Compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="formulaire-dinscription.html">Formulaire
+                                    d'inscription</a>
+                            </li>
+                          
+                            <li class="nav-item">
+                                <a class="nav-link" href="conditions.html">conditions</a>
+                            </li>
+                              </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="carriere.html">Carriere</a>
+                            </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="ajout.produit.html">Ajout Produit</a>
+                            </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <main>
+
+
+
+        <!--Formulaire de contact-->
+        <section class="container-formulaire">
+
+            <form id="reservationForm">
+
+                <fieldset class="inscription-fieldset">
+                    <h2 class="h2">Reservation</h2>
+
+                    <h3>Informations Personnelles</h3>
+
+                    <div>
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" placeholder="Nom" required>
+                    </div><br>
+
+                    <div>
+                        <label for="prenom">Prenom</label>
+                        <input type="text" id="prenom" placeholder="Prénom" required>
+                    </div>
+
+                    <br><label for="tel">Numéro de telephone</label>
+                    <input type="text" id="tel" placeholder="numéro de téléphone" required> <br>
+
+                    <br><label for="email">email</label>
+                    <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
+
+                    
+                </fieldset>
+
+                <fieldset class="inscription-fieldset">
+                    <h3>Votre selection </h3>
+                
+                    <div>
+                        <br><label for="hotel">Hôtel</label>
+                        <select name="hotel" id="hotel">
+                            <option value="votre selection">Votre Selection</option>
+                            <option value="villa-modigliani">La Villa Modigliani</option>
+                            <option value="intercontinental">Intercontinental</option>
+                            <option value="le-scribe">Le Scribe</option>
+                            <option value="le-georges-v">Le Georges V</option>
+                            <option value="le-hyatt-paris-madeleine">Le Hyatt Paris Madeleine</option>
+                            <option value="le-pullman-tour-eiffel">Le Pullman Tour Eiffel</option>
+                            <option value="l'hotel-des-grands-voyageurs">L'Hotel des Grands Voyageurs</option>
+                            <option value="le-collectionneur">Le Collectionneur</option>
+                            <option value="novotel-paris-les-halles">Le Novotel Paris les Halles</option>
+                            <option value="marriott-paris-rive-gauche">Le Marriott Paris Rive Gauche</option>
+                            <option value="le-renaissance">Le Renaissance Paris Nobel</option>
+                            <option value="le-meridien">Le Meridien</option>
+                            <option value="le-drawing-house">Le Drawing House</option>
+                            <option value="les-jardins-du-marais">Les Jardins du Marais</option>
+                            <option value="le-crowne-plaza">Le Crowne Plaza</option>
+                            <option value="le-hyatt-regency">Le Hyatt Regency</option>
+                
+                        </select>
+                    </div><br>
+                    <div>
+                        <label for="nbr_adulte">Nombre d'adulte</label>
+                        <input type="number" name="nbr_adulte" id="nbr_adulte" placeholder="Nombre d'Adulte" required>
+                    </div><br>
+                    <div>
+                        <label for="nbr_enfant">Nombre d'enfant</label>
+                        <input type="number" name="nbr_enfant" id="nbr_enfant" placeholder="Nombre d'Enfant" required>
+                    </div>
+                    <div>
+                        <br><label for="chambre">Votre Chambre</label>
+                        <select name="chambre" id="chambre">
+                            <option value="votre chambre">Votre Chambre</option>
+                            <option value="chambre simple">Chambre Simple</option>
+                            <option value="chambre double">Chambre Double</option>
+                            <option value="chambre triple">Chambre Triple</option>
+                            <option value="chambre quadruple">Chambre Quadruple</option>
+                
+                        </select>
+                    </div>
+                
+                    <div>
+                        <br><label for="msg">Message</label>
+                        <textarea id="msg" placeholder="Votre Message" required></textarea>
+                    </div>
+                
+                    <div class="btn-container">
+                        <button class="btn-envoyer" type="submit">Reserver</button><br>
+                    </div>
+                </fieldset>
+
+            </form>
+            <p id="message"></p>
+        </section>
+
+    </main>
+
+    <footer>
+
+        <!--Footer-->
+        <div class="footer-cadre">
+
+            <div class="footer-onglet">
+
+                <h4>ResaHôtel.com</h4>
+
+                <p>35 rue de Tatatouine <br>
+                    60150 Ribecourt-Dreslincourt<br>
+                    <i class="fa-solid fa-phone"></i> : 01.50.50.50.50
+                </p>
+
+                <p><i class="fa-solid fa-at"></i> <a href="mailto:resahotel@gmail.com">resahotel@gmail.com</a></p>
+
+            </div>
+
+
+            <div class="footer-onglet">
+
+                <h4>Suivez-nous</h4>
+
+                <div class="social">
+
+                    <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+
+                    <a href="https://www.linkedin.com/feed"><i class="fa-brands fa-linkedin-in"></i></a>
+
+                    <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i></a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-onglet">
+
+                <h4>Ne ratez aucune offre, inscrivez-vous à notre Newsletters</h4>
+
+                <form id="inscription-news">
+                    <div class="newsletter">
+                        <input type="email" placeholder="Votre Email @" id="email-news" required>
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </form>
+                <p id="message-news"></p>
+
+
+            </div>
+
+        </div>
+
+        <!--Zone Coyright-->
+
+        <div class="footer-bottom">
+
+            <p>
+                Copyright © 2026 ResaHôtel.com.
+                Tous droits réservés.
+            </p>
+
+            <div class="footer-liens">
+
+                <a href="../Pages/a-propos.html">A Propos de Nous</a>
+
+                <a href="../Pages/contact.html">Contact</a>
+
+                <a href="../Pages/carriere.html">Carriere</a>
+
+                <a href="../Pages/conditions.html">Conditions Generales CGU</a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="../assets/js/user.js"></script>
+    <script src="../assets/js/newsletter.js"></script>
+    <script src="../assets/js/reservation.js"></script>
+    <!--Lien JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+        
+        
+
+
+</body>
+
+
+</html>

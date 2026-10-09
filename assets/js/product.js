@@ -1,9 +1,13 @@
 class Produit {
-    constructor(nom, description, prix, imgSrc) {
+    constructor(nom, adresse, etoile, type, description, prix, imgSrc) {
         this.nom =nom;
+        this.adresse=adresse;
+        this.etoile=etoile;
+        this.type=type
         this.description =description;
         this.prix = prix;
         this.imgSrc =imgSrc;
+
     }
 }
 
@@ -16,12 +20,15 @@ function ajouterProduit() {
         event.preventDefault(); //Annuler le rechargement automatique de la page
 
         let nom = document.getElementById("productName").value;
+        let adresse = document.getElementById("adresse").value;
+        let etoile = document.getElementById("etoile").value;
+        let type = document.getElementById("type").value;
         let description = document.getElementById("description").value;
         let prix = document.getElementById("productPrice").value;
         let imgSrc = document.getElementById("img").value;
 
         //Création de l'objet
-        let produit = new Produit(nom, description, prix, imgSrc);
+        let produit = new Produit(nom, adresse, etoile, type, description, prix, imgSrc);
         console.log(produit);
 
         // Sauvegarder dans localstorage
