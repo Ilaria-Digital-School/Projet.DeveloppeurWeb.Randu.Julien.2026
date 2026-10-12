@@ -15,6 +15,24 @@ def get_connection():
         use_pure=True
     )
     
+def lire(sql, valeurs=()):
+    connexon = get_connection()
+    try :
+        curseur = connexion.cursor(dictionnary=True)
+        curseur.execute(sql, valeurs)
+        return curseur.fetchall()
+    finally:
+        connexion.close()
+        
+def ecrire(sql, valeurs=()):
+    connexion = get_connection
+    try:
+        curseur= connexion.cursor()
+        curseur.execute(sql, valeurs)
+        connexion.commit()
+    finally:
+        connexion.close()
+    
 if __name__=="__main__":
     connexion = get_connection()
     print("Connexion à MySQL réussie !")
