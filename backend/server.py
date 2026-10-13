@@ -16,9 +16,9 @@ def convertir_json(valeur):
 
 class ResaHotelServer(BaseHTTPRequestHandler):
     def repondre(self, statusCode, contenu):
-        corps = json.dumps(contenu, default=str).encode("utf-8")
+        corps = json.dumps(contenu, default=convertir_json).encode("utf-8")
         self.send_response(statusCode)
-        self.send_header("content-Type", "application/json; charsey=utf-8")
+        self.send_header("content-Type", "application/json; charset=utf-8")
         self.send_header("content-length", str(len(corps)))
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
@@ -72,7 +72,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             statusCode, contenu = chambre.lister_chambres()
                             
             elif morceaux == ["chambres"] and methode == "POST":
-                            statusCode, contenu = chambre.creer_hotel(self.lire_json())
+                            statusCode, contenu = chambre.creer_chambre(self.lire_json())
                             
             elif len(morceaux) == 2 and morceaux [0] == "chambres" and methode == "GET":
                             statusCode, contenu = chambre.chambre_hotel(morceaux[1])
@@ -106,7 +106,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             elif len(morceaux) == 2 and morceaux [0] == "reservations" and methode == "PATCH":
                             statusCode, contenu = reservation.modifier_reservation(morceaux[1], self.lire_json(), False)
                                         
-            elif len(morceaux) == 3 and morceaux [0] == "reservations" and methode == "DELETE":
+            elif len(morceaux) == 2 and morceaux [0] == "reservations" and methode == "DELETE":
                             statusCode, contenu = reservation.supprimer_reservation(morceaux[1])
                             
             #Inscriptions / Connexion
@@ -114,7 +114,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             statusCode, contenu = utilisateur.inscrire(self.lire_json())
                                                     
             elif morceaux == ["connexion"] and methode == "POST":
-                            statusCode, contenu = utilisateur.connexion(self.lire_json())
+                            statusCode, contenu = utilisateur.connecter(self.lire_json())
             
             else:
                 statusCode, contenu = 404, {"error":"Route Inconnue"}
@@ -122,6 +122,10 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         except mysql.connector.Error as erreur:
             print("Erreur MySQL :", erreur)
             statusCode, contenu = 500, {"error" : "Erreur de Base de Données"}
+            
+        except Exception as erreur:
+                    print("Erreur Serveur :", repr(erreur))
+                    statusCode, contenu = 500, {"error" : "Erreur du serveur"}
             
         self.repondre(statusCode, contenu)
         
@@ -144,14 +148,14 @@ class ResaHotelServer(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type ,Authorization")
         self.end_headers()
         
 if __name__ == "__main__":
     serveur= HTTPServer(("localhost", 8000), ResaHotelServer)
     print("Serveur ResaHotel démarré sur http://localhost:8000")
-    serveur.serve_forever
+    serveur.serve_forever()
         
         
 
