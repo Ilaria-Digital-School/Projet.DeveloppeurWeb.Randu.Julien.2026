@@ -7,6 +7,9 @@ import hotel
 import chambre
 import utilisateur
 import reservation
+import securite
+
+PROTECTION_ACTIVATE = False #remplacer par TRUE pour réactiver 
 
 #permet de convertir le prix et les dates
 def convertir_json(valeur):
@@ -42,9 +45,19 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         morceaux = [ m for m in chemin.split("/") if m != ""] #morceaux = morceaux de l'URL ecrit sur Postman. 
         #("/") permet de prendre en compte le split ("/")
         
-        #Concerne la page hotel.py
-        
         try:
+            #bloc de securite
+            #lignes 50, pour le moment seul hotels et chambres sont proteger, il faut dupppliquer pour reservation.py etc..
+            # A FINALISER
+            
+            if PROTECTION_ACTIVATE and len (morceaux) > 0 and morceaux[0] in ["hotels", "chambres"] and methode in ["POST", "PUT", "PATCH", "DELETE"]:
+                utilisateur_connect = securite.lire_jeton(self.headers.get("Authorization"))
+                refus = securite.verifier_droits(utilisateur_connect, ["admin"])
+                if refus is not None:
+                    self.repondre(refus[0], refus[1])
+                    return
+             
+         #Concerne la page hotel.py  
             if morceaux == []:
                 statusCode, contenu = 200, {"message": "Bienvenue sur ResaHotel.com"}
                 
@@ -69,7 +82,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             #Concerne la page chambre.py
                    
             elif morceaux == ["chambres"] and methode == "GET":
-                            statusCode, contenu = chambre.lister_chambres()
+                            statusCode, contenu = chambre.lister_chambre()
                             
             elif morceaux == ["chambres"] and methode == "POST":
                             statusCode, contenu = chambre.creer_chambre(self.lire_json())
@@ -87,12 +100,12 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             statusCode, contenu = chambre.modifier_chambre(morceaux[1], morceaux[2], self.lire_json(), False)
                             
             elif len(morceaux) == 3 and morceaux [0] == "chambres" and methode == "DELETE":
-                            statusCode, contenu = chambre.supprimer_chambres(morceaux[1], morceaux[2])
+                            statusCode, contenu = chambre.supprimer_chambre(morceaux[1], morceaux[2])
                             
             #Concerne la page reservation
             
             elif morceaux == ["reservations"] and methode == "GET":
-                            statusCode, contenu = reservation.lister_reservations()
+                            statusCode, contenu = reservation.lister_reservation()
                                         
             elif morceaux == ["reservations"] and methode == "POST":
                             statusCode, contenu = reservation.creer_reservation(self.lire_json())
@@ -110,6 +123,10 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             statusCode, contenu = reservation.supprimer_reservation(morceaux[1])
                             
             #Inscriptions / Connexion
+            # A verifier
+            elif morceaux == ["utilisateur"] and methode == "GET":
+                            statusCode, contenu = utilisateur.lister_utilisateur(self.lire_json())
+            
             elif morceaux == ["inscription"] and methode == "POST":
                             statusCode, contenu = utilisateur.inscrire(self.lire_json())
                                                     
@@ -149,10 +166,12 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type ,Authorization")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
         self.end_headers()
         
 if __name__ == "__main__":
+    if not PROTECTION_ACTIVATE:
+        print("Attention : protection et jeton desactiver !")#securité a finalisée
     serveur= HTTPServer(("localhost", 8000), ResaHotelServer)
     print("Serveur ResaHotel démarré sur http://localhost:8000")
     serveur.serve_forever()

@@ -3,7 +3,7 @@
 import mysql.connector
 from database import lire, ecrire
 
-CHAMPS = ["nom", "nombre_etoile", "description", "adresse", "code_postale","ville","pays","image"]
+CHAMPS = ["nom", "nombre_etoiles", "description", "adresse", "code_postale","ville","pays","image"]
 
 #les etoiles doivent etre un nombre en 1 et 5
 def etoiles_valides(valeur):

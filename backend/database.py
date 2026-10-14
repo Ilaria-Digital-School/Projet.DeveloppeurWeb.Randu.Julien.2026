@@ -16,16 +16,16 @@ def get_connection():
     )
     
 def lire(sql, valeurs=()):
-    connexon = get_connection()
+    connexion = get_connection()
     try :
-        curseur = connexion.cursor(dictionnary=True)
+        curseur = connexion.cursor(dictionary=True)
         curseur.execute(sql, valeurs)
         return curseur.fetchall()
     finally:
         connexion.close()
         
 def ecrire(sql, valeurs=()):
-    connexion = get_connection
+    connexion = get_connection()
     try:
         curseur= connexion.cursor()
         curseur.execute(sql, valeurs)

@@ -6,6 +6,26 @@ import securite
 
 CHAMPS_INSCRIPTION = ["nom", "prenom", "email", "mot_de_passe", "telephone"]
 
+ #A verifier pour le GET utilisateurs
+
+def trouver_utilisateur(utilisateur):
+    lignes = lire("SELECT * FROM utilisateur WHERE utilisateur=%s", (utilisateur,))
+    if len(lignes)==0:
+        return None
+    return lignes[0]
+
+#GET 
+def lister_utilisateur():
+    return 200, lire("SELECT * FROM utilisateur")
+
+def un_utilisateur(utilisateur):
+    utilisateur = trouver_utilisateur(utilisateur)
+    if utilisateur is None:
+        return 404, {"error": "utilisateur introuvable !"}
+    return 200, utilisateur
+
+
+
 def sans_mot_de_passe(utilisateur):
     #renvoie une copie de l'utilisateur sans la colonnne mot de passe (securite)
     copie = dict(utilisateur)

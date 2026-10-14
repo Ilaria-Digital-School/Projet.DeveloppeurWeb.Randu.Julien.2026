@@ -74,7 +74,7 @@ def route_supprimer_hotel(identifiant):
 #Route pour les Chambres
 
 @app.get("/chambres")
-def route_lister_chambres():
+def route_lister_chambre():
     return repondre(chambre.lister_chambre())
 
 @app.post("/chambres")
@@ -93,7 +93,7 @@ def route_une_chambre(id_hotel, id_chambre):
 def route_remplacer_chambre(id_hotel, id_chambre):
     return repondre(chambre.modifier_chambre(id_hotel, id_chambre, lire_json(), True))
 
-@app.patch("/chambress/<id_hotel>/<id_chambre>")
+@app.patch("/chambres/<id_hotel>/<id_chambre>")
 def route_modifier_chambre(id_hotel, id_chambre):
     return repondre(chambre.modifier_chambre(id_hotel, id_chambre, lire_json(), False))
 
@@ -104,7 +104,7 @@ def route_supprimer_chambre(id_hotel, id_chambre):
 #Reservation
 
 @app.get("/reservations")
-def route_lister_resrevations():
+def route_lister_reservations():
     return repondre(reservation.lister_reservation())
 
 @app.post("/reservations")
@@ -128,6 +128,10 @@ def route_supprimer_reservation(identifiant):
     return repondre(reservation.supprimer_reservation(identifiant))
 
 #Comptes
+# a verifier pour la page utilisateur et listing 
+@app.post("/utilisateur")
+def route_lister_utilisateur():
+    return repondre(utilisateur.lister_utilisateur(lire_json()))
 
 @app.post("/inscription")
 def route_inscription():
@@ -139,20 +143,20 @@ def route_connexion():
 
 #Les erreurs et les StatusCode
 
-@app.errorHandler(404)
+@app.errorhandler(404)
 def erreur_404(erreur):
     return jsonify({"error": "Route inconnue !"}), 404
 
-@app.errorHandler(405)
+@app.errorhandler(405)
 def erreur_405(erreur):
     return jsonify({"error": "Methode non autorise !"}), 405
 
-@app.errorHandler(mysql.connector.Error)
+@app.errorhandler(mysql.connector.Error)
 def erreur_mysql(erreur):
     print("Erreur MySQL :", erreur)
     return jsonify({"error": "Erreur sur la Base de Donnee !"}), 500
 
-@app.errorHandler(Exception)
+@app.errorhandler(Exception)
 def erreur_imprevue(erreur):
     if isinstance(erreur, HTTPException):
         return jsonify({"error": erreur.description}), erreur.code

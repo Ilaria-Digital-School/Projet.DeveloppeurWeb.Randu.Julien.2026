@@ -4,7 +4,7 @@ from database import lire, ecrire
 from chambre import trouver_chambre
 
 
-CHAMPS = ["date_arrivée", "date_depart", "nombre_adulte","nombre_enfant","montant_total", "statut", "chambre", "hotel", "utilisateur"]
+CHAMPS = ["date_arrivee", "date_depart", "nombre_adulte","nombre_enfant","montant_total", "statut", "chambre", "hotel", "utilisateurs"]
 
 STATUTS_VALIDE = ["en attente", "confirmee", "annulee"]
 STATUTS_ANNULE = "annulee"
@@ -50,13 +50,13 @@ def verifier_valeurs(donnees):
     return None
 
 def trouver_reservation(identifiant):
-    lignes = lire ("SELECT * FROM reservation WHERE reservation = %s", (identifiant))
+    lignes = lire ("SELECT * FROM reservation WHERE reservation = %s", (identifiant,))
     if len(lignes) == 0:
         return None
     return lignes [0]
 
 def utilisateurs_existe(identifiant):
-    lignes = lire("SELECT utilisateurs FROM utilisateur WHERE utilisateurs = %s",(identifiant))
+    lignes = lire("SELECT utilisateurs FROM utilisateur WHERE utilisateurs = %s",(identifiant,))
     return len(lignes) > 0
 
 def verifier_regles(reservation, id_a_exclure=None):
@@ -68,7 +68,7 @@ def verifier_regles(reservation, id_a_exclure=None):
         return 400, "Cet utilisateur n'existe pas"
     
     #la date de départ doit etre apres la date d'arrivée
-    arrivee=str(reservation["date_arrivee"])
+    arrivee = str(reservation["date_arrivee"])
     depart = str(reservation["date_depart"])
     if date.fromisoformat(depart) <= date.fromisoformat(arrivee):
         return 409, "La date de départ doit etre apres la date d'arrivee"
@@ -78,11 +78,11 @@ def verifier_regles(reservation, id_a_exclure=None):
         return None
     
     #permets de ne pas avoir de reservation en meme temps mais permets une resevation avec des dates qui se chevauche 
-    sql = ("SELECT reservation FROM reservation" "WHERE hotel = %s AND chambre = %s" 
-           "AND statut <> %s" "AND date_arrivee < %s AND date_depart > %s")
+    sql = ("SELECT reservation FROM reservation " "WHERE hotel = %s AND chambre = %s " 
+           "AND statut <> %s " "AND date_arrivee < %s AND date_depart > %s ")
     valeurs = [reservation["hotel"], reservation["chambre"], STATUTS_ANNULE, depart, arrivee]
     if id_a_exclure is not None:
-        sql += "AND reservation <> %s"
+        sql += " AND reservation <> %s"
         valeurs.append(id_a_exclure)
         
     if len(lire(sql, valeurs)) > 0:
@@ -174,7 +174,7 @@ def supprimer_reservation(identifiant):
         return 404, {"error":" Reservation introuvable !"}
     
     try:
-        ecrire("DELETE FROM reservation WHERE reservation = %s", (identifiant))
+        ecrire("DELETE FROM reservation WHERE reservation = %s", (identifiant,))
     except mysql.connector.IntegrityError:
         return 409, {"error": "supression impossible : un paiement est en cours"}
     return 200, {"message": "Reservation supprimee avec succes !"}

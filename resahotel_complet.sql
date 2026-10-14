@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `resahotel` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `resahotel`;
 -- MySQL dump 10.13  Distrib 8.0.45, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: resahotel
@@ -130,7 +128,6 @@ CREATE TABLE `paiement` (
   `reservation` varchar(50) NOT NULL,
   PRIMARY KEY (`paiement`),
   UNIQUE KEY `reservation` (`reservation`),
-  UNIQUE KEY `montant` (`montant`),
   CONSTRAINT `paiement_ibfk_1` FOREIGN KEY (`reservation`) REFERENCES `reservation` (`reservation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -164,8 +161,6 @@ CREATE TABLE `reservation` (
   `hotel` varchar(50) NOT NULL,
   `utilisateurs` varchar(50) NOT NULL,
   PRIMARY KEY (`reservation`),
-  UNIQUE KEY `date_arrivee` (`date_arrivee`),
-  UNIQUE KEY `date_depart` (`date_depart`),
   KEY `chambre` (`chambre`,`hotel`),
   KEY `utilisateurs` (`utilisateurs`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`chambre`, `hotel`) REFERENCES `chambre` (`chambre`, `hotel`),
@@ -195,10 +190,10 @@ CREATE TABLE `utilisateur` (
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `mot_de_passe` varchar(50) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL,
   `telephone` varchar(50) NOT NULL,
+  `role` varchar(20) NOT NULL DEFAULT 'client',
   PRIMARY KEY (`utilisateurs`),
-  UNIQUE KEY `mot_de_passe` (`mot_de_passe`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -209,7 +204,7 @@ CREATE TABLE `utilisateur` (
 
 LOCK TABLES `utilisateur` WRITE;
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
-INSERT INTO `utilisateur` VALUES ('U001','Dupont','Jean','jean.dupont@gmail.com','MotDePasse123','0612345678'),('U002','Martin','Sophie','sophie.martin@gmail.com','Sophie2026','0623456789'),('U003','Bernard','Thomas','thomas.bernard@gmail.com','Thomas2026','0678901234'),('U004','Corentin','Verheyde','corentin.v@gmail.com','coco2026','0615874965'),('U005','Marie','Monte','marie.monte@gmail.com','Marie5946','0656849578'),('U006','Damiens','François','damien.f@gmail.com','toto1234','0632857469');
+INSERT INTO `utilisateur` VALUES ('U001','Dupont','Jean','jean.dupont@gmail.com','MotDePasse123','0612345678','client'),('U002','Martin','Sophie','sophie.martin@gmail.com','Sophie2026','0623456789','client'),('U003','Bernard','Thomas','thomas.bernard@gmail.com','Thomas2026','0678901234','client'),('U004','Corentin','Verheyde','corentin.v@gmail.com','coco2026','0615874965','client'),('U005','Marie','Monte','marie.monte@gmail.com','Marie5946','0656849578','client'),('U006','Damiens','François','damien.f@gmail.com','toto1234','0632857469','client'),('Uadmin01','Randu','Julien','admin@gmail.com','$2b$12$6Ekz84SLQwNJEzCA9EeSTeRWudcueUYhi57bBhxsVycjYq.b9fleW','0605132521','admin');
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -222,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-06 19:12:49
+-- Dump completed on 2026-10-14 11:41:50

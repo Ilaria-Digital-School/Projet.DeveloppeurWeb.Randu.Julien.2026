@@ -10,7 +10,7 @@ DUREE_JETON = 60 * 60
 def cle_secrete():
     cle = os.getenv("JWT_SECRET")
     if not cle or len(cle) < 32:
-        raise RuntimeError("JWT_SECRET manquante ou trop court (32 caracteres minimum) dans le fichier .env")
+        raise RuntimeError("JWT_SECRET manquante ou trop courte (32 caracteres minimum) dans le fichier .env")
     return cle
 
 def creer_jeton(utilisateur):

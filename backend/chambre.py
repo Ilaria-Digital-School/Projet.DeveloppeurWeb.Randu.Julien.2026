@@ -15,7 +15,7 @@ def capacite_valide(valeur):
 #Le tarif doit etre supérieur à 0
 
 def tarif_valide(valeur):
-    if isinstance(valeur,bool) or not isinstance(valeur,int):
+    if isinstance(valeur,bool) or not isinstance(valeur, (int, float)):
         return False
     return valeur > 0
 
@@ -28,7 +28,7 @@ def verifier_valeurs(donnees):
 
 
 def hotel_existe(id_hotel):
-    lignes = lire("SELECT hotel * FROM hotel WHERE hotel=%s", (id_hotel,))
+    lignes = lire("SELECT hotel FROM hotel WHERE hotel=%s", (id_hotel,))
     return len(lignes) > 0
 
 # permets de trouver la chambre en fonction de l'hotel ou None si introuvable/inexistante 
@@ -50,7 +50,7 @@ def chambre_hotel(id_hotel):
 def une_chambre(id_hotel, id_chambre):
     chambre = trouver_chambre(id_hotel, id_chambre)
     if chambre is None:
-        return 404, {"error", "Chambre Introuvable !"}
+        return 404, {"error": "Chambre Introuvable !"}
     return 200, chambre
 
 #POST
@@ -78,14 +78,14 @@ def creer_chambre(donnees):
     try:
         ecrire(f"INSERT INTO chambre({colonnes}) VALUES ({marqueurs})", valeurs)
     except mysql.connector.IntegrityError:
-        return 409, {"error": "Cet chambre existe deja dans cet hôtel !"}
+        return 409, {"error": "Cette chambre existe deja dans cet hôtel !"}
     return 201, trouver_chambre(donnees["hotel"], donnees["chambre"])
 
 #PUT/PATCH
 
 def modifier_chambre(id_hotel, id_chambre, donnees, tout_remplacer):
     if trouver_chambre(id_hotel, id_chambre) is None:
-        return 400, {"error": "Chambre introuvable !"}
+        return 404, {"error": "Chambre introuvable !"}
     
     if not donnees:
         return 400, {"error":"Donnees invalides ! "}
@@ -99,7 +99,7 @@ def modifier_chambre(id_hotel, id_chambre, donnees, tout_remplacer):
     if tout_remplacer:
         manquants = [champ for champ in CHAMPS if champ not in donnees]
         if len(manquants)>0:
-            return 400, {"error":"Tout les champs sont necessaires !", "champs":manquants}
+            return 400, {"error":"Tous les champs sont necessaires !", "champs":manquants}
         
     message=verifier_valeurs(donnees)
     if message is not None:
@@ -122,6 +122,6 @@ def supprimer_chambre(id_hotel, id_chambre):
     try:
         ecrire("DELETE FROM chambre WHERE hotel = %s AND chambre = %s", (id_hotel, id_chambre,))
     except mysql.connector.IntegrityError:
-        return 409, {"error":"Supression impossible, des réservation sont liées a cette chambre !"}
+        return 409, {"error":"Suppression impossible, des réservation sont liées a cette chambre !"}
     
-    return 200, {"message":"Supression reussie !"}
+    return 200, {"message":"Suppression reussie !"}
