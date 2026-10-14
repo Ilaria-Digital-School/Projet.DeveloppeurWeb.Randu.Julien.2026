@@ -124,8 +124,13 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             
             #Inscriptions / Connexion
             # A verifier
-            elif morceaux == ["utilisateur"] and methode == "GET":
-                            statusCode, contenu = utilisateur.lister_utilisateur(self.lire_json())
+            elif morceaux == ["utilisateurs"] and methode == "GET":
+                utilisateur_connect = securite.lire_jeton(self.headers.get("Authorization"))
+                refus = securite.verifier_droits(utilisateur_connect, ["admin"])
+                if refus is not None:
+                    statusCode, contenu = refus
+                else:
+                    statusCode, contenu = utilisateur.lister_utilisateurs()
             
             elif morceaux == ["inscription"] and methode == "POST":
                             statusCode, contenu = utilisateur.inscrire(self.lire_json())

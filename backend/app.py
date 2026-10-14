@@ -8,6 +8,7 @@ import hotel
 import chambre
 import reservation
 import utilisateur
+import securite
 
 def convertir_json(valeur):
     if isinstance(valeur, Decimal):
@@ -162,6 +163,14 @@ def erreur_imprevue(erreur):
         return jsonify({"error": erreur.description}), erreur.code
     print("Erreur serveur :", repr(erreur))
     return jsonify({"error": "Erreur du serveur"}), 500
+
+@app.get("/utilisateurs")
+def route_lister_utilisateurs():
+    utilisateur_connect = securite.lire_jeton(request.headers.get("Authorization"))
+    refus = securite.verifier_droits(utilisateur_connect, ["admin"])
+    if refus is not None:
+        return jsonify(refus[1]), refus [0]
+    return repondre (utilisateur.lister_utilisateurs())
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)
