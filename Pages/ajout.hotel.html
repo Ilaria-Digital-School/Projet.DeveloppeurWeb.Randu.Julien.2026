@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- SEO -->
-     <meta name="description" content="ResaHôtel.com est une application de reservation d'hôtel court ou long séjour. Découvrez les offres, nos hôtels partenaires et des lieux emblematique de la région parisienne.">
-     <meta name="keywords" content="séjour, reservation, hôtel, région parisienne, partenaires, offres, lieux emblématiques">
+    <!-- SEO -->
+    <meta name="description"
+        content="ResaHôtel.com est une application de reservation d'hôtel court ou long séjour. Découvrez les offres, nos hôtels partenaires et des lieux emblematique de la région parisienne.">
+    <meta name="keywords"
+        content="séjour, reservation, hôtel, région parisienne, partenaires, offres, lieux emblématiques">
 
     <!--lien CSS-->
 
@@ -20,67 +22,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 
-    <title>Votre Compte</title>
+    <title>Ajout Hotel</title>
 
 </head>
 
-
-
 <body>
+    <header class="header">
 
-      <header class="header">
-    
         <!-- Support -->
         <h1 id="titre-principal">ResaHôtel.com</h1>
         <div class="logo">
             <img src="../assets/Images/logo-bis-wep.webp" alt="logo du site ResaHôtel.com">
         </div>
         <div class="support">
-    
+
             <div class="phone">
                 <i class="fa-solid fa-phone"></i>
             </div>
-    
+
             <div class="support-text">
                 <small>24/7 Support disponible</small>
                 <strong>01.50.50.50.50</strong>
             </div>
-    
+
         </div>
         <!-- Logo -->
-    
-    
-    
+
+
+
         <!-- Boutons -->
         <div class="menu">
-    
-            <a href="Pages/votre-compte.html" class="monCompte">Mon Compte</a>
-            <a href="Pages/votre-panier.html" class="votrePanier">Votre Panier</a>
-    
+
+            <a href="connexion.html" class="monCompte">Connexion</a>
+            <a href="votre-panier.html" class="votrePanier">Votre Panier</a>
+
             <select name="pays" id="pays" class="langue">
                 <option value="France">France</option>
                 <option value="Portugais">Portugais</option>
                 <option value="Anglais">Anglais</option>
                 <option value="Autre">Autre</option>
             </select>
-    
+
             <select name="devise" id="devise" class="devise">
                 <option value="euro">Euro €</option>
                 <option value="dollard">Dollar $</option>
             </select>
-    
+
         </div>
-    
+
     </header>
+
 
     <section>
         <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" aria-label="Menu de Navigation">
                 <div class="container-fluid">
-                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-                        </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                    </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -94,34 +94,35 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
                             <li class="nav-item">
-                                <a class="nav-link" href="nos-hôtels.html">Nos Hôtels</a>
+                                <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="votre-compte.html">Votre Compte</a>
+                             <li class="nav-item">
+                                <a class="nav-link" href="formulaire-dinscription.html">Inscription
+                                </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="formulaire-dinscription.html">Formulaire
-                                    d'inscription</a>
+                           <li class="nav-item">
+                                <a class="nav-link" href="connexion.html">Connexion</a>
                             </li>
                            
                             <li class="nav-item">
-                                <a class="nav-link" href="conditions.html">conditions</a>
-                            </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="carriere.html">Carriere</a>
-                            </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="ajout.produit.html">Ajout Produit</a>
+                                <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                                <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="reservation.html">Reservation</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="votre-panier.html">Votre Panier</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="paiement.html">Paiement</a>
+                            </li>
+                           
                         </ul>
                         <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
@@ -131,33 +132,57 @@
     </section>
 
     <main>
-        <!--Connexion-->
-        <form>
-            <section class="connexion" id="connexion-form">
-                <h2 class="h2">Connexion</h2>
-                <p>Pour vous connecter veuillez saisir votre identifiant</p>
+        <section class="connexion">
+            <form class="inscription-form" id="productForm">
+                <h2 class="h2">Ajouter un Hôtel</h2>
 
-                <br><label for="email">Email</label>
-                <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
+                <div>
+                    <label for="productName">Nom de l'Hotel : </label>
+                    <input type="text" name="productName" id="productName" placeholder="Le nom de votre Hôtel" required>
+                </div><br>
 
-                <br><label for="mdp"> Mot de Passe:</label>
-                <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
+                <div>
+                    <label for="etoile">Nombre d'étoiles <i class="fa-solid fa-star"></i>: </label>
+                    <input type="number" name="etoile" id="etoile" placeholder="Nombre d'étoiles" required>
+                </div><br>
 
-                <br><label for="confirmMdp">Confirmer votre Mot de Passe:</label>
-                <input type="password" id="confirmMdp" placeholder="Confirmer votre Mot de Passe" required><br>
+<div>
+                    <label for="description" class="form-label">Description :</label>
+                    <textarea id="description" name="description" placeholder="Votre description" required></textarea>
+                </div><br>
 
-                <div class="btn-container">
-                    <button class="btn-envoyer" type="submit">Valider</button><br>
-                    <br>
-                    <p>ou</p><a id="access" href="formulaire-dinscription.html"> <strong>Inscrivez-vous</strong></a>
+                <div>
+                    <label for="adresse">Adresse : </label>
+                    <input type="texte" name="adresse" id="adresse" placeholder="Adresse Complète" required>
+                </div><br>
+                <div>
+                    <label for="code-postale">Code Postale : </label>
+                    <input type="texte" name="code-postale" id="code-postale" placeholder="Code Postale" required>
+                </div><br>
+
+                <div>
+                    <label for="ville">Ville : </label>
+                    <input type="texte" name="ville" id="ville" placeholder="Ville" required>
+                </div><br>
+
+                <div>
+                    <label for="pays">Pays : </label>
+                    <input type="texte" name="pays" id="pays" placeholder="Pays" required>
+                </div><br>
+        
+                <div>
+                    <label for="img">Image URL : </label>
+                    <input type="text" name="img" id="img" placeholder="image URL" required>
                 </div>
 
-            </section>
+                <div class="btn-container">
+                    <button class="btn-envoyer" type="submit">Ajouter</button>
+                </div>
 
-        </form>
+
+            </form>
+        </section>
     </main>
-
-
     <footer>
 
         <!--Footer-->
@@ -237,16 +262,10 @@
         </div>
 
     </footer>
+    <script src="../assets/js/product.js"></script>
     <script src="../assets/js/user.js"></script>
     <script src="../assets/js/newsletter.js"></script>
 
-    <!--Lien JavaScript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-        </script>
-
-
 </body>
-
 
 </html>

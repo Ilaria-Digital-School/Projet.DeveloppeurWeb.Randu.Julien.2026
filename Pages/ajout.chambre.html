@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
 
-    <title>Ajout-Produit</title>
+    <title>Ajout Chambre</title>
 
 </head>
 
@@ -53,8 +53,8 @@
         <!-- Boutons -->
         <div class="menu">
 
-            <a href="../Pages/votre-compte.html" class="monCompte">Mon Compte</a>
-            <a href="Pages/votre-panier.html" class="votrePanier">Votre Panier</a>
+            <a href="connexion.html" class="monCompte">Connexion</a>
+            <a href="votre-panier.html" class="votrePanier">Votre Panier</a>
 
             <select name="pays" id="pays" class="langue">
                 <option value="France">France</option>
@@ -94,28 +94,32 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
                             <li class="nav-item">
-                                <a class="nav-link" href="nos-hôtels.html">Nos Hôtels</a>
+                                <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="formulaire-dinscription.html">Inscription
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="votre-compte.html">Votre Compte</a>
+                                <a class="nav-link" href="connexion.html">Connexion</a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="formulaire-dinscription.html">Formulaire
-                                    d'inscription</a>
+                                <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="conditions.html">conditions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="carriere.html">Carriere</a>
+                             <li class="nav-item">
+                                <a class="nav-link" href="reservation.html">Reservation</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="votre-panier.html">Votre Panier</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="reservation.html">Reservation</a>
+                             <li class="nav-item">
+                                <a class="nav-link" href="paiement.html">Paiement</a>
                             </li>
+                           
                         </ul>
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -129,39 +133,68 @@
 
     <main>
         <section class="connexion">
-            <form class="inscription-form" id="productForm">
-                <h2 class="h2">Ajouter un Hôtel</h2>
+            <form class="inscription-form" id="productChambre">
+                <h2 class="h2">Ajouter une chambre</h2>
 
                 <div>
-                    <label for="productName">Nom de l'Hotel : </label>
-                    <input type="text" name="productName" id="productName" placeholder="Le nom de votre Hôtel" required>
-                </div><br>
-                <div>
-                    <label for="adresse">Adresse : </label>
-                    <input type="texte" name="adresse" id="adresse" placeholder="Adresse Complète" required>
-                </div><br>
-                <div>
-                    <label for="etoile">Nombre d'étoiles <i class="fa-solid fa-star"></i>: </label>
-                    <input type="number" name="etoile" id="etoile" placeholder="Nombre d'étoiles" required>
-                </div><br>
-                <div>
-                    <label for="type">Type de Chambre : </label>
-                    <input type="text" name="type" id="type" placeholder="type de chambre" required>
+                    <br><label for="hotel">Hôtel</label>
+                    <select name="hotel" id="chambre-hotel">
+                        <option value="votre selection">Choisissez l'hôtel concerné</option>
+                        <option value="villa-modigliani">La Villa Modigliani</option>
+                        <option value="intercontinental">Intercontinental</option>
+                        <option value="le-scribe">Le Scribe</option>
+                        <option value="le-georges-v">Le Georges V</option>
+                        <option value="le-hyatt-paris-madeleine">Le Hyatt Paris Madeleine</option>
+                        <option value="le-pullman-tour-eiffel">Le Pullman Tour Eiffel</option>
+                        <option value="l'hotel-des-grands-voyageurs">L'Hotel des Grands Voyageurs</option>
+                        <option value="le-collectionneur">Le Collectionneur</option>
+                        <option value="novotel-paris-les-halles">Le Novotel Paris les Halles</option>
+                        <option value="marriott-paris-rive-gauche">Le Marriott Paris Rive Gauche</option>
+                        <option value="le-renaissance">Le Renaissance Paris Nobel</option>
+                        <option value="le-meridien">Le Meridien</option>
+                        <option value="le-drawing-house">Le Drawing House</option>
+                        <option value="les-jardins-du-marais">Les Jardins du Marais</option>
+                        <option value="le-crowne-plaza">Le Crowne Plaza</option>
+                        <option value="le-hyatt-regency">Le Hyatt Regency</option>
+
+                    </select>
                 </div><br>
 
                 <div>
+                    <label for="numero">Numéro : </label>
+                    <input type="number" name="numero" id="numero-chambre" placeholder="Numéro de chambre" required>
+                </div><br>
+
+                <div>
+                    <br><label for="chambre">Type de chambre</label>
+                    <select name="chambre" id="type-chambre">
+                        <option value="type de chambre">Tye de chambre</option>
+                        <option value="chambre simple">Chambre Simple</option>
+                        <option value="chambre double">Chambre Double</option>
+                        <option value="chambre triple">Chambre Triple</option>
+                        <option value="chambre quadruple">Chambre Quadruple</option>
+
+                    </select>
+                </div>
+
+                <div><br>
+                    <label for="capacite">Capacité : </label>
+                    <input type="number" name="capacite" id="capacite-chambre" placeholder="Capacité de la chambre" required>
+                </div><br>
+
+                <div><br>
                     <label for="productPrice">Prix : </label>
-                    <input type="number" name="productPrice" id="productPrice" placeholder="Chambre a partir de..€"
-                        required>
+                    <input type="number" name="productPrice" id="tarif" placeholder="Chambre a partir de..€" required>
                 </div><br>
+
                 <div>
                     <label for="description" class="form-label">Description :</label>
-                    <textarea id="description" name="description" placeholder="Votre description" required></textarea>
+                    <textarea id="description-chambre" name="description" placeholder="Votre description" required></textarea>
                 </div><br>
 
                 <div>
                     <label for="img">Image URL : </label>
-                    <input type="text" name="img" id="img" placeholder="image URL" required>
+                    <input type="text" name="img" id="img-chambre" placeholder="image URL" required>
                 </div>
 
                 <div class="btn-container">
@@ -251,7 +284,7 @@
         </div>
 
     </footer>
-    <script src="../assets/js/product.js"></script>
+    <script src="../assets/js/chambre.js"></script>
     <script src="../assets/js/user.js"></script>
     <script src="../assets/js/newsletter.js"></script>
 

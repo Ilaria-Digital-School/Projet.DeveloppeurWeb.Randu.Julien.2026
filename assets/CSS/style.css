@@ -769,7 +769,7 @@ background-color: cornflowerblue;
     text-align: center;
     background-color: cornflowerblue;
     border-radius: 5px;
-    height: 90vh;
+    height: 70vh;
 }
 .sidebar-2{
     width:40%;
@@ -780,6 +780,7 @@ background-color: cornflowerblue;
     background-color: cornflowerblue;
     border-radius: 5px;
     min-height: 50vh;
+    height: 70vh;
 }
 .sidebar-2 h2{
     text-decoration: underline;

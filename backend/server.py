@@ -1,3 +1,5 @@
+#server.py concerne la partie du bloc 2 Back-end sans Framework
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 from decimal import Decimal

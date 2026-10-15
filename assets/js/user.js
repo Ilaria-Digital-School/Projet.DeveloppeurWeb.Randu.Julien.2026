@@ -14,27 +14,28 @@ class Utilisateur {
 }
 
 //Création de l'utilisateur/admin
+//sauvegarde en brut dans le localstorage avce MP visible
 
-function ajouterAdmin() {
-    const admin = new Utilisateur("Randu", "Julien", "0605132521", "randu.julien@gmail.com", "admin1234", "homme", [], "France", "Admin");
+// function ajouterAdmin() {
+//     const admin = new Utilisateur("Randu", "Julien", "0605132521", "randu.julien@gmail.com", "admin1234", "homme", [], "France", "Admin");
 
-    const utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
+//     const utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
 
-    const existe = utilisateurs.some(
-        u => u.email?.toLowerCase() === admin.email.toLowerCase()
-    );
+//     const existe = utilisateurs.some(
+//         u => u.email?.toLowerCase() === admin.email.toLowerCase()
+//     );
 
-    if (existe) return;
+//     if (existe) return;
 
-    utilisateurs.push(admin);
-    localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
+//     utilisateurs.push(admin);
+//     localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
 
-}
+// }
 
 async function envoyerUtilisateur(utilisateur) {
     try {
         const reponse = await fetch(
-            "http://localhost:8000/api/utilisateurs",
+            "http://localhost:8000/utilisateurs",
             {
                 method: "POST",
                 headers: {
@@ -137,5 +138,5 @@ function seConnecter() {
 document.addEventListener("DOMContentLoaded", () => {
     sInscrire();
     seConnecter();
-    ajouterAdmin();
+    //ajouterAdmin();
 });

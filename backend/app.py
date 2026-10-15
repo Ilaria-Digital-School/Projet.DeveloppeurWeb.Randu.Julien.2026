@@ -1,3 +1,5 @@
+#app.py concerne la partie du bloc 3 avec le Framework Flask
+
 from decimal import Decimal
 import mysql.connector
 from flask import Flask, request, jsonify
