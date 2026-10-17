@@ -5,12 +5,20 @@ from database import lire, ecrire
 import securite
 
 CHAMPS_INSCRIPTION = ["nom", "prenom", "email", "mot_de_passe", "telephone"]
-
+GENRES_VALIDES = ["femme", "homme"]
+PAYS_VALIDES = ["France", "Portugais", "Anglais", "Autre"]
+INTERETS_VALIDES = ["Hôtel 5*", "Hôtel 4*", "spa"]
 
 def sans_mot_de_passe(utilisateur):
     #renvoie une copie de l'utilisateur sans la colonnne mot de passe (securite)
     copie = dict(utilisateur)
     copie.pop("mot_de_passe", None)
+    return copie
+
+def preparer_utilisateur(ligne):
+    copie = sans_mot_de_passe(ligne)
+    texte = copie.get("interets")
+    copie["interets"] = texte.split(",") if texte else []
     return copie
 
 def verifier_inscription(donnees):
@@ -22,7 +30,7 @@ def verifier_inscription(donnees):
             erreurs[champ] = "Texte de 1 à 50 caracteres"
             
     email = donnees["email"]
-    if not isinstance(email,str) or "@" not in email or "." not in email or len(email) > 100:
+    if not isinstance(email, str) or "@" not in email or "." not in email or len(email) > 100:
         erreurs["email"] = "adresse email invalide !"
         
     mot_de_passe = donnees["mot_de_passe"]
@@ -30,6 +38,21 @@ def verifier_inscription(donnees):
         erreurs["mot_de_passe"] = "8 caracteres minimum"
     elif len(mot_de_passe.encode("utf-8")) > 72:
         erreurs["mot_de_passe"] = "72 octets maximum (limite de bcrypt)" 
+        
+    genre = donnees.get("genre")
+    if genre is not None and genre not in GENRES_VALIDES:
+        erreurs["genre"] = "doit etre :" + ", ".join(GENRES_VALIDES)
+        
+    pays = donnees.get("pays")
+    if pays is not None and pays not in PAYS_VALIDES:
+        erreurs["pays"] = "doit etre : " + ", ".join(PAYS_VALIDES)
+        
+    interets = donnees.get("interets")
+    if interets is not None:
+        if (not isinstance(interets, list)
+                or any(i not in INTERETS_VALIDES for i in interets)
+                or len(set(interets)) != len(interets)):
+            erreurs["interets"] = "liste de valeurs parmi : " + ", ".join(INTERETS_VALIDES)
         
     return erreurs
 
@@ -56,19 +79,24 @@ def inscrire(donnees):
     hash_texte = hash_octets.decode("utf-8")
  
     identifiant = "U" + uuid.uuid4().hex[:8]     
+    
+    genre = donnees.get("genre")
+    pays = donnees.get("pays")
+    interets = donnees.get("interets")
+    interets_texte = ",".join(interets) if interets else None
  
     # Le rôle est TOUJOURS "client" ici, même si le client envoie "role": "admin".
     # Les administrateurs se créent uniquement avec le script admin.py.
     try:
-        ecrire("INSERT INTO utilisateur (utilisateurs, nom, prenom, email, mot_de_passe, telephone, role) "
+        ecrire("INSERT INTO utilisateur (utilisateurs, nom, prenom, email, mot_de_passe, telephone, role, genre, pays, interets) "
                "VALUES (%s, %s, %s, %s, %s, %s, %s)",
                (identifiant, donnees["nom"], donnees["prenom"], donnees["email"],
-                hash_texte, donnees["telephone"], "client"))
+                hash_texte, donnees["telephone"], "client", genre, pays, interets_texte))
     except mysql.connector.IntegrityError:
         return 409, {"error": "Cet email est déjà utilisé"}
  
     lignes = lire("SELECT * FROM utilisateur WHERE utilisateurs = %s", (identifiant,))
-    return 201, sans_mot_de_passe(lignes[0])
+    return 201, preparer_utilisateur(lignes[0])
  
  
 # POST /connexion 
@@ -99,12 +127,11 @@ def connecter(donnees):
     
  
     
-    reponse = sans_mot_de_passe(utilisateur)
+    reponse = preparer_utilisateur(utilisateur)
     reponse["jeton"] = securite.creer_jeton(utilisateur)
- 
     return 200, reponse
 
 #GET utilisateurs // Attention a ne pas le laisser sur un vrai projet car il expose certaines informations
 def lister_utilisateurs():
-        lignes = lire("SELECT utilisateurs, nom, prenom, email, telephone, role FROM utilisateur")
-        return 200, lignes
+        lignes = lire("SELECT utilisateurs, nom, prenom, email, telephone, role, genre, pays, interets FROM utilisateur")
+        return 200, [preparer_utilisateur(ligne) for ligne in lignes]

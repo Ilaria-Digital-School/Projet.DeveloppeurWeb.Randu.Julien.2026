@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DUREE_JETON = 60 * 60
+PROTECTION_ACTIVATE = False #True pour l'activé 
 
 def cle_secrete():
     cle = os.getenv("JWT_SECRET")
@@ -26,11 +27,11 @@ def creer_jeton(utilisateur):
 def verifier_jeton(jeton):
     try:
         contenu = jwt.decode(jeton, cle_secrete(), algorithms=["HS256"], 
-                             options = {"require": ["exp", "sub", "role"]})
+                             options={"require": ["exp", "sub", "role"]})
     except jwt.InvalidTokenError:
         return None
     
-    return{"utilisateurs": contenu["sub"], "role":contenu["role"]}    
+    return {"utilisateurs": contenu["sub"], "role": contenu["role"]}    
 
 
 def lire_jeton(valeur_authorization):

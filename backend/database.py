@@ -16,6 +16,7 @@ def get_connection():
     )
     
 def lire(sql, valeurs=()):
+    
     connexion = get_connection()
     try :
         curseur = connexion.cursor(dictionary=True)

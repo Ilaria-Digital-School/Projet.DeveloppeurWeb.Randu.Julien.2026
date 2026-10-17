@@ -11,14 +11,14 @@ STATUTS_ANNULE = "annulee"
 
 #permets de verifier les informations pour les valeurs rentrées correspondent bien au parametre 
 
-def est_entier_entre(valeur,minimum, maximum):
+def est_entier_entre(valeur, minimum, maximum):
     if isinstance(valeur, bool) or not isinstance(valeur, int):
         return False
     return minimum <= valeur <= maximum
 
 
 def est_nombre_positif(valeur):
-    if isinstance(valeur, bool) or not isinstance (valeur, (int,float)):
+    if isinstance(valeur, bool) or not isinstance (valeur, (int, float)):
         return False
     return valeur > 0
 
@@ -36,24 +36,24 @@ def verifier_valeurs(donnees):
     if "date_depart" in donnees and not est_date(donnees["date_depart"]):
         return "date_depart : format AAAA-MM-JJ"
     
-    if "nombre_adulte" in donnees and not est_entier_entre(donnees["nombre_adulte"], 1 ,10):
+    if "nombre_adulte" in donnees and not est_entier_entre(donnees["nombre_adulte"], 1, 10):
         return "nombre_adulte doit etre compris entre 1 et 10"
     
-    if "nombre_enfant" in donnees and not est_entier_entre(donnees["nombre_enfant"], 0,10):
+    if "nombre_enfant" in donnees and not est_entier_entre(donnees["nombre_enfant"], 0, 10):
         return "nombre_enfant doit etre compris entre 0 et 10"
     
     if "montant_total" in donnees and not est_nombre_positif(donnees["montant_total"]):
         return "montant_total doit etre un nombre positif"
     
     if "statut" in donnees and donnees ["statut"] not in STATUTS_VALIDE:
-        return "le statut doit etre : " + ",".join(STATUTS_VALIDE)
+        return "le statut doit etre : " + ", ".join(STATUTS_VALIDE)
     return None
 
 def trouver_reservation(identifiant):
-    lignes = lire ("SELECT * FROM reservation WHERE reservation = %s", (identifiant,))
+    lignes = lire("SELECT * FROM reservation WHERE reservation = %s", (identifiant,))
     if len(lignes) == 0:
         return None
-    return lignes [0]
+    return lignes[0]
 
 def utilisateurs_existe(identifiant):
     lignes = lire("SELECT utilisateurs FROM utilisateur WHERE utilisateurs = %s",(identifiant,))
@@ -80,6 +80,7 @@ def verifier_regles(reservation, id_a_exclure=None):
     #permets de ne pas avoir de reservation en meme temps mais permets une resevation avec des dates qui se chevauche 
     sql = ("SELECT reservation FROM reservation " "WHERE hotel = %s AND chambre = %s " 
            "AND statut <> %s " "AND date_arrivee < %s AND date_depart > %s ")
+    
     valeurs = [reservation["hotel"], reservation["chambre"], STATUTS_ANNULE, depart, arrivee]
     if id_a_exclure is not None:
         sql += " AND reservation <> %s"
@@ -97,7 +98,7 @@ def lister_reservation():
 def une_reservation(identifiant):
     reservation = trouver_reservation(identifiant)
     if reservation is None:
-        return 404, {"error":"Reservaton introuvable !"}
+        return 404, {"error": "Reservaton introuvable !"}
     return 200, reservation
 
 
@@ -109,7 +110,7 @@ def creer_reservation(donnees):
     requis = ["reservation"] + CHAMPS
     manquants = [champ for champ in requis if champ not in donnees]
     if len(manquants) > 0:
-        return 400, {"error":"champs manquants", "champs": manquants}
+        return 400, {"error": "champs manquants", "champs": manquants}
     
     message = verifier_valeurs(donnees)
     if message is not None:
@@ -118,18 +119,18 @@ def creer_reservation(donnees):
     probleme = verifier_regles(donnees)
     if probleme is not None:
         statusCode, message = probleme
-        return statusCode, {"error":message}
+        return statusCode, {"error": message}
     
     #permets la creation de la reservation en evitant les doublons d'ID de resa
     
-    colonnes = ",".join(requis)
-    marqueurs = ",".join(["%s"] * len(requis))
+    colonnes = ", ".join(requis)
+    marqueurs = ", ".join(["%s"] * len(requis))
     valeurs = [donnees[champ] for champ in requis]
     
     try:
         ecrire(f"INSERT INTO reservation ({colonnes}) VALUES ({marqueurs})", valeurs)
     except mysql.connector.IntegrityError:
-        return 409, {"error":"cet identifiant de reservation existe deja !"}
+        return 409, {"error": "cet identifiant de reservation existe deja !"}
     return 201, trouver_reservation(donnees["reservation"])
 
 #PUT / PATCH
@@ -157,12 +158,12 @@ def modifier_reservation(identifiant, donnees, tout_remplacer):
     
     complete = dict(ancienne)
     complete.update(donnees)
-    probleme = verifier_regles(complete, id_a_exclure = identifiant)
+    probleme = verifier_regles(complete, id_a_exclure=identifiant)
     if probleme is not None:
         statusCode, message = probleme
         return statusCode, {"error": message}
     
-    modifications = ",".join(f"{champ} = %s" for champ in donnees)
+    modifications = ", ".join(f"{champ} = %s" for champ in donnees)
     valeurs = list(donnees.values()) + [identifiant]
     ecrire(f"UPDATE reservation SET {modifications} WHERE reservation = %s", valeurs)
     

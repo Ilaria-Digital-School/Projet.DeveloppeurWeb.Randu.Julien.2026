@@ -26,7 +26,8 @@
 
 </head>
 
-<body>
+<body style="display: none;">
+
     <header class="header">
 
         <!-- Support -->
@@ -93,6 +94,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
                             </li>
@@ -104,10 +106,10 @@
                                 <a class="nav-link" href="connexion.html">Connexion</a>
                             </li>
                            
-                            <li class="nav-item">
+                            <li class="nav-item admin-seulement">
                                 <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item admin-seulement">
                                 <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
                              <li class="nav-item">
@@ -138,8 +140,8 @@
 
                 <div>
                     <br><label for="hotel">Hôtel</label>
-                    <select name="hotel" id="chambre-hotel">
-                        <option value="votre selection">Choisissez l'hôtel concerné</option>
+                    <select name="hotel" id="chambre-hotel"></select>
+                       <!--  <option value="votre selection">Choisissez l'hôtel concerné</option>
                         <option value="villa-modigliani">La Villa Modigliani</option>
                         <option value="intercontinental">Intercontinental</option>
                         <option value="le-scribe">Le Scribe</option>
@@ -155,9 +157,9 @@
                         <option value="le-drawing-house">Le Drawing House</option>
                         <option value="les-jardins-du-marais">Les Jardins du Marais</option>
                         <option value="le-crowne-plaza">Le Crowne Plaza</option>
-                        <option value="le-hyatt-regency">Le Hyatt Regency</option>
+                        <option value="le-hyatt-regency">Le Hyatt Regency</option> -->
 
-                    </select>
+                    
                 </div><br>
 
                 <div>
@@ -168,7 +170,7 @@
                 <div>
                     <br><label for="chambre">Type de chambre</label>
                     <select name="chambre" id="type-chambre">
-                        <option value="type de chambre">Tye de chambre</option>
+                        <option value="">Type de chambre</option>
                         <option value="chambre simple">Chambre Simple</option>
                         <option value="chambre double">Chambre Double</option>
                         <option value="chambre triple">Chambre Triple</option>
@@ -179,12 +181,12 @@
 
                 <div><br>
                     <label for="capacite">Capacité : </label>
-                    <input type="number" name="capacite" id="capacite-chambre" placeholder="Capacité de la chambre" required>
+                    <input type="number" name="capacite" id="capacite-chambre" min="1" max="10" placeholder="Capacité de la chambre" required>
                 </div><br>
 
                 <div><br>
                     <label for="productPrice">Prix : </label>
-                    <input type="number" name="productPrice" id="tarif" placeholder="Chambre a partir de..€" required>
+                    <input type="number" name="productPrice" id="tarif" placeholder="Chambre a partir de..€" required step="0.01">
                 </div><br>
 
                 <div>
@@ -279,15 +281,17 @@
 
                 <a href="../Pages/conditions.html">Conditions Generales CGU</a>
 
-            </div>
+            </div> 
 
         </div>
 
     </footer>
     <button id="scroll-top"  class="scroll-top" aria-label="Remonter la page"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="../assets/js/scroll.js"></script>
+    <script src="../assets/js/api.js"></script>
     <script src="../assets/js/chambre.js"></script>
-    <script src="../assets/js/user.js"></script>
+    <script>pageReserveeAdmin();</script>
+    <script src="../assets/js/scroll.js"></script>
+    <!-- <script src="../assets/js/user.js"></script> -->
     <script src="../assets/js/newsletter.js"></script>
 
 </body>

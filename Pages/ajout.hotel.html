@@ -26,7 +26,10 @@
 
 </head>
 
-<body>
+<!--Permet de cachée la page en attendant l'identification -->
+
+<body style="display: none;">
+
     <header class="header">
 
         <!-- Support -->
@@ -93,33 +96,34 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="formulaire-dinscription.html">Inscription
                                 </a>
                             </li>
-                           <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="connexion.html">Connexion</a>
                             </li>
-                           
+
                             <li class="nav-item">
                                 <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="reservation.html">Reservation</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="votre-panier.html">Votre Panier</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="paiement.html">Paiement</a>
                             </li>
-                           
+
                         </ul>
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -138,38 +142,38 @@
 
                 <div>
                     <label for="productName">Nom de l'Hotel : </label>
-                    <input type="text" name="productName" id="productName" placeholder="Le nom de votre Hôtel" required>
+                    <input type="text" name="productName" id="productName" maxlength="50" placeholder="Le nom de votre Hôtel" required>
                 </div><br>
 
                 <div>
                     <label for="etoile">Nombre d'étoiles <i class="fa-solid fa-star"></i>: </label>
-                    <input type="number" name="etoile" id="etoile" placeholder="Nombre d'étoiles" required>
+                    <input type="number" name="etoile" id="etoile" min="1" max="5" placeholder="Nombre d'étoiles" required>
                 </div><br>
 
-<div>
+                <div>
                     <label for="description" class="form-label">Description :</label>
                     <textarea id="description" name="description" placeholder="Votre description" required></textarea>
                 </div><br>
 
                 <div>
                     <label for="adresse">Adresse : </label>
-                    <input type="texte" name="adresse" id="adresse" placeholder="Adresse Complète" required>
+                    <input type="text" name="adresse" id="adresse" maxlength="50" placeholder="Adresse Complète" required>
                 </div><br>
                 <div>
                     <label for="code-postale">Code Postale : </label>
-                    <input type="texte" name="code-postale" id="code-postale" placeholder="Code Postale" required>
+                    <input type="text" name="code-postale" id="code-postale" maxlength="50" placeholder="Code Postale" required>
                 </div><br>
 
                 <div>
                     <label for="ville">Ville : </label>
-                    <input type="texte" name="ville" id="ville" placeholder="Ville" required>
+                    <input type="text" name="ville" id="ville" maxlength="50" placeholder="Ville" required>
                 </div><br>
 
                 <div>
                     <label for="pays">Pays : </label>
-                    <input type="texte" name="pays" id="pays" placeholder="Pays" required>
+                    <input type="text" name="pays" id="pays-hotel" placeholder="Pays" required>
                 </div><br>
-        
+
                 <div>
                     <label for="img">Image URL : </label>
                     <input type="text" name="img" id="img" placeholder="image URL" required>
@@ -259,13 +263,16 @@
 
             </div>
 
-        </div>
+        </div> 
 
     </footer>
-    <button id="scroll-top"  class="scroll-top" aria-label="Remonter la page"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="../assets/js/scroll.js"></script>
+
+    <button id="scroll-top" class="scroll-top" aria-label="Remonter la page"><i class="fa-solid fa-arrow-up"></i></button>
+    <script src="../assets/js/api.js"></script>
     <script src="../assets/js/product.js"></script>
-    <script src="../assets/js/user.js"></script>
+    <script>pageReserveeAdmin();</script>
+    <script src="../assets/js/scroll.js"></script>
+    <!-- <script src="../assets/js/user.js"></script> -->
     <script src="../assets/js/newsletter.js"></script>
 
 </body>

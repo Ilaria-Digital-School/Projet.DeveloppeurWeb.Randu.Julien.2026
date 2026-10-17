@@ -7,7 +7,7 @@ CHAMPS = ["numero", "type", "capacite", "tarif", "description","image"]
 
 #la capacité doit etre un chiffre en 1 et 10
 def capacite_valide(valeur):
-    if isinstance(valeur,bool) or not isinstance(valeur,int):
+    if isinstance(valeur, bool) or not isinstance(valeur, int):
         return False
     return 1 <= valeur <=10
 
@@ -15,7 +15,7 @@ def capacite_valide(valeur):
 #Le tarif doit etre supérieur à 0
 
 def tarif_valide(valeur):
-    if isinstance(valeur,bool) or not isinstance(valeur, (int, float)):
+    if isinstance(valeur, bool) or not isinstance(valeur, (int, float)):
         return False
     return valeur > 0
 
@@ -28,13 +28,13 @@ def verifier_valeurs(donnees):
 
 
 def hotel_existe(id_hotel):
-    lignes = lire("SELECT hotel FROM hotel WHERE hotel=%s", (id_hotel,))
+    lignes = lire("SELECT hotel FROM hotel WHERE hotel = %s", (id_hotel,))
     return len(lignes) > 0
 
 # permets de trouver la chambre en fonction de l'hotel ou None si introuvable/inexistante 
 def trouver_chambre(id_hotel, id_chambre):
-    lignes=lire("SELECT * FROM chambre WHERE hotel =%s AND chambre = %s",(id_hotel, id_chambre))
-    if len(lignes)==0:
+    lignes = lire("SELECT * FROM chambre WHERE hotel = %s AND chambre = %s", (id_hotel, id_chambre))
+    if len(lignes) == 0:
         return None
     return lignes[0]
 
@@ -60,8 +60,8 @@ def creer_chambre(donnees):
     
     requis = ["hotel", "chambre"] + CHAMPS
     manquants = [champ for champ in requis if champ not in donnees]
-    if len(manquants) > 0 :
-        return 400,{"error":"Champs manquants", "champs":manquants}
+    if len(manquants) > 0:
+        return 400, {"error":"Champs manquants", "champs": manquants}
     
     message = verifier_valeurs(donnees)
     if message is not None:
@@ -71,9 +71,9 @@ def creer_chambre(donnees):
         return 400, {"error": "Cet hôtel n'existe pas !"}
 
     
-    colonnes=",".join(requis)
-    marqueurs=",".join(["%s"] * len(requis))
-    valeurs=[donnees[champ] for champ in requis]
+    colonnes = ", ".join(requis)
+    marqueurs = ", ".join(["%s"] * len(requis))
+    valeurs = [donnees[champ] for champ in requis]
     
     try:
         ecrire(f"INSERT INTO chambre({colonnes}) VALUES ({marqueurs})", valeurs)
@@ -88,28 +88,28 @@ def modifier_chambre(id_hotel, id_chambre, donnees, tout_remplacer):
         return 404, {"error": "Chambre introuvable !"}
     
     if not donnees:
-        return 400, {"error":"Donnees invalides ! "}
+        return 400, {"error": "Donnees invalides ! "}
     
     #refuse les champs inconnus et identifiant inchangeable 
     
     inconnus = [champ for champ in donnees if champ not in CHAMPS]
     if len(inconnus) > 0:
-        return 400,{"error":"Champs non modifiable","champs":inconnus}
+        return 400,{"error": "Champs non modifiable", "champs": inconnus}
     
     if tout_remplacer:
         manquants = [champ for champ in CHAMPS if champ not in donnees]
-        if len(manquants)>0:
-            return 400, {"error":"Tous les champs sont necessaires !", "champs":manquants}
+        if len(manquants) > 0:
+            return 400, {"error": "Tous les champs sont necessaires !", "champs": manquants}
         
-    message=verifier_valeurs(donnees)
+    message = verifier_valeurs(donnees)
     if message is not None:
-        return 400, {"error":message}
+        return 400, {"error": message}
         
     
     #permet la modifications des champs 
     
-    modifications = ",".join(f"{champ}=%s" for champ in donnees)
-    valeurs=list(donnees.values()) + [id_hotel, id_chambre]
+    modifications = ", ".join(f"{champ} = %s" for champ in donnees)
+    valeurs = list(donnees.values()) + [id_hotel, id_chambre]
     ecrire(f"UPDATE chambre SET {modifications} WHERE hotel = %s AND chambre = %s", valeurs)
     
     return 200, trouver_chambre(id_hotel, id_chambre)
@@ -117,11 +117,11 @@ def modifier_chambre(id_hotel, id_chambre, donnees, tout_remplacer):
 #Delete
 def supprimer_chambre(id_hotel, id_chambre):
     if trouver_chambre(id_hotel, id_chambre) is None:
-        return 404, {"error":"Chambre Introuvable !"}
+        return 404, {"error": "Chambre Introuvable !"}
     
     try:
         ecrire("DELETE FROM chambre WHERE hotel = %s AND chambre = %s", (id_hotel, id_chambre,))
     except mysql.connector.IntegrityError:
-        return 409, {"error":"Suppression impossible, des réservation sont liées a cette chambre !"}
+        return 409, {"error": "Suppression impossible, des réservation sont liées a cette chambre !"}
     
     return 200, {"message":"Suppression reussie !"}

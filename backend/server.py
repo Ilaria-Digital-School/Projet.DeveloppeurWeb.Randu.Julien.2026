@@ -34,7 +34,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         if taille == 0:
             return None
         try:
-            donnees=json.loads(self.rfile.read(taille))
+            donnees = json.loads(self.rfile.read(taille))
         except json.JSONDecodeError:
             return None
         if not isinstance(donnees, dict):
@@ -52,7 +52,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             #lignes 50, pour le moment seul hotels et chambres sont proteger, il faut dupppliquer pour reservation.py etc..
             # A FINALISER
             
-            if PROTECTION_ACTIVATE and len (morceaux) > 0 and morceaux[0] in ["hotels", "chambres"] and methode in ["POST", "PUT", "PATCH", "DELETE"]:
+            if securite.PROTECTION_ACTIVATE and len(morceaux) > 0 and morceaux[0] in ["hotels", "chambres"] and methode in ["POST", "PUT", "PATCH", "DELETE"]:
                 utilisateur_connect = securite.lire_jeton(self.headers.get("Authorization"))
                 refus = securite.verifier_droits(utilisateur_connect, ["admin"])
                 if refus is not None:
@@ -125,7 +125,14 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             statusCode, contenu = reservation.supprimer_reservation(morceaux[1])
                             
             #Inscriptions / Connexion
-            # A verifier
+            
+            elif morceaux == ["inscription"] and methode == "POST":
+                statusCode, contenu = utilisateur.inscrire(self.lire_json())
+                                                    
+            elif morceaux == ["connexion"] and methode == "POST":
+                statusCode, contenu = utilisateur.connecter(self.lire_json())
+                
+            #permets de lister les utilisateurs
             elif morceaux == ["utilisateurs"] and methode == "GET":
                 utilisateur_connect = securite.lire_jeton(self.headers.get("Authorization"))
                 refus = securite.verifier_droits(utilisateur_connect, ["admin"])
@@ -133,12 +140,6 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                     statusCode, contenu = refus
                 else:
                     statusCode, contenu = utilisateur.lister_utilisateurs()
-            
-            elif morceaux == ["inscription"] and methode == "POST":
-                            statusCode, contenu = utilisateur.inscrire(self.lire_json())
-                                                    
-            elif morceaux == ["connexion"] and methode == "POST":
-                            statusCode, contenu = utilisateur.connecter(self.lire_json())
             
             else:
                 statusCode, contenu = 404, {"error":"Route Inconnue"}
@@ -148,8 +149,8 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             statusCode, contenu = 500, {"error" : "Erreur de Base de Données"}
             
         except Exception as erreur:
-                    print("Erreur Serveur :", repr(erreur))
-                    statusCode, contenu = 500, {"error" : "Erreur du serveur"}
+            print("Erreur Serveur :", repr(erreur))
+            statusCode, contenu = 500, {"error": "Erreur du serveur"}
             
         self.repondre(statusCode, contenu)
         
@@ -177,7 +178,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         self.end_headers()
         
 if __name__ == "__main__":
-    if not PROTECTION_ACTIVATE:
+    if not securite.PROTECTION_ACTIVATE:
         print("Attention : protection et jeton desactiver !")#securité a finalisée
     serveur= HTTPServer(("localhost", 8000), ResaHotelServer)
     print("Serveur ResaHotel démarré sur http://localhost:8000")

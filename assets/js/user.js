@@ -1,17 +1,17 @@
-class Utilisateur {
-    constructor(nom, prenom, tel, email, mdp, genre, interets, pays, role) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.tel = tel;
-        this.email = email;
-        this.mdp = mdp;
-        this.genre = genre;
-        this.interets = interets;
-        this.pays = pays;
-        this.role = role;
+// class Utilisateur {
+//     constructor(nom, prenom, tel, email, mdp, genre, interets, pays, role) {
+//         this.nom = nom;
+//         this.prenom = prenom;
+//         this.tel = tel;
+//         this.email = email;
+//         this.mdp = mdp;
+//         this.genre = genre;
+//         this.interets = interets;
+//         this.pays = pays;
+//         this.role = role;
 
-    }
-}
+//     }
+// }
 
 //Création de l'utilisateur/admin
 //sauvegarde en brut dans le localstorage avce MP visible
@@ -32,52 +32,50 @@ class Utilisateur {
 
 // }
 
-async function envoyerUtilisateur(utilisateur) {
-    try {
-        const reponse = await fetch(
-            "http://localhost:8000/utilisateurs",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(utilisateur)
-            }
-        );
-        const resultat = await reponse.json();
+// async function envoyerUtilisateur(utilisateur) { 
+//     try {
+//         const reponse = await fetch(
+//             "http://localhost:8000/utilisateurs",
+//             {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify(utilisateur)
+//             }
+//         );
+//         const resultat = await reponse.json();
 
-        if (!reponse.ok) {
-            throw new Error(
-                resultat.message || "Erreur lors de l'inscription"
-            );
-        }
-        console.log("utilisateur enregistré :", resultat);
-        return true;
-    } catch (erreur) {
-        console.error("Erreur fetch :", erreur);
-        alert("impossible d'enregistrer le compte sur le serveur")
-        return false;
-    }
-}
+//         if (!reponse.ok) {
+//             throw new Error(
+//                 resultat.message || "Erreur lors de l'inscription"
+//             );
+//         }
+//         console.log("utilisateur enregistré :", resultat);
+//         return true;
+//     } catch (erreur) {
+//         console.error("Erreur fetch :", erreur);
+//         alert("impossible d'enregistrer le compte sur le serveur")
+//         return false;
+//     }
+// }
 
 //Création du client 
 
 function sInscrire() {
     const inscriptionForm = document.getElementById("inscription-form");
     if (!inscriptionForm) return;
-    console.log(inscriptionForm);
-
 
     inscriptionForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
 
-        let nom = document.getElementById("nom").value.trim();
-        let prenom = document.getElementById("prenom").value.trim();
-        let tel = document.getElementById("tel").value.trim();
-        let email = document.getElementById("email").value.trim();
-        let mdp = document.getElementById("mdp").value;
-        let confirmMdp = document.getElementById("confirmMdp").value;
+        const nom = document.getElementById("nom").value.trim();
+        const prenom = document.getElementById("prenom").value.trim();
+        const tel = document.getElementById("tel").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mdp = document.getElementById("mdp").value;
+        const confirmMdp = document.getElementById("confirmMdp").value;
 
         //vérification mot de passe
 
@@ -91,23 +89,37 @@ function sInscrire() {
             alert("Veuillez selectionner un genre !");
             return;
         }
+
         const genre = genreSelectionne.value;
 
           //Array permets de recuperer plusieurs interets et evite ainsi les boucles 
         const interets = Array.from(document.querySelectorAll('input[name="interets"]:checked')).map(element => element.value);
 
-        const pays = document.getElementById("pays").value;
+        const pays = inscriptionForm.querySelector('select[name="pays"]').value;
 
-        //client = role
-        const utilisateur = new Utilisateur(nom, prenom, tel, email, mdp, genre, interets, pays, "client");
-        //envoyer vers le backend pour recuperation 
-        const succes = await envoyerUtilisateur(utilisateur);
+        const resultat = await appelerAPI("/inscription", "POST", {
+            nom: nom,
+            prenom: prenom,
+            email: email,
+            mot_de_passe: mdp,
+            telephone: tel,
+            genre: genre,
+            interets: interets,
+            pays: pays,
+        });
 
-        if (!succes) return; //arrete le serveur en cas d'erreur 
+        if (!resultat.ok) {
+            alert(messageErreur(resultat));
+            return;
+        }
+
         inscriptionForm.reset();
-        alert("Compte cree avec succés !");
-    })
-};
+        alert("Compte créé avec succés !");
+        window.location.href = PAGE_CONNEXION;
+
+    });
+}
+ //Connexion
 
 function seConnecter() {
     const connexionForm = document.getElementById("connexion-form");
@@ -117,26 +129,27 @@ function seConnecter() {
         event.preventDefault();
 
         const email = document.getElementById("email").value.trim();
-        const mdp = document.getElementById("password").value;
+        const mdp = document.getElementById("mdp").value;
 
-        const utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
+        const resultat = await appelerAPI("/connexion", "POST", {
+            email: email,
+            mot_de_passe: mdp
+        });
 
-        for (const utilisateur of utilisateurs) {
-            if (utilisateur.email?.toLowerCase() === email.toLowerCase() && utilisateur.mdp === mdp) {
+        if (!resultat.ok) {
+            alert(messageErreur(resultat));
+            return;
+        }
 
-                //operateur ternaire (2e methode)
-                window.location.href = utilisateur.role == "Admin" ? "nos-hôtels.html" : "/index.html";
-                return;
-            }
-        };
-        alert("Email ou Mot de passe incorect !");
+        sauvegarderSession(resultat.donnees); //sauvegarde dans le localstorage 
 
+        window.location.href = "../index.html";
     });
-}
+ }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     sInscrire();
     seConnecter();
-    //ajouterAdmin();
 });
+

@@ -91,7 +91,8 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
-                            <li class="nav-item">
+                            </li>
+                            <li class="nav-item"> 
                                 <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
                             </li>
                             <li class="nav-item">
@@ -102,10 +103,10 @@
                             </li>
                             
                         
-                            <li class="nav-item">
+                            <li class="nav-item admin-seulement">
                                 <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
-                             <li class="nav-item">
+                             <li class="nav-item admin-seulement">
                                 <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
                             <li class="nav-item">
@@ -139,8 +140,11 @@
 
                 <fieldset class="inscription-fieldset">
                     <h2 class="h2">Reservation</h2>
+                    <p id="reservation-compte"></p>
+                </fieldset>
 
-                    <h3>Informations Personnelles</h3>
+                   <!-- Le bloc ci-dessous n'est plus utile car les informations ont recuperer directement depuis la base de donnée -->
+                    <!-- <h3>Informations Personnelles</h3>
 
                     <div>
                         <label for="nom">Nom</label>
@@ -156,61 +160,43 @@
                     <input type="text" id="tel" placeholder="numéro de téléphone" required> <br>
 
                     <br><label for="email">email</label>
-                    <input type="text" id="email" placeholder="exemple@gmail.com" required><br>
-
-                    
-                </fieldset>
+                    <input type="text" id="email" placeholder="exemple@gmail.com" required><br> -->
 
                 <fieldset class="inscription-fieldset">
                     <h3>Votre selection </h3>
                 
                     <div>
                         <br><label for="hotel">Hôtel</label>
-                        <select name="hotel" id="hotel">
-                            <option value="votre selection">Votre Selection</option>
-                            <option value="villa-modigliani">La Villa Modigliani</option>
-                            <option value="intercontinental">Intercontinental</option>
-                            <option value="le-scribe">Le Scribe</option>
-                            <option value="le-georges-v">Le Georges V</option>
-                            <option value="le-hyatt-paris-madeleine">Le Hyatt Paris Madeleine</option>
-                            <option value="le-pullman-tour-eiffel">Le Pullman Tour Eiffel</option>
-                            <option value="l'hotel-des-grands-voyageurs">L'Hotel des Grands Voyageurs</option>
-                            <option value="le-collectionneur">Le Collectionneur</option>
-                            <option value="novotel-paris-les-halles">Le Novotel Paris les Halles</option>
-                            <option value="marriott-paris-rive-gauche">Le Marriott Paris Rive Gauche</option>
-                            <option value="le-renaissance">Le Renaissance Paris Nobel</option>
-                            <option value="le-meridien">Le Meridien</option>
-                            <option value="le-drawing-house">Le Drawing House</option>
-                            <option value="les-jardins-du-marais">Les Jardins du Marais</option>
-                            <option value="le-crowne-plaza">Le Crowne Plaza</option>
-                            <option value="le-hyatt-regency">Le Hyatt Regency</option>
-                
-                        </select>
+                        <select name="hotel" id="hotel"></select>
                     </div><br>
+
                     <div>
-                        <label for="nbr_adulte">Nombre d'adulte</label>
-                        <input type="number" name="nbr_adulte" id="nbr_adulte" placeholder="Nombre d'Adulte" required>
+                        <br><label for="arrivee"> Date d'arrivée</label>
+                        <input type="date" id="arrivee" required>
+                    </div>
+
+                    <div>
+                        <br><label for="depart"> Date de départ</label>
+                        <input type="date" id="depart" required>
+                    </div>
+
+                    <div>
+                        <br><label for="nbr_adulte">Nombre d'adulte</label>
+                        <input type="number" name="nbr_adulte" id="nbr_adulte" placeholder="Nombre d'Adulte" min="1" max="10" required>
                     </div><br>
                     <div>
                         <label for="nbr_enfant">Nombre d'enfant</label>
-                        <input type="number" name="nbr_enfant" id="nbr_enfant" placeholder="Nombre d'Enfant" required>
+                        <input type="number" name="nbr_enfant" id="nbr_enfant" placeholder="Nombre d'Enfant" min="1" max="10" required>
                     </div>
                     <div>
                         <br><label for="chambre">Votre Chambre</label>
-                        <select name="chambre" id="chambre">
-                            <option value="votre chambre">Votre Chambre</option>
-                            <option value="chambre simple">Chambre Simple</option>
-                            <option value="chambre double">Chambre Double</option>
-                            <option value="chambre triple">Chambre Triple</option>
-                            <option value="chambre quadruple">Chambre Quadruple</option>
-                
-                        </select>
+                        <select name="chambre" id="chambre"> </select>
                     </div>
                 
-                    <div>
+                    <!-- <div>
                         <br><label for="msg">Message</label>
-                        <textarea id="msg" placeholder="Votre Message" required></textarea>
-                    </div>
+                        <textarea id="msg" placeholder="Votre Message"></textarea>
+                    </div> -->
                 
                     <div class="btn-container">
                         <button class="btn-envoyer" type="submit">Reserver</button><br>
@@ -304,11 +290,12 @@
     </footer>
     <button id="scroll-top"  class="scroll-top" aria-label="Remonter la page"><i class="fa-solid fa-arrow-up"></i></button>
 
-
-    <script src="../assets/js/scroll.js"></script>
-    <script src="../assets/js/user.js"></script>
-    <script src="../assets/js/newsletter.js"></script>
+    <script src="../assets/js/api.js"></script>
     <script src="../assets/js/reservation.js"></script>
+    <script src="../assets/js/scroll.js"></script>
+    <!-- <script src="../assets/js/user.js"></script> -->
+    <script src="../assets/js/newsletter.js"></script>
+    
     <!--Lien JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">

@@ -15,7 +15,7 @@ import securite
 def convertir_json(valeur):
     if isinstance(valeur, Decimal):
         return float(valeur)
-    return str (valeur)
+    return str(valeur)
 
 class MonJSON(DefaultJSONProvider):
     default = staticmethod(convertir_json)
@@ -33,6 +33,15 @@ def ajouter_cors(reponse):
     reponse.headers["Access-Control-Allow-Headers"] = "Content-Type ,Authorization"
     return reponse
 
+@app.before_request
+def proteger_routes():
+    morceaux = [m for m in request.path.split("/") if m != ""]
+    if securite.PROTECTION_ACTIVATE and len(morceaux) > 0 and morceaux[0] in ["hotels", "chambres"] and request.method in ["POST", "PUT", "PATCH", "DELETE"]:
+        utilisateur_connect = securite.lire_jeton(request.headers.get("Authorization"))
+        refus = securite.verifier_droits(utilisateur_connect, ["admin"])
+        if refus is not None:
+            return jsonify(refus[1]), refus [0]
+        
 def lire_json():
     donnees = request.get_json(force=True, silent=True)
     if not isinstance(donnees, dict):
@@ -131,10 +140,6 @@ def route_supprimer_reservation(identifiant):
     return repondre(reservation.supprimer_reservation(identifiant))
 
 #Comptes
-# a verifier pour la page utilisateur et listing 
-@app.post("/utilisateur")
-def route_lister_utilisateur():
-    return repondre(utilisateur.lister_utilisateur(lire_json()))
 
 @app.post("/inscription")
 def route_inscription():
@@ -143,6 +148,15 @@ def route_inscription():
 @app.post("/connexion")
 def route_connexion():
     return repondre(utilisateur.connecter(lire_json()))
+
+#Affiche la liste des utilisateurs
+@app.get("/utilisateurs")
+def route_lister_utilisateurs():
+    utilisateur_connect = securite.lire_jeton(request.headers.get("Authorization"))
+    refus = securite.verifier_droits(utilisateur_connect, ["admin"])
+    if refus is not None:
+        return jsonify(refus[1]), refus [0]
+    return repondre(utilisateur.lister_utilisateurs())
 
 #Les erreurs et les StatusCode
 
@@ -166,13 +180,8 @@ def erreur_imprevue(erreur):
     print("Erreur serveur :", repr(erreur))
     return jsonify({"error": "Erreur du serveur"}), 500
 
-@app.get("/utilisateurs")
-def route_lister_utilisateurs():
-    utilisateur_connect = securite.lire_jeton(request.headers.get("Authorization"))
-    refus = securite.verifier_droits(utilisateur_connect, ["admin"])
-    if refus is not None:
-        return jsonify(refus[1]), refus [0]
-    return repondre (utilisateur.lister_utilisateurs())
 
 if __name__ == "__main__":
+    if not securite.PROTECTION_ACTIVATE:
+        print("Attention, protection desactivée pour test")
     app.run(host="localhost", port=5000, debug=True)

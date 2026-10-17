@@ -93,6 +93,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
                             </li>
@@ -102,10 +103,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="connexion.html">Connexion</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item admin-seulement">
                                 <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
-                             <li class="nav-item">
+                             <li class="nav-item admin-seulement">
                                 <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
                              <li class="nav-item">
@@ -142,8 +143,8 @@
                 <br><label for="mdp"> Mot de Passe:</label>
                 <input type="password" id="mdp" placeholder="Mot de Passe" required><br>
 
-                <br><label for="confirmMdp">Confirmer votre Mot de Passe:</label>
-                <input type="password" id="confirmMdp" placeholder="Confirmer votre Mot de Passe" required><br>
+                <!-- <br><label for="confirmMdp">Confirmer votre Mot de Passe:</label>
+                <input type="password" id="confirmMdp" placeholder="Confirmer votre Mot de Passe" required><br> -->
 
                 <div class="btn-container">
                     <button class="btn-envoyer" type="submit">Valider</button><br>
@@ -234,11 +235,12 @@
             </div>
 
         </div>
-
+ 
     </footer>
     <button id="scroll-top"  class="scroll-top" aria-label="Remonter la page"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="../assets/js/scroll.js"></script>
+    <script src="../assets/js/api.js"></script>
     <script src="../assets/js/user.js"></script>
+    <script src="../assets/js/scroll.js"></script>
     <script src="../assets/js/newsletter.js"></script>
 
     <!--Lien JavaScript-->
