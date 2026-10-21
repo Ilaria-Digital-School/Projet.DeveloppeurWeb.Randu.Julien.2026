@@ -70,12 +70,12 @@ function sInscrire() {
         event.preventDefault();
 
 
-        const nom = document.getElementById("nom").value.trim();
-        const prenom = document.getElementById("prenom").value.trim();
-        const tel = document.getElementById("tel").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const mdp = document.getElementById("mdp").value;
-        const confirmMdp = document.getElementById("confirmMdp").value;
+        const nom = valeurChamp("nom").trim();
+        const prenom = valeurChamp("prenom").trim();
+        const tel = valeurChamp("tel").trim();
+        const email = valeurChamp("email").trim();
+        const mdp = valeurChamp("mdp")
+        const confirmMdp = valeurChamp("confirmMdp")
 
         //vérification mot de passe
 
@@ -92,10 +92,14 @@ function sInscrire() {
 
         const genre = genreSelectionne.value;
 
-          //Array permets de recuperer plusieurs interets et evite ainsi les boucles 
+        //Array permets de recuperer plusieurs interets et evite ainsi les boucles 
         const interets = Array.from(document.querySelectorAll('input[name="interets"]:checked')).map(element => element.value);
 
-        const pays = inscriptionForm.querySelector('select[name="pays"]').value;
+        const champPays = inscriptionForm.querySelector('select[name="pays"]') || inscriptionForm.querySelector("select");
+        const pays = champPays ? champPays.value : null;
+        if (champPays === null) {
+            console.warn("Pays introuvable");
+        }
 
         const resultat = await appelerAPI("/inscription", "POST", {
             nom: nom,
@@ -128,8 +132,8 @@ function seConnecter() {
     connexionForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        const email = document.getElementById("email").value.trim();
-        const mdp = document.getElementById("mdp").value;
+        const email = valeurChamp("email").trim();
+        const mdp = valeurChamp("mdp");
 
         const resultat = await appelerAPI("/connexion", "POST", {
             email: email,

@@ -7,7 +7,7 @@ import securite
 CHAMPS_INSCRIPTION = ["nom", "prenom", "email", "mot_de_passe", "telephone"]
 GENRES_VALIDES = ["femme", "homme"]
 PAYS_VALIDES = ["France", "Portugais", "Anglais", "Autre"]
-INTERETS_VALIDES = ["Hôtel 5*", "Hôtel 4*", "spa"]
+INTERETS_VALIDES = ["Hôtels 5*", "Hôtel 4*", "spa"]
 
 def sans_mot_de_passe(utilisateur):
     #renvoie une copie de l'utilisateur sans la colonnne mot de passe (securite)
@@ -89,7 +89,7 @@ def inscrire(donnees):
     # Les administrateurs se créent uniquement avec le script admin.py.
     try:
         ecrire("INSERT INTO utilisateur (utilisateurs, nom, prenom, email, mot_de_passe, telephone, role, genre, pays, interets) "
-               "VALUES (%s, %s, %s, %s, %s, %s, %s)",
+               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                (identifiant, donnees["nom"], donnees["prenom"], donnees["email"],
                 hash_texte, donnees["telephone"], "client", genre, pays, interets_texte))
     except mysql.connector.IntegrityError:

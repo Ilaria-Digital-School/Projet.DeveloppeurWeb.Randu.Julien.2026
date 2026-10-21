@@ -73,8 +73,8 @@ function ajouterChambre() {
             window.location.href = PAGE_CONNEXION;
             return;
         }
-        const idHotel = document.getElementById("chambre-hotel").value;
-        const type = document.getElementById("type-chambre").value;
+        const idHotel = valeurChamp("chambre-hotel");
+        const type = valeurChamp("type-chambre");
 
         if (idHotel === "") {
             alert("Veuillez choisir l'hôtel concerné !");
@@ -96,12 +96,12 @@ function ajouterChambre() {
         const resultat = await appelerAPI("/chambres", "POST", {
             hotel: idHotel,
             chambre: idChambre,
-            numero: document.getElementById("numero-chambre").value.trim(),
+            numero: valeurChamp("numero-chambre").trim(),
             type: type,
-            capacite: Number(document.getElementById("capacite-chambre").value),
-            tarif: Number(document.getElementById("tarif").value),
-            description: document.getElementById("description-chambre").value.trim(),
-            iùage: document.getElementById("img-chambre").value.tim()
+            capacite: Number(valeurChamp("capacite-chambre")),
+            tarif: Number(valeurChamp("tarif")),
+            description: valeurChamp("description-chambre").trim(),
+            image: valeurChamp("img-chambre").trim()
 
         });
 

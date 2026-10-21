@@ -18,7 +18,7 @@ def est_entier_entre(valeur, minimum, maximum):
 
 
 def est_nombre_positif(valeur):
-    if isinstance(valeur, bool) or not isinstance (valeur, (int, float)):
+    if isinstance(valeur, bool) or not isinstance(valeur, (int, float)):
         return False
     return valeur > 0
 

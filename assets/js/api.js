@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000"; //mettre 5000 pour utilisation via Flask 
+const API_URL = "http://localhost:5000"; //mettre 8000 pour utilisation via Flask 
 const PAGE_CONNEXION = "connexion.html";
 
 //Envoie une requete sur l'API
@@ -28,9 +28,11 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
         if (reponse.status === 401 && jeton) {
             deconnecter();
         }
+
         return { ok: reponse.ok, statut: reponse.status, donnees: donnees };
     } catch (erreur) {
-        return { ok: false, statut: 0, donnees: { error: "Serveur injoignable"} };
+        return { ok: false, statut: 0, donnees: { error: "Serveur injoignable" } };
+
     }
     
 }
@@ -46,6 +48,14 @@ function messageErreur(resultat) {
     }
     return message;
 }
+//permets de lire la valeur des champs selectionner et permets une lecture claire
+function valeurChamp(id){
+    const element = document.getElementById(id);
+    if (element === null) {
+        throw new Error("champ introuvable : id=\"" + id +"\"");
+    }
+    return element.value;
+}
 
 //sauvegarde la session dans le localstorage 
 
@@ -53,12 +63,13 @@ function sauvegarderSession(donneesConnexion) {
     localStorage.setItem("jeton", donneesConnexion.jeton);
     localStorage.setItem("utilisateur", JSON.stringify({
         id: donneesConnexion.utilisateurs,
-        nom: donneesConnexion.prenom,
+        nom: donneesConnexion.nom,
+        prenom: donneesConnexion.prenom,
         role: donneesConnexion.role
     }));
 }
 
-function utilisateurConnect() {
+function utilisateurConnecte() {
     const texte = localStorage.getItem("utilisateur");
     if (!texte) return null;
     try {
@@ -75,7 +86,7 @@ function deconnecter() {
 
 //Pages et liens reserver a l'Admin
 function estAdmin() {
-    const moi = utilisateurConnect();
+    const moi = utilisateurConnecte();
     return moi !== null && moi.role === "admin";
 }
 
@@ -109,6 +120,31 @@ function prochainIdentifiant(prefixe, identifiants) {
             max = nombre;
         }
     });
-    return prefixe + string(max + 1).padStart(3, "0");
+    return prefixe + String(max + 1).padStart(3, "0");
 
 }
+
+//Lien deconnexion et lien inscription permettent de masquer les elements portant le lien
+//si un client est connecter la page inscription disparait (lien portant la classe lien-inscription)
+//les liens qui portent le lien-connexion se transforme en deconnexion, remplace la creation d'un boutton sur les pages html
+function afficherLienConnexion(){
+    const moi = utilisateurConnecte();
+
+    document.querySelectorAll(".lien-connexion").forEach(function (lien) {
+        if (moi === null) return; //si personne de connecter, le lien reste connexion
+
+        lien.textContent = moi.prenom ? "Déconnexion (" + moi.prenom +")" : "Deconnexion";
+        lien.href = "#";
+        lien.addEventListener("click", function (evenement) {
+            evenement.preventDefault();
+            deconnecter();
+            window.location.href = "../index.html";
+        });
+
+    });
+    document.querySelectorAll(".lien-inscription").forEach(function (element) {
+        element.style.display = moi !== null ? "none" : "";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", afficherLienConnexion);

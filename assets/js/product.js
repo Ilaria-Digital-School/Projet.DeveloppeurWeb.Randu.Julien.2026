@@ -49,7 +49,7 @@
 // ajouterProduit();
 
 
-//permets la recuperation dans la base de donnée
+//permets l'ajout dans la base de donnée
 
 function ajouterProduit() {
     const form = document.getElementById("productForm");
@@ -70,19 +70,20 @@ function ajouterProduit() {
             return;
         }
         const idHotel = prochainIdentifiant("H", liste.donnees.map(h => h.hotel));
-
-        const pays = form.querySelector('[name="pays"]').value.trim();
+        
+        const champPays = form.querySelector('[name="pays"]') || document.getElementById("pays-hotel");
+        const pays = champPays ? champPays.value.trim() : "";
 
         const resultat = await appelerAPI("/hotels", "POST", {
-            hotel : idHotel,
-            nom: document.getElementById("productName").value.trim(),
-            nombre_etoiles: Number(document.getElementById("etoile").value),
-            description: document.getElementById("description").value.trim(),
-            adresse: document.getElementById("adresse").value.trim(),
-            code_postal: document.getElementById("code-postale").value.trim(),
-            ville: document.getElementById("ville").value.trim(),
+            hotel: idHotel,
+            nom: valeurChamp("productName").trim(),
+            nombre_etoiles: Number(valeurChamp("etoile")),
+            description: valeurChamp("description").trim(),
+            adresse: valeurChamp("adresse").trim(),
+            code_postal: valeurChamp("code-postale").trim(),
+            ville: valeurChamp("ville").trim(),
             pays: pays,
-            image: document.getElementById("img").value.trim()
+            image: valeurChamp("img").trim()
         });
 
         if (!resultat.ok) {

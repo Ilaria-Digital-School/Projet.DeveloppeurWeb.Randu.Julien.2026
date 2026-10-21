@@ -102,7 +102,7 @@ function reserver() {
     const form = document.getElementById("reservationForm");
     if (!form) return;
     //permets de recuperer les informations lors de la connexion
-    const moi = utilisateurConnect();
+    const moi = utilisateurConnecte();
     const zoneCompte = document.getElementById("reservation-compte");
     if (zoneCompte) {
         zoneCompte.textContent = moi
@@ -125,17 +125,17 @@ function reserver() {
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        const utilisateur = utilisateurConnect();
+        const utilisateur = utilisateurConnecte();
         if (utilisateur === null) {
             alert("Vous devez etre connecté pour reserver");
             window.location.href = PAGE_CONNEXION;
             return;
         }
 
-        const idHotel = document.getElementById("hotel").value;
-        const idChambre = document.getElementById("chambre").value;
-        const arrivee = document.getElementById("arrivee").value;
-        const depart = document.getElementById("depart").value;
+        const idHotel = valeurChamp("hotel");
+        const idChambre = valeurChamp("chambre");
+        const arrivee = valeurChamp("arrivee");
+        const depart = valeurChamp("depart");
 
         const chambre = chambresDisponibles.find(c => c.chambre === idChambre);
 
@@ -160,8 +160,8 @@ function reserver() {
             reservation: idReservation,
             date_arrivee: arrivee,
             date_depart: depart,
-            nombre_adulte: Number(document.getElementById("nbr_adulte").value),
-            nombre_enfant: Number(document.getElementById("nbr_enfant").value),
+            nombre_adulte: Number(valeurChamp("nbr_adulte")),
+            nombre_enfant: Number(valeurChamp("nbr_enfant")) || 0,
             montant_total: montant,
             statut: "en attente",
             chambre: idChambre,

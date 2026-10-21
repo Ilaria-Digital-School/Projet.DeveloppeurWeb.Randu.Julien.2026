@@ -54,7 +54,7 @@
         <!-- Boutons -->
         <div class="menu">
 
-            <a href="connexion.html" class="monCompte">Connexion</a>
+            <a href="connexion.html" class="monCompte lien-connexion">Connexion</a>
             <a href="votre-panier.html" class="votrePanier">Votre Panier</a>
 
             <select name="pays" id="pays" class="langue">
@@ -98,12 +98,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="nos-hôtels.html">Selection du moment</a>
                             </li>
-                             <li class="nav-item">
+                             <li class="nav-item lien-inscription">
                                 <a class="nav-link" href="formulaire-dinscription.html">Inscription
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="connexion.html">Connexion</a>
+                                <a class="nav-link lien-connexion" href="connexion.html">Connexion</a>
                             </li>
                            
                             <li class="nav-item admin-seulement">
@@ -139,7 +139,7 @@
                 <h2 class="h2">Ajouter une chambre</h2>
 
                 <div>
-                    <br><label for="hotel">Hôtel</label>
+                    <br><label for="chambre-hotel">Hôtel</label>
                     <select name="hotel" id="chambre-hotel"></select>
                        <!--  <option value="votre selection">Choisissez l'hôtel concerné</option>
                         <option value="villa-modigliani">La Villa Modigliani</option>
@@ -163,12 +163,12 @@
                 </div><br>
 
                 <div>
-                    <label for="numero">Numéro : </label>
+                    <label for="numero-chambre">Numéro : </label>
                     <input type="number" name="numero" id="numero-chambre" placeholder="Numéro de chambre" required>
                 </div><br>
 
                 <div>
-                    <br><label for="chambre">Type de chambre</label>
+                    <br><label for="type-chambre">Type de chambre</label>
                     <select name="chambre" id="type-chambre">
                         <option value="">Type de chambre</option>
                         <option value="chambre simple">Chambre Simple</option>
@@ -180,22 +180,22 @@
                 </div>
 
                 <div><br>
-                    <label for="capacite">Capacité : </label>
+                    <label for="capacite-chambre">Capacité : </label>
                     <input type="number" name="capacite" id="capacite-chambre" min="1" max="10" placeholder="Capacité de la chambre" required>
                 </div><br>
 
                 <div><br>
-                    <label for="productPrice">Prix : </label>
-                    <input type="number" name="productPrice" id="tarif" placeholder="Chambre a partir de..€" required step="0.01">
+                    <label for="tarif">Prix par nuit (€) : </label>
+                    <input type="number" name="productPrice" id="tarif" placeholder="Prix par nuit en €" min="0.01" step="0.01" required >
                 </div><br>
 
                 <div>
-                    <label for="description" class="form-label">Description :</label>
+                    <label for="description-chambre" class="form-label">Description :</label>
                     <textarea id="description-chambre" name="description" placeholder="Votre description" required></textarea>
                 </div><br>
 
                 <div>
-                    <label for="img">Image URL : </label>
+                    <label for="img-chambre">Image URL : </label>
                     <input type="text" name="img" id="img-chambre" placeholder="image URL" required>
                 </div>
 
@@ -291,7 +291,7 @@
     <script src="../assets/js/chambre.js"></script>
     <script>pageReserveeAdmin();</script>
     <script src="../assets/js/scroll.js"></script>
-    <!-- <script src="../assets/js/user.js"></script> -->
+    <script src="../assets/js/user.js"></script>
     <script src="../assets/js/newsletter.js"></script>
 
 </body>

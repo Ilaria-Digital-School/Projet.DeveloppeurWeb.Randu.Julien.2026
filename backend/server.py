@@ -11,8 +11,6 @@ import utilisateur
 import reservation
 import securite
 
-PROTECTION_ACTIVATE = False #remplacer par TRUE pour réactiver 
-
 #permet de convertir le prix et les dates
 def convertir_json(valeur):
     if isinstance(valeur, Decimal):
