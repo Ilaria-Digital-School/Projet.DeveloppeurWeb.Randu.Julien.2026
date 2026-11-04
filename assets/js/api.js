@@ -148,3 +148,36 @@ function afficherLienConnexion(){
 }
 
 document.addEventListener("DOMContentLoaded", afficherLienConnexion);
+
+//Partie reservée aux clients, comme la page panier qui s'affiche que si le client se connecte 
+function estClient(){
+    const moi = utilisateurConnecte();
+    return moi !== null && moi.role === "client";
+}
+
+//permets d'apeller la page client portant le style display none dans le body
+function pageReserveeClient(){
+    const moi = utilisateurConnecte();
+
+    if (moi === null) {
+        alert("Veuillez vous connecter pour acceder a cette page !");
+        window.location.href = PAGE_CONNEXION;
+        return;
+    }
+    if (moi.role !== "client") {
+        alert("Cette page est reservee aux clients.");
+        window.location.href = "../index.html";
+        return;
+    }
+    document.body.style.display = "";
+}
+
+//permets de cacher les elements portant la classe client-seulement
+function afficherLiensClient(){
+    document.querySelectorAll(".client-seulement").forEach(function (element) {
+        element.style.display = estClient() ? "" : "none";
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", afficherLiensClient);

@@ -80,7 +80,7 @@ function ajouterProduit() {
             nombre_etoiles: Number(valeurChamp("etoile")),
             description: valeurChamp("description").trim(),
             adresse: valeurChamp("adresse").trim(),
-            code_postal: valeurChamp("code-postale").trim(),
+            code_postale: valeurChamp("code-postale").trim(),
             ville: valeurChamp("ville").trim(),
             pays: pays,
             image: valeurChamp("img").trim()

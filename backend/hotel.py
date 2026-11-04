@@ -3,7 +3,7 @@
 import mysql.connector
 from database import lire, ecrire
 
-CHAMPS = ["nom", "nombre_etoiles", "description", "adresse", "code_postal", "ville", "pays", "image"]
+CHAMPS = ["nom", "nombre_etoiles", "description", "adresse", "code_postale", "ville", "pays", "image"]
 
 #les etoiles doivent etre un nombre en 1 et 5
 def etoiles_valides(valeur):
@@ -41,7 +41,7 @@ def creer_hotel(donnees):
     if not etoiles_valides(donnees["nombre_etoiles"]):
         return 400, {"error": "nombre_etoiles doit etre un chffre entre 1 et 5 !"}
     
-    colonnes = ", ".join(requis)
+    colonnes = ", ".join(requis) 
     marqueurs = ", ".join(["%s"] * len(requis))
     valeurs = [donnees[champ] for champ in requis]
     
