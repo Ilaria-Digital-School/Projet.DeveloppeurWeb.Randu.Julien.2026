@@ -994,3 +994,13 @@ background-color: cornflowerblue;
     text-align: center;
     text-decoration: underline;
 }
+
+/*Concerne la verification des mots de passe dans le formulaire*/
+
+
+.error-text{
+    color: red;
+    font-size: large;
+    margin-top: 5px;
+    font-weight: 500;
+}
