@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000"; //mettre 8000 pour utilisation via Flask 
+const API_URL = "http://localhost:8000"; //mettre 5000 pour utilisation via Flask ou 8000 sans Flask
 const PAGE_CONNEXION = "connexion.html";
 
 //Envoie une requete sur l'API
