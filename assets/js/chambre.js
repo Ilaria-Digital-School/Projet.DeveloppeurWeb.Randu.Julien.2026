@@ -49,9 +49,14 @@ async function chargerHotelsChambre() {
     liste.innerHTML = "";
     liste.appendChild(new Option("Choisissez l'Hôtel concerné", ""));
 
-    const resultat = await appelerAPI("/hotels");
+    const resultat = await appelerAPI("/mes-hotels");
     if (!resultat.ok) {
         alert(messageErreur(resultat));
+        return;
+    }
+
+    if (resultat.donnees.length === 0) {
+        liste.appendChild(new Option("Aucun hôtel : ajoutez d'abord un hôtel", ""));
         return;
     }
 
@@ -63,12 +68,14 @@ function ajouterChambre() {
     const form = document.getElementById("productChambre");
     if (!form) return;
 
-    chargerHotelsChambre();
+    if (peutGererCatalogue()) {
+        chargerHotelsChambre();
+    }
 
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        if (!estAdmin()) {
+        if (!peutGererCatalogue()) {
             alert("Cette page est reservee a l'administrateur, connexion requise");
             window.location.href = PAGE_CONNEXION;
             return;
@@ -85,17 +92,8 @@ function ajouterChambre() {
             return;
         }
 
-        //identifiant de la nouvelle chambre
-        const existantes = await appelerAPI("/chambres/" + encodeURIComponent(idHotel));
-        if (!existantes.ok) {
-            alert(messageErreur(existantes));
-            return;
-        }
-        const idChambre = prochainIdentifiant("C", existantes.donnees.map(c => c.chambre));
-
         const resultat = await appelerAPI("/chambres", "POST", {
             hotel: idHotel,
-            chambre: idChambre,
             numero: valeurChamp("numero-chambre").trim(),
             type: type,
             capacite: Number(valeurChamp("capacite-chambre")),
@@ -112,7 +110,7 @@ function ajouterChambre() {
 
 
         form.reset();
-        alert("chambre " + idChambre + "ajoutée avec succés !");
+        alert("chambre " + resultat.donnees.chambre + "ajoutée avec succés !");
 
     });
 }

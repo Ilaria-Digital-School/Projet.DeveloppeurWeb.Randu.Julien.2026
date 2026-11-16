@@ -101,7 +101,13 @@ function sInscrire() {
             console.warn("Pays introuvable");
         }
 
+        //choix du compte, client ou prestataire
+
+        const choixCompte = document.querySelector('input[name="type-compte"]:checked');
+        const role = choixCompte ? choixCompte.value : "client";
+
         const resultat = await appelerAPI("/inscription", "POST", {
+            role: role,
             nom: nom,
             prenom: prenom,
             email: email,

@@ -180,8 +180,12 @@ if __name__ == "__main__":
         print("Attention : protection et jeton desactiver !")#securité a finalisée
     serveur= HTTPServer(("localhost", 8000), ResaHotelServer)
     print("Serveur ResaHotel démarré sur http://localhost:8000")
-    serveur.serve_forever()
-        
+    try:
+        serveur.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServeur arrêté")
+    finally:
+        serveur.server_close()        
         
 
                 

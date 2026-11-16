@@ -6,6 +6,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DUREE_JETON = 60 * 60
+
+#Les Trois roles:
+ROLE_CLIENT = "client"
+ROLE_PRESTATAIRE = "prestataire"
+ROLE_ADMIN = "admin"
+
+#permet de choisir son role a l'inscription prestataire ou client, admin ne s'affiche pas. Il se cree depuis admin.py
+ROLES_INSCRIPTION = [ROLE_CLIENT, ROLE_PRESTATAIRE]
+
+ECRITURES = ["POST" "PUT", "PATCH", "DELETE"]
+
 PROTECTION_ACTIVATE = False #True pour l'activé 
 
 def cle_secrete():
@@ -49,3 +60,36 @@ def verifier_droits(utilisateur, roles_autorises):
     if utilisateur["role"] not in roles_autorises:
         return 403, {"error": "Droits insuffisants"}
     return None
+
+#Regles en fonction du role
+
+def regle_route(methode, morceaux):
+    premier = morceaux[0] if len(morceaux) > 0 else ""
+    if methode == "OPTIONS":
+        return None, False
+    if premier in ("hotels", "chambres") and methode in ECRITURES:
+        if methode == "POST":
+            return [ROLE_PRESTATAIRE, ROLE_ADMIN], True
+        return [ROLE_ADMIN], True
+    if premier == "mes-hotels":
+        return [ROLE_PRESTATAIRE, ROLE_ADMIN], False
+    if premier == "reservations":
+        if methode == "POST":
+            return [ROLE_CLIENT], False
+        return [ROLE_CLIENT, ROLE_ADMIN], False
+    if premier == "profil":
+        return[ROLE_CLIENT, ROLE_PRESTATAIRE, ROLE_ADMIN], False
+    if premier == "utilisateurs":
+        return [ROLE_ADMIN], False
+    return None, False
+
+#lit le jeton et donne l'acces en fonction du role
+def controler_acces(methode, morceaux, valeur_authorization):
+    demandeur = lire_jeton(valeur_authorization)
+    roles, soumis_a_l_interrupteur = regle_route(methode, morceaux)
+    if roles is None:
+        return demandeur, None
+    if soumis_a_l_interrupteur and not PROTECTION_ACTIVATE:
+        return demandeur, None
+    return demandeur, verifier_droits(demandeur, roles)
+    

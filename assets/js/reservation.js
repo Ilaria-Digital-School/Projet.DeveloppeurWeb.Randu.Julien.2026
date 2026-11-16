@@ -101,13 +101,18 @@ async function chargerChambres(idHotel) {
 function reserver() {
     const form = document.getElementById("reservationForm");
     if (!form) return;
+
     //permets de recuperer les informations lors de la connexion
     const moi = utilisateurConnecte();
     const zoneCompte = document.getElementById("reservation-compte");
     if (zoneCompte) {
-        zoneCompte.textContent = moi
-            ? "Réservation au nom de " + moi.prenom + " " + moi.nom
-            : "Vous devez être connecté pour réserver.";
+        if (moi === null) {
+            zoneCompte.textContent = "Vous devez etre connecté pour reserver";
+        } else if (moi.role !== "client") {
+            zoneCompte.textContent = "Seuls les comptes clients peuvent reserver";
+        } else {
+            zoneCompte.textContent = "Reservation au nom de " + moi.prenom + " " + moi.nom;
+        }
     }
 
     //permets de ne pas choisir une date deja passée
@@ -132,6 +137,11 @@ function reserver() {
             return;
         }
 
+        if (utilisateur.role !== "client") {
+            alert("Seuls les comptes clients peuvent reserver");
+            return;
+        }
+
         const idHotel = valeurChamp("hotel");
         const idChambre = valeurChamp("chambre");
         const arrivee = valeurChamp("arrivee");
@@ -151,22 +161,14 @@ function reserver() {
             return;
         }
 
-        //permets de calculer le montant que le client devra payer (a verifier)
-        const montant = Math.round(nuits * Number(chambre.tarif) * 100) / 100;
-
-        const idReservation = "R" + Date.now();
-
         const resultat = await appelerAPI("/reservations", "POST", {
             reservation: idReservation,
             date_arrivee: arrivee,
             date_depart: depart,
             nombre_adulte: Number(valeurChamp("nbr_adulte")),
             nombre_enfant: Number(valeurChamp("nbr_enfant")) || 0,
-            montant_total: montant,
-            statut: "en attente",
             chambre: idChambre,
             hotel: idHotel,
-            utilisateurs: utilisateur.id
         });
 
         if (!resultat.ok) {
@@ -175,7 +177,7 @@ function reserver() {
         }
 
         //pour la page paiement
-        localStorage.setItem("derniereReservation", JSON.stringify({ id: idReservation, montant: montant }));
+        localStorage.setItem("derniereReservation", JSON.stringify({ id: resultat.donnes.reservation, montant: resultat.donnees.montant_total  }));
 
         form.reset();
         chargerChambres("");

@@ -58,24 +58,16 @@ function ajouterProduit() {
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        if (!estAdmin()) {
-            alert("Cette page est reservee a l'administrateur, connexion requise");
+        if (!peutGererCatalogue()) {
+            alert("Cette page est reservee aux prestataires et a l'administrateur, connexion requise");
             window.location.href = PAGE_CONNEXION;
             return;
         }
-
-        const liste = await appelerAPI("/hotels");
-        if (!liste.ok) {
-            alert(messageErreur(liste));
-            return;
-        }
-        const idHotel = prochainIdentifiant("H", liste.donnees.map(h => h.hotel));
         
         const champPays = form.querySelector('[name="pays"]') || document.getElementById("pays-hotel");
         const pays = champPays ? champPays.value.trim() : "";
 
         const resultat = await appelerAPI("/hotels", "POST", {
-            hotel: idHotel,
             nom: valeurChamp("productName").trim(),
             nombre_etoiles: Number(valeurChamp("etoile")),
             description: valeurChamp("description").trim(),

@@ -22,7 +22,14 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
 
     try {
         const reponse = await fetch(API_URL + chemin, options);
-        const donnees = await reponse.json();
+
+        let donnees;
+        try{
+            donnees = await reponse.json();
+        } catch (erreurJson) {
+            donnees = { error: "Réponse inattendue du serveur (code " + reponse.status + ")"};
+        }
+        
 
         //renvoie une erreur si le délai de connexion est depassé
         if (reponse.status === 401 && jeton) {
@@ -84,56 +91,128 @@ function deconnecter() {
     localStorage.removeItem("utilisateur");
 }
 
-//Pages et liens reserver a l'Admin
-function estAdmin() {
+function roleConnecte() {
     const moi = utilisateurConnecte();
-    return moi !== null && moi.role === "admin";
+    return moi === null ? null : moi.role;
 }
 
-function pageReserveeAdmin() {
-    if (!estAdmin()) {
-        alert("Cette page est reservee a l'Administrateur, connexion requise");
-        window.location.href = PAGE_CONNEXION; // redirige vers la page connexion 
+//en fonction du role de la personne connectée
+function aRole(...roles) {
+    return roles.includes(roleConnecte());
+}
+
+//Pages et liens reserver a l'Admin
+function estAdmin() { return roleConnecte() === "admin"; }
+function estClient() { return roleConnecte() === "client"; }
+function estPrestataire() { return roleConnecte() === "prestataire"; }
+function peutGererCatalogue() { return aRole("admin", "prestataire"); }
+
+//permets la redirection en fonction du role
+//personne de connecté : message et redirection vers la page de connexion
+//mauvais role: message et redirection vers la page d'accueil
+// bon role : la page s'affiche
+
+function pageReservee(rolesAutorises) {
+    const moi = utilisateurConnecte();
+
+    if (moi === null ) {
+        alert("Veuillez vous connecter pour acceder a cette page");
+        window.location.href = PAGE_CONNEXION;
         return;
     }
-    document.body.style.display = ""; //permets a l'admin de voir la page
+    if (!rolesAutorises.includes(moi.role)) {
+        alert("Cette page n'est pas accessible avec votre compte");
+        window.location.href = "../index.html";
+        return;
+    }
+    document.body.style.display = "";
 }
 
-//cache les elements reserver a l'admin 
-function afficherLiensAdmin() {
-    document.querySelectorAll(".admin-seulement").forEach(function (element) {
-        element.style.display = estAdmin() ? "" : "none";
-    });
+function pageReserveeAdmin() { pageReservee(["admin"]); }
+function pageReserveeClient() { pageReservee(["client"]); }
+function pageReserveeCatalogue() { pageReservee(["admin", "prestataire"]); }
+function pageReserveeConnecte() { pageReservee(["client", "prestataire", "admin"]); }
+
+//affiche ou cache les elements du menu en fonction du role via la classe sur la page HTML
+
+function afficherLienSelonRole() {
+    const regles = {
+        ".admin-seulement": ["admin"],
+        ".client-seulement": ["client"],
+        ".prestataire-seulement": ["prestataire"],
+        ".catalogue-seulement": ["admin", "prestataire"],
+        ".connecte-seulement": ["client", "prestataire", "admin"]
+    };
+    for (const selecteur in regles) {
+        document.querySelectorAll(selecteur).forEach(function (element) {
+            element.style.display = aRole(...regles[selecteur]) ? "" : "none";
+        });
+    }
 }
 
-document.addEventListener("DOMContentLoaded", afficherLiensAdmin);
+document.addEventListener("DOMContentLoaded", afficherLienSelonRole);
 
-//permets de suivre la logique des identifiants, par exemple H001, H002 etc...
+const LIBELLES_STATUT = { "en attente": "En attente", "confirmee": "Confirmée", "annulee": "Annulée"};
 
-function prochainIdentifiant(prefixe, identifiants) {
-    let max = 0;
-    identifiants.forEach(function (identifiant) {
-        const nombre = parseInt(identifiant.slice(prefixe.length), 10);
-
-        //ignore les identifiants qui ne suivent pas le modele definis 
-        if (identifiant.startsWith(prefixe) && !isNaN(nombre) && nombre <= 99999 && nombre > max ) {
-            max = nombre;
-        }
-    });
-    return prefixe + String(max + 1).padStart(3, "0");
-
+function libelleStatut(statut) {
+    return LIBELLES_STATUT[statut] || statut;
 }
 
-//Lien deconnexion et lien inscription permettent de masquer les elements portant le lien
-//si un client est connecter la page inscription disparait (lien portant la classe lien-inscription)
-//les liens qui portent le lien-connexion se transforme en deconnexion, remplace la creation d'un boutton sur les pages html
-function afficherLienConnexion(){
+//date a la française
+function dateFrancaise(texte) {
+    return String(texte).split("-").reverse().join("/");
+}
+
+//le prix devient 120,50€ (exemple)
+function montantEuros(nombre) {
+    return Number(nombre).toFixed(2).replace(".", ",") + " €";
+}
+
+//nombre de nuit entre deux dates format AAAA-MM-JJ
+function nombreDeNuits(arrivee, depart) {
+    return Math.round((new Date(depart) - new Date(arrivee)) / 86400000);
+}
+
+//date d'aujourd'hui
+function aujourdhuiISO() {
+    const d = new Date();
+    return  `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
+}
+
+function creerElement(balise, texte = "", classe = "") {
+    const element = document.createElement(balise);
+    element.textContent = texte;
+    if (classe) element.classeName = classe;
+    return element;
+}
+
+function cellule(contenu, balise = "td") {
+    const element = document.createElement(balise);
+    if (typeof contenu === "object") {
+        element.appendChild(contenu);
+    } else {
+        element.textContent = contenu;
+    }
+    return element;
+}
+
+//Boutton d'action 
+function boutonAction(texte, classe, action) {
+    const bouton = creerElement("button", texte, "btn btn-sm" + classe);
+    bouton.type = "button";
+    bouton.style.marginRight = "4px";
+    bouton.addEventListener("click", action);
+    return bouton;
+}
+
+//Lien Connexion / Deconnexion
+function afficherLienConnexion() {
     const moi = utilisateurConnecte();
 
     document.querySelectorAll(".lien-connexion").forEach(function (lien) {
-        if (moi === null) return; //si personne de connecter, le lien reste connexion
+        if (moi === null) return;
 
-        lien.textContent = moi.prenom ? "Déconnexion (" + moi.prenom +")" : "Deconnexion";
+        lien.textContent = moi.prenom ? "Deconnexion (" + moi.prenom + ")" : "Deconnexion";
         lien.href = "#";
         lien.addEventListener("click", function (evenement) {
             evenement.preventDefault();
@@ -141,43 +220,11 @@ function afficherLienConnexion(){
             window.location.href = "../index.html";
         });
 
-    });
+    }); 
+
     document.querySelectorAll(".lien-inscription").forEach(function (element) {
         element.style.display = moi !== null ? "none" : "";
     });
 }
 
 document.addEventListener("DOMContentLoaded", afficherLienConnexion);
-
-//Partie reservée aux clients, comme la page panier qui s'affiche que si le client se connecte 
-function estClient(){
-    const moi = utilisateurConnecte();
-    return moi !== null && moi.role === "client";
-}
-
-//permets d'apeller la page client portant le style display none dans le body
-function pageReserveeClient(){
-    const moi = utilisateurConnecte();
-
-    if (moi === null) {
-        alert("Veuillez vous connecter pour acceder a cette page !");
-        window.location.href = PAGE_CONNEXION;
-        return;
-    }
-    if (moi.role !== "client") {
-        alert("Cette page est reservee aux clients.");
-        window.location.href = "../index.html";
-        return;
-    }
-    document.body.style.display = "";
-}
-
-//permets de cacher les elements portant la classe client-seulement
-function afficherLiensClient(){
-    document.querySelectorAll(".client-seulement").forEach(function (element) {
-        element.style.display = estClient() ? "" : "none";
-    });
-
-}
-
-document.addEventListener("DOMContentLoaded", afficherLiensClient);
