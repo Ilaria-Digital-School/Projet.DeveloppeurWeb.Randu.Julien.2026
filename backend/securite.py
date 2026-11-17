@@ -17,7 +17,7 @@ ROLES_INSCRIPTION = [ROLE_CLIENT, ROLE_PRESTATAIRE]
 
 ECRITURES = ["POST" "PUT", "PATCH", "DELETE"]
 
-PROTECTION_ACTIVATE = False #True pour l'activé 
+PROTECTION_ACTIVATE = True #False pour le desactivé
 
 def cle_secrete():
     cle = os.getenv("JWT_SECRET")

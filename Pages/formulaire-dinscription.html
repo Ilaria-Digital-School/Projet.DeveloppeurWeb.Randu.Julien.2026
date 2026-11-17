@@ -101,11 +101,17 @@
                                 <a class="nav-link" href="formulaire-dinscription.html">Inscription</a>
                             </li>
 
-                            <li class="nav-item admin-seulement">
+                            <li class="nav-item catalogue-seulement">
                                 <a class="nav-link" href="ajout.hotel.html">Ajout Hôtel</a>
                             </li>
-                            <li class="nav-item admin-seulement">
+                            <li class="nav-item catalogue-seulement">
                                 <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
+                            </li>
+                             <li class="nav-item connecte-seulement">
+                                <a class="nav-link" href="mon-profil.html">Mon profil</a>
+                            </li>
+                            <li class="nav-item admin-seulement">
+                                <a class="nav-link" href="admin.html">Administration</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="reservation.html">Reservation</a>
@@ -129,8 +135,6 @@
     </section>
 
     <main>
-
-
 
         <!--Formulaire de contact-->
         <section class="container-formulaire">
@@ -174,6 +178,11 @@
 
                     <!--Radio-->
                     <div>
+                        <br><label> Je m'inscris comme :</label>
+                        <input type="radio" id="type-client" name="type-compte" value="client" checked>
+                        <label for="type-client"> Client (je reserve)</label>
+                        <input type="radio" id="type-prestataire" name="type-compte" value="prestataire">
+                        <label for="type-prestataire"> Prestataire (je propose mes hôtels)</label><br>
 
                         <br><label> Genre:</label>
                         <input type="radio" id="femme" name="genre" value="femme">
