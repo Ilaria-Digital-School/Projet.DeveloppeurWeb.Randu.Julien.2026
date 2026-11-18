@@ -437,7 +437,8 @@ button:hover{
 }
 
 .btn-rechercher{
-    border-radius: 5px;
+    
+    border-radius: 10px;
 }
  
 /*Notre selection du moment*/ 
