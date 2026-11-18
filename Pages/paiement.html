@@ -108,7 +108,7 @@
                             <li class="nav-item catalogue-seulement">
                                 <a class="nav-link" href="ajout.chambre.html">Ajout Chambre</a>
                             </li>
-                             <li class="nav-item connecte-seulement">
+                            <li class="nav-item connecte-seulement">
                                 <a class="nav-link" href="mon-profil.html">Mon profil</a>
                             </li>
                             <li class="nav-item admin-seulement">
@@ -135,116 +135,119 @@
 
     </section>
 
+    <main>
+        <div class="page-4">
+            <div class="content-3">
 
-    <div class="page-4">
-        <main class="content-3">
+                <section class="paiement-carte">
 
-            <section class="paiement-carte">
+                    <h2>Paiement</h2>
 
-                <h2>Paiement</h2>
+                    <form class="paiement-form">
 
-                <form class="paiement-form">
+                        <div class="form-group">
+                            <label>Carte de Crédit</label>
 
-                    <div class="form-group">
-                        <label>Carte de Crédit</label>
+                            <select>
+                                <option>Selectionnez votre carte</option>
+                                <option>Visa</option>
+                                <option>MasterCard</option>
+                                <option>American Express</option>
+                            </select>
+                        </div>
 
-                        <select>
-                            <option>Selectionnez votre carte</option>
-                            <option>Visa</option>
-                            <option>MasterCard</option>
-                            <option>American Express</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label>Numéro de carte</label>
+                            <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+                        </div>
 
-                    <div class="form-group">
-                        <label>Numéro de carte</label>
-                        <input type="text" placeholder="XXXX XXXX XXXX XXXX">
-                    </div>
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text">
+                        </div>
 
-                    <div class="form-group">
-                        <label>Nom</label>
-                        <input type="text">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Date d'Expiration <i class="fa-regular fa-calendar"></i></label>
-                        <input type="month">
-
-
-                    </div>
-
-                    <div class="form-group">
-                        <label>CVV</label>
-                        <input type="password" maxlength="3" placeholder="123">
-                    </div>
-
-                    <div class="checkbox">
-
-                        <input type="checkbox" id="conditions">
-
-                        <label for="conditions">
-                            Oui, j'ai lu et j'accepte les conditions générales de vente
-                            <a href="conditions.html">Conditions de reservation (CGU)</a>.
-                        </label>
-
-                    </div>
-
-                    <button type="submit" class="btn-paiement">
-                        confirmer votre reservation
-                    </button>
-
-                </form>
-
-            </section>
+                        <div class="form-group">
+                            <label>Date d'Expiration <i class="fa-regular fa-calendar"></i></label>
+                            <input type="month">
 
 
+                        </div>
 
-        </main>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="password" maxlength="3" placeholder="123">
+                        </div>
 
-        <aside class="sidebar-3">
+                        <div class="checkbox">
 
-            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
-            <h2>Votre Séjour !</h2>
-            <p>Vous avez sélectionné <strong>la Villa Modigliani</strong>, un hôtel reconnu pour son confort, son
-                accueil chaleureux et son
-                emplacement idéal au cœur de Paris.
-            </p>
-            <p>
-                Il ne vous reste plus qu'à finaliser votre réservation en toute sécurité. Dès validation de votre
-                paiement, vous
-                recevrez votre confirmation par e-mail.
-            </p>
+                            <input type="checkbox" id="conditions">
 
-            <p>
-                Merci de faire confiance à ResaHotel.com. Nous vous souhaitons un agréable séjour !
-            </p>
+                            <label for="conditions">
+                                Oui, j'ai lu et j'accepte les conditions générales de vente
+                                <a href="conditions.html">Conditions de reservation (CGU)</a>.
+                            </label>
 
-            <h3 id="titre-total">Total :</h3>
-            <li>Une chambre double Deluxe : 135€/nuit x 3 nuits </li>
-            <li> 3 Petits déjeuners continental : 22€ x 3</li>
+                        </div>
 
-            <br>
-            <h4 id="titre-total">Total a Régler : 471€ TTC</h4>
+                        <button type="submit" class="btn-paiement">
+                            confirmer votre reservation
+                        </button>
 
-            <br>
-            <p>Merci de prevoir également la taxe de séjour de 2.50€ par personne.</p>
+                    </form>
 
-        </aside>
-    </div>
+                </section>
 
-    <div class="page-5">
 
-        <aside class="sidebar-1">
 
-            <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
-            <h2>Besoin d'aide pour reserver</h2>
-            <p>
-                Vous avez besoin d'aide pour reservez, n'hesitez pas a contacter <strong>notre support disponible 24/7
-                    au 01.50.50.50.50</strong>
-            </p>
+            </div>
 
-        </aside>
-    </div>
+            <aside class="sidebar-3">
+
+                <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+                <h2>Votre Séjour !</h2>
+                <p>Vous avez sélectionné <strong>la Villa Modigliani</strong>, un hôtel reconnu pour son confort, son
+                    accueil chaleureux et son
+                    emplacement idéal au cœur de Paris.
+                </p>
+                <p>
+                    Il ne vous reste plus qu'à finaliser votre réservation en toute sécurité. Dès validation de votre
+                    paiement, vous
+                    recevrez votre confirmation par e-mail.
+                </p>
+
+                <p>
+                    Merci de faire confiance à ResaHotel.com. Nous vous souhaitons un agréable séjour !
+                </p>
+
+                <h3 id="titre-total">Total :</h3>
+                <li>Une chambre double Deluxe : 135€/nuit x 3 nuits </li>
+                <li> 3 Petits déjeuners continental : 22€ x 3</li>
+
+                <br>
+                <h4 id="titre-total">Total a Régler : 471€ TTC</h4>
+
+                <br>
+                <p>Merci de prevoir également la taxe de séjour de 2.50€ par personne.</p>
+
+            </aside>
+        </div>
+
+        <div class="page-5">
+
+            <aside class="sidebar-1">
+
+                <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
+                <h2>Besoin d'aide pour reserver</h2>
+                <p>
+                    Vous avez besoin d'aide pour reservez, n'hesitez pas a contacter <strong>notre support disponible
+                        24/7
+                        au 01.50.50.50.50</strong>
+                </p>
+
+            </aside>
+        </div>
+    </main>
+
 
     <footer>
 
@@ -325,7 +328,8 @@
         </div>
 
     </footer>
-    <button id="scroll-top"  class="scroll-top" aria-label="Remonter la page"><i class="fa-solid fa-arrow-up"></i></button>
+    <button id="scroll-top" class="scroll-top" aria-label="Remonter la page"><i
+            class="fa-solid fa-arrow-up"></i></button>
 
     <!--Lien JavaScript-->
     <script src="../assets/js/api.js"></script>
