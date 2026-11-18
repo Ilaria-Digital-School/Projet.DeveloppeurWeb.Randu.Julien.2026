@@ -132,6 +132,19 @@ background-color: white;
 #h1{
     padding: 25px;
     margin: 25px;
+    background-color: cornflowerblue;
+    text-align: center;
+    border: solid 2px black;
+    color: black;
+
+}
+#h2{
+    padding: 25px;
+    margin: 25px;
+    background-color: cornflowerblue;
+    text-align: center;
+    border: solid 2px black;
+    color: black;
 
 }
 
@@ -502,14 +515,6 @@ color: black;
 background-color: cornflowerblue;
 }
 
-
-.h2{
-    text-align: center;
-    border: solid 2px black;
-    color: black;
-
-}
-
 .h3{
     text-align: center;
     text-decoration: underline;
@@ -820,11 +825,11 @@ background-color: cornflowerblue;
     min-height:30vh;
 }
 
-#titre-chambre{
+.titre-chambre{
     text-align: center;
     text-decoration: underline;
 }
-#text-chambre{
+.text-chambre{
     text-align: center;
 }
 .content-2 a:hover{
@@ -841,7 +846,7 @@ background-color: cornflowerblue;
     margin: 20px 0;
 }
 
-#chambre{
+.chambre{
     font-size: 15px;
 }
 .content-2 img{
@@ -1017,6 +1022,10 @@ background-color: cornflowerblue;
 }
 
 #titre-total{
+    text-align: center;
+    text-decoration: underline;
+}
+#titre-total-2{
     text-align: center;
     text-decoration: underline;
 }
