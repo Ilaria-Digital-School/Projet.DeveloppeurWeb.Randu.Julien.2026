@@ -889,6 +889,9 @@ background-color: cornflowerblue;
 }
 
 /*Päge Paiement*/
+.message-erreur {
+    color: #b00020;
+}
 
 .page-5{
     display:flex;

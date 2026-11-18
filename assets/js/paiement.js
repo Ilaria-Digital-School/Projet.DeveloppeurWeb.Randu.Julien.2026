@@ -13,8 +13,19 @@ class Paiement {
 function envoiePaiement() {
     const form = document.getElementById("envoie-paiement");
     console.log(form);
+    const numero = document.getElementById("numero");
+    const erreurNumero = document.getElementById("numero-erreur");
 
-    form.addEventListener("submit", function(event){
+    numero.addEventListener("input", () => {
+        erreurNumero.hidden =
+            numero.value === "" || /^[0-9]{16}$/.test(numero.value);
+    });
+
+    numero.addEventListener("invalid", () => {
+        erreurNumero.hidden = false;
+    });
+
+    form.addEventListener("submit", function (event) {
         event.preventDefault(); //Annuler le rechargement automatique de la page
 
         let carte = document.getElementById("carte").value;

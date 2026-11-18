@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
     <!--Favicon-->
-    <link rel="icon" type="image/png" href="../assets/Images/favicon.png.png"/>
+    <link rel="icon" type="image/png" href="../assets/Images/favicon.png.png" />
 
 
     <title>Paiement</title>
@@ -161,7 +161,11 @@
 
                         <div class="form-group">
                             <label for="numero">Numéro de carte</label>
-                            <input type="number" id="numero" placeholder="XXXX XXXX XXXX XXXX">
+                            <input type="text" id="numero" inputmode="numeric" pattern="[0-9]{16}" maxlength="16"
+                                required placeholder="16 chiffres">
+                            <small id="numero-erreur" class="message-erreur" hidden>
+                                Le numéro de carte doit être composé de 16 chiffres.
+                            </small>
                         </div>
 
                         <div class="form-group">
