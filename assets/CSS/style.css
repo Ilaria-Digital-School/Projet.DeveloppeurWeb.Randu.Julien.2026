@@ -129,23 +129,16 @@ background-color: white;
 
 
 
-#h1{
+
+#h1,
+#h2,
+.titre-accueil {
     padding: 25px;
     margin: 25px;
     background-color: cornflowerblue;
     text-align: center;
     border: solid 2px black;
     color: black;
-
-}
-#h2{
-    padding: 25px;
-    margin: 25px;
-    background-color: cornflowerblue;
-    text-align: center;
-    border: solid 2px black;
-    color: black;
-
 }
 
 
@@ -320,7 +313,7 @@ footer{
     justify-content:space-between;
     gap:25px;
     padding:25px;
-    border-radius:4px solid black;
+    border:4px solid black;
 
 }
 
@@ -434,7 +427,7 @@ footer{
 button{
     background:cornflowerblue;
     color:black;
-    border-radius: 3px solid black;
+    border: 3px solid black;
     padding:15px 35px;
     cursor:pointer;
     font-weight:bold;
@@ -565,14 +558,26 @@ color: black;
 /*Maps*/
 
 .maps{
+box-sizing: border-box;
 border-radius: 5px;
 border: solid 2px black;
 margin: 0 auto;
 align-items: center;
 display: flex;
+flex: 1 1 600px;
+min-width: 0;
+max-width: 100%;
 flex-wrap: wrap;
 justify-content: center;
   
+}
+
+.maps iframe{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 4 / 3;
 }
 
 /*Page Formulaire d'inscription*/
@@ -601,6 +606,23 @@ justify-content: center;
     justify-content: center;
     text-align: center;
 }
+
+.admin-page {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.admin-page > p {
+    margin: 0 25px 20px;
+}
+
+.admin-page > .admin-onglets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 25px 25px;
+}
     
 label{
 
@@ -613,9 +635,9 @@ legend {
     padding: 5px;
 }
 
-input [type="text"],
-input [type="email"],
-input [type="Password"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
 textarea,
 select {
 
@@ -640,10 +662,11 @@ select {
 /*Contact*/
 
 .formulaire {
-    
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    max-width: 700px;
     padding: 20px;
-    max-width: auto;
-    margin: 20px;
+    margin: 30px auto;
     background-color: cornflowerblue;
     border-radius: 10px;
     border: 2px solid black;
@@ -677,6 +700,60 @@ select {
     color: black;
     background-color: cornflowerblue;
     
+}
+
+.formulaire-ajout {
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    max-width: 700px;
+    padding: 20px;
+    margin: 30px auto;
+}
+
+.mes-reservations {
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.liste-reservations {
+    display: grid;
+    gap: 16px;
+}
+
+.reservation-client-carte {
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.reservation-client-carte h3 {
+    margin-top: 0;
+}
+
+.reservation-client-carte p {
+    margin-bottom: 8px;
+}
+
+.reservation-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+#connexion-form .connexion {
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    max-width: 700px;
+    margin: 30px auto 20px;
+}
+
+@media (max-width: 576px) {
+    #connexion-form .connexion {
+        padding: 15px 20px;
+    }
 }
 
 /*Page CGU*/
@@ -1079,4 +1156,51 @@ background-color: cornflowerblue;
     font-size: large;
     margin-top: 5px;
     font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .article,
+    .article-2,
+    .article-3,
+    .a-propos,
+    .inscription-fieldset,
+    .info,
+    .article-4 {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .page,
+    .page-2,
+    .page-3 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .content,
+    .sidebar,
+    .villa-description-column,
+    .content-2,
+    .sidebar-2,
+    .sidebar-4,
+    .content-3,
+    .sidebar-3,
+    .page-5 .sidebar-1 {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    .maps {
+        flex-basis: 100%;
+    }
+
+    .inscription-fieldset {
+        padding: 15px;
+    }
 }

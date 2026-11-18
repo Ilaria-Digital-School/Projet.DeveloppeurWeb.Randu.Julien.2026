@@ -145,14 +145,18 @@
                 <section class="paiement-carte">
 
                     <h2>Paiement</h2>
+                    <p class="alert alert-warning" role="note">
+                        Cette page est une démonstration. N'entrez pas de vraies données bancaires :
+                        aucun paiement sécurisé n'est connecté.
+                    </p>
 
                     <form class="paiement-form" id="envoie-paiement">
 
                         <div class="form-group">
                             <label for="carte">Carte de Crédit</label>
 
-                            <select id="carte">
-                                <option>Selectionnez votre carte</option>
+                            <select id="carte" required>
+                                <option value="" selected disabled>Selectionnez votre carte</option>
                                 <option>Visa</option>
                                 <option>MasterCard</option>
                                 <option>American Express</option>
@@ -175,17 +179,18 @@
 
                         <div class="form-group">
                             <label for="expiration">Date d'Expiration <i class="fa-regular fa-calendar"></i></label>
-                            <input type="month" id="expiration">
+                            <input type="month" id="expiration" required>
                         </div>
 
                         <div class="form-group">
                             <label for="cvv">CVV</label>
-                            <input type="password" id="cvv" maxlength="3" placeholder="123">
+                            <input type="password" id="cvv" inputmode="numeric" pattern="[0-9]{3,4}"
+                                maxlength="4" placeholder="123" required>
                         </div>
 
                         <div class="checkbox">
 
-                            <input type="checkbox" id="conditions">
+                            <input type="checkbox" id="conditions" required>
 
                             <label for="conditions">
                                 Oui, j'ai lu et j'accepte les conditions générales de vente
@@ -199,6 +204,7 @@
                         </button>
 
                     </form>
+                    <p id="paiement-message" role="status" aria-live="polite"></p>
 
                 </section>
 
@@ -210,29 +216,12 @@
 
                 <!-- colonne droite ou gauche : filtres, résumé de paiement... -->
                 <h2>Votre Séjour !</h2>
-                <p>Vous avez sélectionné <strong>la Villa Modigliani</strong>, un hôtel reconnu pour son confort, son
-                    accueil chaleureux et son
-                    emplacement idéal au cœur de Paris.
-                </p>
-                <p>
-                    Il ne vous reste plus qu'à finaliser votre réservation en toute sécurité. Dès validation de votre
-                    paiement, vous
-                    recevrez votre confirmation par e-mail.
-                </p>
-
-                <p>
-                    Merci de faire confiance à ResaHotel.com. Nous vous souhaitons un agréable séjour !
-                </p>
-
-                <h3 id="titre-total">Total :</h3>
-                <p>Une chambre double Deluxe : 135€/nuit x 3 nuits </p>
-                <p> 3 Petits déjeuners continental : 22€ x 3</p>
-
-                <br>
-                <h4 id="titre-total-2">Total a Régler : 471€ TTC</h4>
-
-                <br>
-                <p>Merci de prevoir également la taxe de séjour de 2.50€ par personne.</p>
+                <p id="resume-hotel">Aucune réservation sélectionnée.</p>
+                <p id="resume-chambre"></p>
+                <p id="resume-dates"></p>
+                <p id="resume-identifiant"></p>
+                <h3>Total estimé : <span id="resume-montant">—</span></h3>
+                <p>Aucun paiement ni envoi de confirmation par e-mail ne sera effectué.</p>
 
             </aside>
         </div>

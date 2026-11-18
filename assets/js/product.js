@@ -84,7 +84,7 @@ function ajouterProduit() {
         }
 
         form.reset();
-        alert("Hôtel " + idHotel + " ajouté avec succès !");
+        alert("Hôtel " + resultat.donnees.hotel + " ajouté avec succès !");
     });
 }
 

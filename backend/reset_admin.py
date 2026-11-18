@@ -2,7 +2,7 @@ import bcrypt
 from getpass import getpass
 from database import lire, ecrire
 
-email = input("Email de l'administrateur :").strip
+email = input("Email de l'administrateur :").strip()
 
 #verifier mail de l'admin
 admins = lire("SELECT utilisateurs FROM utilisateur WHERE email = %s AND role = %s", (email, "admin"))

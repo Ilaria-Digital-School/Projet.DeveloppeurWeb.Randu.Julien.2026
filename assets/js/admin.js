@@ -5,7 +5,7 @@ const CHAMPS_HOTEL = [
     {nom: "nombre_etoiles", libelle: "Etoiles (1 à 5)", type: "number", min: 1, max: 5, numerique: true },
     {nom: "description", libelle: "Description", type: "textarea" },
     {nom: "adresse", libelle: "Adresse" },
-    {nom: "code_postal", libelle: "Code Postal" },
+    {nom: "code_postale", libelle: "Code Postal" },
     {nom: "ville", libelle: "Ville" },
     {nom: "pays", libelle: "Pays" },
     {nom: "image", libelle: "Image (chemin)" }    
@@ -26,7 +26,12 @@ const CHAMPS_RESERVATION = [
     {nom: "nombre_adulte", libelle: "Adultes (1 à 10)", type: "number", min: 1, max: 10, numerique: true },
     {nom: "nombre_enfant", libelle: "Enfants (0 à 10)", type: "number", min: 0, max: 10, numerique: true },
     {nom: "statut", libelle: "Statut", options: [
-        {valeur: "en attente", texte: "En attente" }, {valeur: "confirmee", texte: "Confirmée" }, {valeur: "annulee", texte: "Annulée"} ] },
+        {valeur: "en attente", texte: "En attente" },
+        {valeur: "confirmee", texte: "Confirmée" },
+        {valeur: "annulee", texte: "Annulée" },
+        {valeur: "reserver", texte: "Réservée (ancienne donnée)" },
+        {valeur: "en cours de traitement", texte: "En cours de traitement (ancienne donnée)"}
+    ] },
     {nom: "montant_total", libelle: "Montant Total (€) : recalculé en fonction des dates selectionnées", type: "number", min: 0, step: "0.01", numerique: true }
 ];
 
@@ -88,14 +93,14 @@ function ouvrirEdition(titre, champs, valeurs, enregistrer) {
         }
         saisie.id = "edition" + champ.nom;
         saisie.value = valeurs[champ.nom] === null || valeurs[champ.nom] === undefined ? "" : valeurs[champ.nom];
-        saisie[champ.nom] = saisie;
+        saisies[champ.nom] = saisie;
 
         const etiquette = creerElement("label", champ.libelle + " ");
         etiquette.htmlFor = saisie.id;
         const bloc= document.createElement("div");
         bloc.appendChild(etiquette);
         bloc.appendChild(saisie);
-        bloc.appendChild(bloc);
+        form.appendChild(bloc);
     });
     const valider = creerElement("button", "Enregistrer", "btn btn-success");
     valider.type = "submit";
@@ -227,7 +232,10 @@ function activerOnglets() {
     function afficher(nom) {
         boutons.forEach(function (bouton) {
             const section = document.getElementById("section-" + bouton.dataset.onglet);
-            if (section) section.style.display = (bouton.dataset.onglet === nom ? "btn-primary" : "btn-outline-primary");
+            const actif = bouton.dataset.onglet === nom;
+            if (section) section.hidden = !actif;
+            bouton.classList.toggle("btn-primary", actif);
+            bouton.classList.toggle("btn-outline-primary", !actif);
         });
     }
     boutons.forEach(bouton => bouton.addEventListener("click", () => afficher(bouton.dataset.onglet)));

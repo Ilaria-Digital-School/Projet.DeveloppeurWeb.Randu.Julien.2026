@@ -46,16 +46,12 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         #("/") permet de prendre en compte le split ("/")
         
         try:
-            #bloc de securite
-            #lignes 50, pour le moment seul hotels et chambres sont proteger, il faut dupppliquer pour reservation.py etc..
-            # A FINALISER
-            
-            if securite.PROTECTION_ACTIVATE and len(morceaux) > 0 and morceaux[0] in ["hotels", "chambres"] and methode in ["POST", "PUT", "PATCH", "DELETE"]:
-                utilisateur_connect = securite.lire_jeton(self.headers.get("Authorization"))
-                refus = securite.verifier_droits(utilisateur_connect, ["admin"])
-                if refus is not None:
-                    self.repondre(refus[0], refus[1])
-                    return
+            demandeur, refus = securite.controler_acces(
+                methode, morceaux, self.headers.get("Authorization")
+            )
+            if refus is not None:
+                self.repondre(refus[0], refus[1])
+                return
              
          #Concerne la page hotel.py  
             if morceaux == []:
@@ -63,9 +59,12 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                 
             elif morceaux == ["hotels"] and methode == "GET":
                 statusCode, contenu = hotel.lister_hotels()
+
+            elif morceaux == ["mes-hotels"] and methode == "GET":
+                statusCode, contenu = hotel.mes_hotels(demandeur)
                 
             elif morceaux == ["hotels"] and methode == "POST":
-                statusCode, contenu = hotel.creer_hotel(self.lire_json())
+                statusCode, contenu = hotel.creer_hotel(self.lire_json(), demandeur)
                 
             elif len(morceaux) == 2 and morceaux [0] == "hotels" and methode == "GET":
                 statusCode, contenu = hotel.un_hotel(morceaux[1])
@@ -85,7 +84,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                             statusCode, contenu = chambre.lister_chambre()
                             
             elif morceaux == ["chambres"] and methode == "POST":
-                            statusCode, contenu = chambre.creer_chambre(self.lire_json())
+                            statusCode, contenu = chambre.creer_chambre(self.lire_json(), demandeur)
                             
             elif len(morceaux) == 2 and morceaux [0] == "chambres" and methode == "GET":
                             statusCode, contenu = chambre.chambre_hotel(morceaux[1])
@@ -105,22 +104,22 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             #Concerne la page reservation
             
             elif morceaux == ["reservations"] and methode == "GET":
-                            statusCode, contenu = reservation.lister_reservation()
+                            statusCode, contenu = reservation.lister_reservation(demandeur)
                                         
             elif morceaux == ["reservations"] and methode == "POST":
-                            statusCode, contenu = reservation.creer_reservation(self.lire_json())
+                            statusCode, contenu = reservation.creer_reservation(self.lire_json(), demandeur)
                                         
             elif len(morceaux) == 2 and morceaux [0] == "reservations" and methode == "GET":
-                            statusCode, contenu = reservation.une_reservation(morceaux[1])
+                            statusCode, contenu = reservation.une_reservation(morceaux[1], demandeur)
                                         
             elif len(morceaux) == 2 and morceaux [0] == "reservations" and methode == "PUT":
-                            statusCode, contenu = reservation.modifier_reservation(morceaux[1], self.lire_json(), True)
+                            statusCode, contenu = reservation.modifier_reservation(morceaux[1], self.lire_json(), True, demandeur)
                                         
             elif len(morceaux) == 2 and morceaux [0] == "reservations" and methode == "PATCH":
-                            statusCode, contenu = reservation.modifier_reservation(morceaux[1], self.lire_json(), False)
+                            statusCode, contenu = reservation.modifier_reservation(morceaux[1], self.lire_json(), False, demandeur)
                                         
             elif len(morceaux) == 2 and morceaux [0] == "reservations" and methode == "DELETE":
-                            statusCode, contenu = reservation.supprimer_reservation(morceaux[1])
+                            statusCode, contenu = reservation.supprimer_reservation(morceaux[1], demandeur)
                             
             #Inscriptions / Connexion
             
@@ -129,15 +128,16 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                                                     
             elif morceaux == ["connexion"] and methode == "POST":
                 statusCode, contenu = utilisateur.connecter(self.lire_json())
+
+            elif morceaux == ["profil"] and methode == "GET":
+                statusCode, contenu = utilisateur.un_profil(demandeur)
+
+            elif morceaux == ["profil"] and methode == "PATCH":
+                statusCode, contenu = utilisateur.modifier_profil(demandeur, self.lire_json())
                 
             #permets de lister les utilisateurs
             elif morceaux == ["utilisateurs"] and methode == "GET":
-                utilisateur_connect = securite.lire_jeton(self.headers.get("Authorization"))
-                refus = securite.verifier_droits(utilisateur_connect, ["admin"])
-                if refus is not None:
-                    statusCode, contenu = refus
-                else:
-                    statusCode, contenu = utilisateur.lister_utilisateurs()
+                statusCode, contenu = utilisateur.lister_utilisateurs()
             
             else:
                 statusCode, contenu = 404, {"error":"Route Inconnue"}

@@ -76,7 +76,7 @@ function ajouterChambre() {
         event.preventDefault();
 
         if (!peutGererCatalogue()) {
-            alert("Cette page est reservee a l'administrateur, connexion requise");
+            alert("Cette page est réservée aux prestataires et aux administrateurs.");
             window.location.href = PAGE_CONNEXION;
             return;
         }
@@ -110,7 +110,7 @@ function ajouterChambre() {
 
 
         form.reset();
-        alert("chambre " + resultat.donnees.chambre + "ajoutée avec succés !");
+        alert("Chambre " + resultat.donnees.chambre + " ajoutée avec succès !");
 
     });
 }

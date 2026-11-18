@@ -152,7 +152,13 @@ function afficherLienSelonRole() {
 
 document.addEventListener("DOMContentLoaded", afficherLienSelonRole);
 
-const LIBELLES_STATUT = { "en attente": "En attente", "confirmee": "Confirmée", "annulee": "Annulée"};
+const LIBELLES_STATUT = {
+    "en attente": "En attente",
+    "confirmee": "Confirmée",
+    "annulee": "Annulée",
+    "reserver": "Réservée",
+    "en cours de traitement": "En cours de traitement"
+};
 
 function libelleStatut(statut) {
     return LIBELLES_STATUT[statut] || statut;
@@ -182,7 +188,7 @@ function aujourdhuiISO() {
 function creerElement(balise, texte = "", classe = "") {
     const element = document.createElement(balise);
     element.textContent = texte;
-    if (classe) element.classeName = classe;
+    if (classe) element.className = classe;
     return element;
 }
 
@@ -198,7 +204,7 @@ function cellule(contenu, balise = "td") {
 
 //Boutton d'action 
 function boutonAction(texte, classe, action) {
-    const bouton = creerElement("button", texte, "btn btn-sm" + classe);
+    const bouton = creerElement("button", texte, "btn btn-sm " + classe);
     bouton.type = "button";
     bouton.style.marginRight = "4px";
     bouton.addEventListener("click", action);

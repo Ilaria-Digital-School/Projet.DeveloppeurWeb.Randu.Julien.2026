@@ -45,13 +45,13 @@ async function chargerProfil() {
     return resultat.donnees;
 }
 
-function gererProfil(){
+async function gererProfil(){
     const form = document.getElementById("profil-form");
     if (!form) return;
     if (utilisateurConnecte() === null) return;
 
-    let profilActuel = null;
-    chargerProfil().then(function (profil) { profilActuel = profil; });
+    let profilActuel = await chargerProfil();
+    if (profilActuel === null) return;
 
     form.addEventListener("submit", async function (evenement) {
         evenement.preventDefault();

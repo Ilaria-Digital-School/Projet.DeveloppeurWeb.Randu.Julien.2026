@@ -9,8 +9,8 @@ CHAMPS = ["nom", "nombre_etoiles", "description", "adresse", "code_postale", "vi
 COLONNES_PUBLIQUES = ["hotel"] + CHAMPS
 SELECT_PUBLIC = "SELECT " + ", ".join(COLONNES_PUBLIQUES) + " FROM hotel"
 
-LONGUEURS_MAX = {"nom": 50, "description": 500, "adresse": 50, "code_postal": 50, "ville": 50, "pays":50, "image": 255}
-OBLIGATOIRE_NON_VIDES = ["nom", "adresse", "code_postal", "ville", "pays"]
+LONGUEURS_MAX = {"nom": 50, "description": 500, "adresse": 50, "code_postale": 50, "ville": 50, "pays": 50, "image": 255}
+OBLIGATOIRE_NON_VIDES = ["nom", "adresse", "code_postale", "ville", "pays"]
 
 #les etoiles doivent etre un nombre en 1 et 5
 def etoiles_valides(valeur):
@@ -64,6 +64,8 @@ def un_hotel(identifiant):
 #GET mes hôtels, permets au prestataire de voir ses hotels, l'admin voit tout.
 
 def mes_hotels(demandeur):
+    if demandeur is None:
+        return 401, {"error": "Connexion requise !"}
     colonnes = ", ".join("h." + c for c in COLONNES_PUBLIQUES)
     sql = ("SELECT " + colonnes + ", h.prestataire, " "u.nom AS prestataire_nom, u.prenom AS prestataire_prenom, u.email AS prestataire_email " "FROM hotel h LEFT JOIN utilisateur u ON u.utilisateurs = h.prestataire ")
     if est_admin(demandeur):
@@ -89,12 +91,16 @@ def creer_hotel(donnees, demandeur=None):
         if identifiant_impose is not None and (not isinstance(identifiant_impose, str) or not 1 <= len(identifiant_impose) <= 50):
             return 400, {"error": "hotel : texte de 1 à 50 caracteres"}
         
-    proprietaire = demandeur["utilisateurs"] if demandeur is not None else None
+    proprietaire = (
+        demandeur["utilisateurs"]
+        if demandeur is not None and demandeur["role"] == securite.ROLE_PRESTATAIRE
+        else None
+    )
     colonnes = ["hotel"] + CHAMPS + ["prestataire"]
     marqueurs = ", ".join(["%s"] * len(colonnes))
     
     for essai in range (3):
-        identifiant = identifiant_impose or prochain_identifiant
+        identifiant = identifiant_impose or prochain_identifiant()
         valeurs = [identifiant] + [donnees[champ] for champ in CHAMPS] + [proprietaire]
         try:
             ecrire("INSERT INTO hotel (" + ", ".join(colonnes) + ") VALUES (" + marqueurs + ")", valeurs)

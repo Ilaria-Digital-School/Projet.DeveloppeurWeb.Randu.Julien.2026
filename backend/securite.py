@@ -15,7 +15,7 @@ ROLE_ADMIN = "admin"
 #permet de choisir son role a l'inscription prestataire ou client, admin ne s'affiche pas. Il se cree depuis admin.py
 ROLES_INSCRIPTION = [ROLE_CLIENT, ROLE_PRESTATAIRE]
 
-ECRITURES = ["POST" "PUT", "PATCH", "DELETE"]
+ECRITURES = ["POST", "PUT", "PATCH", "DELETE"]
 
 PROTECTION_ACTIVATE = True #False pour le desactivé
 
@@ -76,10 +76,11 @@ def regle_route(methode, morceaux):
     if premier == "reservations":
         if methode == "POST":
             return [ROLE_CLIENT], False
-        return [ROLE_CLIENT, ROLE_ADMIN], False
-    if premier == "profil":
-        return[ROLE_CLIENT, ROLE_PRESTATAIRE, ROLE_ADMIN], False
-    if premier == "utilisateurs":
+        if methode in ("GET", "PUT", "PATCH", "DELETE"):
+            return [ROLE_CLIENT, ROLE_ADMIN], False
+    if premier == "profil" and methode in ("GET", "PATCH"):
+        return [ROLE_CLIENT, ROLE_PRESTATAIRE, ROLE_ADMIN], False
+    if premier == "utilisateurs" and methode == "GET":
         return [ROLE_ADMIN], False
     return None, False
 

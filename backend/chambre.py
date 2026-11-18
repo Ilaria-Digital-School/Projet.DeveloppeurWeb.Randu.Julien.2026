@@ -119,8 +119,8 @@ def creer_chambre(donnees, demandeur=None):
         identifiant = identifiant_impose or prochain_identifiant(donnees["hotel"])
         valeurs = [donnees["hotel"], identifiant] + [donnees[champ] for champ in CHAMPS]
         try:
-            ecrire(f"INSERT INTO chambre({colonnes}) VALUES ({marqueurs})", valeurs)
-            return.201, trouver_chambre(donnees["hotel"], identifiant)
+            ecrire(f"INSERT INTO chambre ({', '.join(colonnes)}) VALUES ({marqueurs})", valeurs)
+            return 201, trouver_chambre(donnees["hotel"], identifiant)
         except mysql.connector.IntegrityError:
             if identifiant_impose is not None:
                return 409, {"error": "Cette chambre existe deja dans cet hôtel !"}

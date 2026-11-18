@@ -1,5 +1,6 @@
 import uuid #uuid evite la creation de doublon d'ID utilisateurs
 import bcrypt #crypte le mot de passe hash
+import hmac
 import mysql.connector
 from database import lire, ecrire
 import securite
@@ -81,7 +82,7 @@ def mot_de_passe_correct(mot_de_passe, hash_enregistre):
     try:
         return bcrypt.checkpw(mot_de_passe.encode("utf-8"), hash_enregistre.encode("utf-8"))
     except ValueError:
-        return False
+        return hmac.compare_digest(mot_de_passe, hash_enregistre)
 
 
 #POST / inscription
@@ -142,6 +143,16 @@ def connecter(donnees):
     
     if not mot_de_passe_correct(donnees["mot_de_passe"], utilisateur["mot_de_passe"]):
         return echec
+
+    if not utilisateur["mot_de_passe"].startswith(("$2a$", "$2b$", "$2y$")):
+        # Migre au premier accès valide les anciens mots de passe du jeu de données.
+        hash_texte = bcrypt.hashpw(
+            donnees["mot_de_passe"].encode("utf-8"), bcrypt.gensalt()
+        ).decode("utf-8")
+        ecrire(
+            "UPDATE utilisateur SET mot_de_passe = %s WHERE utilisateurs = %s",
+            (hash_texte, utilisateur["utilisateurs"]),
+        )
     
     reponse = preparer_utilisateur(utilisateur)
     reponse["jeton"] = securite.creer_jeton(utilisateur)
@@ -219,5 +230,5 @@ def modifier_profil(demandeur, donnees):
 
 #GET utilisateurs // Attention a ne pas le laisser sur un vrai projet car il expose certaines informations
 def lister_utilisateurs():
-        lignes = lire("SELECT" + COLONNES_PUBLIQUES + "FROM utilisateur")
-        return 200, [preparer_utilisateur(ligne) for ligne in lignes]
+    lignes = lire("SELECT " + COLONNES_PUBLIQUES + " FROM utilisateur")
+    return 200, [preparer_utilisateur(ligne) for ligne in lignes]

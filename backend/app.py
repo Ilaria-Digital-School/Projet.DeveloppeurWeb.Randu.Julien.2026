@@ -2,7 +2,7 @@
 
 from decimal import Decimal
 import mysql.connector
-from flask import Flask, request, jsonify
+from flask import Flask, g, request, jsonify
 from flask.json.provider import DefaultJSONProvider
 from werkzeug.exceptions import HTTPException
 
@@ -36,11 +36,12 @@ def ajouter_cors(reponse):
 @app.before_request
 def proteger_routes():
     morceaux = [m for m in request.path.split("/") if m != ""]
-    if securite.PROTECTION_ACTIVATE and len(morceaux) > 0 and morceaux[0] in ["hotels", "chambres"] and request.method in ["POST", "PUT", "PATCH", "DELETE"]:
-        utilisateur_connect = securite.lire_jeton(request.headers.get("Authorization"))
-        refus = securite.verifier_droits(utilisateur_connect, ["admin"])
-        if refus is not None:
-            return jsonify(refus[1]), refus [0]
+    demandeur, refus = securite.controler_acces(
+        request.method, morceaux, request.headers.get("Authorization")
+    )
+    g.demandeur = demandeur
+    if refus is not None:
+        return jsonify(refus[1]), refus[0]
         
 def lire_json():
     donnees = request.get_json(force=True, silent=True)
@@ -63,9 +64,13 @@ def route_accueil():
 def route_lister_hotels():
     return repondre(hotel.lister_hotels())
 
+@app.get("/mes-hotels")
+def route_mes_hotels():
+    return repondre(hotel.mes_hotels(g.demandeur))
+
 @app.post("/hotels")
 def route_creer_hotel():
-    return repondre(hotel.creer_hotel(lire_json()))
+    return repondre(hotel.creer_hotel(lire_json(), g.demandeur))
 
 @app.get("/hotels/<identifiant>")
 def route_un_hotel(identifiant):
@@ -91,7 +96,7 @@ def route_lister_chambre():
 
 @app.post("/chambres")
 def route_creer_chambre():
-    return repondre(chambre.creer_chambre(lire_json()))
+    return repondre(chambre.creer_chambre(lire_json(), g.demandeur))
 
 @app.get("/chambres/<id_hotel>")
 def route_chambre_hotel(id_hotel):
@@ -117,27 +122,27 @@ def route_supprimer_chambre(id_hotel, id_chambre):
 
 @app.get("/reservations")
 def route_lister_reservations():
-    return repondre(reservation.lister_reservation())
+    return repondre(reservation.lister_reservation(g.demandeur))
 
 @app.post("/reservations")
 def route_creer_reservations():
-    return repondre(reservation.creer_reservation(lire_json()))
+    return repondre(reservation.creer_reservation(lire_json(), g.demandeur))
 
 @app.get("/reservations/<identifiant>")
 def route_une_reservation(identifiant):
-    return repondre(reservation.une_reservation(identifiant))
+    return repondre(reservation.une_reservation(identifiant, g.demandeur))
 
 @app.put("/reservations/<identifiant>")
 def route_remplacer_reservation(identifiant):
-    return repondre(reservation.modifier_reservation(identifiant, lire_json(), True))
+    return repondre(reservation.modifier_reservation(identifiant, lire_json(), True, g.demandeur))
 
 @app.patch("/reservations/<identifiant>")
 def route_modifier_reservation(identifiant):
-    return repondre(reservation.modifier_reservation(identifiant, lire_json(), False))
+    return repondre(reservation.modifier_reservation(identifiant, lire_json(), False, g.demandeur))
 
 @app.delete("/reservations/<identifiant>")
 def route_supprimer_reservation(identifiant):
-    return repondre(reservation.supprimer_reservation(identifiant))
+    return repondre(reservation.supprimer_reservation(identifiant, g.demandeur))
 
 #Comptes
 
@@ -149,13 +154,17 @@ def route_inscription():
 def route_connexion():
     return repondre(utilisateur.connecter(lire_json()))
 
+@app.get("/profil")
+def route_profil():
+    return repondre(utilisateur.un_profil(g.demandeur))
+
+@app.patch("/profil")
+def route_modifier_profil():
+    return repondre(utilisateur.modifier_profil(g.demandeur, lire_json()))
+
 #Affiche la liste des utilisateurs
 @app.get("/utilisateurs")
 def route_lister_utilisateurs():
-    utilisateur_connect = securite.lire_jeton(request.headers.get("Authorization"))
-    refus = securite.verifier_droits(utilisateur_connect, ["admin"])
-    if refus is not None:
-        return jsonify(refus[1]), refus [0]
     return repondre(utilisateur.lister_utilisateurs())
 
 #Les erreurs et les StatusCode
@@ -184,4 +193,4 @@ def erreur_imprevue(erreur):
 if __name__ == "__main__":
     if not securite.PROTECTION_ACTIVATE:
         print("Attention, protection desactivée pour test")
-    app.run(host="localhost", port=5000, debug=True)
+    app.run(host="localhost", port=5000, debug=False)

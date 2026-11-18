@@ -32,8 +32,8 @@ hash_texte = bcrypt.hashpw(mot_de_passe.encode("utf-8"), bcrypt.gensalt()).decod
 
 identifiant = "U" + uuid.uuid4().hex[:8]
 
-ecrire("INSERT INTO utilisateur (utilisateurs, nom, prenom, email, mot_de_passe, telephone, role)"
-       "VALUES (%s, %s, %s %s, %s, %s, %s)", 
+ecrire("INSERT INTO utilisateur (utilisateurs, nom, prenom, email, mot_de_passe, telephone, role) "
+       "VALUES (%s, %s, %s, %s, %s, %s, %s)",
        (identifiant, nom, prenom, email, hash_texte, telephone, "admin"))
 
 print("administrateur créé avec succés !", email)

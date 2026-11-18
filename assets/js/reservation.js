@@ -116,7 +116,7 @@ function reserver() {
     }
 
     //permets de ne pas choisir une date deja passée
-    const aujourdhui = new Date().toISOString().slice(0, 10);
+    const aujourdhui = aujourdhuiISO();
     document.getElementById("arrivee").min = aujourdhui;
     document.getElementById("depart").min = aujourdhui;
 
@@ -162,7 +162,6 @@ function reserver() {
         }
 
         const resultat = await appelerAPI("/reservations", "POST", {
-            reservation: idReservation,
             date_arrivee: arrivee,
             date_depart: depart,
             nombre_adulte: Number(valeurChamp("nbr_adulte")),
@@ -176,8 +175,15 @@ function reserver() {
             return;
         }
 
-        //pour la page paiement
-        localStorage.setItem("derniereReservation", JSON.stringify({ id: resultat.donnes.reservation, montant: resultat.donnees.montant_total  }));
+        const resume = {
+            id: resultat.donnees.reservation,
+            montant: resultat.donnees.montant_total,
+            hotel: document.querySelector("#hotel option:checked").textContent,
+            chambre: chambre.type || ("Chambre " + chambre.chambre),
+            arrivee: arrivee,
+            depart: depart
+        };
+        localStorage.setItem("derniereReservation", JSON.stringify(resume));
 
         form.reset();
         chargerChambres("");

@@ -1,51 +1,74 @@
-// //Sauvegarde dans le local storage les informations du formulaire de paiement 
-class Paiement {
-    constructor(carte, numero, nom, expiration, cvv) {
-        this.carte = carte;
-        this.numero = numero;
-        this.nom = nom;
-        this.expiration = expiration;
-        this.cvv = cvv;
-    }
-}
-
-//Fonction pour envoyer un message
+// Le site ne dispose pas d'une intégration de paiement sécurisée.
 function envoiePaiement() {
     const form = document.getElementById("envoie-paiement");
-    console.log(form);
+    if (!form) return;
+    localStorage.removeItem("paiements");
+    afficherResumeReservation();
     const numero = document.getElementById("numero");
     const erreurNumero = document.getElementById("numero-erreur");
 
-    numero.addEventListener("input", () => {
-        erreurNumero.hidden =
-            numero.value === "" || /^[0-9]{16}$/.test(numero.value);
-    });
+    if (numero && erreurNumero) {
+        numero.addEventListener("input", () => {
+            erreurNumero.hidden =
+                numero.value === "" || /^[0-9]{16}$/.test(numero.value);
+        });
 
-    numero.addEventListener("invalid", () => {
-        erreurNumero.hidden = false;
-    });
+        numero.addEventListener("invalid", () => {
+            erreurNumero.hidden = false;
+        });
+    }
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault(); //Annuler le rechargement automatique de la page
-
-        let carte = document.getElementById("carte").value;
-        let numero = document.getElementById("numero").value;
-        let nom = document.getElementById("nom").value;
-        let expiration = document.getElementById("expiration").value;
-        let cvv = document.getElementById("cvv").value;
-
-        //Création de l'objet
-        let paiement = new Paiement(carte, numero, nom, expiration, cvv);
-        console.log(paiement);
-
-        // Sauvegarder dans localstorage
-        const paiements = JSON.parse(localStorage.getItem("paiements")) || [];
-        paiements.push(paiement);
-        localStorage.setItem("paiements", JSON.stringify(paiements));
-
+        event.preventDefault();
         form.reset();
-        alert("Paiement enregistré avec succès !");
-    })
+        if (erreurNumero) erreurNumero.hidden = true;
+        const message = document.getElementById("paiement-message");
+        if (message) {
+            message.textContent =
+                "Démonstration uniquement : aucun paiement n'a été effectué ni enregistré.";
+        }
+    });
+}
+
+function afficherResumeReservation() {
+    const zones = {
+        hotel: document.getElementById("resume-hotel"),
+        chambre: document.getElementById("resume-chambre"),
+        dates: document.getElementById("resume-dates"),
+        identifiant: document.getElementById("resume-identifiant"),
+        montant: document.getElementById("resume-montant")
+    };
+    let reservation = null;
+    try {
+        reservation = JSON.parse(localStorage.getItem("derniereReservation"));
+    } catch (erreur) {
+        localStorage.removeItem("derniereReservation");
+        const message = document.getElementById("paiement-message");
+        if (message) message.textContent = "Le récapitulatif de réservation est illisible.";
+        return;
+    }
+
+    if (!reservation) return;
+    if (
+        typeof reservation.hotel !== "string" ||
+        typeof reservation.chambre !== "string" ||
+        typeof reservation.id !== "string" ||
+        typeof reservation.arrivee !== "string" ||
+        typeof reservation.depart !== "string" ||
+        !Number.isFinite(Number(reservation.montant))
+    ) {
+        const message = document.getElementById("paiement-message");
+        if (message) message.textContent = "Le récapitulatif de réservation est incomplet.";
+        return;
+    }
+    if (zones.hotel) zones.hotel.textContent = "Hôtel : " + reservation.hotel;
+    if (zones.chambre) zones.chambre.textContent = "Chambre : " + reservation.chambre;
+    if (zones.dates) {
+        zones.dates.textContent =
+            dateFrancaise(reservation.arrivee) + " au " + dateFrancaise(reservation.depart);
+    }
+    if (zones.identifiant) zones.identifiant.textContent = "Réservation : " + reservation.id;
+    if (zones.montant) zones.montant.textContent = montantEuros(reservation.montant);
 }
 
 envoiePaiement();

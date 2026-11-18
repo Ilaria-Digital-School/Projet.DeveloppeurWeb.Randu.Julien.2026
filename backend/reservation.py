@@ -1,13 +1,30 @@
 from datetime import date
+from decimal import Decimal
+import uuid
 import mysql.connector
 from database import lire, ecrire
 from chambre import trouver_chambre
+import securite
 
 
 CHAMPS = ["date_arrivee", "date_depart", "nombre_adulte","nombre_enfant","montant_total", "statut", "chambre", "hotel", "utilisateurs"]
 
-STATUTS_VALIDE = ["en attente", "confirmee", "annulee"]
+STATUTS_VALIDE = ["en attente", "confirmee", "annulee", "reserver", "en cours de traitement"]
 STATUTS_ANNULE = "annulee"
+CHAMPS_CREATION = ["date_arrivee", "date_depart", "nombre_adulte", "nombre_enfant", "chambre", "hotel"]
+CHAMPS_MODIFIABLES_CLIENT = ["date_arrivee", "date_depart", "nombre_adulte", "nombre_enfant"]
+
+
+def est_administrateur(demandeur):
+    return demandeur is not None and demandeur["role"] == securite.ROLE_ADMIN
+
+
+def calculer_montant(hotel, chambre, arrivee, depart):
+    detail_chambre = trouver_chambre(hotel, chambre)
+    if detail_chambre is None:
+        return None
+    nuits = (date.fromisoformat(str(depart)) - date.fromisoformat(str(arrivee))).days
+    return (Decimal(str(detail_chambre["tarif"])) * nuits).quantize(Decimal("0.01"))
 
 #permets de verifier les informations pour les valeurs rentrées correspondent bien au parametre 
 
@@ -92,52 +109,102 @@ def verifier_regles(reservation, id_a_exclure=None):
     return None
 
 #GET reservation
-def lister_reservation():
-    return 200, lire("SELECT * FROM reservation")
+def lister_reservation(demandeur):
+    if demandeur is None:
+        return 401, {"error": "Connexion requise !"}
+    sql = (
+        "SELECT r.*, u.nom AS client_nom, u.prenom AS client_prenom, "
+        "u.email AS client_email, h.nom AS hotel_nom, c.type AS chambre_type "
+        "FROM reservation r "
+        "JOIN utilisateur u ON u.utilisateurs = r.utilisateurs "
+        "JOIN hotel h ON h.hotel = r.hotel "
+        "JOIN chambre c ON c.hotel = r.hotel AND c.chambre = r.chambre "
+    )
+    if est_administrateur(demandeur):
+        return 200, lire(sql + "ORDER BY r.date_arrivee")
+    return 200, lire(
+        sql + "WHERE r.utilisateurs = %s ORDER BY r.date_arrivee",
+        (demandeur["utilisateurs"],),
+    )
 
-def une_reservation(identifiant):
+def une_reservation(identifiant, demandeur):
+    if demandeur is None:
+        return 401, {"error": "Connexion requise !"}
     reservation = trouver_reservation(identifiant)
     if reservation is None:
+        return 404, {"error": "Reservaton introuvable !"}
+    if not est_administrateur(demandeur) and reservation["utilisateurs"] != demandeur["utilisateurs"]:
         return 404, {"error": "Reservaton introuvable !"}
     return 200, reservation
 
 
 #POST reservation
-def creer_reservation(donnees):
+def creer_reservation(donnees, demandeur):
     if donnees is None:
-        return 404, {"error": "donnee introuvable !"}
-    
-    requis = ["reservation"] + CHAMPS
-    manquants = [champ for champ in requis if champ not in donnees]
+        return 400, {"error": "Données invalides"}
+    if demandeur is None:
+        return 401, {"error": "Connexion requise !"}
+    if demandeur["role"] != securite.ROLE_CLIENT:
+        return 403, {"error": "Seuls les clients peuvent créer une réservation"}
+
+    manquants = [champ for champ in CHAMPS_CREATION if champ not in donnees]
     if len(manquants) > 0:
         return 400, {"error": "champs manquants", "champs": manquants}
     
+    inconnus = [champ for champ in donnees if champ not in CHAMPS_CREATION]
+    if inconnus:
+        return 400, {"error": "Champs non modifiables", "champs": inconnus}
+
     message = verifier_valeurs(donnees)
     if message is not None:
         return 400, {"error": message}
-    
-    probleme = verifier_regles(donnees)
+
+    if date.fromisoformat(donnees["date_arrivee"]) < date.today():
+        return 400, {"error": "La date d'arrivée ne peut pas être passée"}
+
+    montant = calculer_montant(
+        donnees["hotel"], donnees["chambre"], donnees["date_arrivee"], donnees["date_depart"]
+    )
+    if montant is None:
+        return 400, {"error": "Cette chambre n'existe pas dans cet hôtel"}
+
+    reservation = {
+        "reservation": "R" + uuid.uuid4().hex[:12].upper(),
+        "date_arrivee": donnees["date_arrivee"],
+        "date_depart": donnees["date_depart"],
+        "nombre_adulte": donnees["nombre_adulte"],
+        "nombre_enfant": donnees["nombre_enfant"],
+        "montant_total": montant,
+        "statut": "en attente",
+        "chambre": donnees["chambre"],
+        "hotel": donnees["hotel"],
+        "utilisateurs": demandeur["utilisateurs"],
+    }
+
+    probleme = verifier_regles(reservation)
     if probleme is not None:
         statusCode, message = probleme
         return statusCode, {"error": message}
-    
-    #permets la creation de la reservation en evitant les doublons d'ID de resa
-    
-    colonnes = ", ".join(requis)
-    marqueurs = ", ".join(["%s"] * len(requis))
-    valeurs = [donnees[champ] for champ in requis]
-    
+
+    colonnes = ", ".join(["reservation"] + CHAMPS)
+    marqueurs = ", ".join(["%s"] * (len(CHAMPS) + 1))
+    valeurs = [reservation[champ] for champ in ["reservation"] + CHAMPS]
+
     try:
         ecrire(f"INSERT INTO reservation ({colonnes}) VALUES ({marqueurs})", valeurs)
     except mysql.connector.IntegrityError:
-        return 409, {"error": "cet identifiant de reservation existe deja !"}
-    return 201, trouver_reservation(donnees["reservation"])
+        return 409, {"error": "Impossible de créer cette réservation"}
+    return 201, trouver_reservation(reservation["reservation"])
 
 #PUT / PATCH
-def modifier_reservation(identifiant, donnees, tout_remplacer):
+def modifier_reservation(identifiant, donnees, tout_remplacer, demandeur):
+    if demandeur is None:
+        return 401, {"error": "Connexion requise !"}
     
     ancienne = trouver_reservation(identifiant)
     if ancienne is None:
+        return 404, {"error": "reservation introuvable"}
+    if not est_administrateur(demandeur) and ancienne["utilisateurs"] != demandeur["utilisateurs"]:
         return 404, {"error": "reservation introuvable"}
     
     if not donnees:
@@ -146,6 +213,20 @@ def modifier_reservation(identifiant, donnees, tout_remplacer):
     inconnus = [champ for champ in donnees if champ not in CHAMPS]
     if len(inconnus) > 0:
         return 400,{"error" : "champs non modifiables", "champs": inconnus}
+
+    if not est_administrateur(demandeur):
+        if ancienne["statut"] == STATUTS_ANNULE:
+            return 409, {"error": "Cette reservation est deja annulee"}
+        if not tout_remplacer and donnees == {"statut": STATUTS_ANNULE}:
+            ecrire(
+                "UPDATE reservation SET statut = %s WHERE reservation = %s",
+                (STATUTS_ANNULE, identifiant),
+            )
+            return 200, trouver_reservation(identifiant)
+
+        non_autorises = [champ for champ in donnees if champ not in CHAMPS_MODIFIABLES_CLIENT]
+        if non_autorises:
+            return 403, {"error": "Les clients ne peuvent modifier que les dates et le nombre de voyageurs", "champs": non_autorises}
     
     if tout_remplacer:
         manquants = [champ for champ in CHAMPS if champ not in donnees]
@@ -158,6 +239,17 @@ def modifier_reservation(identifiant, donnees, tout_remplacer):
     
     complete = dict(ancienne)
     complete.update(donnees)
+    if not est_administrateur(demandeur):
+        if date.fromisoformat(str(complete["date_arrivee"])) < date.today():
+            return 400, {"error": "La date d'arrivée ne peut pas être passée"}
+        montant = calculer_montant(
+            complete["hotel"], complete["chambre"], complete["date_arrivee"], complete["date_depart"]
+        )
+        if montant is None:
+            return 400, {"error": "Cette chambre n'existe pas dans cet hôtel"}
+        donnees = dict(donnees)
+        donnees["montant_total"] = montant
+        complete["montant_total"] = montant
     probleme = verifier_regles(complete, id_a_exclure=identifiant)
     if probleme is not None:
         statusCode, message = probleme
@@ -170,8 +262,14 @@ def modifier_reservation(identifiant, donnees, tout_remplacer):
     return 200, trouver_reservation(identifiant)
 
 #DELETE
-def supprimer_reservation(identifiant):
-    if trouver_reservation(identifiant) is None:
+def supprimer_reservation(identifiant, demandeur):
+    if demandeur is None:
+        return 401, {"error": "Connexion requise !"}
+    reservation = trouver_reservation(identifiant)
+    if reservation is None or (
+        not est_administrateur(demandeur)
+        and reservation["utilisateurs"] != demandeur["utilisateurs"]
+    ):
         return 404, {"error":" Reservation introuvable !"}
     
     try:
