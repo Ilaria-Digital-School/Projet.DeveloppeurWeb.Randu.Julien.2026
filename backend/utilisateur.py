@@ -1,6 +1,6 @@
 import uuid #uuid evite la creation de doublon d'ID utilisateurs
 import bcrypt #crypte le mot de passe hash
-import hmac
+import hmac #charge la bibliotheque pour la verification des messages basé sur le hachage
 import mysql.connector
 from database import lire, ecrire
 import securite
