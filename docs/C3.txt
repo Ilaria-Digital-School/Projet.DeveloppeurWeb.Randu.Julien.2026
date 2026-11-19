@@ -1,0 +1,70 @@
+Exercice C3 réaliser les interfaces utilisateurs statiques web ou web mobile
+
+------------------------------------------------------
+
+Page:
+index.html --> accueil de l'application RésaHôtel. Depuis cette espace l'utilisateur peut naviguer entre les differentes page 
+et voir les differents rubrique
+
+a propos.html --> permets a l'utilisateur de voir les informations concernant l'entreprise derriere l'application et le but de cette
+ application de reservation
+
+admin.html --> permets a l'administrateur d'interagir avec les reservations, les hotels, les chambres avec les actions tel que ajout ou suppression 
+
+ajout chambre.html --> permets au prestataire d'ajouter une chambre lié a son hôtel 
+
+ajout hotel.html --> permets au prestataire d'ajouter un hotel avec differentes information telle que l'adresse, le nom, le nombre d'etoile etc...
+
+carriere.html --> permets à un utilisateur de postuler en deposant son CV s'il le souhaite
+
+conditions.html --> page regroupant la partie CGU, RGPD, CVG et mentions legales
+
+connexions.html --> permets a un client, un prestataire ou a l'admin de se connecter afin d'interagir avec les differentes 
+interfaces qui lui sont "dédiées"
+
+contact.html --> permets à un utilisateur de nous contacter et nous trouver si besoin
+
+formulaire d'inscription.html --> permets a un utilisateur ou a un prestataire de s'inscrire et de pouvoir soit reserver 
+s'il s'agit d'un client ou proposer son hotel s'il s'agit d'un prestataire
+
+mon profil.html --> permets a l'utilisateur ou un prestatairede voir les informations lié a son profil, de modifier son adresse mail et 
+son mot de passe
+
+nos hotels.html --> rubrique prevu pour partager un "Hôtel du moment" selectionner par l'administrateur par exemple
+
+paiement.html --> permets a l'utilisateur de payer sa reservation 
+
+reservation.html --> propose plusieurs hotels et chambre a la reservation a un client
+
+votre panier.html --> permets a un client de voir sa ou ses reservation
+
+------------------------------------------------------
+
+Police pour dyslexique : Verdana
+
+Aria label pour l'utilisation d'un lecteur d'écran 
+
+Canonical pour chaque page afin d'eviter le contenu dupliqué lorsqu'un URL a du contenu proche de la demande initial
+
+Favicon de donner une identité a notre page web via un logo sur l'onglet de la page ouverte 
+
+ajout des 'alt" aux images afin d'avoir une alternative aux images 
+
+ajout des elements CSS comme hover pour l'interaction lors du passage de la souris sur les boutons type envoyer inscrire etc..
+
+------------------------------------------------------
+
+Wave: Web accessibility evaluation tool: score de 7 à 9 en fonction de la page. 
+
+------------------------------------------------------
+
+Utilisation de Ligthouse pour l'analyse :
+performance 93
+accessibilité 90
+Bonne pratique 100
+SEO 100
+
+------------------------------------------------------
+
+plusieurs medias query ajouter dans le CSS afin que l'application s'adapte aux differentes tailles d'ecran, smartphone, tablette, ordinateur bureau
+et portable

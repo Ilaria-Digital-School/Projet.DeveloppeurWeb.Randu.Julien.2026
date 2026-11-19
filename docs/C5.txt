@@ -1,0 +1,154 @@
+Exercice C5 Mettre en place une base de donnée relationnelle 
+
+------------------------------------------------------
+MLD:
+
+Utilisateur = (utilisateurs VARCHAR(50), nom VARCHAR(50), prenom VARCHAR(50), email VARCHAR(100), mot_de_passe VARCHAR(255), telephone VARCHAR(50), interets VARCHAR(50), pays VARCHAR(50), genre VARCHAR(50), role VARCHAR(50));
+
+Chambre = (chambre VARCHAR(50), hotel VARCHAR(50), numero VARCHAR(50), type VARCHAR(50), capacite INT, tarif DECIMAL(15,2), description VARCHAR(50));
+
+Reservation = (reservation VARCHAR(50), date_arrivee DATE, date_depart DATE, nombre_adulte INT, nombre_enfant INT, montant_total DECIMAL(15,2), statut VARCHAR(50), #(chambre, hotel), #utilisateurs);
+
+Paiement = (paiement VARCHAR(50), montant DECIMAL(15,2), date_paiement DATE, statut VARCHAR(50), moyen_paiement VARCHAR(50), #reservation);
+
+Hotel = (hotel VARCHAR(50), nom VARCHAR(50), adresse VARCHAR(50), ville VARCHAR(50), code_postale VARCHAR(50), pays VARCHAR(50), nombre_etoiles INT, description VARCHAR(500), prestataire VARCHAR(50), #(chambre, hotel_1));
+
+Avis = (avis VARCHAR(50), note INT, commentaire VARCHAR(50), date_avis DATE, #hotel, #utilisateurs);
+
+------------------------------------------------------
+
+LDD:
+
+CREATE TABLE Utilisateur(
+   utilisateurs VARCHAR(50),
+   nom VARCHAR(50) NOT NULL,
+   prenom VARCHAR(50),
+   email VARCHAR(100),
+   mot_de_passe VARCHAR(255) NOT NULL,
+   telephone VARCHAR(50),
+   interets VARCHAR(50),
+   pays VARCHAR(50),
+   genre VARCHAR(50),
+   role VARCHAR(50) NOT NULL,
+   PRIMARY KEY(utilisateurs),
+   UNIQUE(email),
+   UNIQUE(mot_de_passe)
+);
+
+CREATE TABLE Chambre(
+   chambre VARCHAR(50),
+   hotel VARCHAR(50),
+   numero VARCHAR(50),
+   type VARCHAR(50),
+   capacite INT,
+   tarif DECIMAL(15,2),
+   description VARCHAR(50),
+   PRIMARY KEY(chambre, hotel)
+);
+
+CREATE TABLE Reservation(
+   reservation VARCHAR(50),
+   date_arrivee DATE NOT NULL,
+   date_depart DATE NOT NULL,
+   nombre_adulte INT NOT NULL,
+   nombre_enfant INT NOT NULL,
+   montant_total DECIMAL(15,2) NOT NULL,
+   statut VARCHAR(50) NOT NULL,
+   chambre VARCHAR(50) NOT NULL,
+   hotel VARCHAR(50) NOT NULL,
+   utilisateurs VARCHAR(50) NOT NULL,
+   PRIMARY KEY(reservation),
+   FOREIGN KEY(chambre, hotel) REFERENCES Chambre(chambre, hotel),
+   FOREIGN KEY(utilisateurs) REFERENCES Utilisateur(utilisateurs)
+);
+
+CREATE TABLE Paiement(
+   paiement VARCHAR(50),
+   montant DECIMAL(15,2) NOT NULL,
+   date_paiement DATE,
+   statut VARCHAR(50) NOT NULL,
+   moyen_paiement VARCHAR(50) NOT NULL,
+   reservation VARCHAR(50) NOT NULL,
+   PRIMARY KEY(paiement),
+   UNIQUE(reservation),
+   FOREIGN KEY(reservation) REFERENCES Reservation(reservation)
+);
+
+CREATE TABLE Hotel(
+   hotel VARCHAR(50),
+   nom VARCHAR(50) NOT NULL,
+   adresse VARCHAR(50) NOT NULL,
+   ville VARCHAR(50),
+   code_postale VARCHAR(50),
+   pays VARCHAR(50),
+   nombre_etoiles INT,
+   description VARCHAR(500),
+   prestataire VARCHAR(50) NOT NULL,
+   chambre VARCHAR(50) NOT NULL,
+   hotel_1 VARCHAR(50) NOT NULL,
+   PRIMARY KEY(hotel),
+   UNIQUE(nom),
+   UNIQUE(adresse),
+   UNIQUE(prestataire),
+   FOREIGN KEY(chambre, hotel_1) REFERENCES Chambre(chambre, hotel)
+);
+
+CREATE TABLE Avis(
+   avis VARCHAR(50),
+   note INT,
+   commentaire VARCHAR(50),
+   date_avis DATE,
+   hotel VARCHAR(50) NOT NULL,
+   utilisateurs VARCHAR(50) NOT NULL,
+   PRIMARY KEY(avis),
+   FOREIGN KEY(hotel) REFERENCES Hotel(hotel),
+   FOREIGN KEY(utilisateurs) REFERENCES Utilisateur(utilisateurs)
+);
+
+------------------------------------------------------
+Tables Principales:
+
+avis
+chambre
+hotel
+paiement
+reservation
+utilisateur
+
+------------------------------------------------------
+
+Exemple de sécurité, intégrité et confidentialité:
+
+-utilisation de mot de passe robuste
+
+-hash du mot de passe
+
+-gestion des droits d'accés, un simple client ne peux pas voir les autres reservations que les siennes, 
+idem pour un prestataire, il ne peut pas voir un autre hotel que le sien.
+
+------------------------------------------------------
+
+Differentes fonction utilisé lors de la création de la base de donnée:
+
+-SELECT * FROM resahotel.reservation;
+
+-INSERT INTO avis
+(avis, note, commentaire, date_avis, hotel, utilisateurs)
+VALUES
+("A001", 15/20, "Séjour excellent, hôtel tres propre","2026-09-29",  "H006","U002"),
+("A002", 18/20, "Hôtel Fantastique et merveilleux, personnel au TOP!","2026-09-30",  "H016","U001"),
+("A003", 13/20, "Hôtel idéalement bien placé, accueil au top mais un peu bruyant","2026-09-28",  "H008","U003"),
+("A004", 17/20 , "Hôtel trés bien situé, proche Montparnass et des commerces, je recommande !","2026-09-29",  "H001","U002");
+
+-INSERT INTO utilisateur
+(utilisateurs, nom, prenom, email, mot_de_passe, telephone)
+VALUES
+(
+    'U001',
+    'Dupont',
+    'Jean',
+    'jean.dupont@gmail.com',
+    'MotDePasse123',
+    '0612345678'
+),
+

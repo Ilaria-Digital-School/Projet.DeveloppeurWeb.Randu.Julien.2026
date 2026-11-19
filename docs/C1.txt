@@ -1,0 +1,58 @@
+Exercice C1: Installer et configurer son environnement de travail en fonction du projet web ou web mobile
+
+------------------------------------------------------
+
+VS Code :  éditeur de code / code editor
+
+------------------------------------------------------
+
+CSS : Mise en page de l’HTML / HTML layout
+
+------------------------------------------------------
+
+JavaScript : pour rendre la page web dynamique et interactive / to make the web page dynamic and interactiv.
+
+------------------------------------------------------
+
+Python : pour développer le serveur et l’API / for developing the server and API
+
+------------------------------------------------------
+
+MySQL / Workbench : pour gérer la base de données / for managing the database
+
+------------------------------------------------------
+
+MAMP : l’environnement serveur et base de données / the server and database environment 
+
+------------------------------------------------------
+
+Postman : pour tester les requêtes de l’API / for testing API requests.
+
+------------------------------------------------------
+
+Git : pour gérer les versions du projet / for managing project versions.
+git add : prepare les modifcations 
+git commit -m "commentaire" : enregistre les modifications avec un commentaire 
+git push : envoie les modifications sur Github
+git merge : fusionne 2 branches
+git pull : recupere les derniers modifcation du depot
+git status : affiche l'etat actuel des fichiers
+
+------------------------------------------------------
+
+W3C HTML Validator : vérification de la conformité du HTML 
+W3C CSS Validator : vérification de la conformité du CSS 
+
+------------------------------------------------------
+
+Veille technologique et sécuritaire :
+OWASP --> securité des application web et des API
+Python.org --> evolution du langage Python
+Github changelog--> nouveautés de GitHub
+reseaux sociaux et communauté de developpeurs: decouverte de nouveaux outils, extensions et bonnes pratiques
+
+------------------------------------------------------
+
+Font Awesome pour le telechargement de logo, par exemple le logo Facebook, gmail ou encore instagram
+
+Boostrap, bibliotheque permettant d'ajouter des script, barre de navigation, tableau etc... deja pret a personnalisé

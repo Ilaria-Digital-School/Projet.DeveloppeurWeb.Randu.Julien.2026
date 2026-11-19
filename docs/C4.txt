@@ -1,0 +1,46 @@
+Exercice C4 Developper la partie dynamique des interfaces utilisateur web ou web mobile 
+
+------------------------------------------------------
+
+JavaScript: langage permettant de rendre les pages web dynamiques et interactives. Language Used to make web pages dynamic and interactives
+
+Quelques exemples de fonctionnalités concernées:
+
+verification des formulaires
+gestion des dates d'arrivée et de départ
+selection du nombre de personnne
+calcul automatique du prix d'une reservation 
+affichage des message de confirmation ou d'erreur
+communication avec l'API python via fetch
+sauvegarde dans le Localstorage
+
+------------------------------------------------------
+
+Quelques exemples concernant la sécurité côté client:
+
+verification des champs obligatoires
+verification des adresses mail
+verification des mots de passe (identique ou non)
+controle du nombre de personne 
+vérification des valeurs rentrées dans les champs (texte ou numérique)
+
+Utilisationde Try...catch pour gerer les erreurs et exceptions 
+
+------------------------------------------------------
+
+Ajout des commentaires français/anglais pour une meilleure comprehension du code (a faire)
+
+------------------------------------------------------
+
+Quelques test de securité réaliser:
+
+test des champs vides
+test des adresse mails incorrect
+test des mots de passe differents 
+
+------------------------------------------------------
+
+utilisation des outils pour les test:
+Postman
+Vs code / terminal
+consol logo
