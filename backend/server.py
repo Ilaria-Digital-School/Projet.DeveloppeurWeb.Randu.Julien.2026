@@ -1,4 +1,5 @@
 #server.py concerne la partie du bloc 2 Back-end sans Framework
+#server.py relates to the part of Block 2 concerning back-end development without a framework.
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
@@ -11,7 +12,7 @@ import utilisateur
 import reservation
 import securite
 
-#permet de convertir le prix et les dates
+#permet de convertir le prix et les dates / #allows for the conversion of the price and dates
 def convertir_json(valeur):
     if isinstance(valeur, Decimal):
         return float(valeur)
@@ -42,8 +43,8 @@ class ResaHotelServer(BaseHTTPRequestHandler):
     def traiter(self):
         methode = self.command
         chemin = self.path.split("?")[0]
-        morceaux = [ m for m in chemin.split("/") if m != ""] #morceaux = morceaux de l'URL ecrit sur Postman. 
-        #("/") permet de prendre en compte le split ("/")
+        morceaux = [ m for m in chemin.split("/") if m != ""] #morceaux = morceaux de l'URL ecrit sur Postman. / #segments = segments of the URL as written in Postman.
+        #("/") permet de prendre en compte le split ("/") / #("/") allows for the inclusion of the split ("/")
         
         try:
             demandeur, refus = securite.controler_acces(
@@ -53,7 +54,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                 self.repondre(refus[0], refus[1])
                 return
              
-         #Concerne la page hotel.py  
+         #Concerne la page hotel.py / Relates to the hotel.py page
             if morceaux == []:
                 statusCode, contenu = 200, {"message": "Bienvenue sur ResaHotel.com"}
                 
@@ -78,7 +79,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             elif len(morceaux) == 2 and morceaux [0] == "hotels" and methode == "DELETE":
                 statusCode, contenu = hotel.supprimer_hotel(morceaux[1])
                 
-            #Concerne la page chambre.py
+            #Concerne la page chambre.py / Relates to the chambre.py page
                    
             elif morceaux == ["chambres"] and methode == "GET":
                             statusCode, contenu = chambre.lister_chambre()
@@ -101,7 +102,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             elif len(morceaux) == 3 and morceaux [0] == "chambres" and methode == "DELETE":
                             statusCode, contenu = chambre.supprimer_chambre(morceaux[1], morceaux[2])
                             
-            #Concerne la page reservation
+            #Concerne la page reservation / Relates to the reservation page
             
             elif morceaux == ["reservations"] and methode == "GET":
                             statusCode, contenu = reservation.lister_reservation(demandeur)
@@ -176,8 +177,8 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         self.end_headers()
         
 if __name__ == "__main__":
-    if not securite.PROTECTION_ACTIVATE:
-        print("Attention : protection et jeton desactiver !")#securité a finalisée
+    # if not securite.PROTECTION_ACTIVATE:
+    #     print("Attention : protection et jeton desactiver !")
     serveur= HTTPServer(("localhost", 8000), ResaHotelServer)
     print("Serveur ResaHotel démarré sur http://localhost:8000")
     try:

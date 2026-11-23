@@ -2,3 +2,73 @@ Exercice C6 Developper des composants d'acces aux données SQL et NoSQL
 
 ------------------------------------------------------
 
+Développement des composants CRUD:
+
+-Create: création de données
+-Read: Consultation de données
+-Update: modifications de données
+-Delete: supression de données 
+
+------------------------------------------------------
+
+Les composants Python permettent de gérer les differentes tables:
+
+-chambre.py: gestion des chambres
+-hotel.py: gestion des hotels
+-reservation.py: gestion des reservations
+-utilisateur.py: gestion des droits et des rôles
+-securite.py: gestion des données 
+
+------------------------------------------------------
+
+Intégrité et confidentialité:
+Exemples:
+-verifier les relations entre hôtels, chambres, utilisateurs et reservations
+-controler les dates d'arrivée et de départ 
+-verifier le nombre de voyageurs 
+-Hacher les mots de passe
+-Limiter les droits d'accès a la base de données
+
+------------------------------------------------------
+
+Validation des entrées et securité SQL:
+
+-Verifier les adresse mail
+-verifier les dates
+-controler le nombre de voyageurs
+-verifier les identifiants (chambres, hotels etc...)
+
+------------------------------------------------------
+
+Exemples de Test Unitaires:
+
+-Tester l'ajout, la consultation, la modification et la suppression des hôtels.
+-Tester la gestion des chambres.
+-Tester la création et la modification des utilisateurs.
+-Tester les données incorrectes.
+
+------------------------------------------------------
+
+
+Outils utilisés:
+
+-Postman
+-MySQL pour la verifications des données 
+
+------------------------------------------------------
+
+Résolution des problemes rencontrés:
+
+-Identifier le problème
+-Reproduire l'erreur
+-Analyser les messages d'erreur
+-Localiser le problème
+-Corriger le code
+-Relancer les tests
+
+
+
+
+
+
+

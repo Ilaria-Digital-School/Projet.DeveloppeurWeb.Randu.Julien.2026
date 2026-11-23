@@ -1,4 +1,5 @@
 #app.py concerne la partie du bloc 3 avec le Framework Flask
+#app.py relates to the part of block 3 that covers the Flask framework.
 
 from decimal import Decimal
 import mysql.connector
@@ -56,6 +57,9 @@ def repondre(resultat):
 #Creation des routes pour utilisations de Flask
 #Route Hôtel
 
+#Creating routes for use with Flask
+#Hotel route
+
 @app.get("/")
 def route_accueil():
     return jsonify({"message": "Bienvenue sur ResaHotel.com"})
@@ -88,7 +92,8 @@ def route_modifier_hotel(identifiant):
 def route_supprimer_hotel(identifiant):
     return repondre(hotel.supprimer_hotel(identifiant))
 
-#Route pour les Chambres
+#Route pour les Chambres / 
+#Route to the Rooms
 
 @app.get("/chambres")
 def route_lister_chambre():
@@ -144,7 +149,8 @@ def route_modifier_reservation(identifiant):
 def route_supprimer_reservation(identifiant):
     return repondre(reservation.supprimer_reservation(identifiant, g.demandeur))
 
-#Comptes
+#Comptes / 
+#Accounts
 
 @app.post("/inscription")
 def route_inscription():
@@ -167,7 +173,7 @@ def route_modifier_profil():
 def route_lister_utilisateurs():
     return repondre(utilisateur.lister_utilisateurs())
 
-#Les erreurs et les StatusCode
+#Les erreurs et les StatusCode / #Errors and Status Codes
 
 @app.errorhandler(404)
 def erreur_404(erreur):

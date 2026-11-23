@@ -27,6 +27,7 @@ def calculer_montant(hotel, chambre, arrivee, depart):
     return (Decimal(str(detail_chambre["tarif"])) * nuits).quantize(Decimal("0.01"))
 
 #permets de verifier les informations pour les valeurs rentrées correspondent bien au parametre 
+#allows for verification that the entered values ​​correspond correctly to the parameter
 
 def est_entier_entre(valeur, minimum, maximum):
     if isinstance(valeur, bool) or not isinstance(valeur, int):
@@ -79,22 +80,24 @@ def utilisateurs_existe(identifiant):
 def verifier_regles(reservation, id_a_exclure=None):
     
     #important, la chambre et l'utilisateur doivent existés sinon il y aura un conflit
+    #important, the room and the user must exist; otherwise, a conflict will occur.
     if trouver_chambre(reservation["hotel"], reservation["chambre"]) is None:
         return 400, "Cette chambre n'existe pas dans cet Hôtel"
     if not utilisateurs_existe(reservation["utilisateurs"]):
         return 400, "Cet utilisateur n'existe pas"
     
-    #la date de départ doit etre apres la date d'arrivée
+    #la date de départ doit etre apres la date d'arrivée / The departure date must be after the arrival date.
     arrivee = str(reservation["date_arrivee"])
     depart = str(reservation["date_depart"])
     if date.fromisoformat(depart) <= date.fromisoformat(arrivee):
         return 409, "La date de départ doit etre apres la date d'arrivee"
     
-    #une chambre annulée ne bloque pas la reservation 
+    #une chambre annulée ne bloque pas la reservation / An cancelled room does not block the reservation
     if reservation["statut"] == STATUTS_ANNULE:
         return None
     
     #permets de ne pas avoir de reservation en meme temps mais permets une resevation avec des dates qui se chevauche 
+    #prevents having a reservation at the same time, but allows a reservation with overlapping dates
     sql = ("SELECT reservation FROM reservation " "WHERE hotel = %s AND chambre = %s " 
            "AND statut <> %s " "AND date_arrivee < %s AND date_depart > %s ")
     

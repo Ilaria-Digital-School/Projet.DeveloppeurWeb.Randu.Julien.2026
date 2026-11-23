@@ -1,0 +1,43 @@
+Exercice 7 Développer des composants métier côté serveur 
+
+------------------------------------------------------
+
+Fonctionnalité	Règle métier à appliquer:
+
+-Création d'un compte	Vérifier les informations et éviter les doublons d'e-mail
+-Connexion	Vérifier l'identifiant et le mot de passe
+-Réservation	Vérifier les dates et la disponibilité de la chambre
+-Modification	Vérifier que la réservation peut être modifiée
+-Annulation	Vérifier que l'utilisateur possède le droit d'annuler
+-Administration	Réserver certaines actions aux administrateurs
+
+------------------------------------------------------
+
+Sécuriser le serveur : authentification, permissions et validation
+
+Elle permet de vérifier l'identité d'un utilisateur.
+Exemple : un client doit se connecter avec son adresse e-mail et son mot de passe pour accéder à son compte.
+Les mots de passe doivent être hachés côté serveur via bcrypt.
+
+Permissions (Authorization)
+
+Elles permettent de déterminer ce qu'un utilisateur a le droit de faire.
+
+Exemple :
+- Client : consulter ses réservations et modifier certaines informations.
+-Prestataire : ajout d'un hôtel, ajout des chambres
+- Administrateur : gérer les hôtels, les chambres et les utilisateurs.
+Il ne suffit pas de cacher un bouton dans le navigateur : le serveur doit vérifier les permissions à chaque requête protégée.
+
+Validation des entrées (Input validation)
+
+Toutes les données reçues doivent être vérifiées côté serveur.
+
+Exemples :
+- Vérifier le format d'une adresse mail.
+- Refuser une date de départ antérieure à la date d'arrivée.
+- Refuser un nombre de voyageurs négatif.
+- Vérifier qu'un identifiant correspond à une donnée existante.
+
+------------------------------------------------------
+

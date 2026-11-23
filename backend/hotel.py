@@ -1,4 +1,5 @@
-#concerne la base de données Hôtel
+#concerne la base de données Hôtel / 
+#concerns the Hotel database
 
 import mysql.connector
 from database import lire, ecrire
@@ -12,7 +13,8 @@ SELECT_PUBLIC = "SELECT " + ", ".join(COLONNES_PUBLIQUES) + " FROM hotel"
 LONGUEURS_MAX = {"nom": 50, "description": 500, "adresse": 50, "code_postale": 50, "ville": 50, "pays": 50, "image": 255}
 OBLIGATOIRE_NON_VIDES = ["nom", "adresse", "code_postale", "ville", "pays"]
 
-#les etoiles doivent etre un nombre en 1 et 5
+#les etoiles doivent etre un nombre en 1 et 5 / 
+#the number of stars must be between 1 and 5
 def etoiles_valides(valeur):
     if isinstance(valeur, bool) or not isinstance(valeur, int):
         return False
@@ -36,7 +38,8 @@ def verifier_valeurs(donnees):
 def est_admin(demandeur):
     return demandeur is not None and demandeur ["role"] == securite.ROLE_ADMIN
 
-#permets de trouver l'hotel demander. Renvoie None si l'hotel est introuvable ou n'existe pas
+#permets de trouver l'hotel demander. Renvoie None si l'hotel est introuvable ou n'existe pas / 
+# #allows for finding the requested hotel. Returns None if the hotel cannot be found or does not exist
 def trouver_hotel(identifiant):
     lignes = lire("SELECT * FROM hotel WHERE hotel = %s", (identifiant,))
     if len(lignes) == 0:
@@ -61,7 +64,8 @@ def un_hotel(identifiant):
         return 404, {"error": "Hôtel introuvable !"}
     return 200, hotel
 
-#GET mes hôtels, permets au prestataire de voir ses hotels, l'admin voit tout.
+#GET mes hôtels, permets au prestataire de voir ses hotels, l'admin voit tout. / 
+#GET my hotels – allows the service provider to view their own hotels; the admin can view everything.
 
 def mes_hotels(demandeur):
     if demandeur is None:

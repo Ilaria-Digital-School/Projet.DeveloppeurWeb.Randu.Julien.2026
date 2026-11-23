@@ -13,11 +13,12 @@ ROLE_PRESTATAIRE = "prestataire"
 ROLE_ADMIN = "admin"
 
 #permet de choisir son role a l'inscription prestataire ou client, admin ne s'affiche pas. Il se cree depuis admin.py
+#allows users to choose their role during registration—service provider or client; 'admin' is not displayed as an option. Admin accounts are created via admin.py
 ROLES_INSCRIPTION = [ROLE_CLIENT, ROLE_PRESTATAIRE]
 
 ECRITURES = ["POST", "PUT", "PATCH", "DELETE"]
 
-PROTECTION_ACTIVATE = True #False pour le desactivé
+PROTECTION_ACTIVATE = True #False pour le desactivé / False to disable it
 
 def cle_secrete():
     cle = os.getenv("JWT_SECRET")
@@ -61,7 +62,8 @@ def verifier_droits(utilisateur, roles_autorises):
         return 403, {"error": "Droits insuffisants"}
     return None
 
-#Regles en fonction du role
+#Regles en fonction du role / 
+#Rules based on role
 
 def regle_route(methode, morceaux):
     premier = morceaux[0] if len(morceaux) > 0 else ""
@@ -84,7 +86,8 @@ def regle_route(methode, morceaux):
         return [ROLE_ADMIN], False
     return None, False
 
-#lit le jeton et donne l'acces en fonction du role
+#lit le jeton et donne l'acces en fonction du role / 
+#reads the token and grants access based on the role
 def controler_acces(methode, morceaux, valeur_authorization):
     demandeur = lire_jeton(valeur_authorization)
     roles, soumis_a_l_interrupteur = regle_route(methode, morceaux)

@@ -1,6 +1,6 @@
-import uuid #uuid evite la creation de doublon d'ID utilisateurs
-import bcrypt #crypte le mot de passe hash
-import hmac #charge la bibliotheque pour la verification des messages basé sur le hachage
+import uuid #uuid evite la creation de doublon d'ID utilisateurs / UUID prevents the creation of duplicate user IDs
+import bcrypt #crypte le mot de passe hash / encrypt the password hash
+import hmac #charge la bibliotheque pour la verification des messages basé sur le hachage / loads the library for message verification based on hashing
 import mysql.connector
 from database import lire, ecrire
 import securite
@@ -14,6 +14,7 @@ COLONNES_PUBLIQUES = "utilisateurs, nom, prenom, email, telephone, role, genre, 
 
 def sans_mot_de_passe(utilisateur):
     #renvoie une copie de l'utilisateur sans la colonnne mot de passe (securite)
+    #returns a copy of the user without the password column (security)
     copie = dict(utilisateur)
     copie.pop("mot_de_passe", None)
     return copie
@@ -77,7 +78,7 @@ def verifier_inscription(donnees):
 def interets_en_texte(interets):
     return ",".join(interets) if interets else None
 
-#compare les mots de passe hash
+#compare les mots de passe hash / compare the hashed passwords
 def mot_de_passe_correct(mot_de_passe, hash_enregistre):
     try:
         return bcrypt.checkpw(mot_de_passe.encode("utf-8"), hash_enregistre.encode("utf-8"))
@@ -98,12 +99,12 @@ def inscrire(donnees):
     if len(erreurs) > 0:
         return 400, {"error": "Valeurs invalides", "details": erreurs}
  
-    # L'email doit être unique
+    # L'email doit être unique / The email must be unique
     deja = lire("SELECT utilisateurs FROM utilisateur WHERE email = %s", (donnees["email"],))
     if len(deja) > 0:
         return 409, {"error": "Cet email est déjà utilisé"}
  
-    # bcrypt travaille avec des octets
+    # bcrypt travaille avec des octets / bcrypt works with bytes
     hash_texte = bcrypt.hashpw(donnees["mot_de_passe"].encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
  
     identifiant = "U" + uuid.uuid4().hex[:8]    
@@ -113,6 +114,9 @@ def inscrire(donnees):
  
     # Le rôle est TOUJOURS "client" ici, même si le client envoie "role": "admin".
     # Les administrateurs se créent uniquement avec le script admin.py.
+    
+    # The role is ALWAYS "client" here, even if the client sends "role": "admin".
+    # Administrators can only be created using the admin.py script.
     try:
         ecrire("INSERT INTO utilisateur (utilisateurs, nom, prenom, email, mot_de_passe, telephone, role, genre, pays, interets) "
                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
@@ -145,7 +149,7 @@ def connecter(donnees):
         return echec
 
     if not utilisateur["mot_de_passe"].startswith(("$2a$", "$2b$", "$2y$")):
-        # Migre au premier accès valide les anciens mots de passe du jeu de données.
+        # Migre au premier accès valide les anciens mots de passe du jeu de données /  Migrates the dataset's legacy passwords upon the first valid access.
         hash_texte = bcrypt.hashpw(
             donnees["mot_de_passe"].encode("utf-8"), bcrypt.gensalt()
         ).decode("utf-8")
@@ -167,6 +171,9 @@ def un_profil(demandeur):
 
 #PUT/PATCH pour modification du profil
 #permets de modifier les elements du profil
+
+#PUT/PATCH for profile modification
+#allows for modifying profile elements
 def modifier_profil(demandeur, donnees):
     if not donnees:
         return 400, {"error": "Données invalide"}
@@ -229,6 +236,7 @@ def modifier_profil(demandeur, donnees):
 
 
 #GET utilisateurs // Attention a ne pas le laisser sur un vrai projet car il expose certaines informations
+#GET users // Be careful not to leave this in a real project, as it exposes certain information
 def lister_utilisateurs():
     lignes = lire("SELECT " + COLONNES_PUBLIQUES + " FROM utilisateur")
     return 200, [preparer_utilisateur(ligne) for ligne in lignes]
