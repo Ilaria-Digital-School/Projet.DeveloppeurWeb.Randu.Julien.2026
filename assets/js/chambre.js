@@ -44,6 +44,7 @@
 // ajouterChambre();
 
 //permet la recuperation dans la base de donnée: recupere la liste des hotels présent dans la base de donnée
+//enables retrieval from the database: fetches the list of hotels present in the database
 async function chargerHotelsChambre() {
     const liste = document.getElementById("chambre-hotel");
     liste.innerHTML = "";
@@ -64,6 +65,7 @@ async function chargerHotelsChambre() {
 }
 
 //fonction pour ajouter une chambre
+//function to add a room
 function ajouterChambre() {
     const form = document.getElementById("productChambre");
     if (!form) return;

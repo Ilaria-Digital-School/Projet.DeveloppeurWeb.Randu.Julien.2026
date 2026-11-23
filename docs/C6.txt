@@ -66,6 +66,10 @@ Résolution des problemes rencontrés:
 -Corriger le code
 -Relancer les tests
 
+------------------------------------------------------
+
+Ajout des commentaires français/anglais pour une meilleure comprehension du code 
+
 
 
 

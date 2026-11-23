@@ -98,11 +98,13 @@ async function chargerChambres(idHotel) {
 }
 
 //Fonction pour prendre en compte la reservation
+//Function to process the reservation
 function reserver() {
     const form = document.getElementById("reservationForm");
     if (!form) return;
 
     //permets de recuperer les informations lors de la connexion
+    //allows for retrieving information during login
     const moi = utilisateurConnecte();
     const zoneCompte = document.getElementById("reservation-compte");
     if (zoneCompte) {
@@ -116,6 +118,7 @@ function reserver() {
     }
 
     //permets de ne pas choisir une date deja passée
+    //prevents selecting a date that has already passed
     const aujourdhui = aujourdhuiISO();
     document.getElementById("arrivee").min = aujourdhui;
     document.getElementById("depart").min = aujourdhui;
@@ -123,6 +126,7 @@ function reserver() {
     chargerHotels();
 
     //permets de recharger les chambres si on change d'hotel
+    //allows for reloading the rooms if the hotel is changed
     document.getElementById("hotel").addEventListener("change", function (event) {
         chargerChambres(event.target.value);
     });
@@ -155,6 +159,7 @@ function reserver() {
         }
 
         //permets la cohérence entre date d'arrivee et date de depart
+        //ensures consistency between arrival date and departure date
         const nuits = (new Date(depart) - new Date(arrivee)) / 86400000;
         if (!(nuits > 0)) {
             alert("La date de départ doit etre apres la date d'arrivee !");
@@ -171,7 +176,7 @@ function reserver() {
         });
 
         if (!resultat.ok) {
-            alert(messageErreur(resultat)); // chambre deja reservée
+            alert(messageErreur(resultat)); // chambre deja reservée // room already reserved
             return;
         }
 

@@ -41,3 +41,5 @@ Exemples :
 
 ------------------------------------------------------
 
+Ajout des commentaires français/anglais pour une meilleure comprehension du code 
+

@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000"; //mettre 5000 pour utilisation via Flask ou 8000 sans Flask
+const API_URL = "http://localhost:8000"; //mettre 5000 pour utilisation via Flask ou 8000 sans Flask 
+//set to 5000 for use via Flask, or 8000 without Flask
 const PAGE_CONNEXION = "connexion.html";
 
 //Envoie une requete sur l'API
@@ -10,6 +11,7 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
     } 
 
     //permets a l'utilisateur de se connecter et d'envoyer une requete 
+    //allows the user to log in and send a request
     const jeton = localStorage.getItem("jeton");
     if (jeton) {
         entetes["Authorization"] = "Bearer " + jeton;
@@ -32,6 +34,7 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
         
 
         //renvoie une erreur si le délai de connexion est depassé
+        //returns an error if the connection timeout is exceeded
         if (reponse.status === 401 && jeton) {
             deconnecter();
         }
@@ -44,6 +47,8 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
     
 }
 //permets de transmettre un message d'erreur lisible a l'utilisateur
+
+//allows a readable error message to be conveyed to the user
 function messageErreur(resultat) {
     const d = resultat.donnees;
     let message = d.error || "Erreur inconnue !";
@@ -56,6 +61,7 @@ function messageErreur(resultat) {
     return message;
 }
 //permets de lire la valeur des champs selectionner et permets une lecture claire
+//allows reading the value of selected fields and provides clear reading
 function valeurChamp(id){
     const element = document.getElementById(id);
     if (element === null) {
@@ -65,6 +71,7 @@ function valeurChamp(id){
 }
 
 //sauvegarde la session dans le localstorage 
+//saves the session in the local storage
 
 function sauvegarderSession(donneesConnexion) {
     localStorage.setItem("jeton", donneesConnexion.jeton);
@@ -97,11 +104,13 @@ function roleConnecte() {
 }
 
 //en fonction du role de la personne connectée
+//depending on the role of the logged-in user
 function aRole(...roles) {
     return roles.includes(roleConnecte());
 }
 
 //Pages et liens reserver a l'Admin
+//Pages and links reserved for the Admin
 function estAdmin() { return roleConnecte() === "admin"; }
 function estClient() { return roleConnecte() === "client"; }
 function estPrestataire() { return roleConnecte() === "prestataire"; }
@@ -111,6 +120,11 @@ function peutGererCatalogue() { return aRole("admin", "prestataire"); }
 //personne de connecté : message et redirection vers la page de connexion
 //mauvais role: message et redirection vers la page d'accueil
 // bon role : la page s'affiche
+
+//enables redirection based on role
+//no user logged in: display message and redirect to the login page
+//incorrect role: display message and redirect to the home page
+//correct role: the page is displayed
 
 function pageReservee(rolesAutorises) {
     const moi = utilisateurConnecte();
@@ -134,6 +148,7 @@ function pageReserveeCatalogue() { pageReservee(["admin", "prestataire"]); }
 function pageReserveeConnecte() { pageReservee(["client", "prestataire", "admin"]); }
 
 //affiche ou cache les elements du menu en fonction du role via la classe sur la page HTML
+//shows or hides menu elements based on the role, using a class on the HTML page
 
 function afficherLienSelonRole() {
     const regles = {
@@ -164,22 +179,26 @@ function libelleStatut(statut) {
     return LIBELLES_STATUT[statut] || statut;
 }
 
-//date a la française
+//date a la française / 
+//date in French format
 function dateFrancaise(texte) {
     return String(texte).split("-").reverse().join("/");
 }
 
 //le prix devient 120,50€ (exemple)
+//the price becomes €120.50 (example)
 function montantEuros(nombre) {
     return Number(nombre).toFixed(2).replace(".", ",") + " €";
 }
 
 //nombre de nuit entre deux dates format AAAA-MM-JJ
+//number of nights between two dates in YYYY-MM-DD format
 function nombreDeNuits(arrivee, depart) {
     return Math.round((new Date(depart) - new Date(arrivee)) / 86400000);
 }
 
 //date d'aujourd'hui
+//today's date
 function aujourdhuiISO() {
     const d = new Date();
     return  `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
@@ -201,8 +220,8 @@ function cellule(contenu, balise = "td") {
     }
     return element;
 }
-
-//Boutton d'action 
+//Boutton d'action
+//Action button
 function boutonAction(texte, classe, action) {
     const bouton = creerElement("button", texte, "btn btn-sm " + classe);
     bouton.type = "button";
@@ -212,6 +231,7 @@ function boutonAction(texte, classe, action) {
 }
 
 //Lien Connexion / Deconnexion
+//Connection / Disconnection link
 function afficherLienConnexion() {
     const moi = utilisateurConnecte();
 

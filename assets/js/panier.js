@@ -6,7 +6,7 @@ function ajouterDetailReservation(carte, libelle, valeur) {
     ligne.appendChild(document.createTextNode(valeur));
     carte.appendChild(ligne);
 }
-
+// permets au client d'interagir avec ses reservations / // allows the client to interact with their reservations
 function afficherReservations(reservations) {
     const liste = document.getElementById("liste-reservations");
     liste.replaceChildren();

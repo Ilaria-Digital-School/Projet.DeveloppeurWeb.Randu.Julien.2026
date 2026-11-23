@@ -50,6 +50,7 @@
 
 
 //permets l'ajout dans la base de donnée
+//allows addition to the database
 
 function ajouterProduit() {
     const form = document.getElementById("productForm");

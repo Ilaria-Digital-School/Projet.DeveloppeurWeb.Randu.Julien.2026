@@ -28,7 +28,7 @@ Utilisationde Try...catch pour gerer les erreurs et exceptions
 
 ------------------------------------------------------
 
-Ajout des commentaires français/anglais pour une meilleure comprehension du code (a faire)
+Ajout des commentaires français/anglais pour une meilleure comprehension du code 
 
 ------------------------------------------------------
 

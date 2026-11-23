@@ -146,7 +146,8 @@ async function supprimer(question, chemin) {
     await chargerTout();
 }
 
-//affichage des listes
+//affichage des listes  
+//displaying the lists
 function afficherHotels() {
     const lignes = donnees.hotels.map(function (h) {
         return [h.hotel, h.nom, h.ville, String(h.nombre_etoiles), nomPrestataire(h),
@@ -194,6 +195,8 @@ function afficherUtilisateurs() {
 }
 
 //Chargement 
+
+//Loading
 
 async function chargerTout() {
     const [hotels, chambres, reservations, utilisateurs] = await Promise.all([

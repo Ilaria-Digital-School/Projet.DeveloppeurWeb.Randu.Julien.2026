@@ -1,4 +1,5 @@
 // Le site ne dispose pas d'une intégration de paiement sécurisée.
+// The site does not have a secure payment integration.
 function envoiePaiement() {
     const form = document.getElementById("envoie-paiement");
     if (!form) return;
@@ -29,7 +30,7 @@ function envoiePaiement() {
         }
     });
 }
-
+//Recupere les informations de la reservation pour la page paiement / //Retrieve the reservation information for the payment page
 function afficherResumeReservation() {
     const zones = {
         hotel: document.getElementById("resume-hotel"),

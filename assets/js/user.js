@@ -60,7 +60,7 @@
 //     }
 // }
 
-//Création du client 
+//Création du client / //Creation of the client
 
 function sInscrire() {
     const inscriptionForm = document.getElementById("inscription-form");
@@ -78,6 +78,7 @@ function sInscrire() {
         const confirmMdp = valeurChamp("confirmMdp")
 
         //vérification mot de passe
+        //password verification
 
         if (mdp !== confirmMdp) {
             alert("Les Mots de passe ne correspondent pas !");
@@ -93,6 +94,7 @@ function sInscrire() {
         const genre = genreSelectionne.value;
 
         //Array permets de recuperer plusieurs interets et evite ainsi les boucles 
+        //Using an array allows for retrieving multiple interests, thereby avoiding the need for loops.
         const interets = Array.from(document.querySelectorAll('input[name="interets"]:checked')).map(element => element.value);
 
         const champPays = inscriptionForm.querySelector('select[name="pays"]') || inscriptionForm.querySelector("select");
@@ -102,6 +104,7 @@ function sInscrire() {
         }
 
         //choix du compte, client ou prestataire
+        //selection of account type: client or service provider
 
         const choixCompte = document.querySelector('input[name="type-compte"]:checked');
         const role = choixCompte ? choixCompte.value : "client";
@@ -129,7 +132,7 @@ function sInscrire() {
 
     });
 }
- //Connexion
+ //Connexion / Login
 
 function seConnecter() {
     const connexionForm = document.getElementById("connexion-form");
@@ -151,7 +154,7 @@ function seConnecter() {
             return;
         }
 
-        sauvegarderSession(resultat.donnees); //sauvegarde dans le localstorage 
+        sauvegarderSession(resultat.donnees); //sauvegarde dans le localstorage //save to localstorage
 
         window.location.href = "../index.html";
     });
