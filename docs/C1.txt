@@ -10,7 +10,7 @@ CSS : Mise en page de l’HTML / HTML layout
 
 ------------------------------------------------------
 
-JavaScript : pour rendre la page web dynamique et interactive / to make the web page dynamic and interactiv.
+JavaScript : pour rendre la page web dynamique et interactive / to make the web page dynamic and interactive.
 
 ------------------------------------------------------
 
@@ -46,13 +46,13 @@ W3C CSS Validator : vérification de la conformité du CSS
 ------------------------------------------------------
 
 Veille technologique et sécuritaire :
-OWASP --> securité des application web et des API
-Python.org --> evolution du langage Python
-Github changelog--> nouveautés de GitHub
-reseaux sociaux et communauté de developpeurs: decouverte de nouveaux outils, extensions et bonnes pratiques
+OWASP --> sécurité des applications web et des API
+Python.org --> évolution du langage Python
+GitHub changelog --> nouveautés de GitHub
+réseaux sociaux et communautés de développeurs : découverte de nouveaux outils, extensions et bonnes pratiques
 
 ------------------------------------------------------
 
-Font Awesome pour le telechargement de logo, par exemple le logo Facebook, gmail ou encore instagram
+Font Awesome pour le téléchargement de logos, par exemple les logos Facebook, Gmail ou encore Instagram
 
-Boostrap, bibliotheque permettant d'ajouter des script, barre de navigation, tableau etc... deja pret a personnalisé
+Bootstrap, bibliothèque permettant d'ajouter des scripts, des barres de navigation, des tableaux, etc., déjà prêts à être personnalisés

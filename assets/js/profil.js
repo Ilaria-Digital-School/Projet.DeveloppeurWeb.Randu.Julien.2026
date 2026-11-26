@@ -5,7 +5,7 @@ function ecrire(id, valeur) {
     if (element) element.textContent = valeur;
 }
 
-//remplissage du formulaire reçu par l'API / 
+//remplissage du formulaire reçu par l'API /
 //populating the form received via the API
 
 function remplirProfil(profil) {
@@ -26,7 +26,7 @@ function remplirProfil(profil) {
     ecrire("profil-identite", profil.prenom + " " + profil.nom);
 }
 
-//Mise a jour du prenom apres une modification / 
+//mise à jour du prénom après une modification /
 //Updating the first name after a modification
 function mettreAJourSession(profil) {
     const moi = utilisateurConnecte();

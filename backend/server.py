@@ -1,9 +1,10 @@
-#server.py concerne la partie du bloc 2 Back-end sans Framework
+#server.py concerne la partie du bloc 2 back-end sans framework
 #server.py relates to the part of Block 2 concerning back-end development without a framework.
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 from decimal import Decimal
+from urllib.parse import parse_qs, urlsplit
 import mysql.connector
 
 import hotel
@@ -44,7 +45,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
         methode = self.command
         chemin = self.path.split("?")[0]
         morceaux = [ m for m in chemin.split("/") if m != ""] #morceaux = morceaux de l'URL ecrit sur Postman. / #segments = segments of the URL as written in Postman.
-        #("/") permet de prendre en compte le split ("/") / #("/") allows for the inclusion of the split ("/")
+        #("/") permet de prendre en compte la séparation ("/") / #("/") allows for the split ("/")
         
         try:
             demandeur, refus = securite.controler_acces(
@@ -54,7 +55,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
                 self.repondre(refus[0], refus[1])
                 return
              
-         #Concerne la page hotel.py / Relates to the hotel.py page
+         #Concerne le module hotel.py / Relates to the hotel.py module
             if morceaux == []:
                 statusCode, contenu = 200, {"message": "Bienvenue sur ResaHotel.com"}
                 
@@ -102,7 +103,17 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             elif len(morceaux) == 3 and morceaux [0] == "chambres" and methode == "DELETE":
                             statusCode, contenu = chambre.supprimer_chambre(morceaux[1], morceaux[2])
                             
-            #Concerne la page reservation / Relates to the reservation page
+            #Concerne la page réservation / Relates to the reservation page
+
+            #Route publique pour afficher les périodes occupées d'une chambre.
+            #Public route for displaying a room's occupied periods.
+            elif len(morceaux) == 3 and morceaux[0] == "disponibilites" and methode == "GET":
+                            parametres = parse_qs(urlsplit(self.path).query)
+                            debut = parametres.get("debut", [None])[0]
+                            fin = parametres.get("fin", [None])[0]
+                            statusCode, contenu = reservation.disponibilites_chambre(
+                                morceaux[1], morceaux[2], debut, fin
+                            )
             
             elif morceaux == ["reservations"] and methode == "GET":
                             statusCode, contenu = reservation.lister_reservation(demandeur)
@@ -136,7 +147,7 @@ class ResaHotelServer(BaseHTTPRequestHandler):
             elif morceaux == ["profil"] and methode == "PATCH":
                 statusCode, contenu = utilisateur.modifier_profil(demandeur, self.lire_json())
                 
-            #permets de lister les utilisateurs
+            #permet de lister les utilisateurs
             elif morceaux == ["utilisateurs"] and methode == "GET":
                 statusCode, contenu = utilisateur.lister_utilisateurs()
             

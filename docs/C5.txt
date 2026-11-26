@@ -1,4 +1,4 @@
-Exercice C5 Mettre en place une base de donnée relationnelle 
+Exercice C5 Mettre en place une base de données relationnelle
 
 ------------------------------------------------------
 MLD:
@@ -123,12 +123,12 @@ Exemple de sécurité, intégrité et confidentialité:
 
 -hash du mot de passe
 
--gestion des droits d'accés, un simple client ne peux pas voir les autres reservations que les siennes, 
-idem pour un prestataire, il ne peut pas voir un autre hotel que le sien.
+-gestion des droits d'accès : un simple client ne peut pas voir les autres réservations que les siennes,
+idem pour un prestataire, il ne peut pas voir un autre hôtel que le sien.
 
 ------------------------------------------------------
 
-Differentes fonction utilisé lors de la création de la base de donnée:
+Différentes fonctions utilisées lors de la création de la base de données :
 
 -SELECT * FROM resahotel.reservation;
 

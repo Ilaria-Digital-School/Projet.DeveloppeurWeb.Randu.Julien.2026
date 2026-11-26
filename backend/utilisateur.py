@@ -1,6 +1,6 @@
 import uuid #uuid evite la creation de doublon d'ID utilisateurs / UUID prevents the creation of duplicate user IDs
 import bcrypt #crypte le mot de passe hash / encrypt the password hash
-import hmac #charge la bibliotheque pour la verification des messages basé sur le hachage / loads the library for message verification based on hashing
+import hmac #charge la bibliothèque pour la vérification des messages basée sur le hachage / loads the library for message verification based on hashing
 import mysql.connector
 from database import lire, ecrire
 import securite
@@ -13,7 +13,7 @@ CHAMPS_PROFIL = ["nom", "prenom", "email", "telephone", "genre", "pays", "intere
 COLONNES_PUBLIQUES = "utilisateurs, nom, prenom, email, telephone, role, genre, pays, interets"
 
 def sans_mot_de_passe(utilisateur):
-    #renvoie une copie de l'utilisateur sans la colonnne mot de passe (securite)
+    #renvoie une copie de l'utilisateur sans la colonne mot de passe (sécurité)
     #returns a copy of the user without the password column (security)
     copie = dict(utilisateur)
     copie.pop("mot_de_passe", None)
@@ -170,7 +170,7 @@ def un_profil(demandeur):
     return 200, preparer_utilisateur(lignes[0])
 
 #PUT/PATCH pour modification du profil
-#permets de modifier les elements du profil
+#permet de modifier les éléments du profil
 
 #PUT/PATCH for profile modification
 #allows for modifying profile elements
@@ -235,7 +235,7 @@ def modifier_profil(demandeur, donnees):
     return un_profil(demandeur)
 
 
-#GET utilisateurs // Attention a ne pas le laisser sur un vrai projet car il expose certaines informations
+#GET utilisateurs // Attention à ne pas le laisser sur un vrai projet, car il expose certaines informations
 #GET users // Be careful not to leave this in a real project, as it exposes certain information
 def lister_utilisateurs():
     lignes = lire("SELECT " + COLONNES_PUBLIQUES + " FROM utilisateur")

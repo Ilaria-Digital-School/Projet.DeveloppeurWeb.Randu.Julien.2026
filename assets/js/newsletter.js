@@ -6,7 +6,7 @@ class Inscription_news {
     }
 }
 
-//Fonction pour ajouter une inscription a la newsletter
+//Fonction pour ajouter une inscription à la newsletter
 //Function to add a subscription to the newsletter
 
 function inscriptionNews() {
@@ -29,7 +29,7 @@ function inscriptionNews() {
         if (!Array.isArray(inscriptions)) {
             inscriptions = [inscriptions];
         }
-        //Evite d'inscrire 2 fois la meme adresse mail
+        //Évite d'inscrire deux fois la même adresse e-mail
         //Prevents the same email address from being registered twice
         const dejaInscrit = inscriptions.some(function (i){
             return i.email === email;

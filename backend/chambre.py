@@ -1,4 +1,4 @@
-#concerne la base de données chambre
+#concerne la base de données des chambres
 #relates to the room database
 
 import mysql.connector
@@ -9,7 +9,7 @@ CHAMPS = ["numero", "type", "capacite", "tarif", "description","image"]
 
 LONGUEURS_MAX = {"numero": 50, "type": 50, "description": 500, "image": 255}
 
-#la capacité doit etre un chiffre en 1 et 10
+#la capacité doit être un nombre entre 1 et 10
 #the capacity must be a number between 1 and 10
 def capacite_valide(valeur):
     if isinstance(valeur, bool) or not isinstance(valeur, int):
@@ -17,7 +17,7 @@ def capacite_valide(valeur):
     return 1 <= valeur <=10
 
 
-#Le tarif doit etre supérieur à 0 / 
+#Le tarif doit être supérieur à 0 /
 #The price must be greater than 0
 
 def tarif_valide(valeur):
@@ -44,14 +44,14 @@ def hotel_existe(id_hotel):
     lignes = lire("SELECT hotel FROM hotel WHERE hotel = %s", (id_hotel,))
     return len(lignes) > 0
 
-#renvoie le propriétaire de l'hotel (si défini) / #returns the hotel owner (if defined)
+#renvoie le propriétaire de l'hôtel (si défini) / #returns the hotel owner (if defined)
 def proprietaire_hotel(id_hotel):
     lignes = lire("SELECT prestataire FROM hotel WHERE hotel = %s", (id_hotel,))
     if len(lignes) == 0:
         return None
     return lignes[0]["prestataire"]
 
-# permets de trouver la chambre en fonction de l'hotel ou None si introuvable/inexistante 
+#permet de trouver la chambre en fonction de l'hôtel ou None si elle est introuvable ou inexistante
 # allows finding the room based on the hotel, or returns None if not found/non-existent
 def trouver_chambre(id_hotel, id_chambre):
     lignes = lire("SELECT * FROM chambre WHERE hotel = %s AND chambre = %s", (id_hotel, id_chambre))
@@ -59,7 +59,7 @@ def trouver_chambre(id_hotel, id_chambre):
         return None
     return lignes[0]
 
-#permets de suivre l'odre de creation des chambre, C001, C002 etc...si libre dans l'hotel concerner 
+#permet de suivre l'ordre de création des chambres, C001, C002, etc., si elles sont libres dans l'hôtel concerné
 #allows for tracking the order of room creation, C001, C002 etc., if available in the concerned hotel
 def prochain_identifiant(id_hotel):
     plus_grand = 0
@@ -86,7 +86,7 @@ def une_chambre(id_hotel, id_chambre):
     return 200, chambre
 
 #POST
-#Pour la creation un prestataire peux ajouter des chambres uniquement dans son hotel
+#Pour la création, un prestataire ne peut ajouter des chambres que dans son hôtel
 #For the creation process, a service provider can only add rooms to their own hotel.
 def creer_chambre(donnees, demandeur=None):
     if donnees is None:
@@ -157,7 +157,7 @@ def modifier_chambre(id_hotel, id_chambre, donnees, tout_remplacer):
         return 400, {"error": message}
         
     
-    #permet la modifications des champs / #allows modification of the fields
+    #permet la modification des champs / #allows modification of the fields
     
     modifications = ", ".join(f"{champ} = %s" for champ in donnees)
     valeurs = list(donnees.values()) + [id_hotel, id_chambre]

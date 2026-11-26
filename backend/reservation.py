@@ -26,8 +26,8 @@ def calculer_montant(hotel, chambre, arrivee, depart):
     nuits = (date.fromisoformat(str(depart)) - date.fromisoformat(str(arrivee))).days
     return (Decimal(str(detail_chambre["tarif"])) * nuits).quantize(Decimal("0.01"))
 
-#permets de verifier les informations pour les valeurs rentrées correspondent bien au parametre 
-#allows for verification that the entered values ​​correspond correctly to the parameter
+#permet de vérifier que les valeurs saisies correspondent bien aux paramètres
+#allows verification that the entered values correspond correctly to the parameters
 
 def est_entier_entre(valeur, minimum, maximum):
     if isinstance(valeur, bool) or not isinstance(valeur, int):
@@ -79,25 +79,25 @@ def utilisateurs_existe(identifiant):
 
 def verifier_regles(reservation, id_a_exclure=None):
     
-    #important, la chambre et l'utilisateur doivent existés sinon il y aura un conflit
+    #important : la chambre et l'utilisateur doivent exister, sinon il y aura un conflit
     #important, the room and the user must exist; otherwise, a conflict will occur.
     if trouver_chambre(reservation["hotel"], reservation["chambre"]) is None:
         return 400, "Cette chambre n'existe pas dans cet Hôtel"
     if not utilisateurs_existe(reservation["utilisateurs"]):
         return 400, "Cet utilisateur n'existe pas"
     
-    #la date de départ doit etre apres la date d'arrivée / The departure date must be after the arrival date.
+    #la date de départ doit être après la date d'arrivée / The departure date must be after the arrival date.
     arrivee = str(reservation["date_arrivee"])
     depart = str(reservation["date_depart"])
     if date.fromisoformat(depart) <= date.fromisoformat(arrivee):
         return 409, "La date de départ doit etre apres la date d'arrivee"
     
-    #une chambre annulée ne bloque pas la reservation / An cancelled room does not block the reservation
+    #une réservation annulée ne bloque pas une autre réservation / A cancelled reservation does not block another reservation
     if reservation["statut"] == STATUTS_ANNULE:
         return None
     
-    #permets de ne pas avoir de reservation en meme temps mais permets une resevation avec des dates qui se chevauche 
-    #prevents having a reservation at the same time, but allows a reservation with overlapping dates
+    #empêche les réservations simultanées tout en permettant des réservations dont les dates se chevauchent
+    #prevents simultaneous reservations while allowing reservations with overlapping dates
     sql = ("SELECT reservation FROM reservation " "WHERE hotel = %s AND chambre = %s " 
            "AND statut <> %s " "AND date_arrivee < %s AND date_depart > %s ")
     
@@ -110,6 +110,30 @@ def verifier_regles(reservation, id_a_exclure=None):
         return 409, "Cette chambre est deja reserver sur la periode selectionnee"
     
     return None
+
+#Récupère uniquement les périodes occupées d'une chambre sur une plage de dates.
+#Returns only the occupied periods for a room within a date range.
+def disponibilites_chambre(id_hotel, id_chambre, debut, fin):
+    try:
+        date_debut = date.fromisoformat(debut)
+        date_fin = date.fromisoformat(fin)
+    except (TypeError, ValueError):
+        return 400, {"error": "Les dates doivent être au format AAAA-MM-JJ"}
+
+    if date_debut.isoformat() != debut or date_fin.isoformat() != fin or date_fin <= date_debut:
+        return 400, {"error": "La période demandée est invalide"}
+
+    if trouver_chambre(id_hotel, id_chambre) is None:
+        return 404, {"error": "Chambre introuvable !"}
+
+    periodes = lire(
+        "SELECT date_arrivee, date_depart FROM reservation "
+        "WHERE hotel = %s AND chambre = %s AND statut <> %s "
+        "AND date_arrivee < %s AND date_depart > %s "
+        "ORDER BY date_arrivee",
+        (id_hotel, id_chambre, STATUTS_ANNULE, fin, debut),
+    )
+    return 200, periodes
 
 #GET reservation
 def lister_reservation(demandeur):

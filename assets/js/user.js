@@ -14,7 +14,7 @@
 // }
 
 //Création de l'utilisateur/admin
-//sauvegarde en brut dans le localstorage avce MP visible
+//sauvegarde en clair dans le localStorage avec le mot de passe visible
 
 // function ajouterAdmin() {
 //     const admin = new Utilisateur("Randu", "Julien", "0605132521", "randu.julien@gmail.com", "admin1234", "homme", [], "France", "Admin");
@@ -93,8 +93,8 @@ function sInscrire() {
 
         const genre = genreSelectionne.value;
 
-        //Array permets de recuperer plusieurs interets et evite ainsi les boucles 
-        //Using an array allows for retrieving multiple interests, thereby avoiding the need for loops.
+        //Le tableau permet de récupérer plusieurs intérêts et évite ainsi les boucles
+        //Using an array allows retrieving multiple interests and thus avoids loops.
         const interets = Array.from(document.querySelectorAll('input[name="interets"]:checked')).map(element => element.value);
 
         const champPays = inscriptionForm.querySelector('select[name="pays"]') || inscriptionForm.querySelector("select");
@@ -103,7 +103,7 @@ function sInscrire() {
             console.warn("Pays introuvable");
         }
 
-        //choix du compte, client ou prestataire
+        //choix du compte : client ou prestataire
         //selection of account type: client or service provider
 
         const choixCompte = document.querySelector('input[name="type-compte"]:checked');
@@ -132,7 +132,7 @@ function sInscrire() {
 
     });
 }
- //Connexion / Login
+//Connexion / Login
 
 function seConnecter() {
     const connexionForm = document.getElementById("connexion-form");
@@ -154,7 +154,7 @@ function seConnecter() {
             return;
         }
 
-        sauvegarderSession(resultat.donnees); //sauvegarde dans le localstorage //save to localstorage
+        sauvegarderSession(resultat.donnees); //sauvegarde dans le localStorage //save to localStorage
 
         window.location.href = "../index.html";
     });

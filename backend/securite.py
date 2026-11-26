@@ -7,12 +7,12 @@ load_dotenv()
 
 DUREE_JETON = 60 * 60
 
-#Les Trois roles:
+#Les trois rôles :
 ROLE_CLIENT = "client"
 ROLE_PRESTATAIRE = "prestataire"
 ROLE_ADMIN = "admin"
 
-#permet de choisir son role a l'inscription prestataire ou client, admin ne s'affiche pas. Il se cree depuis admin.py
+#permet de choisir son rôle à l'inscription : prestataire ou client ; le rôle administrateur ne s'affiche pas. Il est créé depuis admin.py
 #allows users to choose their role during registration—service provider or client; 'admin' is not displayed as an option. Admin accounts are created via admin.py
 ROLES_INSCRIPTION = [ROLE_CLIENT, ROLE_PRESTATAIRE]
 
@@ -62,7 +62,7 @@ def verifier_droits(utilisateur, roles_autorises):
         return 403, {"error": "Droits insuffisants"}
     return None
 
-#Regles en fonction du role / 
+#Règles en fonction du rôle /
 #Rules based on role
 
 def regle_route(methode, morceaux):
@@ -86,7 +86,7 @@ def regle_route(methode, morceaux):
         return [ROLE_ADMIN], False
     return None, False
 
-#lit le jeton et donne l'acces en fonction du role / 
+#lit le jeton et donne l'accès en fonction du rôle /
 #reads the token and grants access based on the role
 def controler_acces(methode, morceaux, valeur_authorization):
     demandeur = lire_jeton(valeur_authorization)

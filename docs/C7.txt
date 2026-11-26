@@ -34,12 +34,12 @@ Validation des entrées (Input validation)
 Toutes les données reçues doivent être vérifiées côté serveur.
 
 Exemples :
-- Vérifier le format d'une adresse mail.
+- Vérifier le format d'une adresse e-mail.
 - Refuser une date de départ antérieure à la date d'arrivée.
 - Refuser un nombre de voyageurs négatif.
 - Vérifier qu'un identifiant correspond à une donnée existante.
 
 ------------------------------------------------------
 
-Ajout des commentaires français/anglais pour une meilleure comprehension du code 
+Ajout des commentaires français/anglais pour une meilleure compréhension du code
 

@@ -1,4 +1,4 @@
-// //Faire fonction ajouter chambre pour la page ajout chambre 
+// //Créer une fonction d'ajout de chambre pour la page d'ajout de chambre
 //Implement an 'add room' function for the 'add room' page
 class Contact {
     constructor(nom, numero, email, message) {

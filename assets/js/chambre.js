@@ -1,4 +1,4 @@
-// // //Faire fonction ajouter chambre pour la page ajout chambre 
+// // //Créer la fonction d'ajout de chambre pour la page d'ajout de chambre
 // class Chambre {
 //     constructor(nom, numero, type, capacite, tarif, description, imgSrc) {
 //         this.nom =nom;
@@ -11,7 +11,7 @@
 //     }
 // } 
 
-// //Fonction pour ajouter un produit
+// //Fonction pour ajouter une chambre
 // function ajouterChambre() {
 //     const form = document.getElementById("productChambre");
 //     console.log(form);
@@ -37,13 +37,13 @@
 //         localStorage.setItem("chambres", JSON.stringify(chambres));
 
 //         form.reset();
-//         alert("Chambre ajouté avec succés !");
+//         alert("Chambre ajoutée avec succès !");
 //     })
 // }
 
 // ajouterChambre();
 
-//permet la recuperation dans la base de donnée: recupere la liste des hotels présent dans la base de donnée
+//permet la récupération dans la base de données : récupère la liste des hôtels présents dans la base de données
 //enables retrieval from the database: fetches the list of hotels present in the database
 async function chargerHotelsChambre() {
     const liste = document.getElementById("chambre-hotel");

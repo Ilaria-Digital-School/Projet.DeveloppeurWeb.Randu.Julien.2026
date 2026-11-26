@@ -2,7 +2,7 @@ Exercice C4 Developper la partie dynamique des interfaces utilisateur web ou web
 
 ------------------------------------------------------
 
-JavaScript: langage permettant de rendre les pages web dynamiques et interactives. Language Used to make web pages dynamic and interactives
+JavaScript: langage permettant de rendre les pages web dynamiques et interactives. Language used to make web pages dynamic and interactive.
 
 Quelques exemples de fonctionnalités concernées:
 
@@ -21,26 +21,26 @@ Quelques exemples concernant la sécurité côté client:
 verification des champs obligatoires
 verification des adresses mail
 verification des mots de passe (identique ou non)
-controle du nombre de personne 
+contrôle du nombre de personnes
 vérification des valeurs rentrées dans les champs (texte ou numérique)
 
-Utilisationde Try...catch pour gerer les erreurs et exceptions 
+Utilisation de Try...catch pour gérer les erreurs et exceptions
 
 ------------------------------------------------------
 
-Ajout des commentaires français/anglais pour une meilleure comprehension du code 
+Ajout des commentaires français/anglais pour une meilleure compréhension du code
 
 ------------------------------------------------------
 
-Quelques test de securité réaliser:
+Quelques tests de sécurité réalisés :
 
 test des champs vides
-test des adresse mails incorrect
-test des mots de passe differents 
+test des adresses e-mail incorrectes
+test des mots de passe différents
 
 ------------------------------------------------------
 
-utilisation des outils pour les test:
+utilisation des outils pour les tests :
 Postman
 Vs code / terminal
-consol log
+console.log

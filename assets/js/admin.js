@@ -67,7 +67,7 @@ function nomPrestataire(h) {
     return (h.prestataire_prenom || "") + " " + (h.prestataire_nom || "") + " (" + (h.prestataire_email || "") + ")";
 }
 
-//formulaire de modification, identique que dans reservation, chambre et hotel 
+//Formulaire de modification, identique dans réservation, chambre et hôtel
 
 function ouvrirEdition(titre, champs, valeurs, enregistrer) {
     const zone = document.getElementById("admin-edition");

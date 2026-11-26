@@ -1,8 +1,8 @@
-const API_URL = "http://localhost:8000"; //mettre 5000 pour utilisation via Flask ou 8000 sans Flask 
-//set to 5000 for use via Flask, or 8000 without Flask
+const API_URL = "http://localhost:8000"; //mettre 5000 pour utilisation avec Flask ou 8000 sans Flask
+//set to 5000 for use with Flask, or 8000 without Flask
 const PAGE_CONNEXION = "connexion.html";
 
-//Envoie une requete sur l'API
+//Envoie une requête à l'API
 async function appelerAPI(chemin, methode = "GET", corps = null) {
     const entetes = {};
 
@@ -10,7 +10,7 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
         entetes["Content-Type"] = "application/json";
     } 
 
-    //permets a l'utilisateur de se connecter et d'envoyer une requete 
+    //permet à l'utilisateur de se connecter et d'envoyer une requête
     //allows the user to log in and send a request
     const jeton = localStorage.getItem("jeton");
     if (jeton) {
@@ -33,7 +33,7 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
         }
         
 
-        //renvoie une erreur si le délai de connexion est depassé
+        //renvoie une erreur si le délai de connexion est dépassé
         //returns an error if the connection timeout is exceeded
         if (reponse.status === 401 && jeton) {
             deconnecter();
@@ -46,7 +46,7 @@ async function appelerAPI(chemin, methode = "GET", corps = null) {
     }
     
 }
-//permets de transmettre un message d'erreur lisible a l'utilisateur
+//permet de transmettre un message d'erreur lisible à l'utilisateur
 
 //allows a readable error message to be conveyed to the user
 function messageErreur(resultat) {
@@ -60,7 +60,7 @@ function messageErreur(resultat) {
     }
     return message;
 }
-//permets de lire la valeur des champs selectionner et permets une lecture claire
+//permet de lire la valeur des champs sélectionnés et fournit une lecture claire
 //allows reading the value of selected fields and provides clear reading
 function valeurChamp(id){
     const element = document.getElementById(id);
@@ -103,23 +103,23 @@ function roleConnecte() {
     return moi === null ? null : moi.role;
 }
 
-//en fonction du role de la personne connectée
+//en fonction du rôle de la personne connectée
 //depending on the role of the logged-in user
 function aRole(...roles) {
     return roles.includes(roleConnecte());
 }
 
-//Pages et liens reserver a l'Admin
+//Pages et liens réservés à l'administrateur
 //Pages and links reserved for the Admin
 function estAdmin() { return roleConnecte() === "admin"; }
 function estClient() { return roleConnecte() === "client"; }
 function estPrestataire() { return roleConnecte() === "prestataire"; }
 function peutGererCatalogue() { return aRole("admin", "prestataire"); }
 
-//permets la redirection en fonction du role
-//personne de connecté : message et redirection vers la page de connexion
-//mauvais role: message et redirection vers la page d'accueil
-// bon role : la page s'affiche
+//permet la redirection en fonction du rôle
+//aucune personne connectée : message et redirection vers la page de connexion
+//mauvais rôle : message et redirection vers la page d'accueil
+//bon rôle : la page s'affiche
 
 //enables redirection based on role
 //no user logged in: display message and redirect to the login page
@@ -147,7 +147,7 @@ function pageReserveeClient() { pageReservee(["client"]); }
 function pageReserveeCatalogue() { pageReservee(["admin", "prestataire"]); }
 function pageReserveeConnecte() { pageReservee(["client", "prestataire", "admin"]); }
 
-//affiche ou cache les elements du menu en fonction du role via la classe sur la page HTML
+//affiche ou cache les éléments du menu en fonction du rôle via la classe sur la page HTML
 //shows or hides menu elements based on the role, using a class on the HTML page
 
 function afficherLienSelonRole() {
@@ -179,7 +179,7 @@ function libelleStatut(statut) {
     return LIBELLES_STATUT[statut] || statut;
 }
 
-//date a la française / 
+//date à la française /
 //date in French format
 function dateFrancaise(texte) {
     return String(texte).split("-").reverse().join("/");
@@ -191,7 +191,7 @@ function montantEuros(nombre) {
     return Number(nombre).toFixed(2).replace(".", ",") + " €";
 }
 
-//nombre de nuit entre deux dates format AAAA-MM-JJ
+//nombre de nuits entre deux dates au format AAAA-MM-JJ
 //number of nights between two dates in YYYY-MM-DD format
 function nombreDeNuits(arrivee, depart) {
     return Math.round((new Date(depart) - new Date(arrivee)) / 86400000);
@@ -220,7 +220,7 @@ function cellule(contenu, balise = "td") {
     }
     return element;
 }
-//Boutton d'action
+//Bouton d'action
 //Action button
 function boutonAction(texte, classe, action) {
     const bouton = creerElement("button", texte, "btn btn-sm " + classe);
@@ -230,7 +230,7 @@ function boutonAction(texte, classe, action) {
     return bouton;
 }
 
-//Lien Connexion / Deconnexion
+//Lien Connexion / Déconnexion
 //Connection / Disconnection link
 function afficherLienConnexion() {
     const moi = utilisateurConnecte();
@@ -254,3 +254,100 @@ function afficherLienConnexion() {
 }
 
 document.addEventListener("DOMContentLoaded", afficherLienConnexion);
+
+// Normalise le texte pour comparer les recherches sans tenir compte des accents.
+// Normalizes text so searches are compared without considering accents.
+function normaliserTexteRecherche(texte) {
+    return texte
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("fr");
+}
+
+// Configure la recherche de la navigation et filtre les hôtels du catalogue.
+// Sets up navigation search and filters the hotels in the catalogue.
+function initialiserRechercheNavigation() {
+    const formulairesRecherche = document.querySelectorAll('form[role="search"]');
+    const cheminAccueil = /\/Pages\//i.test(window.location.pathname) ? "../index.html" : "index.html";
+
+    formulairesRecherche.forEach(function (formulaire) {
+        const champ = formulaire.querySelector('input[type="search"]');
+        const bouton = formulaire.querySelector('button[type="submit"], button:not([type])');
+        if (!champ) return;
+
+        champ.placeholder = "Rechercher un hôtel";
+        champ.setAttribute("aria-label", "Rechercher un hôtel");
+        champ.name = "recherche";
+        if (bouton) bouton.textContent = "Rechercher";
+
+        formulaire.addEventListener("submit", function (evenement) {
+            evenement.preventDefault();
+            const destination = new URL(cheminAccueil, window.location.href);
+            const recherche = champ.value.trim();
+            if (recherche) destination.searchParams.set("recherche", recherche);
+            window.location.href = destination.href;
+        });
+    });
+
+    // Récupère le catalogue et les éléments nécessaires au filtrage des hôtels.
+    // Gets the catalogue and the elements needed to filter the hotels.
+    const catalogue = document.querySelector("main");
+    const cartes = catalogue ? catalogue.querySelectorAll(".article, .article-2") : [];
+    if (cartes.length === 0) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const recherche = params.get("recherche") || "";
+    const champRecherche = document.querySelector('form[role="search"] input[type="search"]');
+    if (champRecherche) champRecherche.value = recherche;
+
+    const conteneurs = new Set();
+    const sectionsCatalogue = new Set();
+    cartes.forEach(function (carte) {
+        conteneurs.add(carte.parentElement);
+        const section = carte.closest("section");
+        if (section) sectionsCatalogue.add(section);
+    });
+
+    const message = document.createElement("p");
+    message.className = "recherche-resultats";
+    message.setAttribute("role", "status");
+    message.setAttribute("aria-live", "polite");
+    const premierConteneur = cartes[0].parentElement;
+    const premiereSection = premierConteneur.closest("section");
+    const pointInsertion = premiereSection || premierConteneur;
+    pointInsertion.parentElement.insertBefore(message, pointInsertion);
+
+    if (!recherche) {
+        message.hidden = true;
+        sectionsCatalogue.forEach(function (section) {
+            section.hidden = false;
+        });
+        return;
+    }
+
+    const termes = normaliserTexteRecherche(recherche).trim().split(/\s+/).filter(Boolean);
+    let nombreResultats = 0;
+    cartes.forEach(function (carte) {
+        const contenu = normaliserTexteRecherche(carte.textContent);
+        const correspond = termes.every(function (terme) {
+            return contenu.includes(terme);
+        });
+        carte.hidden = !correspond;
+        if (correspond) nombreResultats += 1;
+    });
+
+    conteneurs.forEach(function (conteneur) {
+        conteneur.hidden = !conteneur.querySelector(".article:not([hidden]), .article-2:not([hidden])");
+    });
+    sectionsCatalogue.forEach(function (section) {
+        section.hidden = !section.querySelector(".article:not([hidden]), .article-2:not([hidden])");
+    });
+
+    message.hidden = false;
+    message.textContent = nombreResultats === 0
+        ? "Aucun hôtel ne correspond à votre recherche. Essayez un autre nom, une ville ou une catégorie."
+        : nombreResultats + (nombreResultats > 1 ? " hôtels correspondent" : " hôtel correspond") + " à votre recherche.";
+    message.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+document.addEventListener("DOMContentLoaded", initialiserRechercheNavigation);

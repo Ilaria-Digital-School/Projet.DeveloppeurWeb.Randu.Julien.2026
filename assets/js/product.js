@@ -1,5 +1,5 @@
 // // Page Ajout Hotel 
-// //Sauvegarde dans le localstorage le informations rentrées dans la page ajout Hotel
+// //Sauvegarde dans le localStorage les informations saisies dans la page d'ajout d'hôtel
 
 // class Produit {
 //     constructor(nom, etoile, description, adresse, codePostale, ville, pays, imgSrc) {
@@ -42,14 +42,14 @@
 //         localStorage.setItem("produits", JSON.stringify(produits));
 
 //         form.reset();
-//         alert("Produit ajouté avec succés !");
+//         alert("Produit ajouté avec succès !");
 //     })
 // }
 
 // ajouterProduit();
 
 
-//permets l'ajout dans la base de donnée
+//permet l'ajout dans la base de données
 //allows addition to the database
 
 function ajouterProduit() {

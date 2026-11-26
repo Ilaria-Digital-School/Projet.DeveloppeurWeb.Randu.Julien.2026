@@ -30,7 +30,7 @@ function envoiePaiement() {
         }
     });
 }
-//Recupere les informations de la reservation pour la page paiement / //Retrieve the reservation information for the payment page
+//Récupère les informations de la réservation pour la page paiement / //Retrieve the reservation information for the payment page
 function afficherResumeReservation() {
     const zones = {
         hotel: document.getElementById("resume-hotel"),

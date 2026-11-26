@@ -1,4 +1,4 @@
-#app.py concerne la partie du bloc 3 avec le Framework Flask
+#app.py concerne la partie du bloc 3 avec le framework Flask
 #app.py relates to the part of block 3 that covers the Flask framework.
 
 from decimal import Decimal
@@ -54,7 +54,7 @@ def repondre(resultat):
     statusCode, contenu = resultat
     return jsonify(contenu), statusCode
 
-#Creation des routes pour utilisations de Flask
+#Création des routes pour utilisation avec Flask
 #Route Hôtel
 
 #Creating routes for use with Flask
@@ -122,6 +122,16 @@ def route_modifier_chambre(id_hotel, id_chambre):
 @app.delete("/chambres/<id_hotel>/<id_chambre>")
 def route_supprimer_chambre(id_hotel, id_chambre):
     return repondre(chambre.supprimer_chambre(id_hotel, id_chambre))
+
+#Route publique pour afficher les périodes occupées d'une chambre.
+#Public route for displaying a room's occupied periods.
+@app.get("/disponibilites/<id_hotel>/<id_chambre>")
+def route_disponibilites_chambre(id_hotel, id_chambre):
+    return repondre(
+        reservation.disponibilites_chambre(
+            id_hotel, id_chambre, request.args.get("debut"), request.args.get("fin")
+        )
+    )
 
 #Reservation
 

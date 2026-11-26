@@ -4,7 +4,7 @@ from database import lire, ecrire
 
 email = input("Email de l'administrateur :").strip()
 
-#verifier mail de l'admin / #verify admin email
+#vérifier l'e-mail de l'administrateur / #verify admin email
 admins = lire("SELECT utilisateurs FROM utilisateur WHERE email = %s AND role = %s", (email, "admin"))
 if len(admins) == 0:
     raise SystemExit("Administrateur inconnu !")

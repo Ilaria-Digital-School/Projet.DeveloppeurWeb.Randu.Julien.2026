@@ -31,7 +31,7 @@ background-color: white;
     border: solid white;
 }
 
-/*Boutton Scroll*/
+/*Bouton Scroll*/
 
 .scroll-top{
     position: sticky;
@@ -970,7 +970,7 @@ background-color: cornflowerblue;
 
 }
 
-/*Päge Paiement*/
+/*Page Paiement*/
 .message-erreur {
     color: #b00020;
 }
@@ -1148,7 +1148,7 @@ background-color: cornflowerblue;
     }
 }
 
-/*Concerne la verification des mots de passe dans le formulaire*/
+/*Concerne la vérification des mots de passe dans le formulaire*/
 
 
 .error-text{
@@ -1203,4 +1203,128 @@ background-color: cornflowerblue;
     .inscription-fieldset {
         padding: 15px;
     }
+}
+
+/* Calendrier des disponibilités des chambres / Room availability calendar */
+.planning-chambre {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.planning-chambre[hidden] {
+    display: none;
+}
+
+.planning-entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.planning-entete h4 {
+    margin: 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.planning-navigation {
+    min-width: 40px;
+    min-height: 40px;
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+    background: #fff;
+    color: #212529;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.planning-navigation:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.planning-legende {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.planning-legende > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.planning-indicateur {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #adb5bd;
+    border-radius: 3px;
+}
+
+.planning-indicateur.disponible {
+    background: #fff;
+}
+
+.planning-indicateur.occupe {
+    background: #f8d7da;
+}
+
+.planning-grille {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+    text-align: center;
+}
+
+.planning-jour-entete {
+    padding: 6px 0;
+    font-weight: 700;
+}
+
+.planning-case-vide,
+.planning-jour {
+    min-height: 40px;
+}
+
+.planning-jour {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background: #fff;
+    color: #212529;
+}
+
+.planning-jour:not(:disabled):hover {
+    outline: 2px solid #0d6efd;
+}
+
+.planning-jour-occupe {
+    border-color: #f1aeb5;
+    background: #f8d7da;
+    color: #842029;
+}
+
+.planning-jour-passe,
+.planning-jour:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.planning-jour-selectionne {
+    border-color: #0d6efd;
+    background: #0d6efd;
+    color: #fff;
+    font-weight: 700;
+}
+
+#planning-message {
+    margin: 12px 0 0;
 }
